@@ -6,7 +6,26 @@ from selenium.webdriver.support import expected_conditions as EC
 import json
 import re
 
-def extract_moves_and_abilities(text_content, card_name):
+def substring_in_list(string_list, substring):
+    """
+    Checks if a given substring exists in any string within a list.
+    
+    Args:
+        string_list: A list of strings.
+        substring: The substring to search for.
+    
+    Returns:
+        True if the substring is found in any string within the list, False otherwise.
+    """
+    for string in string_list:
+        if substring in string:
+            return True
+    return False
+
+# n/a
+# https://img.game8.co/3998614/b92af68265b2e7623de5efdf8197a9bf.png/show
+
+def extract_moves_and_abilities(text_content, energy_list):
     lines = text_content.strip().split('\n')
     moves = []
     abilities = []
@@ -14,10 +33,8 @@ def extract_moves_and_abilities(text_content, card_name):
     current_move = None
     current_ability = None
 
-    if card_name == 'Butterfree':
-        print(lines)
-
     i = 0
+    move_counter = 0
 
     while i < len(lines):
         line = lines[i]
@@ -33,10 +50,11 @@ def extract_moves_and_abilities(text_content, card_name):
         elif re.match(r"^[A-Za-z\s]+$", line):  # Move name
             if current_move:
                 moves.append(current_move)
-            current_move = {"name": line.strip(), "energy": [], "damage": "", "description": ""}
-        elif re.search(r"(Grass|Fire|Water|Lightning|Psychic|Fighting|Dark|Colorless)(\s+\d+)?", line):
-            if current_move:
-                current_move["energy"].extend([f"{e}{n}" for e, n in re.findall(r"(Grass|Fire|Water|Lightning|Psychic|Fighting|Dark|Colorless)(\s+\d+)?", line)])
+            energy_str = ''
+            if len(energy_list) > 0:
+                energy_str =  energy_list[move_counter]
+            current_move = {"name": line.strip(), "energy": energy_str, "damage": "", "description": ""}
+            move_counter += 1
         elif line.isdigit() or line[:-1].isdigit():
             if current_move:
                 current_move["damage"] = line.strip()
@@ -49,7 +67,7 @@ def extract_moves_and_abilities(text_content, card_name):
     if current_ability:
         abilities.append(current_ability)
 
-    return moves, abilities, retreat_cost
+    return moves, abilities
 
 
 def parse_card_row(row):
@@ -61,13 +79,21 @@ def parse_card_row(row):
         "rarity": "",
         "exclusive_pack": "",
         "type": "",
-        "type_image_url": "",
+        # "type_image_url": "",
         "hp": "",
         "stage": "",
         "pack_points": "",
         "retreat_cost": [],
         "moves": [],
         "ability": "None"
+    }
+    
+    card_retreat_dict = {
+       "https://img.game8.co/3994730/6e5546e2fbbc5a029ac79acf2b2b8042.png/show" : "1",
+       "https://img.game8.co/3998538/eea8469456d6b7ea7a2daf2995087d00.png/show": "2",
+       "https://img.game8.co/3998539/6bb558f97aac02e469e3ddc06e2ac167.png/show": "3",
+       "https://img.game8.co/3998556/3831ed9a23dbc9db0da4254334165863.png/show": "4",
+       "https://img.game8.co/3998614/b92af68265b2e7623de5efdf8197a9bf.png/show": "0",
     }
 
     try:
@@ -81,7 +107,7 @@ def parse_card_row(row):
         
         type_img = columns[5].find_element(By.XPATH, ".//img")
         card_data["type"] = type_img.get_attribute("alt").split(' - ')[-1] if type_img else ""
-        card_data["type_image_url"] = type_img.get_attribute("data-src") if type_img else ""
+        # card_data["type_image_url"] = type_img.get_attribute("data-src") if type_img else ""
         
         card_data["hp"] = columns[6].text.strip()
         card_data["stage"] = columns[7].text.strip()
@@ -89,9 +115,36 @@ def parse_card_row(row):
         
         text_content = columns[9].text
         
-        moves, abilities, retreat_cost = extract_moves_and_abilities(text_content, card_data["card_name"])
+        try:
+            energy_list = []
+            energy_images = columns[9].find_elements(By.XPATH, ".//img[contains(@class, 'a-img')]")
+            for img in energy_images[1:]:
+                alt = img.get_attribute("alt")
+                # print(alt)
+                energy_list.append(alt)
+            energy_list_per_move = []
+            move_energies = []
+            for energy in energy_list:
+                if substring_in_list(move_energies, energy.split(' ')[0]) or ('Mew ex' in card_data["card_name"] and len(move_energies) != 0):
+                    energy_list_per_move.append(move_energies)
+                    move_energies = []
+                move_energies.append(energy)
+            energy_list_per_move.append(move_energies)
+            energy_list = energy_list_per_move
+        except:
+            energy_list = []
         
-        card_data["retreat_cost"] = retreat_cost
+        if 'Mew ex' in card_data["card_name"]:
+            print(text_content)
+            print(energy_list)
+        moves, abilities = extract_moves_and_abilities(text_content, energy_list)
+        try:
+            retreat_cost_img = columns[9].find_element(By.XPATH, ".//img")
+            card_data["retreat_cost"] = retreat_cost_img.get_attribute("data-src") if type_img else ""
+            if card_data["retreat_cost"] != "":
+                card_data["retreat_cost"] = card_retreat_dict[card_data["retreat_cost"]]
+        except:
+            card_data["retreat_cost"] = ""
         card_data["moves"] = moves
         card_data["ability"] = abilities
 
