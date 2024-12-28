@@ -17,5 +17,6 @@ typedef struct {
 
 void initialize_game_state(GameState *game, const char deck1[MAX_CARDS_IN_DECK][MAX_CARD_NAME_LENGTH], 
                            const char deck2[MAX_CARDS_IN_DECK][MAX_CARD_NAME_LENGTH]);
+void act_turn(GameState *game, Player *player, char *** actions, int num_actions);
 
 #endif // GAME_STATE_H
