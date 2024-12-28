@@ -47,5 +47,6 @@ typedef struct {
 EnergyType parse_energy_type(const char* type_string);
 void initialize_card(Card* card, const char* name, EnergyType type, int hp, Stage stage, int retreat_cost, bool is_ex, bool has_ability);
 void attach_energy_to_card(Card* card, EnergyType energy);
+void heal_card(Card *card, int heal_amount);
 
 #endif // CARD_H

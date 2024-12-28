@@ -30,8 +30,20 @@ void initialize_card(Card* card, const char* name, EnergyType type, int hp, Stag
 }
 
 void attach_energy_to_card(Card* card, EnergyType energy) {
-    if (card->energies_count < MAX_CARD_ENERGIES) {
-        card->attached_energies[card->energies_count] = energy;
-        card->energies_count++;
+    card->attached_energies[(int) energy] += 1;
+    card->energies_count++;
+}
+
+void heal_card(Card *card, int heal_amount) {
+    if (card == NULL || card->cardtype != POKEMON) {
+        return;  // Only heal Pokémon cards
+    }
+
+    card->hp += heal_amount;
+    
+    // Ensure HP doesn't exceed the total HP
+    if (card->hp > card->hp_total) {
+        card->hp = card->hp_total;
     }
 }
+

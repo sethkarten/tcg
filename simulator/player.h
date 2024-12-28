@@ -29,5 +29,10 @@ typedef enum {
 void initialize_player(Player *player, Role role);
 EnergyType get_energy(Player *player, int current_turn);
 bool attach_energy(Player *player, EnergyType energy, int target);
+void discard_card_from_hand(Player *player, Card *card);
+Card * get_target(Player *player, Player * opponent, int target);
+bool move_active_to_hand(Player *player);
+void move_lightning_energy_to_active(Player *player);
+Card* find_card_in_hand(Player *player, const char *card_name);
 
 #endif // PLAYER_H

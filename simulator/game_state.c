@@ -12,16 +12,18 @@ void initialize_game_state(GameState *game,
 
     // Initialize random seed
     srand(time(NULL));
+    Role player1_role = PLAY;
+    Role player2_role = OPP;
 
     // Init players
-    initialize_player(&game->player1);
-    initialize_player(&game->player2);
+    initialize_player(&game->player1, player1_role);
+    initialize_player(&game->player2, player2_role);
 
     // Initialize player 1's deck
-    initialize_deck(game, &game->player1.deck, deck1);
+    initialize_deck(game->card_dictionary, &game->player1.deck, deck1, energy1);
 
     // Initialize player 2's deck
-    initialize_deck(game, &game->player2.deck, deck2);
+    initialize_deck(game->card_dictionary, &game->player2.deck, deck2, energy2);
 
     // Shuffle decks
     shuffle_deck(&game->player1.deck);
@@ -29,77 +31,118 @@ void initialize_game_state(GameState *game,
 
     // Initialize other game state variables
     game->current_turn = 0;
+    game->supporter_played = false;
     game->game_over = false;
+    game->turn_effects.blaine_boost = false;
+    game->turn_effects.giovanni_boost = false;
+    game->turn_effects.sabrina_switch = false;
+    game->turn_effects.blue_protection = false;
+    game->turn_effects.retreat_reduction = 0;
 
     // Draw initial hands
-    draw_initial_hand(&game->player1.deck, player1);
-    draw_initial_hand(&game->player2.deck, player2);
+    draw_initial_hand(&game->player1.deck, game->player1);
+    draw_initial_hand(&game->player2.deck, game->player2);
 
     // Determine who goes first by flipping a coin -- do this before initializing?
-
     
 }
 
-void act_turn(GameState *game, Player *player, char ***actions, int num_actions) 
+void start_turn(GameState *game, Player *player)
 {
     // if not turn 1
     EnergyType energy = NULL;
     if (game->current_turn != 0)
     {
         draw_card(&player->deck, player);
-        energy = player->deck.energy_seq[(int) game->current_turn / 2];
+        player->energy_available = true;
     }
-
-    // iterate through action list
-    for (int i = 0; i < num_actions; i++) {
-        char *action_type = actions[i][0];
-        char *card_name = actions[i][1];
-        char *target = (actions[i][2] != NULL) ? actions[i][2] : NULL;
-
-        switch(action_type[0]) {
-            case 's':
-                play_supporter(game, player, card_name);
-                break;
-            case 'i':
-                play_item(game, player, card_name, target);
-                break;
-            case 'p':
-                play_pokemon(game, player, card_name);
-                break;
-            case 'v':
-                evolve_pokemon(game, player, card_name, target);
-                break;
-            case 'r':
-                retreat_pokemon(game, player, card_name, target);
-                break;
-            case 'a':
-                use_ability(game, player, card_name, target);
-                break;
-            case 'm':
-                use_move(game, player, card_name, target);
-                break;
-            case 'e':
-                end_turn(game);
-                return;
-            default:
-                printf("Invalid action type: %c\n", action_type[0]);
-        }
-    }
+    game->turn_effects.blaine_boost = false;
+    game->turn_effects.giovanni_boost = false;
+    game->turn_effects.sabrina_switch = false;
+    game->turn_effects.retreat_reduction = 0;
 }
 
-void play_supporter(GameState *game, Player *player, char *card_name) {
-    Card *card = search(player->hand, card_name);
-    if (card != NULL && card->type == SUPPORTER) {
-        // Implement supporter card effect
-        // Remove card from hand and place in discard pile
+bool act_turn(GameState *game, Player *player, char **action) 
+{
+    char *action_type = action[0];
+    char *card_name = action[1];
+    int target = (action[2] != NULL) ? atoi(action[2]) : -1;
+    int turn_number = (int) game->current_turn / 2;
+
+    switch(action_type[0]) {
+        case 'n':
+            if (player->energy_available) 
+            {
+                EnergyType energy = get_energy(player, turn_number);
+                return attach_energy(player, energy, target);
+            }
+            return false;
+            break;
+        case 's':
+            return play_supporter(game, player, card_name, target, &game->supporter_played);
+            break;
+        case 'i':
+            play_item(game, player, card_name, target);
+            break;
+        case 'p':
+            play_pokemon(game, player, card_name);
+            break;
+        case 'v':
+            evolve_pokemon(game, player, card_name, target);
+            break;
+        case 'r':
+            retreat_pokemon(game, player, card_name, target);
+            break;
+        case 'a':
+            use_ability(game, player, card_name, target);
+            break;
+        case 'm':
+            use_move(game, player, card_name, target);
+            end_turn(game);
+            break;
+        case 'e':
+            end_turn(game);
+            return;
+        default:
+            printf("Invalid action type: %c\n", action_type[0]);
     }
+    return false;
 }
 
-void play_item(GameState *game, Player *player, char *card_name, char *target) {
+
+
+bool play_item(GameState *game, Player *player, char *card_name, int target) {
     Card *card = search(player->hand, card_name);
-    if (card != NULL && card->type == ITEM) {
+    if (card == NULL || card->cardtype != ITEM) {
+        return false;
         // Implement item card effect based on target
         // Remove card from hand and place in discard pile
+    }
+
+    if (strcmp(card_name, "Helix Fossil") == 0 ||
+        strcmp(card_name, "Dome Fossil") == 0 ||
+        strcmp(card_name, "Old Amber") == 0) {
+
+    } else if (strcmp(card_name, "Pokemon Flute") == 0) {
+
+    } else if (strcmp(card_name, "Mythical Slab") == 0) {
+
+    } else if (strcmp(card_name, "Pokemon Flute") == 0) {
+
+    } else if (strcmp(card_name, "Potion") == 0) {
+
+    } else if (strcmp(card_name, "X Speed") == 0) {
+
+    } else if (strcmp(card_name, "Pokedex") == 0) {
+
+    } else if (strcmp(card_name, "Poke Ball") == 0) {
+
+    } else if (strcmp(card_name, "Hand Scope") == 0) {
+
+    } else if (strcmp(card_name, "Red Card") == 0) {
+
+    } else {
+        return false;
     }
 }
 
@@ -146,6 +189,7 @@ void use_move(GameState *game, Player *player, char *card_name, char *target) {
 
 void end_turn(GameState *game) {
     game->current_turn++;
+    game->supporter_played = false;
     // Switch active player
 }
 
