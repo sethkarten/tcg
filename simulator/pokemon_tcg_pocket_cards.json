@@ -37,7 +37,8 @@
                 "name": "Razor Leaf",
                 "energy": [
                     "Grass",
-                    "Colorless 2"
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "40",
                 "description": ""
@@ -59,8 +60,10 @@
             {
                 "name": "Mega Drain",
                 "energy": [
-                    "Grass 2",
-                    "Colorless 2"
+                    "Grass",
+                    "Grass",
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "80",
                 "description": "Heal 30 damage from this Pokemon. "
@@ -83,7 +86,8 @@
                 "name": "Razor Leaf",
                 "energy": [
                     "Grass",
-                    "Colorless 2"
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "60",
                 "description": ""
@@ -91,8 +95,10 @@
             {
                 "name": "Giant Bloom",
                 "energy": [
-                    "Grass 2",
-                    "Colorless 2"
+                    "Grass",
+                    "Grass",
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "100",
                 "description": "Heal 30 damage from this Pokemon. "
@@ -136,7 +142,8 @@
             {
                 "name": "Bug Bite",
                 "energy": [
-                    "Colorless 2"
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "30",
                 "description": ""
@@ -159,7 +166,8 @@
                 "name": "Gust",
                 "energy": [
                     "Grass",
-                    "Colorless 2"
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "60",
                 "description": ""
@@ -297,7 +305,8 @@
             {
                 "name": "Soothing Scent",
                 "energy": [
-                    "Grass 2",
+                    "Grass",
+                    "Grass",
                     "Colorless"
                 ],
                 "damage": "80",
@@ -343,7 +352,8 @@
             {
                 "name": "Slash",
                 "energy": [
-                    "Grass 2",
+                    "Grass",
+                    "Grass",
                     "Colorless"
                 ],
                 "damage": "80",
@@ -594,7 +604,8 @@
             {
                 "name": "Double Horn",
                 "energy": [
-                    "Grass 2"
+                    "Grass",
+                    "Grass"
                 ],
                 "damage": "50x",
                 "description": "Flip 2 coins. This attack does 50 damage for each heads. "
@@ -682,7 +693,8 @@
             {
                 "name": "Leaf Supply",
                 "energy": [
-                    "Grass 2"
+                    "Grass",
+                    "Grass"
                 ],
                 "damage": "50",
                 "description": "Take a Grass Energy from your Energy Zone and attach it to 1 of your Benched Grass Pokemon. "
@@ -771,7 +783,8 @@
                 "name": "Fire Claws",
                 "energy": [
                     "Fire",
-                    "Colorless 2"
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "60",
                 "description": ""
@@ -793,8 +806,10 @@
             {
                 "name": "Fire Spin",
                 "energy": [
-                    "Fire 2",
-                    "Colorless 2"
+                    "Fire",
+                    "Fire",
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "150",
                 "description": "Discard 2 Fire Energy from this Pokemon. "
@@ -817,7 +832,8 @@
                 "name": "Slash",
                 "energy": [
                     "Fire",
-                    "Colorless 2"
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "60",
                 "description": ""
@@ -825,8 +841,10 @@
             {
                 "name": "Crimson Storm",
                 "energy": [
-                    "Fire 2",
-                    "Colorless 2"
+                    "Fire",
+                    "Fire",
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "200",
                 "description": "Discard 2 Fire Energy from this Pokemon. "
@@ -870,7 +888,8 @@
             {
                 "name": "Flamethrower",
                 "energy": [
-                    "Fire 2"
+                    "Fire",
+                    "Fire"
                 ],
                 "damage": "90",
                 "description": "Discard a Fire Energy from this Pokemon. "
@@ -892,7 +911,8 @@
             {
                 "name": "Bite",
                 "energy": [
-                    "Colorless 2"
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "20",
                 "description": ""
@@ -914,7 +934,8 @@
             {
                 "name": "Heat Tackle",
                 "energy": [
-                    "Fire 2",
+                    "Fire",
+                    "Fire",
                     "Colorless"
                 ],
                 "damage": "100",
@@ -937,7 +958,8 @@
             {
                 "name": "Inferno Onrush",
                 "energy": [
-                    "Fire 2",
+                    "Fire",
+                    "Fire",
                     "Colorless"
                 ],
                 "damage": "120",
@@ -1004,7 +1026,8 @@
             {
                 "name": "Magma Punch",
                 "energy": [
-                    "Fire 2"
+                    "Fire",
+                    "Fire"
                 ],
                 "damage": "50",
                 "description": ""
@@ -1027,7 +1050,8 @@
                 "name": "Flamethrower",
                 "energy": [
                     "Fire",
-                    "Colorless 2"
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "110",
                 "description": "Discard 1 Fire Energy from this Pokemon. "
@@ -1050,7 +1074,8 @@
                 "name": "Sky Attack",
                 "energy": [
                     "Fire",
-                    "Colorless 2"
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "130",
                 "description": "Flip a coin. If tails, this attack does nothing. "
@@ -1081,7 +1106,8 @@
                 "name": "Heat Blast",
                 "energy": [
                     "Fire",
-                    "Colorless 2"
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "70",
                 "description": ""
@@ -1193,7 +1219,9 @@
                 "name": "Fire Blast",
                 "energy": [
                     "Fire",
-                    "Colorless 3"
+                    "Colorless",
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "130",
                 "description": "Discard a Fire Energy from this Pokemon. "
@@ -1260,7 +1288,8 @@
             {
                 "name": "Hydro Pump",
                 "energy": [
-                    "Water 2",
+                    "Water",
+                    "Water",
                     "Colorless"
                 ],
                 "damage": "80+",
@@ -1292,7 +1321,8 @@
             {
                 "name": "Hydro Bazooka",
                 "energy": [
-                    "Water 2",
+                    "Water",
+                    "Water",
                     "Colorless"
                 ],
                 "damage": "100+",
@@ -1337,7 +1367,8 @@
             {
                 "name": "Aqua Edge",
                 "energy": [
-                    "Water 2"
+                    "Water",
+                    "Water"
                 ],
                 "damage": "70",
                 "description": ""
@@ -1381,7 +1412,8 @@
             {
                 "name": "Knuckle Punch",
                 "energy": [
-                    "Colorless 2"
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "40",
                 "description": ""
@@ -1404,7 +1436,8 @@
                 "name": "Mega Punch",
                 "energy": [
                     "Water",
-                    "Colorless 2"
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "80",
                 "description": ""
@@ -1476,7 +1509,8 @@
             {
                 "name": "Headbutt",
                 "energy": [
-                    "Colorless 2"
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "30",
                 "description": ""
@@ -1498,7 +1532,9 @@
             {
                 "name": "Surf",
                 "energy": [
-                    "Water 3"
+                    "Water",
+                    "Water",
+                    "Water"
                 ],
                 "damage": "90",
                 "description": ""
@@ -1542,7 +1578,8 @@
             {
                 "name": "Surf",
                 "energy": [
-                    "Water 2",
+                    "Water",
+                    "Water",
                     "Colorless"
                 ],
                 "damage": "70",
@@ -1593,7 +1630,8 @@
             {
                 "name": "KO Crab",
                 "energy": [
-                    "Water 2",
+                    "Water",
+                    "Water",
                     "Colorless"
                 ],
                 "damage": "80+",
@@ -1638,7 +1676,9 @@
             {
                 "name": "Water Arrow",
                 "energy": [
-                    "Water 3"
+                    "Water",
+                    "Water",
+                    "Water"
                 ],
                 "damage": "",
                 "description": " This attack does 50 damage to 1 of your opponent's Pokemon. "
@@ -1748,7 +1788,8 @@
             {
                 "name": "Hydro Splash",
                 "energy": [
-                    "Water 2"
+                    "Water",
+                    "Water"
                 ],
                 "damage": "90",
                 "description": ""
@@ -1792,7 +1833,10 @@
             {
                 "name": "Hyper Beam",
                 "energy": [
-                    "Water 4"
+                    "Water",
+                    "Water",
+                    "Water",
+                    "Water"
                 ],
                 "damage": "100",
                 "description": "Discard a random Energy from your opponent's Active Pokemon. "
@@ -1837,7 +1881,8 @@
                 "name": "Bubble Drain",
                 "energy": [
                     "Water",
-                    "Colorless 2"
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "60",
                 "description": "Heal 30 damage from this Pokemon. "
@@ -1882,7 +1927,8 @@
                 "name": "Ancient Whirlpool",
                 "energy": [
                     "Water",
-                    "Colorless 2"
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "70",
                 "description": "During your opponent's next turn, the Defending Pokemon can't attack. "
@@ -1904,7 +1950,8 @@
             {
                 "name": "Ice Beam",
                 "energy": [
-                    "Water 2",
+                    "Water",
+                    "Water",
                     "Colorless"
                 ],
                 "damage": "60",
@@ -1936,7 +1983,9 @@
             {
                 "name": "Blizzard",
                 "energy": [
-                    "Water 3"
+                    "Water",
+                    "Water",
+                    "Water"
                 ],
                 "damage": "80",
                 "description": "This attack also does 10 damage to each of your opponent’s Benched Pokemon. "
@@ -1958,7 +2007,8 @@
             {
                 "name": "Flap",
                 "energy": [
-                    "Colorless 2"
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "30",
                 "description": ""
@@ -1980,7 +2030,9 @@
             {
                 "name": "Wing Attack",
                 "energy": [
-                    "Colorless 3"
+                    "Colorless",
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "70",
                 "description": ""
@@ -2186,7 +2238,9 @@
             {
                 "name": "Thunderbolt",
                 "energy": [
-                    "Lightning 3"
+                    "Lightning",
+                    "Lightning",
+                    "Lightning"
                 ],
                 "damage": "140",
                 "description": "Discard all Energy from this Pokemon. "
@@ -2208,7 +2262,8 @@
             {
                 "name": "Circle Circuit",
                 "energy": [
-                    "Lightning 2"
+                    "Lightning",
+                    "Lightning"
                 ],
                 "damage": "30x",
                 "description": "This attack does 30 damage for each of your Benched Lightning Pokemon. "
@@ -2253,7 +2308,9 @@
                 "name": "Spinning Attack",
                 "energy": [
                     "Lightning",
-                    "Colorless 3"
+                    "Colorless",
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "60",
                 "description": ""
@@ -2302,7 +2359,8 @@
             {
                 "name": "Electro Ball",
                 "energy": [
-                    "Lightning 2"
+                    "Lightning",
+                    "Lightning"
                 ],
                 "damage": "70",
                 "description": ""
@@ -2324,7 +2382,8 @@
             {
                 "name": "Thunder Punch",
                 "energy": [
-                    "Lightning 2"
+                    "Lightning",
+                    "Lightning"
                 ],
                 "damage": "40+",
                 "description": "Flip a coin. If heads, this attack does 40 more damage. If tails, this Pokemon also does 20 damage to itself. "
@@ -2369,7 +2428,8 @@
             {
                 "name": "Raging Thgunder",
                 "energy": [
-                    "Lightning 2",
+                    "Lightning",
+                    "Lightning",
                     "Colorless"
                 ],
                 "damage": "100",
@@ -2400,7 +2460,9 @@
             {
                 "name": "Thundering Hurricane",
                 "energy": [
-                    "Lightning 3"
+                    "Lightning",
+                    "Lightning",
+                    "Lightning"
                 ],
                 "damage": "50x",
                 "description": "Flip 4 coins. This attack does 50 damage for each heads. "
@@ -2510,7 +2572,8 @@
             {
                 "name": "Thunder Fang",
                 "energy": [
-                    "Lightning 2",
+                    "Lightning",
+                    "Lightning",
                     "Colorless"
                 ],
                 "damage": "80",
@@ -2555,7 +2618,8 @@
             {
                 "name": "Quick Attack",
                 "energy": [
-                    "Colorless 2"
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "40+",
                 "description": "Flip a coin. If heads, this attack does 40 more damage. "
@@ -2577,7 +2641,8 @@
             {
                 "name": "Thunder Shock",
                 "energy": [
-                    "Lightning 2"
+                    "Lightning",
+                    "Lightning"
                 ],
                 "damage": "30",
                 "description": "Flip a coin. If heads, your opponent’s Active Pokemon is now Paralyzed. "
@@ -2666,7 +2731,8 @@
                 "name": "Super Psy Bolt",
                 "energy": [
                     "Psychic",
-                    "Colorless 2"
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "60",
                 "description": ""
@@ -2689,7 +2755,8 @@
                 "name": "Psychic",
                 "energy": [
                     "Psychic",
-                    "Colorless 2"
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "60+",
                 "description": "This attack does 30 more damage for each Energy attached to your opponent's Active Pokemon. "
@@ -2734,7 +2801,8 @@
             {
                 "name": "Super Psy Bolt",
                 "energy": [
-                    "Psychic 2",
+                    "Psychic",
+                    "Psychic",
                     "Colorless"
                 ],
                 "damage": "80",
@@ -2814,7 +2882,9 @@
             {
                 "name": "Spooky Shot",
                 "energy": [
-                    "Psychic 3"
+                    "Psychic",
+                    "Psychic",
+                    "Psychic"
                 ],
                 "damage": "100",
                 "description": ""
@@ -2864,7 +2934,8 @@
             {
                 "name": "Psypunch",
                 "energy": [
-                    "Psychic 2",
+                    "Psychic",
+                    "Psychic",
                     "Colorless"
                 ],
                 "damage": "50",
@@ -2938,8 +3009,10 @@
             {
                 "name": "Power Blast",
                 "energy": [
-                    "Psychic 2",
-                    "Colorless 2"
+                    "Psychic",
+                    "Psychic",
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "120",
                 "description": "Discard 2 Psychic Energy from this Pokemon. "
@@ -2970,8 +3043,10 @@
             {
                 "name": "Psydrive",
                 "energy": [
-                    "Psychic 2",
-                    "Colorless 2"
+                    "Psychic",
+                    "Psychic",
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "150",
                 "description": "Discard 2 Psychic Energy from this Pokemon. "
@@ -3038,7 +3113,8 @@
             {
                 "name": "Psyshot",
                 "energy": [
-                    "Psychic 2",
+                    "Psychic",
+                    "Psychic",
                     "Colorless"
                 ],
                 "damage": "60",
@@ -3112,7 +3188,8 @@
                 "name": "Mega Punch",
                 "energy": [
                     "Psychic",
-                    "Colorless 2"
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "50",
                 "description": ""
@@ -3134,8 +3211,10 @@
             {
                 "name": "Double Lariat",
                 "energy": [
-                    "Psychic 2",
-                    "Colorless 2"
+                    "Psychic",
+                    "Psychic",
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "100x",
                 "description": "Flip 2 coins. This attack does 100 damage for each heads. "
@@ -3179,7 +3258,8 @@
             {
                 "name": "Slash",
                 "energy": [
-                    "Fighting 2"
+                    "Fighting",
+                    "Fighting"
                 ],
                 "damage": "70",
                 "description": ""
@@ -3258,7 +3338,8 @@
             {
                 "name": "Fight Back",
                 "energy": [
-                    "Fighting 2"
+                    "Fighting",
+                    "Fighting"
                 ],
                 "damage": "40+",
                 "description": "If this Pokemon has damage on it, this attack does 60 more damage. "
@@ -3302,7 +3383,8 @@
             {
                 "name": "Strength",
                 "energy": [
-                    "Fighting 2"
+                    "Fighting",
+                    "Fighting"
                 ],
                 "damage": "50",
                 "description": ""
@@ -3324,7 +3406,9 @@
             {
                 "name": "Seismic Toss",
                 "energy": [
-                    "Fighting 3"
+                    "Fighting",
+                    "Fighting",
+                    "Fighting"
                 ],
                 "damage": "100",
                 "description": ""
@@ -3346,7 +3430,9 @@
             {
                 "name": "Mega Punch",
                 "energy": [
-                    "Fighting 3"
+                    "Fighting",
+                    "Fighting",
+                    "Fighting"
                 ],
                 "damage": "120",
                 "description": ""
@@ -3391,7 +3477,8 @@
                 "name": "Rollout",
                 "energy": [
                     "Fighting",
-                    "Colorless 2"
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "70",
                 "description": ""
@@ -3426,7 +3513,9 @@
             {
                 "name": "Land Crush",
                 "energy": [
-                    "Fighting 3"
+                    "Fighting",
+                    "Fighting",
+                    "Fighting"
                 ],
                 "damage": "70",
                 "description": ""
@@ -3492,7 +3581,8 @@
             {
                 "name": "Bonemerang",
                 "energy": [
-                    "Fighting 2"
+                    "Fighting",
+                    "Fighting"
                 ],
                 "damage": "80x",
                 "description": "Flip 2 coins. This attack does 80 damage for each heads. "
@@ -3558,7 +3648,8 @@
             {
                 "name": "Tackle",
                 "energy": [
-                    "Fighting 2",
+                    "Fighting",
+                    "Fighting",
                     "Colorless"
                 ],
                 "damage": "60",
@@ -3581,7 +3672,9 @@
             {
                 "name": "Horn Drill",
                 "energy": [
-                    "Fighting 3",
+                    "Fighting",
+                    "Fighting",
+                    "Fighting",
                     "Colorless"
                 ],
                 "damage": "100",
@@ -3715,7 +3808,8 @@
             {
                 "name": "Knock Back",
                 "energy": [
-                    "Fighting 2",
+                    "Fighting",
+                    "Fighting",
                     "Colorless"
                 ],
                 "damage": "70",
@@ -3827,7 +3921,8 @@
             {
                 "name": "Lovestrike",
                 "energy": [
-                    "Darkness 2",
+                    "Darkness",
+                    "Darkness",
                     "Colorless"
                 ],
                 "damage": "80+",
@@ -3895,7 +3990,8 @@
             {
                 "name": "Poison Horn",
                 "energy": [
-                    "Darkness 2",
+                    "Darkness",
+                    "Darkness",
                     "Colorless"
                 ],
                 "damage": "90",
@@ -3984,7 +4080,8 @@
             {
                 "name": "Venoshock",
                 "energy": [
-                    "Darkness 2",
+                    "Darkness",
+                    "Darkness",
                     "Colorless"
                 ],
                 "damage": "70+",
@@ -4100,7 +4197,8 @@
             {
                 "name": "Metal Claw",
                 "energy": [
-                    "Metal 2"
+                    "Metal",
+                    "Metal"
                 ],
                 "damage": "70",
                 "description": ""
@@ -4144,7 +4242,9 @@
             {
                 "name": "Heavy Impact",
                 "energy": [
-                    "Metal 3",
+                    "Metal",
+                    "Metal",
+                    "Metal",
                     "Colorless"
                 ],
                 "damage": "120",
@@ -4221,7 +4321,8 @@
                 "energy": [
                     "Water",
                     "Lightning",
-                    "Colorless 2"
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "",
                 "description": " 1 of your opponent's Pokemon is chosen at random 4 times. For each time a Pokemon was chosen, do 50 damage to it. "
@@ -4287,7 +4388,8 @@
             {
                 "name": "Wing Attack",
                 "energy": [
-                    "Colorless 2"
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "70",
                 "description": ""
@@ -4380,7 +4482,8 @@
             {
                 "name": "Drill Run",
                 "energy": [
-                    "Colorless 2"
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "50",
                 "description": "Flip a coin. If heads, discard a random Energy from your opponent's Active Pokemon. "
@@ -4402,7 +4505,8 @@
             {
                 "name": "Pound",
                 "energy": [
-                    "Colorless 2"
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "30",
                 "description": ""
@@ -4424,7 +4528,8 @@
             {
                 "name": "Hyper Voice",
                 "energy": [
-                    "Colorless 2"
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "60",
                 "description": ""
@@ -4446,7 +4551,9 @@
             {
                 "name": "Sleepy Song",
                 "energy": [
-                    "Colorless 3"
+                    "Colorless",
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "80",
                 "description": "Your opponent's Active Pokemon is now Asleep. "
@@ -4490,7 +4597,8 @@
             {
                 "name": "Shadow Claw",
                 "energy": [
-                    "Colorless 2"
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "40",
                 "description": "Flip a coin. If heads, discard a random card from your opponent's Active Pokemon. "
@@ -4578,7 +4686,9 @@
             {
                 "name": "Continuous Lick",
                 "energy": [
-                    "Colorless 3"
+                    "Colorless",
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "60x",
                 "description": "Flip a coin until you get tails. This attack does 60 damage for each heads. "
@@ -4600,7 +4710,9 @@
             {
                 "name": "Gentle Slap",
                 "energy": [
-                    "Colorless 3"
+                    "Colorless",
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "60",
                 "description": ""
@@ -4644,7 +4756,8 @@
             {
                 "name": "Horn Attack",
                 "energy": [
-                    "Colorless 2"
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "50",
                 "description": ""
@@ -4781,7 +4894,8 @@
             {
                 "name": "Primal Wingbeat",
                 "energy": [
-                    "Colorless 2"
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "",
                 "description": " Flip a coin. If heads, your opponent shuffles their Active Pokemon back into their deck. "
@@ -4803,7 +4917,10 @@
             {
                 "name": "Rollout",
                 "energy": [
-                    "Colorless 4"
+                    "Colorless",
+                    "Colorless",
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "70",
                 "description": ""
@@ -4847,7 +4964,9 @@
             {
                 "name": "Do the Wave",
                 "energy": [
-                    "Colorless 3"
+                    "Colorless",
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "30x",
                 "description": "This attack does 30 damage for each of your Benched Pokemon. "
@@ -4869,7 +4988,8 @@
             {
                 "name": "Tackle",
                 "energy": [
-                    "Colorless 2"
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "30",
                 "description": ""
@@ -4891,7 +5011,9 @@
             {
                 "name": "Rolling Tackle",
                 "energy": [
-                    "Colorless 3"
+                    "Colorless",
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "80",
                 "description": ""
@@ -5102,7 +5224,8 @@
             {
                 "name": "Double Horn",
                 "energy": [
-                    "Grass 2"
+                    "Grass",
+                    "Grass"
                 ],
                 "damage": "50x",
                 "description": "Flip 2 coins. This attack does 50 damage for each heads. "
@@ -5190,7 +5313,10 @@
             {
                 "name": "Hyper Beam",
                 "energy": [
-                    "Water 4"
+                    "Water",
+                    "Water",
+                    "Water",
+                    "Water"
                 ],
                 "damage": "100",
                 "description": "Discard a random Energy from your opponent's Active Pokemon. "
@@ -5234,7 +5360,8 @@
             {
                 "name": "Electro Ball",
                 "energy": [
-                    "Lightning 2"
+                    "Lightning",
+                    "Lightning"
                 ],
                 "damage": "70",
                 "description": ""
@@ -5257,7 +5384,8 @@
                 "name": "Psychic",
                 "energy": [
                     "Psychic",
-                    "Colorless 2"
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "60+",
                 "description": "This attack does 30 more damage for each Energy attached to your opponent's Active Pokemon. "
@@ -5337,7 +5465,8 @@
             {
                 "name": "Lovestrike",
                 "energy": [
-                    "Darkness 2",
+                    "Darkness",
+                    "Darkness",
                     "Colorless"
                 ],
                 "damage": "80+",
@@ -5360,7 +5489,8 @@
             {
                 "name": "Poison Horn",
                 "energy": [
-                    "Darkness 2",
+                    "Darkness",
+                    "Darkness",
                     "Colorless"
                 ],
                 "damage": "90",
@@ -5434,7 +5564,8 @@
                 "energy": [
                     "Water",
                     "Lightning",
-                    "Colorless 2"
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "",
                 "description": " 1 of your opponent's Pokemon is chosen at random 4 times. For each time a Pokemon was chosen, do 50 damage to it. "
@@ -5456,7 +5587,8 @@
             {
                 "name": "Wing Attack",
                 "energy": [
-                    "Colorless 2"
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "70",
                 "description": ""
@@ -5576,7 +5708,10 @@
             {
                 "name": "Rollout",
                 "energy": [
-                    "Colorless 4"
+                    "Colorless",
+                    "Colorless",
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "70",
                 "description": ""
@@ -5599,7 +5734,8 @@
                 "name": "Razor Leaf",
                 "energy": [
                     "Grass",
-                    "Colorless 2"
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "60",
                 "description": ""
@@ -5607,8 +5743,10 @@
             {
                 "name": "Giant Bloom",
                 "energy": [
-                    "Grass 2",
-                    "Colorless 2"
+                    "Grass",
+                    "Grass",
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "100",
                 "description": "Heal 30 damage from this Pokemon. "
@@ -5653,7 +5791,8 @@
                 "name": "Slash",
                 "energy": [
                     "Fire",
-                    "Colorless 2"
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "60",
                 "description": ""
@@ -5661,8 +5800,10 @@
             {
                 "name": "Crimson Storm",
                 "energy": [
-                    "Fire 2",
-                    "Colorless 2"
+                    "Fire",
+                    "Fire",
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "200",
                 "description": "Discard 2 Fire Energy from this Pokemon. "
@@ -5684,7 +5825,8 @@
             {
                 "name": "Inferno Onrush",
                 "energy": [
-                    "Fire 2",
+                    "Fire",
+                    "Fire",
                     "Colorless"
                 ],
                 "damage": "120",
@@ -5716,7 +5858,8 @@
                 "name": "Heat Blast",
                 "energy": [
                     "Fire",
-                    "Colorless 2"
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "70",
                 "description": ""
@@ -5747,7 +5890,8 @@
             {
                 "name": "Hydro Bazooka",
                 "energy": [
-                    "Water 2",
+                    "Water",
+                    "Water",
                     "Colorless"
                 ],
                 "damage": "100+",
@@ -5770,7 +5914,8 @@
             {
                 "name": "Hydro Splash",
                 "energy": [
-                    "Water 2"
+                    "Water",
+                    "Water"
                 ],
                 "damage": "90",
                 "description": ""
@@ -5801,7 +5946,9 @@
             {
                 "name": "Blizzard",
                 "energy": [
-                    "Water 3"
+                    "Water",
+                    "Water",
+                    "Water"
                 ],
                 "damage": "80",
                 "description": "This attack also does 10 damage to each of your opponent’s Benched Pokemon. "
@@ -5823,7 +5970,8 @@
             {
                 "name": "Circle Circuit",
                 "energy": [
-                    "Lightning 2"
+                    "Lightning",
+                    "Lightning"
                 ],
                 "damage": "30x",
                 "description": "This attack does 30 damage for each of your Benched Lightning Pokemon. "
@@ -5853,7 +6001,9 @@
             {
                 "name": "Thundering Hurricane",
                 "energy": [
-                    "Lightning 3"
+                    "Lightning",
+                    "Lightning",
+                    "Lightning"
                 ],
                 "damage": "50x",
                 "description": "Flip 4 coins. This attack does 50 damage for each heads. "
@@ -5875,7 +6025,9 @@
             {
                 "name": "Spooky Shot",
                 "energy": [
-                    "Psychic 3"
+                    "Psychic",
+                    "Psychic",
+                    "Psychic"
                 ],
                 "damage": "100",
                 "description": ""
@@ -5911,8 +6063,10 @@
             {
                 "name": "Psydrive",
                 "energy": [
-                    "Psychic 2",
-                    "Colorless 2"
+                    "Psychic",
+                    "Psychic",
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "150",
                 "description": "Discard 2 Psychic Energy from this Pokemon. "
@@ -5934,7 +6088,9 @@
             {
                 "name": "Mega Punch",
                 "energy": [
-                    "Fighting 3"
+                    "Fighting",
+                    "Fighting",
+                    "Fighting"
                 ],
                 "damage": "120",
                 "description": ""
@@ -5956,7 +6112,8 @@
             {
                 "name": "Bonemerang",
                 "energy": [
-                    "Fighting 2"
+                    "Fighting",
+                    "Fighting"
                 ],
                 "damage": "80x",
                 "description": "Flip 2 coins. This attack does 80 damage for each heads. "
@@ -5978,7 +6135,9 @@
             {
                 "name": "Sleepy Song",
                 "energy": [
-                    "Colorless 3"
+                    "Colorless",
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "80",
                 "description": "Your opponent's Active Pokemon is now Asleep. "
@@ -6113,7 +6272,8 @@
                 "name": "Heat Blast",
                 "energy": [
                     "Fire",
-                    "Colorless 2"
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "70",
                 "description": ""
@@ -6144,7 +6304,9 @@
             {
                 "name": "Blizzard",
                 "energy": [
-                    "Water 3"
+                    "Water",
+                    "Water",
+                    "Water"
                 ],
                 "damage": "80",
                 "description": "This attack also does 10 damage to each of your opponent’s Benched Pokemon. "
@@ -6174,7 +6336,9 @@
             {
                 "name": "Thundering Hurricane",
                 "energy": [
-                    "Lightning 3"
+                    "Lightning",
+                    "Lightning",
+                    "Lightning"
                 ],
                 "damage": "50x",
                 "description": "Flip 4 coins. This attack does 50 damage for each heads. "
@@ -6196,7 +6360,9 @@
             {
                 "name": "Spooky Shot",
                 "energy": [
-                    "Psychic 3"
+                    "Psychic",
+                    "Psychic",
+                    "Psychic"
                 ],
                 "damage": "100",
                 "description": ""
@@ -6223,7 +6389,9 @@
             {
                 "name": "Mega Punch",
                 "energy": [
-                    "Fighting 3"
+                    "Fighting",
+                    "Fighting",
+                    "Fighting"
                 ],
                 "damage": "120",
                 "description": ""
@@ -6245,7 +6413,9 @@
             {
                 "name": "Sleepy Song",
                 "energy": [
-                    "Colorless 3"
+                    "Colorless",
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "80",
                 "description": "Your opponent's Active Pokemon is now Asleep. "
@@ -6268,7 +6438,8 @@
                 "name": "Slash",
                 "energy": [
                     "Fire",
-                    "Colorless 2"
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "60",
                 "description": ""
@@ -6276,8 +6447,10 @@
             {
                 "name": "Crimson Storm",
                 "energy": [
-                    "Fire 2",
-                    "Colorless 2"
+                    "Fire",
+                    "Fire",
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "200",
                 "description": "Discard 2 Fire Energy from this Pokemon. "
@@ -6299,7 +6472,8 @@
             {
                 "name": "Circle Circuit",
                 "energy": [
-                    "Lightning 2"
+                    "Lightning",
+                    "Lightning"
                 ],
                 "damage": "30x",
                 "description": "This attack does 30 damage for each of your Benched Lightning Pokemon. "
@@ -6330,8 +6504,10 @@
             {
                 "name": "Psydrive",
                 "energy": [
-                    "Psychic 2",
-                    "Colorless 2"
+                    "Psychic",
+                    "Psychic",
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "150",
                 "description": "Discard 2 Psychic Energy from this Pokemon. "
@@ -6376,7 +6552,8 @@
                 "name": "Slash",
                 "energy": [
                     "Fire",
-                    "Colorless 2"
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "60",
                 "description": ""
@@ -6384,8 +6561,10 @@
             {
                 "name": "Crimson Storm",
                 "energy": [
-                    "Fire 2",
-                    "Colorless 2"
+                    "Fire",
+                    "Fire",
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "200",
                 "description": "Discard 2 Fire Energy from this Pokemon. "
@@ -6407,7 +6586,8 @@
             {
                 "name": "Circle Circuit",
                 "energy": [
-                    "Lightning 2"
+                    "Lightning",
+                    "Lightning"
                 ],
                 "damage": "30x",
                 "description": "This attack does 30 damage for each of your Benched Lightning Pokemon. "
@@ -6438,8 +6618,10 @@
             {
                 "name": "Psydrive",
                 "energy": [
-                    "Psychic 2",
-                    "Colorless 2"
+                    "Psychic",
+                    "Psychic",
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "150",
                 "description": "Discard 2 Psychic Energy from this Pokemon. "
@@ -6484,7 +6666,9 @@
                 "name": "Psychic",
                 "energy": [
                     "Grass",
-                    "Colorless 3"
+                    "Colorless",
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "80+",
                 "description": "This attack does 20 more damage for each Energy attached to your opponent's Active Pokemon. "
@@ -6576,7 +6760,9 @@
                 "name": "Solar Beam",
                 "energy": [
                     "Grass",
-                    "Colorless 3"
+                    "Colorless",
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "70",
                 "description": ""
@@ -6625,7 +6811,8 @@
             {
                 "name": "Flickering Spores",
                 "energy": [
-                    "Grass 2"
+                    "Grass",
+                    "Grass"
                 ],
                 "damage": "50",
                 "description": "Your opponent's Active Pokemon is now Asleep. "
@@ -6714,7 +6901,8 @@
             {
                 "name": "Fire Blast",
                 "energy": [
-                    "Fire 2"
+                    "Fire",
+                    "Fire"
                 ],
                 "damage": "80",
                 "description": "Discard 2 Fire Energy from this Pokemon. "
@@ -6759,7 +6947,8 @@
             {
                 "name": "Volcanic Ash",
                 "energy": [
-                    "Fire 2",
+                    "Fire",
+                    "Fire",
                     "Colorless"
                 ],
                 "damage": "",
@@ -6848,7 +7037,9 @@
             {
                 "name": "Rampaging Whirlpool",
                 "energy": [
-                    "Water 3",
+                    "Water",
+                    "Water",
+                    "Water",
                     "Colorless"
                 ],
                 "damage": "140",
@@ -6872,7 +7063,8 @@
                 "name": "Wave Splash",
                 "energy": [
                     "Water",
-                    "Colorless 2"
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "60",
                 "description": ""
@@ -6921,7 +7113,8 @@
             {
                 "name": "Aqua Liner",
                 "energy": [
-                    "Water 2"
+                    "Water",
+                    "Water"
                 ],
                 "damage": "",
                 "description": " This attack does 50 damage to 1 of your opponent's Benched Pokemon. "
@@ -6966,7 +7159,9 @@
             {
                 "name": "Crunch",
                 "energy": [
-                    "Water 3"
+                    "Water",
+                    "Water",
+                    "Water"
                 ],
                 "damage": "70",
                 "description": "Flip a coin. If heads, discard a random Energy from your opponent's Active Pokemon. "
@@ -6988,7 +7183,8 @@
             {
                 "name": "Dive",
                 "energy": [
-                    "Water 2",
+                    "Water",
+                    "Water",
                     "Colorless"
                 ],
                 "damage": "60",
@@ -7033,7 +7229,9 @@
             {
                 "name": "Gigashock",
                 "energy": [
-                    "Lightning 3"
+                    "Lightning",
+                    "Lightning",
+                    "Lightning"
                 ],
                 "damage": "60",
                 "description": "This attack also does 20 damage to each of your opponent's Benched Pokemon. "
@@ -7055,7 +7253,8 @@
             {
                 "name": "Thunder Spear",
                 "energy": [
-                    "Lightning 2"
+                    "Lightning",
+                    "Lightning"
                 ],
                 "damage": "",
                 "description": " This attack does 40 damage to 1 of your opponent's Pokemon. "
@@ -7099,7 +7298,8 @@
             {
                 "name": "Electroweb",
                 "energy": [
-                    "Lightning 2"
+                    "Lightning",
+                    "Lightning"
                 ],
                 "damage": "70",
                 "description": "During your opponent's next turn, the Defending Pokemon can't retreat. "
@@ -7173,7 +7373,9 @@
             {
                 "name": "Genome Hacking",
                 "energy": [
-                    "Colorless 3"
+                    "Colorless",
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "",
                 "description": " Choose 1 of your opponent's Active Pokemon's attacks and use it as this attack. "
@@ -7305,7 +7507,8 @@
             {
                 "name": "Boomshone",
                 "energy": [
-                    "Psychic 2"
+                    "Psychic",
+                    "Psychic"
                 ],
                 "damage": "80",
                 "description": "Heal 20 damage from each of your Pokemon. "
@@ -7462,7 +7665,9 @@
             {
                 "name": "Guard Press",
                 "energy": [
-                    "Fighting 3",
+                    "Fighting",
+                    "Fighting",
+                    "Fighting",
                     "Colorless"
                 ],
                 "damage": "120",
@@ -7536,7 +7741,9 @@
             {
                 "name": "Mega Kick",
                 "energy": [
-                    "Fighting 3"
+                    "Fighting",
+                    "Fighting",
+                    "Fighting"
                 ],
                 "damage": "90",
                 "description": ""
@@ -7580,7 +7787,8 @@
             {
                 "name": "Smokescreen",
                 "energy": [
-                    "Darkness 2"
+                    "Darkness",
+                    "Darkness"
                 ],
                 "damage": "50",
                 "description": "During your opponent's next turn, if the Defending Pokemon tries to use an attack, your opponent flips a coin. If tails, that attack doesn't happen. "
@@ -7762,7 +7970,9 @@
             {
                 "name": "Wing Attack",
                 "energy": [
-                    "Colorless 3"
+                    "Colorless",
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "50",
                 "description": ""
@@ -7784,7 +7994,9 @@
             {
                 "name": "Scattering Cyclone",
                 "energy": [
-                    "Colorless 3"
+                    "Colorless",
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "80+",
                 "description": "This attack does 20 more damage for each of your opponent's Benched Pokemon. "
@@ -7806,7 +8018,9 @@
             {
                 "name": "Fighting Tackle",
                 "energy": [
-                    "Colorless 3"
+                    "Colorless",
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "40+",
                 "description": "If your opponent's Active Pokemon is a Pokemon ex, this attack does 80 more damage. "
@@ -7951,7 +8165,9 @@
                 "name": "Psychic",
                 "energy": [
                     "Grass",
-                    "Colorless 3"
+                    "Colorless",
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "80+",
                 "description": "This attack does 20 more damage for each Energy attached to your opponent's Active Pokemon. "
@@ -7974,7 +8190,9 @@
                 "name": "Solar Beam",
                 "energy": [
                     "Grass",
-                    "Colorless 3"
+                    "Colorless",
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "70",
                 "description": ""
@@ -8024,7 +8242,8 @@
                 "name": "Wave Splash",
                 "energy": [
                     "Water",
-                    "Colorless 2"
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "60",
                 "description": ""
@@ -8119,7 +8338,9 @@
             {
                 "name": "Rampaging Whirlpool",
                 "energy": [
-                    "Water 3",
+                    "Water",
+                    "Water",
+                    "Water",
                     "Colorless"
                 ],
                 "damage": "140",
@@ -8150,7 +8371,9 @@
             {
                 "name": "Genome Hacking",
                 "energy": [
-                    "Colorless 3"
+                    "Colorless",
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "",
                 "description": " Choose 1 of your opponent's Active Pokemon's attacks and use it as this attack. "
@@ -8200,7 +8423,9 @@
             {
                 "name": "Scattering Cyclone",
                 "energy": [
-                    "Colorless 3"
+                    "Colorless",
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "80+",
                 "description": "This attack does 20 more damage for each of your opponent's Benched Pokemon. "
@@ -8269,7 +8494,9 @@
             {
                 "name": "Genome Hacking",
                 "energy": [
-                    "Colorless 3"
+                    "Colorless",
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "",
                 "description": " Choose 1 of your opponent's Active Pokemon's attacks and use it as this attack. "
@@ -8350,7 +8577,9 @@
             {
                 "name": "Genome Hacking",
                 "energy": [
-                    "Colorless 3"
+                    "Colorless",
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "",
                 "description": " Choose 1 of your opponent's Active Pokemon's attacks and use it as this attack. "
@@ -8485,8 +8714,10 @@
             {
                 "name": "Power Blast",
                 "energy": [
-                    "Psychic 2",
-                    "Colorless 2"
+                    "Psychic",
+                    "Psychic",
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "120",
                 "description": "Discard 2 Psychic Energy from this Pokemon. "
@@ -8508,7 +8739,9 @@
             {
                 "name": "Gentle Slap",
                 "energy": [
-                    "Colorless 3"
+                    "Colorless",
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "60",
                 "description": ""
@@ -8553,7 +8786,8 @@
                 "name": "Gust",
                 "energy": [
                     "Grass",
-                    "Colorless 2"
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "60",
                 "description": ""
@@ -8580,7 +8814,8 @@
             {
                 "name": "Bubble Drain",
                 "energy": [
-                    "Water 2",
+                    "Water",
+                    "Water",
                     "Colorless"
                 ],
                 "damage": "80",
@@ -8669,8 +8904,10 @@
             {
                 "name": "Mega Drain",
                 "energy": [
-                    "Grass 2",
-                    "Colorless 2"
+                    "Grass",
+                    "Grass",
+                    "Colorless",
+                    "Colorless"
                 ],
                 "damage": "80",
                 "description": "Heal 30 damage from this Pokemon. "
@@ -8742,7 +8979,9 @@
             {
                 "name": "Land Crush",
                 "energy": [
-                    "Fighting 3"
+                    "Fighting",
+                    "Fighting",
+                    "Fighting"
                 ],
                 "damage": "70",
                 "description": ""

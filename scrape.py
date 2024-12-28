@@ -69,6 +69,18 @@ def extract_moves_and_abilities(text_content, energy_list):
 
     return moves, abilities
 
+def process_energy_string(energy_string):
+    match = re.match(r"(\D+?)\s*(\d+)?$", energy_string)
+    if match:
+        energy = match.group(1).strip()
+        number_part = match.group(2)
+        num_energies = int(number_part) if number_part else 1
+    else:
+        energy = energy_string.strip()
+        num_energies = 1
+    
+    return num_energies, energy
+
 
 def parse_card_row(row):
     columns = row.find_elements(By.TAG_NAME, "td")
@@ -128,7 +140,9 @@ def parse_card_row(row):
                 if substring_in_list(move_energies, energy.split(' ')[0]) or ('Mew ex' in card_data["card_name"] and len(move_energies) != 0):
                     energy_list_per_move.append(move_energies)
                     move_energies = []
-                move_energies.append(energy)
+                num_energies, energy = process_energy_string(energy)
+                for i in range(num_energies):
+                    move_energies.append(energy)
             energy_list_per_move.append(move_energies)
             energy_list = energy_list_per_move
         except:
