@@ -2,6 +2,7 @@
 #define DECK_H
 
 #include "card.h"
+#include "player.h"
 
 #define MAX_CARDS_IN_DECK 20
 #define MAX_DECK_ENERGIES 3
@@ -12,10 +13,10 @@ typedef struct {
     int card_count;
     bool energy[MAX_CARD_ENERGIES];     // true if energy spawns
     EnergyType energy_seq[MAX_TURN];     // true if energy spawns
-
+    int energy_seq_count;
 } Deck;
 
-void initialize_deck(GameState *game, Deck *deck, const char **card_numbers, bool energy[MAX_CARD_ENERGIES]);
+void initialize_deck(HashMap *game, Deck *deck, const char **card_numbers, bool energy[MAX_CARD_ENERGIES]);
 void shuffle_deck(Deck *deck);
 void draw_initial_hand(Deck *deck, Player *player);
 Card* draw_pokemon_card(Deck *deck, Player *player);
