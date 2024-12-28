@@ -8,7 +8,7 @@
 #define MAX_PRIZE_CARDS 3
 
 typedef struct {
-    Card active_pokemon;
+    Card *active_pokemon;
     Card bench[MAX_BENCH_POKEMON];
     int bench_count;
     Deck deck;
@@ -18,8 +18,13 @@ typedef struct {
     int prize_cards_left;
     Card discard_pile[MAX_CARDS_IN_DECK];
     int discard_count;
+    Role role;
 } Player;
 
-void initialize_player(Player *player);
+typedef enum {
+    PLAY, OPP
+} Role;
+
+void initialize_player(Player *player, Role role);
 
 #endif // PLAYER_H
