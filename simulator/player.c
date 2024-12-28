@@ -31,3 +31,30 @@ bool attach_energy(Player *player, EnergyType energy, int target)
     return true;
 
 }
+
+void discard_card_from_hand(Player *player, Card *card) {
+    int card_index = -1;
+    
+    // Find the card in the player's hand
+    for (int i = 0; i < player->hand_count; i++) {
+        if (&player->hand[i] == card) {
+            card_index = i;
+            break;
+        }
+    }
+    
+    if (card_index == -1) {
+        return;  // Card not found in hand
+    }
+
+    // Add the card to the discard pile
+    player->discard_pile[player->discard_count] = *card;
+    player->discard_count++;
+
+    // Remove the card from the hand
+    for (int i = card_index; i < player->hand_count - 1; i++) {
+        player->hand[i] = player->hand[i + 1];
+    }
+    player->hand_count--;
+}
+
