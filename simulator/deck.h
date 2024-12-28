@@ -5,11 +5,14 @@
 
 #define MAX_CARDS_IN_DECK 20
 #define MAX_DECK_ENERGIES 3
+#define MAX_TURN 60
 
 typedef struct {
     Card cards[MAX_CARDS_IN_DECK];
     int card_count;
     bool energy[MAX_CARD_ENERGIES];     // true if energy spawns
+    EnergyType energy_seq[MAX_TURN];     // true if energy spawns
+
 } Deck;
 
 void initialize_deck(GameState *game, Deck *deck, const char **card_numbers, bool energy[MAX_CARD_ENERGIES]);

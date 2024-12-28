@@ -16,6 +16,18 @@ void initialize_deck(GameState *game, Deck *deck, const char **card_numbers, boo
         deck->energy[i] = energy[i];
     }
 
+    // randomly generate energy sequence
+    // Generate energy sequence
+    deck->energy_seq_count = MAX_TURN;
+    for (int i = 0; i < MAX_TURN; i++) {
+        int random_index;
+        do {
+            random_index = rand() % MAX_CARD_ENERGIES;
+        } while (!energy[random_index]);
+        
+        deck->energy_seq[i] = (EnergyType)random_index;
+    }
+
 }
 
 void shuffle_deck(Deck *deck) {
