@@ -19,6 +19,7 @@ typedef struct {
     Card discard_pile[MAX_CARDS_IN_DECK];
     int discard_count;
     Role role;
+    bool energy_available;
 } Player;
 
 typedef enum {
@@ -26,5 +27,7 @@ typedef enum {
 } Role;
 
 void initialize_player(Player *player, Role role);
+EnergyType get_energy(Player *player, int current_turn);
+bool attach_energy(Player *player, EnergyType energy, int target);
 
 #endif // PLAYER_H
