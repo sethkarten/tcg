@@ -15,6 +15,10 @@ typedef enum {
     BASIC, STAGE1, STAGE2
 } Stage;
 
+typedef enum {
+    POKEMON, SUPPORTER, ITEM
+} CardType;
+
 typedef struct {
     char name[50];
     int energy[MAX_CARD_ENERGIES];
@@ -35,6 +39,7 @@ typedef struct {
     int attached_energies[MAX_CARD_ENERGIES];
     int energies_count;
     bool has_ability;
+    CardType type;
 } Card;
 
 // Function prototypes
