@@ -129,9 +129,11 @@ void load_card_data_from_json(GameState *game, const char* filename) {
 
         if (cJSON_IsNumber(hp)) {
             card->hp = hp->valueint;
+            card->hp_total = card->hp;
         }
         else if (cJSON_IsString(hp)) {
             card->hp = atoi(hp->valuestring);
+            card->hp_total = card->hp;
         }
 
         if (cJSON_IsString(stage) && stage->valuestring != NULL) {

@@ -31,6 +31,7 @@ typedef struct {
     char name[MAX_CARD_NAME_LENGTH];
     EnergyType type;
     int hp;
+    int hp_total;
     Stage stage;
     int retreat_cost;
     Move moves[MAX_MOVES];
