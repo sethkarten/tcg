@@ -39,7 +39,7 @@ typedef struct {
     int attached_energies[MAX_CARD_ENERGIES];
     int energies_count;
     bool has_ability;
-    CardType type;
+    CardType cardtype;
 } Card;
 
 // Function prototypes

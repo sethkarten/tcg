@@ -108,6 +108,7 @@ void load_card_data_from_json(GameState *game, const char* filename) {
 
         if (cJSON_IsString(type) && type->valuestring != NULL) {
             const char* type_str = type->valuestring;
+            card->cardtype = POKEMON;
             if (strcmp(type_str, "Grass") == 0) card->type = GRASS;
             else if (strcmp(type_str, "Fire") == 0) card->type = FIRE;
             else if (strcmp(type_str, "Water") == 0) card->type = WATER;
@@ -118,7 +119,11 @@ void load_card_data_from_json(GameState *game, const char* filename) {
             else if (strcmp(type_str, "Metal") == 0) card->type = METAL;
             else if (strcmp(type_str, "Fairy") == 0) card->type = FAIRY;
             else if (strcmp(type_str, "Dragon") == 0) card->type = DRAGON;
-            else card->type = COLORLESS;  // Default type
+            else if (strcmp(type_str, "Colorless") == 0) card->type = COLORLESS;
+            else {
+                if (strcmp(type_str, "Item") == 0) card->cardtype = ITEM;
+                else if (strcmp(type_str, "Supporter") == 0) card->cardtype = SUPPORTER;
+            }
         }
 
 
