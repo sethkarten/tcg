@@ -8,6 +8,7 @@ void initialize_player(Player *player, Role role) {
     player->prize_cards_left = 3;
     player->discard_count = 0;
     player->role = role;
+    player->cant_retreat = false;
 }
 
 EnergyType get_energy(Player *player, int current_turn)
@@ -57,6 +58,23 @@ void discard_card_from_hand(Player *player, Card *card) {
     }
     player->hand_count--;
 }
+
+void discard_random_card_from_hand(Player *player)
+{
+    if (player->hand_count == 0) {
+        return;  // No cards in hand to discard
+    }
+
+    // Generate a random index
+    int random_index = rand() % player->hand_count;
+
+    // Get the card at the random index
+    Card *random_card = &player->hand[random_index];
+
+    // Discard the randomly selected card
+    discard_card_from_hand(player, random_card);
+}
+
 
 Card * get_target(Player *player, Player * opponent, int target)
 {
@@ -118,4 +136,21 @@ Card* find_card_in_hand(Player *player, const char *card_name) {
         }
     }
     return NULL;
+}
+
+void shuffle_active_to_deck(Player *player) {
+    if (player->active_pokemon == NULL) {
+        return; // No active Pokémon to shuffle
+    }
+
+    // Add active Pokémon to the deck
+    player->deck.cards[player->deck.card_count] = *player->active_pokemon;
+    player->deck.card_count++;
+
+    // Clear the active Pokémon slot
+    free(player->active_pokemon);
+    player->active_pokemon = NULL;
+
+    // Shuffle the deck
+    shuffle_deck(&player->deck);
 }

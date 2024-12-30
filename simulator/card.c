@@ -1,4 +1,6 @@
 #include <string.h>
+#include <stdlib.h>
+#include <time.h>
 #include "card.h"
 
 EnergyType parse_energy_type(const char* type_string) {
@@ -12,12 +14,15 @@ EnergyType parse_energy_type(const char* type_string) {
     if (strcmp(type_string, "Metal") == 0) return METAL;
     if (strcmp(type_string, "Fairy") == 0) return FAIRY;
     if (strcmp(type_string, "Dragon") == 0) return DRAGON;
-    return COLORLESS;  // Default type
+    if (strcmp(type_string, "Colorless") == 0) return COLORLESS; // Default type
+    return NONE;  // No type
 }
 
 void initialize_card(Card* card, const char* name, EnergyType type, int hp, Stage stage, int retreat_cost, bool is_ex, bool has_ability) {
     strncpy(card->name, name, MAX_CARD_NAME_LENGTH - 1);
     card->name[MAX_CARD_NAME_LENGTH - 1] = '\0';
+    // @todo: finish evolves from field
+    card->evolves_from[MAX_CARD_NAME_LENGTH - 1] = '\0';
     card->type = type;
     card->hp = hp;
     card->stage = stage;
@@ -33,6 +38,26 @@ void attach_energy_to_card(Card* card, EnergyType energy) {
     card->attached_energies[(int) energy] += 1;
     card->energies_count++;
 }
+
+
+void discard_random_energy(Card *card) {
+    if (card->energies_count == 0) {
+        return -1;  // No energy to discard
+    }
+
+    // Find a random energy to discard
+    int random_index;
+    do {
+        random_index = rand() % MAX_CARD_ENERGIES;
+    } while (card->attached_energies[random_index] == 0);
+
+    // Discard the energy
+    card->attached_energies[random_index]--;
+    card->energies_count--;
+
+    return;
+}
+
 
 void heal_card(Card *card, int heal_amount) {
     if (card == NULL || card->cardtype != POKEMON) {

@@ -34,6 +34,8 @@ static void parse_move(cJSON *move_json, Move *move) {
 
     if (cJSON_IsString(damage) && damage->valuestring != NULL) {
         move->damage = atoi(damage->valuestring);
+    } else {
+        move->damage = 0;
     }
 
 }
