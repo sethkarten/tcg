@@ -684,10 +684,18 @@ void check_for_KO(GameState *game, Player *player, Player * opponent, Card *oppo
     return;
 }
 
-void end_turn(GameState *game, Player *player) {
+bool end_turn(GameState *game, Player *player) {
     game->current_turn++;
     game->supporter_played = false;
     player->cant_retreat = false;
-    // Switch active player
+    
+    if (game->game_over) return true;
+    return false;
+}
+
+Player * get_winner(GameState *game)
+{
+    if (!game->game_over) return NULL; 
+    return game->winner;
 }
 

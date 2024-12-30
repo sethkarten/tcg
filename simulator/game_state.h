@@ -42,5 +42,5 @@ bool evolve_pokemon(GameState *game, Player *player, char *card_name, int target
 bool retreat_pokemon(GameState *game, Player *player, char *card_name, int target);
 bool use_move(GameState *game, Player *player, char *card_name, int move_index, int opponent_target);
 void check_for_KO(GameState *game, Player *player, Player * opponent, Card *opponent_card);
-void end_turn(GameState *game, Player *player);
+bool end_turn(GameState *game, Player *player);
 #endif // GAME_STATE_H
