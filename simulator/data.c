@@ -98,6 +98,7 @@ void load_card_data_from_json(GameState *game, const char* filename) {
         cJSON* card_number = cJSON_GetObjectItemCaseSensitive(card_item, "#");
         cJSON* card_name = cJSON_GetObjectItemCaseSensitive(card_item, "card_name");
         cJSON* type = cJSON_GetObjectItemCaseSensitive(card_item, "type");
+        cJSON* weakness = cJSON_GetObjectItemCaseSensitive(card_item, "weakness");
         cJSON* hp = cJSON_GetObjectItemCaseSensitive(card_item, "hp");
         cJSON* stage = cJSON_GetObjectItemCaseSensitive(card_item, "stage");
         cJSON* retreat_cost = cJSON_GetObjectItemCaseSensitive(card_item, "retreat_cost");
@@ -132,6 +133,21 @@ void load_card_data_from_json(GameState *game, const char* filename) {
                 if (strcmp(type_str, "Item") == 0) card->cardtype = ITEM;
                 else if (strcmp(type_str, "Supporter") == 0) card->cardtype = SUPPORTER;
             }
+        }
+        if (cJSON_IsString(weakness) && weakness->valuestring != NULL) {
+            const char* weakness_str = weakness->valuestring;
+            if (strcmp(weakness_str, "Grass") == 0) card->weakness = GRASS;
+            else if (strcmp(weakness_str, "Fire") == 0) card->weakness = FIRE;
+            else if (strcmp(weakness_str, "Water") == 0) card->weakness = WATER;
+            else if (strcmp(weakness_str, "Lightning") == 0) card->weakness = LIGHTNING;
+            else if (strcmp(weakness_str, "Psychic") == 0) card->weakness = PSYCHIC;
+            else if (strcmp(weakness_str, "Fighting") == 0) card->weakness = FIGHTING;
+            else if (strcmp(weakness_str, "Darkness") == 0) card->weakness = DARKNESS;
+            else if (strcmp(weakness_str, "Metal") == 0) card->weakness = METAL;
+            else if (strcmp(weakness_str, "Fairy") == 0) card->weakness = FAIRY;
+            else if (strcmp(weakness_str, "Dragon") == 0) card->weakness = DRAGON;
+            else if (strcmp(weakness_str, "Colorless") == 0) card->weakness = COLORLESS;
+            else card->weakness = NONE;
         }
 
 
