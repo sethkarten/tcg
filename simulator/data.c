@@ -13,6 +13,7 @@ static void parse_move(cJSON *move_json, Move *move) {
     cJSON *name = cJSON_GetObjectItemCaseSensitive(move_json, "name");
     cJSON *energy = cJSON_GetObjectItemCaseSensitive(move_json, "energy");
     cJSON *damage = cJSON_GetObjectItemCaseSensitive(move_json, "damage");
+    cJSON *description = cJSON_GetObjectItemCaseSensitive(move_json, "description");
 
     for (int i = 0; i < MAX_CARD_ENERGIES; i++) move->energy[i] = 0;
 
@@ -36,6 +37,11 @@ static void parse_move(cJSON *move_json, Move *move) {
         move->damage = atoi(damage->valuestring);
     } else {
         move->damage = 0;
+    }
+
+    if (cJSON_IsString(description) && description->valuestring != NULL) {
+        strncpy(move->description, description->valuestring, sizeof(move->description) - 1);
+        move->description[sizeof(move->description) - 1] = '\0';
     }
 
 }
@@ -155,6 +161,20 @@ void load_card_data_from_json(GameState *game, const char* filename) {
         card->is_ex = str_contains_insensitive(card->name, "ex");
 
         card->has_ability = (cJSON_IsArray(ability) && cJSON_GetArraySize(ability) > 0);
+
+        if (cJSON_IsArray(ability)) {
+            cJSON *ability_item = cJSON_GetArrayItem(ability, 0);
+            cJSON *name = cJSON_GetObjectItemCaseSensitive(ability_item, "name");
+            cJSON *description = cJSON_GetObjectItemCaseSensitive(ability_item, "description");
+            if (cJSON_IsString(name) && name->valuestring != NULL) {
+                strncpy(card->ability.name, name->valuestring, sizeof(card->ability.name) - 1);
+                card->ability.name[sizeof(card->ability.name) - 1] = '\0';
+            }
+            if (cJSON_IsString(description) && description->valuestring != NULL) {
+                strncpy(card->ability.description, description->valuestring, sizeof(card->ability.description) - 1);
+                card->ability.description[sizeof(card->ability.description) - 1] = '\0';
+            }
+        }
 
         if (cJSON_IsArray(moves)) {
             int move_count = cJSON_GetArraySize(moves);

@@ -6,7 +6,7 @@
 #define MAX_MOVES 4
 #define MAX_CARD_ENERGIES 11
 #define MAX_CARD_NAME_LENGTH 50     // Name of card
-#define MAX_DESCRIPTION_LENGTH 128     // Name of card
+#define MAX_DESCRIPTION_LENGTH 256     // Name of card
 
 typedef enum {
     GRASS, FIRE, WATER, LIGHTNING, PSYCHIC, FIGHTING, DARKNESS, METAL, FAIRY, DRAGON, COLORLESS, NONE
