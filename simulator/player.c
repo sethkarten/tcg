@@ -154,3 +154,35 @@ void shuffle_active_to_deck(Player *player) {
     // Shuffle the deck
     shuffle_deck(&player->deck);
 }
+
+bool opponent_has_primeval_law(Player *opponent) {
+    // Check active Pokémon
+    if (opponent->active_pokemon && opponent->active_pokemon->has_ability) {
+        if (strcmp(opponent->active_pokemon->ability.name, "Primeval Law") == 0) {
+            return true;
+        }
+    }
+    
+    // Check benched Pokémon
+    for (int i = 0; i < opponent->bench_count; i++) {
+        if (opponent->bench[i].has_ability) {
+            if (strcmp(opponent->bench[i].ability.name, "Primeval Law") == 0) {
+                return true;
+            }
+        }
+    }
+    
+    return false;
+}
+
+bool opponent_has_shadowy_spellbind(Player *opponent) {
+    // Check active Pokémon
+    if (opponent->active_pokemon && opponent->active_pokemon->has_ability) {
+        if (strcmp(opponent->active_pokemon->ability.name, "Shadowy Spellbind") == 0) {
+            return true;
+        }
+    }    
+    return false;
+}
+
+

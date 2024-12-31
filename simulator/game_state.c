@@ -277,7 +277,8 @@ bool evolve_pokemon(GameState *game, Player *player, char *card_name, int target
     
     if (evolution != NULL && target_pokemon != NULL && 
         evolution->stage == target_pokemon->stage + 1 &&
-        strcmp(evolution->evolves_from, target_pokemon->name) == 0) {
+        strcmp(evolution->evolves_from, target_pokemon->name) == 0 &&
+        !opponent_has_primeval_law(opponent)) {
         
         // Save the attached energies and damage
         int attached_energies[MAX_CARD_ENERGIES];
@@ -347,15 +348,116 @@ bool retreat_pokemon(GameState *game, Player *player, char *card_name, int targe
     return true;
 }
 
-// @todo: finish this function
+// @todo: make sure abilities only used once
+// @todo: make sure status effects are implemented
 bool use_ability(GameState *game, Player *player, char *card_name, int target) {
     Card *card = find_card_in_hand(player, card_name);
-    if (card != NULL && card->has_ability) {
-        // Implement ability effect based on target
+    if (card == NULL || !card->has_ability) {
+        return false;
     }
+
+    Player *opponent = (player == &game->player1) ? &game->player2 : &game->player1;
+
+    if (strcmp(card->ability.name, "Powder Heal") == 0) {
+        Card *target = get_target(player, opponent, target);
+        heal_card(target, 20);
+        return true;
+    }
+
+    else if (strcmp(card->ability.name, "Fragrance Trap") == 0) {
+        if (card != player->active_pokemon) {
+            return false;
+        }
+        Card *target = get_target(player, opponent, target);
+        if (target->stage == BASIC) {
+            Card temp = *opponent->active_pokemon;
+            *opponent->active_pokemon = *target;
+            *target = temp;
+            return true;
+        }
+        return false;
+    }
+
+    if (strcmp(card->ability.name, "Water Shuriken") == 0) {
+        Card *target_card = get_target(player, opponent, target);
+        if (target_card) {
+            target_card->hp -= 20;
+            check_for_KO(game, player, opponent, target_card);
+            return true;
+        }
+        return false;
+    }
+
+    if (strcmp(card->ability.name, "Volt Charge") == 0) {
+        attach_energy_to_card(card, LIGHTNING);
+        return true;
+    }
+
+    if (strcmp(card->ability.name, "Sleep Pendulum") == 0) {
+        if (flip_coin() == HEADS) {
+            opponent->active_pokemon->status = ASLEEP;
+            return true;
+        }
+        return false;
+    }
+
+    if (strcmp(card->ability.name, "Psy Shadow") == 0) {
+        if (player->deck.energy[PSYCHIC] && player->active_pokemon && player->active_pokemon->type == PSYCHIC) {
+            attach_energy_to_card(player->active_pokemon, PSYCHIC);
+            return true;
+        }
+        return false;
+    }
+
+    if (strcmp(card->ability.name, "Gas Leak") == 0) {
+        if (card == player->active_pokemon) {
+            opponent->active_pokemon->status = POISONED;
+            return true;
+        }
+        return false;
+    }
+
+    if (strcmp(card->ability.name, "Drive Off") == 0) {
+        if (opponent->bench_count > 0) {
+            game->turn_effects.sabrina_switch = true;
+            return true;
+        }
+        return false;
+    }
+
+    if (strcmp(card->ability.name, "Data Scan") == 0) {
+        if (player->deck.card_count > 0) {
+            // In a real game, we would show this card to the player
+            // Here we'll just return true to indicate the ability was used
+            return true;
+        }
+        return false;
+    }
+
+    // @todo: implement jungle totem
+    if (strcmp(card->ability.name, "Jungle Totem") == 0) {
+        // This ability is passive and doesn't need to be actively used
+        return false;
+    }
+
+    if (strcmp(card->ability.name, "Wash Out") == 0) {
+        Card *source = get_target(player, NULL, target);
+        if (source && source->type == WATER && source != player->active_pokemon) {
+            if (source->attached_energies[WATER] > 0) {
+                source->attached_energies[WATER]--;
+                source->energies_count--;
+                player->active_pokemon->attached_energies[WATER]++;
+                player->active_pokemon->energies_count++;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    return false;
 }
 
-// @todo: finish this function  
+
 bool use_move(GameState *game, Player *player, char *card_name, int move_index, int opponent_target) {
     Player *opponent = (player == &game->player1) ? &game->player2 : &game->player1;
     Card *active = player->active_pokemon;
@@ -389,6 +491,14 @@ bool use_move(GameState *game, Player *player, char *card_name, int move_index, 
     // Apply Blue's protection
     if (game->turn_effects.blue_protection) {
         damage -= 10;
+        if (damage < 0) damage = 0;
+    }
+    if (strcmp(opponent_card->ability.name, "Shell Armor") == 0) {
+        damage -= 10;
+        if (damage < 0) damage = 0;
+    }
+        if (strcmp(opponent_card->ability.name, "Hard Coat") == 0) {
+        damage -= 20;
         if (damage < 0) damage = 0;
     }
 
@@ -572,6 +682,13 @@ bool use_move(GameState *game, Player *player, char *card_name, int move_index, 
             if (target) {
                 if (!target->prevent_damage_next_turn) 
                 {
+                    if (opponent_card == opponent->active_pokemon &&
+                        (strcmp(opponent_card->ability.name, "Counterattack") == 0 || 
+                        strcmp(opponent_card->ability.name, "Rough Skin") == 0)) 
+                    {
+                        active->hp -= 20;
+                        check_for_KO(game, opponent, player, active);
+                    }
                     target->hp -= damage_move;
                     check_for_KO(game, player, opponent, target);
                 }
@@ -644,7 +761,16 @@ bool use_move(GameState *game, Player *player, char *card_name, int move_index, 
     if (strcmp(active->type, opponent_card->weakness) == 0) damage += 20;
 
     // Apply damage
-    if (!opponent_card->prevent_damage_next_turn) opponent_card->hp -= damage;
+    if (!opponent_card->prevent_damage_next_turn) 
+    {
+        if (strcmp(opponent_card->ability.name, "Counterattack") == 0 || 
+            strcmp(opponent_card->ability.name, "Rough Skin") == 0) 
+        {
+            active->hp -= 20;
+            check_for_KO(game, opponent, player, active);
+        }
+        opponent_card->hp -= damage;
+    }
     opponent_card->prevent_damage_next_turn = false;
 
     // Check for KO

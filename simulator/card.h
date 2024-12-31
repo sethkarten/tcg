@@ -27,6 +27,11 @@ typedef enum {
 typedef struct {
     char description[MAX_DESCRIPTION_LENGTH];
     char name[64];
+} Ability;
+
+typedef struct {
+    char description[MAX_DESCRIPTION_LENGTH];
+    char name[64];
     int energy[MAX_CARD_ENERGIES];
     int energy_count;
     int damage;
@@ -49,6 +54,7 @@ typedef struct {
     int energies_count;
     bool has_ability;
     CardType cardtype;
+    Ability ability;
     Status status;
     bool prevent_damage_next_turn;
 } Card;

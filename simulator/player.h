@@ -38,5 +38,6 @@ bool move_active_to_hand(Player *player);
 void move_lightning_energy_to_active(Player *player);
 Card* find_card_in_hand(Player *player, const char *card_name);
 void shuffle_active_to_deck(Player *player);
+bool opponent_has_primeval_law(Player *opponent);
 
 #endif // PLAYER_H

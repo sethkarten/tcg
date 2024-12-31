@@ -19,6 +19,10 @@ bool play_supporter(GameState *game, Player *player, char *card_name, int target
     *supporter_played = true;
     Player *opponent = &game->player1;
     if (player->role == PLAY) opponent = &game->player2;
+    if (opponent_has_shadowy_spellbind(opponent))
+    {
+        return false;
+    }
     Card * target_card = get_target(player, opponent, target);
 
     bool valid_effect = true;
