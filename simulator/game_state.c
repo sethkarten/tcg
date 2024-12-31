@@ -62,6 +62,7 @@ void start_turn(GameState *game, Player *player)
     game->turn_effects.giovanni_boost = false;
     game->turn_effects.sabrina_switch = false;
     game->turn_effects.retreat_reduction = 0;
+    reset_ability_used(player);
 }
 
 bool act_turn(GameState *game, Player *player, char **action) 
@@ -348,7 +349,6 @@ bool retreat_pokemon(GameState *game, Player *player, char *card_name, int targe
     return true;
 }
 
-// @todo: make sure abilities only used once
 // @todo: make sure status effects are implemented
 bool use_ability(GameState *game, Player *player, char *card_name, int target) {
     Card *card = find_card_in_hand(player, card_name);
@@ -358,13 +358,14 @@ bool use_ability(GameState *game, Player *player, char *card_name, int target) {
 
     Player *opponent = (player == &game->player1) ? &game->player2 : &game->player1;
 
-    if (strcmp(card->ability.name, "Powder Heal") == 0) {
+    if (strcmp(card->ability.name, "Powder Heal") == 0 && !card->ability_used) {
         Card *target = get_target(player, opponent, target);
         heal_card(target, 20);
+        card->ability_used = true;
         return true;
     }
 
-    else if (strcmp(card->ability.name, "Fragrance Trap") == 0) {
+    else if (strcmp(card->ability.name, "Fragrance Trap") == 0 && !card->ability_used) {
         if (card != player->active_pokemon) {
             return false;
         }
@@ -373,70 +374,72 @@ bool use_ability(GameState *game, Player *player, char *card_name, int target) {
             Card temp = *opponent->active_pokemon;
             *opponent->active_pokemon = *target;
             *target = temp;
+            card->ability_used = true;
             return true;
         }
         return false;
     }
 
-    if (strcmp(card->ability.name, "Water Shuriken") == 0) {
+    if (strcmp(card->ability.name, "Water Shuriken") == 0 && !card->ability_used) {
         Card *target_card = get_target(player, opponent, target);
         if (target_card) {
             target_card->hp -= 20;
             check_for_KO(game, player, opponent, target_card);
+            card->ability_used = true;
             return true;
         }
         return false;
     }
 
-    if (strcmp(card->ability.name, "Volt Charge") == 0) {
+    if (strcmp(card->ability.name, "Volt Charge") == 0 && !card->ability_used) {
         attach_energy_to_card(card, LIGHTNING);
+        card->ability_used = true;
         return true;
     }
 
-    if (strcmp(card->ability.name, "Sleep Pendulum") == 0) {
+    if (strcmp(card->ability.name, "Sleep Pendulum") == 0 && !card->ability_used) {
         if (flip_coin() == HEADS) {
             opponent->active_pokemon->status = ASLEEP;
+            card->ability_used = true;
             return true;
         }
         return false;
     }
 
-    if (strcmp(card->ability.name, "Psy Shadow") == 0) {
+    if (strcmp(card->ability.name, "Psy Shadow") == 0 && !card->ability_used) {
         if (player->deck.energy[PSYCHIC] && player->active_pokemon && player->active_pokemon->type == PSYCHIC) {
             attach_energy_to_card(player->active_pokemon, PSYCHIC);
+            card->ability_used = true;
             return true;
         }
         return false;
     }
 
-    if (strcmp(card->ability.name, "Gas Leak") == 0) {
+    if (strcmp(card->ability.name, "Gas Leak") == 0 && !card->ability_used) {
         if (card == player->active_pokemon) {
             opponent->active_pokemon->status = POISONED;
+            card->ability_used = true;
             return true;
         }
         return false;
     }
 
-    if (strcmp(card->ability.name, "Drive Off") == 0) {
+    if (strcmp(card->ability.name, "Drive Off") == 0 && !card->ability_used) {
         if (opponent->bench_count > 0) {
             game->turn_effects.sabrina_switch = true;
+            card->ability_used = true;
             return true;
         }
         return false;
     }
 
-    if (strcmp(card->ability.name, "Data Scan") == 0) {
+    if (strcmp(card->ability.name, "Data Scan") == 0 && !card->ability_used) {
         if (player->deck.card_count > 0) {
             // In a real game, we would show this card to the player
             // Here we'll just return true to indicate the ability was used
+            card->ability_used = true;
             return true;
         }
-        return false;
-    }
-
-    // @todo: implement jungle totem
-    if (strcmp(card->ability.name, "Jungle Totem") == 0) {
-        // This ability is passive and doesn't need to be actively used
         return false;
     }
 
@@ -470,11 +473,7 @@ bool use_move(GameState *game, Player *player, char *card_name, int move_index, 
     Move *move = &active->moves[move_index];
 
     // Check if enough energy for move
-    for (int i = 0; i < MAX_CARD_ENERGIES; i++) {
-        if (active->attached_energies[i] < move->energy[i]) {
-            return false;
-        }
-    }
+    if (!has_enough_energy(player, active, move)) return false;
 
     // Calculate base damage
     int damage = move->damage;
@@ -519,13 +518,7 @@ bool use_move(GameState *game, Player *player, char *card_name, int move_index, 
                 Move *copied_move = &target->moves[chosen_move];
                 
                 // Check if this Pokemon has enough energy for the copied move
-                bool has_energy = true;
-                for (int i = 0; i < MAX_CARD_ENERGIES; i++) {
-                    if (active->attached_energies[i] < copied_move->energy[i]) {
-                        has_energy = false;
-                        break;
-                    }
-                }
+                bool has_energy = has_enough_energy(player, active, copied_move);
                 
                 if (has_energy) {
                     move = chosen_move;

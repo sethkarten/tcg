@@ -39,5 +39,8 @@ void move_lightning_energy_to_active(Player *player);
 Card* find_card_in_hand(Player *player, const char *card_name);
 void shuffle_active_to_deck(Player *player);
 bool opponent_has_primeval_law(Player *opponent);
+void reset_ability_used(Player *player);
+bool jungle_totem_active(Player *player);
+bool has_enough_energy(Player *player, Card *pokemon, Move *move);
 
 #endif // PLAYER_H

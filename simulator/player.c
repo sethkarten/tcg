@@ -185,4 +185,75 @@ bool opponent_has_shadowy_spellbind(Player *opponent) {
     return false;
 }
 
+void reset_ability_used(Player *player) {
+    // Reset active Pokémon
+    if (player->active_pokemon != NULL) {
+        player->active_pokemon->ability_used = false;
+    }
 
+    // Reset bench Pokémon
+    for (int i = 0; i < player->bench_count; i++) {
+        player->bench[i].ability_used = false;
+    }
+
+}
+
+bool jungle_totem_active(Player *player) {
+    // Check active Pokémon
+    if (player->active_pokemon && player->active_pokemon->has_ability) {
+        if (strcmp(player->active_pokemon->ability.name, "Jungle Totem") == 0) {
+            return true;
+        }
+    }    
+    return false;
+}
+
+bool has_enough_energy(Player *player, Card *pokemon, Move *move) {
+    int required_energy[MAX_CARD_ENERGIES] = {0};
+    int available_energy[MAX_CARD_ENERGIES] = {0};
+    int colorless_required = 0;
+    int total_available = 0;
+
+    // Copy the required energy from the move
+    for (int i = 0; i < MAX_CARD_ENERGIES; i++) {
+        required_energy[i] = move->energy[i];
+        if (i == COLORLESS) {
+            colorless_required = move->energy[i];
+        }
+    }
+
+    // Copy the available energy from the Pokémon
+    for (int i = 0; i < MAX_CARD_ENERGIES; i++) {
+        available_energy[i] = pokemon->attached_energies[i];
+        total_available += pokemon->attached_energies[i];
+    }
+
+    // Check if Jungle Totem is active
+    bool is_jungle_totem_active = jungle_totem_active(player);
+
+    // Check for specific energy types
+    for (int i = 0; i < MAX_CARD_ENERGIES; i++) {
+        if (i != COLORLESS) {
+            int required = required_energy[i];
+            int available = available_energy[i];
+            
+            if (i == GRASS && is_jungle_totem_active) {
+                available *= 2;
+            }
+
+            if (available < required) {
+                return false;
+            }
+
+            available_energy[i] -= required;
+            total_available -= required;
+        }
+    }
+
+    // Check for colorless energy requirement
+    if (total_available < colorless_required) {
+        return false;
+    }
+
+    return true;
+}

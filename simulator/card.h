@@ -57,6 +57,7 @@ typedef struct {
     Ability ability;
     Status status;
     bool prevent_damage_next_turn;
+    bool ability_used;
 } Card;
 
 // Function prototypes
