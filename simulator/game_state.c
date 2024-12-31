@@ -52,6 +52,7 @@ void initialize_game_state(GameState *game,
 void start_turn(GameState *game, Player *player)
 {
     // if not turn 1
+    Player *opponent = (player == &game->player1) ? &game->player2 : &game->player1;
     EnergyType energy = NULL;
     if (game->current_turn != 0)
     {
@@ -63,6 +64,19 @@ void start_turn(GameState *game, Player *player)
     game->turn_effects.sabrina_switch = false;
     game->turn_effects.retreat_reduction = 0;
     reset_ability_used(player);
+
+    // checkup on status effects
+    // ASLEEP
+    if (player->active_pokemon && player->active_pokemon->status == ASLEEP) {
+        if (flip_coin() == HEADS) {
+            player->active_pokemon->status = NONE;
+        }
+    }
+    if (opponent->active_pokemon && opponent->active_pokemon->status == ASLEEP) {
+        if (flip_coin() == HEADS) {
+            opponent->active_pokemon->status = NONE;
+        }
+    }
 }
 
 bool act_turn(GameState *game, Player *player, char **action) 
@@ -341,6 +355,9 @@ bool retreat_pokemon(GameState *game, Player *player, char *card_name, int targe
         }
     }
 
+    // Remove any status effects
+    player->active_pokemon->status = NONE;
+
     // Swap active and bench Pokemon
     Card temp = *active;
     *active = *bench_pokemon;
@@ -466,7 +483,12 @@ bool use_move(GameState *game, Player *player, char *card_name, int move_index, 
     Card *active = player->active_pokemon;
     Card *opponent_card = opponent->active_pokemon;
 
-    if (active == NULL || opponent_card == NULL || move_index < 0 || move_index >= active->move_count) {
+    if (active == NULL || 
+        opponent_card == NULL || 
+        move_index < 0 || 
+        move_index >= active->move_count || 
+        active->status == PARALYZED ||
+        active->status == ASLEEP) {
         return false;
     }
 
@@ -804,9 +826,23 @@ void check_for_KO(GameState *game, Player *player, Player * opponent, Card *oppo
 }
 
 bool end_turn(GameState *game, Player *player) {
+    Player *opponent = (player == &game->player1) ? &game->player2 : &game->player1;
     game->current_turn++;
     game->supporter_played = false;
     player->cant_retreat = false;
+
+    // remove paralysis at end of turn
+    if (player->active_pokemon->status == PARALYZED) player->active_pokemon->status = NONE;
+
+    // Poison status
+    if (player->active_pokemon && player->active_pokemon->status == POISONED) {
+        player->active_pokemon->hp -= 10;
+        check_for_KO(game, player, opponent, player->active_pokemon);
+    }
+    if (opponent->active_pokemon && opponent->active_pokemon->status == POISONED) {
+        opponent->active_pokemon->hp -= 10;
+        check_for_KO(game, opponent, player, opponent->active_pokemon);
+    }
     
     if (game->game_over) return true;
     return false;
