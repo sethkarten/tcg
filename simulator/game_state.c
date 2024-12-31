@@ -366,7 +366,6 @@ bool retreat_pokemon(GameState *game, Player *player, char *card_name, int targe
     return true;
 }
 
-// @todo: make sure status effects are implemented
 bool use_ability(GameState *game, Player *player, char *card_name, int target) {
     Card *card = find_card_in_hand(player, card_name);
     if (card == NULL || !card->has_ability) {
