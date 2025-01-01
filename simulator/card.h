@@ -9,7 +9,7 @@
 #define MAX_DESCRIPTION_LENGTH 256     // Name of card
 
 typedef enum {
-    GRASS, FIRE, WATER, LIGHTNING, PSYCHIC, FIGHTING, DARKNESS, METAL, FAIRY, DRAGON, COLORLESS, NONE
+    GRASS, FIRE, WATER, LIGHTNING, PSYCHIC, FIGHTING, DARKNESS, METAL, FAIRY, DRAGON, COLORLESS, NONE_TYPE
 } EnergyType;
 
 typedef enum {
@@ -21,7 +21,7 @@ typedef enum {
 } CardType;
 
 typedef enum {
-    NONE, ASLEEP, PARALYZED, POISONED
+    NONE_STATUS, ASLEEP, PARALYZED, POISONED
 } Status;
 
 typedef struct {

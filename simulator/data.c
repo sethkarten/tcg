@@ -147,7 +147,7 @@ void load_card_data_from_json(GameState *game, const char* filename) {
             else if (strcmp(weakness_str, "Fairy") == 0) card->weakness = FAIRY;
             else if (strcmp(weakness_str, "Dragon") == 0) card->weakness = DRAGON;
             else if (strcmp(weakness_str, "Colorless") == 0) card->weakness = COLORLESS;
-            else card->weakness = NONE;
+            else card->weakness = NONE_TYPE;
         }
 
 

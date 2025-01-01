@@ -70,12 +70,12 @@ void start_turn(GameState *game, Player *player)
     // ASLEEP
     if (player->active_pokemon && player->active_pokemon->status == ASLEEP) {
         if (flip_coin() == HEADS) {
-            player->active_pokemon->status = NONE;
+            player->active_pokemon->status = NONE_STATUS;
         }
     }
     if (opponent->active_pokemon && opponent->active_pokemon->status == ASLEEP) {
         if (flip_coin() == HEADS) {
-            opponent->active_pokemon->status = NONE;
+            opponent->active_pokemon->status = NONE_STATUS;
         }
     }
 }
@@ -357,7 +357,7 @@ bool retreat_pokemon(GameState *game, Player *player, char *card_name, int targe
     }
 
     // Remove any status effects
-    player->active_pokemon->status = NONE;
+    player->active_pokemon->status = NONE_STATUS;
 
     // Swap active and bench Pokemon
     Card temp = *active;
@@ -832,7 +832,7 @@ bool end_turn(GameState *game, Player *player) {
     player->cant_retreat = false;
 
     // remove paralysis at end of turn
-    if (player->active_pokemon->status == PARALYZED) player->active_pokemon->status = NONE;
+    if (player->active_pokemon->status == PARALYZED) player->active_pokemon->status = NONE_STATUS;
 
     // Poison status
     if (player->active_pokemon && player->active_pokemon->status == POISONED) {

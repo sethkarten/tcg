@@ -15,7 +15,7 @@ EnergyType parse_energy_type(const char* type_string) {
     if (strcmp(type_string, "Fairy") == 0) return FAIRY;
     if (strcmp(type_string, "Dragon") == 0) return DRAGON;
     if (strcmp(type_string, "Colorless") == 0) return COLORLESS; // Default type
-    return NONE;  // No type
+    return NONE_TYPE;  // No type
 }
 
 void initialize_card(Card* card, const char* name, EnergyType type, int hp, Stage stage, int retreat_cost, bool is_ex, bool has_ability) {
