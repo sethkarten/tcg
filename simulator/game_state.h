@@ -34,7 +34,7 @@ void initialize_game_state(GameState *game,
                             bool energy2[MAX_CARD_ENERGIES]
 );
 void start_turn(GameState *game, Player *player);
-void act_turn(GameState *game, Player *player, char ** action);
+bool act_turn(GameState *game, Player *player, char ** action);
 
 bool play_item(GameState *game, Player *player, char *card_name, int target);
 bool play_pokemon(GameState *game, Player *player, char *card_name);

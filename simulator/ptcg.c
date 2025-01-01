@@ -12,7 +12,7 @@ void reset_game(GameState *game,
 }
 
 bool * get_legal_actions(GameState *game, int *actions) {
-    bool *legal_actions = calloc(94, sizeof(bool));
+    bool *legal_actions = calloc(95, sizeof(bool));
     Player *current_player = (game->current_turn % 2 == 0) ? &game->player1 : &game->player2;
     Player *opponent = (current_player == &game->player1) ? &game->player2 : &game->player1;
 
@@ -20,7 +20,7 @@ bool * get_legal_actions(GameState *game, int *actions) {
     if (game->turn_effects.sabrina_switch)
     {
         for (int i = 0; i < current_player->bench_count && i < 3; i++) {
-                legal_actions[i + 91] = true;
+                legal_actions[i + 92] = true;
             }
         return legal_actions;
     }
@@ -81,8 +81,7 @@ bool * get_legal_actions(GameState *game, int *actions) {
         current_player->active_pokemon->status != ASLEEP) {
         for (int i = 0; i < current_player->active_pokemon->move_count; i++) {
             if (has_enough_energy(current_player, current_player->active_pokemon, &current_player->active_pokemon->moves[i])) {
-                legal_actions[91] = true;
-                break;
+                legal_actions[91+i] = true;
             }
         }
     }
@@ -94,44 +93,106 @@ bool * get_legal_actions(GameState *game, int *actions) {
 }
 
 
-int execute_action(GameState *game, int action) {
+int execute_action(GameState *game, int action, int target, int opponent_target) {
     Player *current_player = (game->current_turn % 2 == 0) ? &game->player1 : &game->player2;
     Player *opponent = (game->current_turn % 2 == 0) ? &game->player2 : &game->player1;
     int reward = 0;
+    char *action_str[4] = {NULL, NULL, NULL, NULL};
 
-    if (action < MAX_HAND_SIZE) {
-        // Play a Pokémon
-        if (play_pokemon(game, current_player, current_player->hand[action].name)) {
-            reward = 1;
+    // Format action into string based on get_legal_actions and act_turn
+    if (action >= 0 && action <= 3) {
+        action_str[0] = "n";
+        action_str[1] = "";
+        action_str[2] = malloc(10);
+        snprintf(action_str[2], 10, "%d", target);
+    } else if (action >= 4 && action <= 23) {
+        action_str[0] = "p";
+        action_str[1] = current_player->hand[action - 4].name;
+    } else if (action >= 24 && action <= 43) {
+        action_str[0] = "v";
+        action_str[1] = current_player->hand[action - 24].name;
+        action_str[2] = malloc(10);
+        snprintf(action_str[2], 10, "%d", target);
+    } else if (action >= 44 && action <= 63) {
+        action_str[0] = "s";
+        action_str[1] = current_player->hand[action - 44].name;
+        action_str[2] = malloc(10);
+        snprintf(action_str[2], 10, "%d", target);
+    } else if (action >= 64 && action <= 83) {
+        action_str[0] = "i";
+        action_str[1] = current_player->hand[action - 64].name;
+        action_str[2] = malloc(10);
+        snprintf(action_str[2], 10, "%d", target);
+    } else if (action >= 84 && action <= 86) {
+        action_str[0] = "r";
+        action_str[1] = current_player->active_pokemon->name;
+        action_str[2] = malloc(10);
+        snprintf(action_str[2], 10, "%d", target);
+    } else if (action >= 87 && action <= 90) {
+        action_str[0] = "a";
+        if (action == 87) {
+            action_str[1] = current_player->active_pokemon->name;
+        } else {
+            action_str[1] = current_player->bench[action - 88].name;
         }
-    } else if (action < 2 * MAX_HAND_SIZE) {
-        // Play an energy card
-        int card_index = action - MAX_HAND_SIZE;
-        if (attach_energy(current_player, current_player->hand[card_index].type, 0)) {
-            reward = 1;
-        }
-    } else if (action == 2 * MAX_HAND_SIZE) {
-        // Use ability
-        if (use_ability(game, current_player, current_player->active_pokemon->name, 0)) {
-            reward = 2;
-        }
-    } else if (action < 2 * MAX_HAND_SIZE + MAX_MOVES + 1) {
-        // Attack
-        int move_index = action - (2 * MAX_HAND_SIZE + 1);
-        if (use_move(game, current_player, current_player->active_pokemon->name, move_index, 0)) {
-            reward = 3;
-            if (opponent->active_pokemon->hp <= 0) {
-                reward += 10;
-            }
-        }
+        action_str[2] = malloc(10);
+        snprintf(action_str[2], 10, "%d", target);
+    } else if (action == 91 || action == 92) {
+        action_str[0] = "m";
+        action_str[1] = current_player->active_pokemon->name;
+        action_str[2] = malloc(10);
+        snprintf(action_str[2], 10, "%d", action - 91); // 0 for first move, 1 for second move
+        action_str[3] = malloc(10);
+        snprintf(action_str[3], 10, "%d", opponent_target);
+    } else if (action >= 92 && action <= 94) {
+        action_str[0] = "s";
+        action_str[1] = current_player->active_pokemon->name;
+        action_str[2] = malloc(10);
+        snprintf(action_str[2], 10, "%d", target);
+    } else if (action == 90) {
+        action_str[0] = "e";
+    }
+
+    // Execute action in game by calling act_turn
+    bool action_executed = act_turn(game, current_player, action_str);
+
+    // Check if action was properly executed
+    if (!action_executed) {
+        reward -= 10; // Punish for executing unavailable actions
     } else {
-        // End turn
-        end_turn(game, current_player);
-        reward = 0;
+        reward += 1; // Small reward for successful action
+
+        // Additional rewards based on game state
+        if (current_player->active_pokemon && opponent->active_pokemon) {
+            int damage_dealt = opponent->active_pokemon->hp_total - opponent->active_pokemon->hp;
+            reward += damage_dealt / 10; // Reward for dealing damage
+        }
+
+        if (current_player->prize_cards_left < opponent->prize_cards_left) {
+            reward += 25; // Reward for taking prize cards
+        }
+    }
+
+    // Collect reward by checking for end state
+    if (is_game_over(game)) {
+        if (game->winner == current_player) {
+            reward += 100; // Large reward for winning
+        } else {
+            reward -= 100; // Large punishment for losing
+        }
+    }
+
+    // Free allocated memory
+    for (int i = 0; i < 4; i++) {
+        if (action_str[i] && (i == 2 || i == 3)) {
+            free(action_str[i]);
+        }
     }
 
     return reward;
 }
+
+
 
 void get_observation(GameState *game, float *observation) {
     int index = 0;

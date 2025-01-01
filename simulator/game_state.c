@@ -32,6 +32,7 @@ void initialize_game_state(GameState *game,
     shuffle_deck(&game->player2.deck);
 
     // Initialize other game state variables
+    game->winner = NULL;
     game->current_turn = 0;
     game->supporter_played = false;
     game->game_over = false;

@@ -15,7 +15,7 @@ void reset_game(GameState *game,
                 const char player2_deck[MAX_CARDS_IN_DECK][MAX_CARD_NAME_LENGTH],
                  bool player2_energy[MAX_CARD_ENERGIES]);
 bool * get_legal_actions(GameState *game, int *actions);
-int execute_action(GameState *game, int action);
+int execute_action(GameState *game, int action, int target, int opponent_target);
 void get_observation(GameState *game, float *observation);
 bool is_game_over(GameState *game);
 
