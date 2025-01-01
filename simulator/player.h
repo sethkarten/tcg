@@ -8,6 +8,10 @@
 #define MAX_BENCH_POKEMON 3
 #define MAX_PRIZE_CARDS 3
 
+typedef enum {
+    PLAY, OPP
+} Role;
+
 typedef struct {
     Card *active_pokemon;
     Card bench[MAX_BENCH_POKEMON];
@@ -24,10 +28,6 @@ typedef struct {
     bool cant_retreat;
 } Player;
 
-typedef enum {
-    PLAY, OPP
-} Role;
-
 void initialize_player(Player *player, Role role);
 EnergyType get_energy(Player *player, int current_turn);
 bool attach_energy(Player *player, EnergyType energy, int target);
@@ -42,5 +42,9 @@ bool opponent_has_primeval_law(Player *opponent);
 void reset_ability_used(Player *player);
 bool jungle_totem_active(Player *player);
 bool has_enough_energy(Player *player, Card *pokemon, Move *move);
+void draw_initial_hand(Player *player, Deck *deck);
+Card* draw_pokemon_card(Player *player, Deck *deck);
+Card* draw_card(Player *player, Deck *deck);
+void shuffle_hand_and_draw(Player *player, Deck *deck);
 
 #endif // PLAYER_H
