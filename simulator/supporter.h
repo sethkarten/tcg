@@ -4,18 +4,18 @@
 #include "game_state.h"
 #include "player.h"
 
-void erika_effect(Player *player, char *target);
-void misty_effect(Player *player);
-void blaine_effect(GameState *game);
-void koga_effect(Player *player);
-void giovanni_effect(GameState *game);
-void brock_effect(Player *player);
-void sabrina_effect(GameState *game, Player *opponent);
-void lt_surge_effect(Player *player);
-void budding_expeditioner_effect(Player *player);
-void blue_effect(GameState *game);
-void leaf_effect(GameState *game);
-void professors_research_effect(GameState *game);
+bool erika_effect(Card *target);
+bool misty_effect(Card *target);
+bool blaine_effect(GameState *game);
+bool koga_effect(Player *player);
+bool giovanni_effect(GameState *game);
+bool brock_effect(Card *card);
+bool sabrina_effect(GameState *game, Player *opponent);
+bool lt_surge_effect(Player *player);
+bool budding_expeditioner_effect(Player *player);
+bool blue_effect(GameState *game);
+bool leaf_effect(GameState *game);
+bool professors_research_effect(GameState *game);
 
 bool play_supporter(GameState *game, Player *player, char *card_name, int target, bool *supporter_played);
 

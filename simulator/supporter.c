@@ -28,7 +28,7 @@ bool play_supporter(GameState *game, Player *player, char *card_name, int target
     bool valid_effect = true;
 
     if (strcmp(card_name, "Erika") == 0) valid_effect = erika_effect(target_card);
-    else if (strcmp(card_name, "Misty") == 0) valid_effect = misty_effect(player);
+    else if (strcmp(card_name, "Misty") == 0) valid_effect = misty_effect(target_card);
     else if (strcmp(card_name, "Blaine") == 0) valid_effect = blaine_effect(game);
     else if (strcmp(card_name, "Koga") == 0) valid_effect = koga_effect(player);
     else if (strcmp(card_name, "Giovanni") == 0) valid_effect = giovanni_effect(game);
@@ -60,20 +60,21 @@ bool erika_effect(Card *target) {
     return false;
 }
 
-bool misty_effect(Player *player) {
-    Card *water_pokemon = choose_water_pokemon(player);
-    if (water_pokemon) {
-        int heads = 0;
-        while (flip_coin(1) == 1) {
-            attach_energy_to_card(water_pokemon, WATER);
-            heads++;
+bool misty_effect(Card *target) {
+    if (target) {
+        if (target->type == WATER)
+        {
+            int heads = 0;
+            while (flip_coin(1) == 1) {
+                attach_energy_to_card(target, WATER);
+                heads++;
+            }
+            printf("Attached %d Water Energy to %s\n", heads, target->name);
+            return true;
         }
-        printf("Attached %d Water Energy to %s\n", heads, water_pokemon->name);
-        return true;
-    } else {
-        printf("No Water Type Pokémon available\n");
-        return false;
-    }
+    } 
+    printf("No Water Type Pokémon available\n");
+    return false;
 }
 
 bool blaine_effect(GameState *game) {
