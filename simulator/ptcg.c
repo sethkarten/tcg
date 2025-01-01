@@ -192,68 +192,116 @@ int execute_action(GameState *game, int action, int target, int opponent_target)
     return reward;
 }
 
+// Card tokenizer function
+int tokenize_card(const char* card_name) {
+    // This function should return a unique integer for each card name
+    // You would need to maintain a mapping of card names to integers
+    // For simplicity, we'll use a hash function here
+    int hash = 0;
+    for (int i = 0; card_name[i] != '\0'; i++) {
+        hash = 31 * hash + card_name[i];
+    }
+    return (hash % MAX_CARDS) + 1; // Ensure non-zero token
+}
 
-
-void get_observation(GameState *game, float *observation) {
+float* get_observation(GameState *game) {
+    float *observation = (float*)calloc(OBSERVATION_SIZE, sizeof(float));
+    Player *player = (game->current_turn % 2 == 0) ? &game->player1 : &game->player2;
+    Player *opponent = (game->current_turn % 2 == 0) ? &game->player2 : &game->player1;
     int index = 0;
 
-    // Player 1 active Pokémon
-    if (game->player1.active_pokemon) {
-        observation[index++] = game->player1.active_pokemon->hp / 100.0f;
-        observation[index++] = game->player1.active_pokemon->energies_count / 5.0f;
+    // Player active Pokémon
+    if (player->active_pokemon) {
+        observation[index++] = tokenize_card(player->active_pokemon->name) / (float)MAX_CARDS;
+        observation[index++] = player->active_pokemon->hp / 100.0f;
+        observation[index++] = player->active_pokemon->energies_count / 5.0f;
     } else {
-        observation[index++] = 0;
-        observation[index++] = 0;
+        index += 3;
     }
 
-    // Player 1 bench
+    // Player bench (up to 3 Pokémon)
     for (int i = 0; i < MAX_BENCH_POKEMON; i++) {
-        if (i < game->player1.bench_count) {
-            observation[index++] = game->player1.bench[i].hp / 100.0f;
-            observation[index++] = game->player1.bench[i].energies_count / 5.0f;
+        if (i < player->bench_count) {
+            observation[index++] = tokenize_card(player->bench[i].name) / (float)MAX_CARDS;
+            observation[index++] = player->bench[i].hp / 100.0f;
+            observation[index++] = player->bench[i].energies_count / 5.0f;
         } else {
-            observation[index++] = 0;
-            observation[index++] = 0;
+            index += 3;
         }
     }
 
-    // Player 2 active Pokémon
-    if (game->player2.active_pokemon) {
-        observation[index++] = game->player2.active_pokemon->hp / 100.0f;
-        observation[index++] = game->player2.active_pokemon->energies_count / 5.0f;
+    // Opponent active Pokémon
+    if (opponent->active_pokemon) {
+        observation[index++] = tokenize_card(opponent->active_pokemon->name) / (float)MAX_CARDS;
+        observation[index++] = opponent->active_pokemon->hp / 100.0f;
+        observation[index++] = opponent->active_pokemon->energies_count / 5.0f;
     } else {
-        observation[index++] = 0;
-        observation[index++] = 0;
+        index += 3;
     }
 
-    // Player 2 bench
+    // Opponent bench (up to 3 Pokémon)
     for (int i = 0; i < MAX_BENCH_POKEMON; i++) {
-        if (i < game->player2.bench_count) {
-            observation[index++] = game->player2.bench[i].hp / 100.0f;
-            observation[index++] = game->player2.bench[i].energies_count / 5.0f;
+        if (i < opponent->bench_count) {
+            observation[index++] = tokenize_card(opponent->bench[i].name) / (float)MAX_CARDS;
+            observation[index++] = opponent->bench[i].hp / 100.0f;
+            observation[index++] = opponent->bench[i].energies_count / 5.0f;
         } else {
-            observation[index++] = 0;
-            observation[index++] = 0;
+            index += 3;
+        }
+    }
+
+    // Player discard pile (up to 20 cards)
+    for (int i = 0; i < MAX_DISCARD_SIZE; i++) {
+        if (i < player->discard_count) {
+            observation[index++] = tokenize_card(player->discard_pile[i].name) / (float)MAX_CARDS;
+        } else {
+            index++;
+        }
+    }
+
+    // Opponent discard pile (up to 20 cards)
+    for (int i = 0; i < MAX_DISCARD_SIZE; i++) {
+        if (i < opponent->discard_count) {
+            observation[index++] = tokenize_card(opponent->discard_pile[i].name) / (float)MAX_CARDS;
+        } else {
+            index++;
+        }
+    }
+
+    // Player hand (up to 20 cards)
+    for (int i = 0; i < MAX_HAND_SIZE; i++) {
+        if (i < player->hand_count) {
+            observation[index++] = tokenize_card(player->hand[i].name) / (float)MAX_CARDS;
+        } else {
+            index++;
         }
     }
 
     // Prize cards
-    observation[index++] = game->player1.prize_cards_left / 3.0f;
-    observation[index++] = game->player2.prize_cards_left / 3.0f;
+    observation[index++] = player->prize_cards_left / 3.0f;
+    observation[index++] = opponent->prize_cards_left / 3.0f;
 
     // Deck sizes
-    observation[index++] = game->player1.deck.card_count / 20.0f;
-    observation[index++] = game->player2.deck.card_count / 20.0f;
+    observation[index++] = player->deck.card_count / (float)MAX_DECK_SIZE;
+    observation[index++] = opponent->deck.card_count / (float)MAX_DECK_SIZE;
 
     // Hand sizes
-    observation[index++] = game->player1.hand_count / 7.0f;
-    observation[index++] = game->player2.hand_count / 7.0f;
+    observation[index++] = player->hand_count / (float)MAX_HAND_SIZE;
+    observation[index++] = opponent->hand_count / (float)MAX_HAND_SIZE;
 
     // Current turn
     observation[index++] = (game->current_turn % 2) / 1.0f;
 
-    // add available action observation
+    // Available actions
+    bool* legal_actions = get_legal_actions(game, NULL);
+    for (int i = 0; i < 95; i++) {
+        observation[index++] = legal_actions[i] ? 1.0f : 0.0f;
+    }
+    free(legal_actions);
+
+    return observation;
 }
+
 
 bool is_game_over(GameState *game) {
     return game->game_over;

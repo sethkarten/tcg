@@ -4,9 +4,14 @@
 #include "game_state.h"
 
 #define MAX_PRIZE_CARDS 3
-#define MAX_BENCH_POKEMON 3
 #define MAX_ENERGY_TYPES 4
+
+#define OBSERVATION_SIZE 256
+#define MAX_CARDS 512
+#define MAX_DECK_SIZE 20
 #define MAX_HAND_SIZE 20
+#define MAX_DISCARD_SIZE 20
+#define MAX_BENCH_POKEMON 3
 
 // Function prototypes
 void reset_game(GameState *game, 
@@ -16,7 +21,8 @@ void reset_game(GameState *game,
                  bool player2_energy[MAX_CARD_ENERGIES]);
 bool * get_legal_actions(GameState *game, int *actions);
 int execute_action(GameState *game, int action, int target, int opponent_target);
-void get_observation(GameState *game, float *observation);
+int tokenize_card(const char* card_name);
+float * get_observation(GameState *game);
 bool is_game_over(GameState *game);
 
 #endif // PTCG_H
