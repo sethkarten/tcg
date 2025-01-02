@@ -3,6 +3,7 @@
 #include "card.h"
 #include "deck.h"
 #include "utils.h"
+#include "player.h"
 
 bool play_supporter(GameState *game, Player *player, char *card_name, int target, bool *supporter_played) {
     if (*supporter_played) {
@@ -38,14 +39,13 @@ bool play_supporter(GameState *game, Player *player, char *card_name, int target
     else if (strcmp(card_name, "Budding Expeditioner") == 0) valid_effect = budding_expeditioner_effect(player);
     else if (strcmp(card_name, "Blue") == 0) valid_effect = blue_effect(game);
     else if (strcmp(card_name, "Leaf") == 0) valid_effect = leaf_effect(game);
-    else if (strcmp(card_name, "Professor's Research") == 0) valid_effect = professors_research_effect(game);
+    else if (strcmp(card_name, "Professor's Research") == 0) valid_effect = professors_research_effect(player);
     else {
         printf("Unknown Supporter card.\n");
-        supporter_played = false;
-        return;
+        return false;
     }
-
-    discard_card_from_hand(player, card);
+    if (valid_effect) discard_card_from_hand(player, card);
+    return valid_effect;
 }
 
 bool erika_effect(Card *target) {
@@ -65,7 +65,7 @@ bool misty_effect(Card *target) {
         if (target->type == WATER)
         {
             int heads = 0;
-            while (flip_coin(1) == 1) {
+            while (flip_coin() == HEADS) {
                 attach_energy_to_card(target, WATER);
                 heads++;
             }
@@ -159,8 +159,8 @@ bool leaf_effect(GameState *game) {
 }
 
 bool professors_research_effect(Player *player) {
-    draw_card(&player->deck, player);
-    draw_card(&player->deck, player);
+    draw_card(player, &player->deck);
+    draw_card(player, &player->deck);
     return true;
 }
 

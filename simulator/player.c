@@ -26,7 +26,7 @@ bool attach_energy(Player *player, EnergyType energy, int target)
         player->bench[target-1].attached_energies[(int)energy] += 1;
         player->bench[target-1].energies_count += 1;
     } else {
-        printf('Error: invalid target %d\n', target);
+        printf("Error: invalid target %d\n", target);
         return false;
     }
     return true;
@@ -81,15 +81,15 @@ Card * get_target(Player *player, Player * opponent, int target)
     if (target == -1) {
         return NULL;
     } else if (target == 0) {
-        return &player->active_pokemon;
+        return player->active_pokemon;
     } else if (target <= 3 && target-1 <= player->bench_count) {
         return &player->bench[target-1];
     } else if (target == 4) {
-        return &opponent->active_pokemon;
+        return opponent->active_pokemon;
     } else if (target <= 7 && target-1 <= opponent->bench_count) {
         return &opponent->bench[target-1];
     } else {
-        printf('Error: invalid target %d\n', target);
+        printf("Error: invalid target %d\n", target);
         return NULL;
     }
 }

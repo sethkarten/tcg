@@ -1,6 +1,5 @@
 #include <string.h>
 #include <stdlib.h>
-#include <time.h>
 #include "card.h"
 
 EnergyType parse_energy_type(const char* type_string) {
@@ -42,7 +41,7 @@ void attach_energy_to_card(Card* card, EnergyType energy) {
 
 void discard_random_energy(Card *card) {
     if (card->energies_count == 0) {
-        return -1;  // No energy to discard
+        return;  // No energy to discard
     }
 
     // Find a random energy to discard

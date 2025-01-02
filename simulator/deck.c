@@ -3,10 +3,11 @@
 #include "deck.h"
 #include "hash.h"
 
-void initialize_deck(HashMap *card_dictionary, Deck *deck, const char **card_numbers, bool energy[MAX_CARD_ENERGIES]) {
+void initialize_deck(HashMap *card_dictionary, Deck *deck, const char (*card_numbers)[MAX_CARD_NAME_LENGTH], bool energy[MAX_CARD_ENERGIES])
+{
     deck->card_count = 0;
     for (int i = 0; i < MAX_CARDS_IN_DECK; i++) {
-        Card* card = search(card_dictionary, card_numbers[i]);
+        Card* card = search(card_dictionary, (char*)card_numbers[i]);
         if (card != NULL) {
             deck->cards[deck->card_count] = *card;
             deck->card_count++;

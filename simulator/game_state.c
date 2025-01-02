@@ -2,13 +2,16 @@
 #include "data.h"
 #include "utils.h"
 #include "player.h"
+#include "supporter.h"
+
+#include <time.h>
 
 void initialize_game_state(GameState *game, 
-                            const char deck1[MAX_CARDS_IN_DECK][MAX_CARD_NAME_LENGTH], 
-                            bool energy1[MAX_CARD_ENERGIES], 
-                            const char deck2[MAX_CARDS_IN_DECK][MAX_CARD_NAME_LENGTH],
-                            bool energy2[MAX_CARD_ENERGIES]
-) {
+                           const char deck1[MAX_CARDS_IN_DECK][MAX_CARD_NAME_LENGTH],
+                           bool energy1[MAX_CARD_ENERGIES],
+                           const char deck2[MAX_CARDS_IN_DECK][MAX_CARD_NAME_LENGTH],
+                           bool energy2[MAX_CARD_ENERGIES])
+{
     // Load card data from JSON
     load_card_data_from_json(game, "pokemon_tcg_pocket_cards.json");
 
@@ -43,8 +46,8 @@ void initialize_game_state(GameState *game,
     game->turn_effects.retreat_reduction = 0;
 
     // Draw initial hands
-    draw_initial_hand(&game->player1.deck, game->player1);
-    draw_initial_hand(&game->player2.deck, game->player2);
+    draw_initial_hand(&game->player1, &game->player1.deck);
+    draw_initial_hand(&game->player2, &game->player2.deck);
 
     // Determine who goes first by flipping a coin -- do this before initializing?
     
@@ -54,10 +57,9 @@ void start_turn(GameState *game, Player *player)
 {
     // if not turn 1
     Player *opponent = (player == &game->player1) ? &game->player2 : &game->player1;
-    EnergyType energy = NULL;
     if (game->current_turn != 0)
     {
-        draw_card(&player->deck, player);
+        draw_card(player, &player->deck);
         player->energy_available = true;
     }
     game->turn_effects.blaine_boost = false;
@@ -376,8 +378,8 @@ bool use_ability(GameState *game, Player *player, char *card_name, int target) {
     Player *opponent = (player == &game->player1) ? &game->player2 : &game->player1;
 
     if (strcmp(card->ability.name, "Powder Heal") == 0 && !card->ability_used) {
-        Card *target = get_target(player, opponent, target);
-        heal_card(target, 20);
+        Card *target_card = get_target(player, opponent, target);
+        heal_card(target_card, 20);
         card->ability_used = true;
         return true;
     }
@@ -386,11 +388,11 @@ bool use_ability(GameState *game, Player *player, char *card_name, int target) {
         if (card != player->active_pokemon) {
             return false;
         }
-        Card *target = get_target(player, opponent, target);
-        if (target->stage == BASIC) {
+        Card *target_card = get_target(player, opponent, target);
+        if (target_card->stage == BASIC) {
             Card temp = *opponent->active_pokemon;
-            *opponent->active_pokemon = *target;
-            *target = temp;
+            *opponent->active_pokemon = *target_card;
+            *target_card = temp;
             card->ability_used = true;
             return true;
         }
@@ -543,7 +545,7 @@ bool use_move(GameState *game, Player *player, char *card_name, int move_index, 
                 bool has_energy = has_enough_energy(player, active, copied_move);
                 
                 if (has_energy) {
-                    move = chosen_move;
+                    move = copied_move;
                 } else {
                     return false;
                 }
@@ -762,7 +764,7 @@ bool use_move(GameState *game, Player *player, char *card_name, int move_index, 
             int draw_count = 0;
             sscanf(move->description, "Draw %d card", &draw_count);
             for (int i = 0; i < draw_count; i++) {
-                draw_card(&player->deck, player);
+                draw_card(player, &player->deck);
             }
         }
 
@@ -773,7 +775,7 @@ bool use_move(GameState *game, Player *player, char *card_name, int move_index, 
     }
 
     // check for weakness
-    if (strcmp(active->type, opponent_card->weakness) == 0) damage += 20;
+    if (active->type == opponent_card->weakness) damage += 20;
 
     // Apply damage
     if (!opponent_card->prevent_damage_next_turn) 

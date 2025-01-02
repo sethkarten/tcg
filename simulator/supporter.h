@@ -15,7 +15,7 @@ bool lt_surge_effect(Player *player);
 bool budding_expeditioner_effect(Player *player);
 bool blue_effect(GameState *game);
 bool leaf_effect(GameState *game);
-bool professors_research_effect(GameState *game);
+bool professors_research_effect(Player *player);
 
 bool play_supporter(GameState *game, Player *player, char *card_name, int target, bool *supporter_played);
 

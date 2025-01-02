@@ -16,7 +16,7 @@ typedef struct {
     int energy_seq_count;
 } Deck;
 
-void initialize_deck(HashMap *game, Deck *deck, const char **card_numbers, bool energy[MAX_CARD_ENERGIES]);
+void initialize_deck(HashMap *game, Deck *deck, const char (*card_numbers)[MAX_CARD_NAME_LENGTH], bool energy[MAX_CARD_ENERGIES]);;
 void shuffle_deck(Deck *deck);
 
 
