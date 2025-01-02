@@ -8,18 +8,18 @@ cdef extern from "simulator/ptcg.h":
     ctypedef struct GameState:
         pass
     
-    void reset_game(GameState *game, const char player1_deck[20][50], const bint player1_energy[11], const char player2_deck[20][50], const bint player2_energy[11])
-    bint* get_legal_actions(GameState *game, int *actions)
+    void reset_game(GameState *game, const char player1_deck[20][50], const int player1_energy[11], const char player2_deck[20][50], const int player2_energy[11])
+    int* get_legal_actions(GameState *game)
     int execute_action(GameState *game, int action, int target, int opponent_target)
     float* get_observation(GameState *game)
-    bint is_game_over(GameState *game)
+    int is_game_over(GameState *game)
 
 cdef class CyPTCG:
     cdef GameState* game
     cdef char player1_deck[20][50]
     cdef char player2_deck[20][50]
-    cdef bint player1_energy[11]
-    cdef bint player2_energy[11]
+    cdef int player1_energy[11]
+    cdef int player2_energy[11]
 
     def __cinit__(self):
         self.game = <GameState*>malloc(sizeof(GameState))
@@ -41,8 +41,8 @@ cdef class CyPTCG:
 
         reset_game(self.game, self.player1_deck, self.player1_energy, self.player2_deck, self.player2_energy)
 
-    def get_legal_actions(self):
-        cdef bint* legal_actions = get_legal_actions(self.game, NULL)
+    def get_actions_available(self):
+        cdef int* legal_actions = get_legal_actions(self.game)
         actions = [bool(legal_actions[i]) for i in range(95)]
         free(legal_actions)
         return actions
