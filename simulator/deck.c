@@ -17,17 +17,28 @@ void initialize_deck(HashMap *card_dictionary, Deck *deck, const char (*card_num
         deck->energy[i] = energy[i];
     }
 
-    // randomly generate energy sequence
-    // Generate energy sequence
-    deck->energy_seq_count = MAX_TURN;
-    for (int i = 0; i < MAX_TURN; i++) {
-        int random_index;
-        do {
-            random_index = rand() % MAX_CARD_ENERGIES;
-        } while (!energy[random_index]);
-        
-        deck->energy_seq[i] = (EnergyType)random_index;
+    int valid_energy_count = 0;
+    EnergyType valid_energies[MAX_CARD_ENERGIES];
+
+    // First, count and store the valid energy types
+    for (int i = 0; i < MAX_CARD_ENERGIES; i++) {
+        if (energy[i]) {
+            valid_energies[valid_energy_count] = (EnergyType)i;
+            valid_energy_count++;
+        }
     }
+
+    // Then, generate the random energy sequence
+    for (int i = 0; i < MAX_TURN; i++) {
+        if (valid_energy_count > 0) {
+            int random_index = rand() % valid_energy_count;
+            deck->energy_seq[i] = valid_energies[random_index];
+        } else {
+            // Handle the case where no valid energies are available
+            deck->energy_seq[i] = GRASS;
+        }
+    }
+
 
 }
 
