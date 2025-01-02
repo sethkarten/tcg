@@ -71,3 +71,15 @@ void heal_card(Card *card, int heal_amount) {
     }
 }
 
+// Card tokenizer function
+int tokenize_card(Card* card) {
+    // This function should return a unique integer for each card name
+    // You would need to maintain a mapping of card names to integers
+    // For simplicity, we'll use a hash function here
+    return card->id;
+    // int hash = 0;
+    // for (int i = 0; card_name[i] != '\0'; i++) {
+    //     hash = 31 * hash + card_name[i];
+    // }
+    // return (hash % MAX_CARDS) + 1; // Ensure non-zero token
+}

@@ -23,16 +23,12 @@ void initialize_game_state(GameState *game,
     if (GAME_STATE_DEBUG) printf("Card data loaded successfully.\n");
 
     // Initialize random seed
-    if (GAME_STATE_DEBUG) printf("Initializing random seed...\n");
     srand(time(NULL));
-    Role player1_role = PLAY;
-    Role player2_role = OPP;
-    if (GAME_STATE_DEBUG) printf("Random seed initialized.\n");
 
     // Init players
     if (GAME_STATE_DEBUG) printf("Initializing players...\n");
-    initialize_player(&game->player1, player1_role);
-    initialize_player(&game->player2, player2_role);
+    initialize_player(&game->player1, PLAY);
+    initialize_player(&game->player2, OPP);
     if (GAME_STATE_DEBUG) printf("Players initialized.\n");
 
     // Initialize player 1's deck

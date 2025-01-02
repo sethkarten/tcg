@@ -108,13 +108,14 @@ void load_card_data_from_json(GameState *game, const char* filename) {
     cJSON* card_item = NULL;
     int card_count = 0;
     cJSON_ArrayForEach(card_item, json) {
-        if (DATA_DEBUG) printf("Processing card %d\n", ++card_count);
+        if (DATA_DEBUG) printf("Processing card %d\n", card_count);
 
         Card* card = (Card*)malloc(sizeof(Card));
         if (card == NULL) {
             fprintf(stderr, "Memory allocation failed for card\n");
             continue;
         }
+        card->id = card_count++;
         for (int i = 0; i < MAX_CARD_ENERGIES; i++) card->attached_energies[i] = 0;
         
         cJSON* card_number = cJSON_GetObjectItemCaseSensitive(card_item, "#");
