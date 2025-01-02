@@ -24,8 +24,21 @@ bool * get_legal_actions(GameState *game, int *actions) {
             }
         return legal_actions;
     }
+
+    // no active? must play a basic
+    if (current_player->active_pokemon == NULL)
+    {
+        for (int i = 0; i < current_player->hand_count; i++) {
+            Card *card = &current_player->hand[i];
+            if (card->cardtype == POKEMON && card->stage == BASIC) {
+                legal_actions[i + 4] = true;
+            }
+        }
+        return legal_actions;
+    }
+
     // Use energy on active (0)
-    if (current_player->energy_available && current_player->active_pokemon) {
+    if (current_player->energy_available && current_player->active_pokemon && game->current_turn != 0) {
         legal_actions[0] = true;
     }
 
@@ -44,7 +57,7 @@ bool * get_legal_actions(GameState *game, int *actions) {
         Card *card = &current_player->hand[i];
         if (card->cardtype == POKEMON && card->stage == BASIC) {
             legal_actions[i + 4] = true;
-        } else if (card->cardtype == POKEMON && card->stage > BASIC) {
+        } else if (strcmp(card->evolves_from, current_player->active_pokemon->name) == 0) {
             legal_actions[i + 24] = true;
         } else if (card->cardtype == SUPPORTER && !game->supporter_played) {
             legal_actions[i + 44] = true;

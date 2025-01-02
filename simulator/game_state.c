@@ -6,7 +6,7 @@
 
 #include <time.h>
 
-#define GAME_STATE_DEBUG false
+#define GAME_STATE_DEBUG true
 
 void initialize_game_state(GameState *game, 
                            const char deck1[MAX_CARDS_IN_DECK][MAX_CARD_NAME_LENGTH],
@@ -867,6 +867,18 @@ bool end_turn(GameState *game, Player *player) {
         check_for_KO(game, opponent, player, opponent->active_pokemon);
     }
     
+    printf("End of turn %d", game->current_turn);
+    // max game turns
+    if (game->current_turn >= 50) 
+    {
+        game->game_over = true;
+        game->winner = NULL;
+    }
+    if (player->active_pokemon == NULL)
+    {
+        game->game_over = true;
+        game->winner = opponent;
+    }
     if (game->game_over) return true;
     return false;
 }
