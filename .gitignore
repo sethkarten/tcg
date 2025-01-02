@@ -1,5 +1,9 @@
 .vscode
 
+# cython compiled file
+cy_ptcg.c
+simulator/ptcg_test
+
 # Prerequisites
 *.d
 
