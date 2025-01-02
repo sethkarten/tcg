@@ -1,7 +1,10 @@
 #!/bin/bash
 
 # Compile C code into shared library
-gcc -shared -fPIC -o simulator/libptcg.so simulator/*.c
+gcc -shared -fPIC -o simulator/libptcg.so simulator/*.c -lcjson
+
+# Update the library path
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/data/milkkarten/Documents/tcg/simulator
 
 # Compile Cython module
 python setup.py build_ext --inplace
