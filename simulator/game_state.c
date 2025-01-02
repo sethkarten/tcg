@@ -6,35 +6,53 @@
 
 #include <time.h>
 
+#define GAME_STATE_DEBUG false
+
 void initialize_game_state(GameState *game, 
                            const char deck1[MAX_CARDS_IN_DECK][MAX_CARD_NAME_LENGTH],
                            bool energy1[MAX_CARD_ENERGIES],
                            const char deck2[MAX_CARDS_IN_DECK][MAX_CARD_NAME_LENGTH],
                            bool energy2[MAX_CARD_ENERGIES])
 {
+    if (GAME_STATE_DEBUG) printf("Initializing game state...\n");
+
     // Load card data from JSON
+    if (GAME_STATE_DEBUG) printf("Loading card data from JSON...\n");
+    game->card_dictionary = (HashMap*)malloc(sizeof(HashMap));
     load_card_data_from_json(game, "pokemon_tcg_pocket_cards.json");
+    if (GAME_STATE_DEBUG) printf("Card data loaded successfully.\n");
 
     // Initialize random seed
+    if (GAME_STATE_DEBUG) printf("Initializing random seed...\n");
     srand(time(NULL));
     Role player1_role = PLAY;
     Role player2_role = OPP;
+    if (GAME_STATE_DEBUG) printf("Random seed initialized.\n");
 
     // Init players
+    if (GAME_STATE_DEBUG) printf("Initializing players...\n");
     initialize_player(&game->player1, player1_role);
     initialize_player(&game->player2, player2_role);
+    if (GAME_STATE_DEBUG) printf("Players initialized.\n");
 
     // Initialize player 1's deck
+    if (GAME_STATE_DEBUG) printf("Initializing player 1's deck...\n");
     initialize_deck(game->card_dictionary, &game->player1.deck, deck1, energy1);
+    if (GAME_STATE_DEBUG) printf("Player 1's deck initialized.\n");
 
     // Initialize player 2's deck
+    if (GAME_STATE_DEBUG) printf("Initializing player 2's deck...\n");
     initialize_deck(game->card_dictionary, &game->player2.deck, deck2, energy2);
+    if (GAME_STATE_DEBUG) printf("Player 2's deck initialized.\n");
 
     // Shuffle decks
+    if (GAME_STATE_DEBUG) printf("Shuffling decks...\n");
     shuffle_deck(&game->player1.deck);
     shuffle_deck(&game->player2.deck);
+    if (GAME_STATE_DEBUG) printf("Decks shuffled.\n");
 
     // Initialize other game state variables
+    if (GAME_STATE_DEBUG) printf("Initializing game state variables...\n");
     game->winner = NULL;
     game->current_turn = 0;
     game->supporter_played = false;
@@ -44,14 +62,17 @@ void initialize_game_state(GameState *game,
     game->turn_effects.sabrina_switch = false;
     game->turn_effects.blue_protection = false;
     game->turn_effects.retreat_reduction = 0;
+    if (GAME_STATE_DEBUG) printf("Game state variables initialized.\n");
 
     // Draw initial hands
+    if (GAME_STATE_DEBUG) printf("Drawing initial hands...\n");
     draw_initial_hand(&game->player1, &game->player1.deck);
     draw_initial_hand(&game->player2, &game->player2.deck);
+    if (GAME_STATE_DEBUG) printf("Initial hands drawn.\n");
 
-    // Determine who goes first by flipping a coin -- do this before initializing?
-    
+    if (GAME_STATE_DEBUG) printf("Game state initialization complete.\n");
 }
+
 
 void start_turn(GameState *game, Player *player)
 {
@@ -125,7 +146,7 @@ bool act_turn(GameState *game, Player *player, char **action)
             end_turn(game, player);
             return true;
         default:
-            printf("Invalid action type: %c\n", action_type[0]);
+            if (GAME_STATE_DEBUG) printf("Invalid action type: %c\n", action_type[0]);
     }
     return false;
 }
@@ -209,7 +230,7 @@ bool play_item(GameState *game, Player *player, char *card_name, int target) {
         // This effect is mostly for the player's information, so we'll just print the cards
         // @todo: change from print to get obs information
         for (int i = 0; i < 3 && i < player->deck.card_count; i++) {
-            printf("Card %d: %s\n", i + 1, player->deck.cards[player->deck.card_count - 1 - i].name);
+            if (GAME_STATE_DEBUG) printf("Card %d: %s\n", i + 1, player->deck.cards[player->deck.card_count - 1 - i].name);
         }
     } else if (strcmp(card_name, "Poke Ball") == 0) {
         // Put 1 random Basic Pokémon from your deck into your hand.
@@ -230,9 +251,9 @@ bool play_item(GameState *game, Player *player, char *card_name, int target) {
         // Your opponent reveals their hand.
         // This effect is mostly for the player's information, so we'll just print the opponent's hand
         // @todo: change from print to get obs information
-        printf("Opponent's hand:\n");
+        if (GAME_STATE_DEBUG) printf("Opponent's hand:\n");
         for (int i = 0; i < opponent->hand_count; i++) {
-            printf("%s\n", opponent->hand[i].name);
+            if (GAME_STATE_DEBUG) printf("%s\n", opponent->hand[i].name);
         }
     } else if (strcmp(card_name, "Red Card") == 0) {
         // Your opponent shuffles their hand into their deck and draws 3 cards.
@@ -642,7 +663,7 @@ bool use_move(GameState *game, Player *player, char *card_name, int move_index, 
                         }
                     }
                 } else {
-                    printf("No benched Fire Pokémon to attach energy to.\n");
+                    if (GAME_STATE_DEBUG) printf("No benched Fire Pokémon to attach energy to.\n");
                 }
             }
         }
