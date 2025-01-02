@@ -28,8 +28,15 @@ void initialize_card(Card* card, const char* name, EnergyType type, int hp, Stag
     card->retreat_cost = retreat_cost;
     card->is_ex = is_ex;
     card->has_ability = has_ability;
+    init_card(card);
+}
+
+void init_card(Card * card)
+{   
     card->move_count = 0;
     card->energies_count = 0;
+    card->prevent_damage_next_turn = false;
+    card->ability_used = false;
     for (int i = 0; i < MAX_CARD_ENERGIES; i++) card->attached_energies[i] = 0;
 }
 

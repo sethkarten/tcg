@@ -11,6 +11,8 @@ cdef extern from "simulator/ptcg.h":
     void reset_game(GameState *game, const char player1_deck[20][50], const int player1_energy[11], const char player2_deck[20][50], const int player2_energy[11])
     int* get_legal_actions(GameState *game)
     int execute_action(GameState *game, int action, int target, int opponent_target)
+    int* get_valid_targets(GameState *game, int action)
+    int* get_valid_opponent_target(GameState *game, int action)
     float* get_observation(GameState *game)
     int is_game_over(GameState *game)
 
@@ -20,6 +22,7 @@ cdef class CyPTCG:
     cdef char player2_deck[20][50]
     cdef int player1_energy[11]
     cdef int player2_energy[11]
+    cdef int action_
 
     def __cinit__(self):
         self.game = <GameState*>malloc(sizeof(GameState))
@@ -43,9 +46,19 @@ cdef class CyPTCG:
 
     def get_actions_available(self):
         cdef int* legal_actions = get_legal_actions(self.game)
-        actions = [bool(legal_actions[i]) for i in range(95)]
+        actions = [bool(legal_actions[i]) for i in range(97)]
         free(legal_actions)
         return actions
+
+    def get_targets(self, action):
+        action_ = int(action)
+        cdef int* legal_targets_ = get_valid_targets(self.game, action_)
+        cdef int* legal_targets_opp_ = get_valid_opponent_target(self.game, action_)
+        legal_targets = [bool(legal_targets_[i]) for i in range(8)]
+        legal_targets_opp = [bool(legal_targets_opp_[i]) for i in range(8)]
+        free(legal_targets_)
+        free(legal_targets_opp_)
+        return legal_targets, legal_targets_opp
 
     def step(self, action, target, opponent_target):
         reward = execute_action(self.game, action, target, opponent_target)
@@ -53,7 +66,8 @@ cdef class CyPTCG:
 
     def get_observation(self):
         cdef float* obs = get_observation(self.game)
-        observation = [obs[i] for i in range(256)]
+        observation = [obs[i] for i in range(91)]
+        print(observation)
         free(obs)
         return observation
 

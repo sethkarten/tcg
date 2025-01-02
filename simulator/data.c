@@ -115,6 +115,7 @@ void load_card_data_from_json(GameState *game, const char* filename) {
             fprintf(stderr, "Memory allocation failed for card\n");
             continue;
         }
+        init_card(card);
         card->id = card_count++;
         for (int i = 0; i < MAX_CARD_ENERGIES; i++) card->attached_energies[i] = 0;
         

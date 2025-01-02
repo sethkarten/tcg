@@ -21,8 +21,11 @@ def measure_fps(env, num_steps=1000):
     for _ in range(num_steps):
         action = env.sample_valid_action()  # Random action
         observation, reward, terminated, truncated, info = env.step(action)
+        print('terminated', terminated)
+        print('truncated', truncated)
         if terminated or truncated:
             observation, info = env.reset()
+            # break
     
     end_time = time.time()
     fps = num_steps / (end_time - start_time)

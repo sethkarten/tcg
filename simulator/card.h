@@ -58,13 +58,17 @@ typedef struct {
     Status status;
     bool prevent_damage_next_turn;
     bool ability_used;
+    // counter variable for unique, simple interface
+    int id;
 } Card;
 
 // Function prototypes
 EnergyType parse_energy_type(const char* type_string);
 void initialize_card(Card* card, const char* name, EnergyType type, int hp, Stage stage, int retreat_cost, bool is_ex, bool has_ability);
+void init_card(Card * card);
 void attach_energy_to_card(Card* card, EnergyType energy);
 void discard_random_energy(Card *card);
 void heal_card(Card *card, int heal_amount);
+int tokenize_card(Card* card);
 
 #endif // CARD_H

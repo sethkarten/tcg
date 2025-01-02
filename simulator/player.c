@@ -259,6 +259,10 @@ bool has_enough_energy(Player *player, Card *pokemon, Move *move) {
 }
 
 void draw_initial_hand(Player *player, Deck *deck) {
+    // printf("Deck:\n");
+    // for (int i = 0; i < deck->card_count; i++) {
+    //     printf("%d. %s\n", i + 1, deck->cards[i].name);
+    // }
     int basic_pokemon_index = -1;
     int cards_drawn = 0;
 
@@ -301,6 +305,11 @@ void draw_initial_hand(Player *player, Deck *deck) {
     if (cards_drawn < 5 && deck->card_count > 0) {
         player->hand[player->hand_count++] = deck->cards[--deck->card_count];
     }
+
+    // printf("Player's hand:\n");
+    // for (int i = 0; i < player->hand_count; i++) {
+    //     printf("%d. %s\n", i + 1, player->hand[i].name);
+    // }
 }
 
 Card* draw_pokemon_card(Player *player, Deck *deck) {

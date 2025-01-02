@@ -24,7 +24,7 @@ class PTCGEnv(gym.Env):
     def __init__(self, render_mode=None, decks_file='decks.csv'):
         self.cy_ptcg = CyPTCG()
         
-        self.action_space = spaces.MultiDiscrete([95, 8, 8])  # action, target, opponent_target
+        self.action_space = spaces.MultiDiscrete([97, 8, 8])  # action, target, opponent_target
         self.observation_space = spaces.Box(low=-1, high=1, shape=(91,), dtype=np.float32)
 
         self.render_mode = render_mode
@@ -36,14 +36,25 @@ class PTCGEnv(gym.Env):
         print('legal actions')
         print(legal_actions)
         # Sample action type
-        valid_action_types = [i for i, x in enumerate(legal_actions[:95]) if x]
+        valid_action_types = [i for i, x in enumerate(legal_actions[:97]) if x]
         action_type = np.random.choice(valid_action_types)
         
+        legal_targets, legal_targets_opp = self.cy_ptcg.get_targets(action_type)
         # Sample target
-        target = np.random.randint(8)
+        legal_targets_types = [i for i, x in enumerate(legal_targets[:8]) if x]
+        if len(legal_targets_types) > 0:
+            target = np.random.choice(legal_targets_types)
+        else:
+            target = -1
+        # target = np.random.randint(8)
         
         # Sample opponent target
-        opponent_target = np.random.randint(8)
+        legal_targets_opp_types = [i for i, x in enumerate(legal_targets_opp[:8]) if x]
+        if len(legal_targets_opp_types) > 0:
+            opponent_target = np.random.choice(legal_targets_opp_types)
+        else:
+            opponent_target = -1
+        # opponent_target = np.random.randint(8)
         
         return [action_type, target, opponent_target]
 
@@ -57,8 +68,6 @@ class PTCGEnv(gym.Env):
         
         player1_deck = self.decks[deck1_index]
         player2_deck = self.decks[deck2_index]
-        print(player1_deck)
-        print(player2_deck)
         player1_energy = self.energies[deck1_index]
         player2_energy = self.energies[deck2_index]
 
@@ -71,17 +80,18 @@ class PTCGEnv(gym.Env):
 
     def step(self, action):
         action_idx, target, opponent_target = action
-        print('action', action)
         reward = self.cy_ptcg.step(action_idx, target, opponent_target)
         print('c step reward', reward)
+        # input('end of step')
         
-        observation = self.cy_ptcg.get_observation()
-        print('obs', observation)
-        terminated = self.cy_ptcg.is_game_over()
+        # print('obs', observation)
+        terminated = (self.cy_ptcg.is_game_over() == 1) or (reward == -10)
         truncated = False  # You can implement turn limit if needed
         info = {}  # You can add any additional info here
-        print('end of step')
-        input('end of step')
+        if not terminated:
+            observation = self.cy_ptcg.get_observation()
+        else:
+            observation = None
         return np.array(observation, dtype=np.float32), reward, terminated, truncated, info
 
     def render(self):
