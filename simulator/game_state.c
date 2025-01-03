@@ -8,32 +8,64 @@
 
 #define GAME_STATE_DEBUG true
 
-void initialize_game_state(GameState *game, 
-                           const char deck1[MAX_CARDS_IN_DECK][MAX_CARD_NAME_LENGTH],
-                           bool energy1[MAX_CARD_ENERGIES],
-                           const char deck2[MAX_CARDS_IN_DECK][MAX_CARD_NAME_LENGTH],
-                           bool energy2[MAX_CARD_ENERGIES])
+void initialize_game_state(GameState *game)
 {
     // Load card data from JSON
     game->card_dictionary = (HashMap*)malloc(sizeof(HashMap));
     load_card_data_from_json(game, "pokemon_tcg_pocket_cards.json");
+    printf("here1\n");
 
     // Initialize random seed
-    srand(time(NULL));
+    srand(time(NULL));    
+}
 
+void reset_game(GameState * game,
+                const char deck1[MAX_CARDS_IN_DECK][MAX_CARD_NAME_LENGTH],
+                bool energy1[MAX_CARD_ENERGIES],
+                const char deck2[MAX_CARDS_IN_DECK][MAX_CARD_NAME_LENGTH],
+                bool energy2[MAX_CARD_ENERGIES])
+{
+    // Iterate through each bucket in the hash table
+    for (int i = 0; i < game->card_dictionary->capacity; i++) {
+        struct node *current = game->card_dictionary->arr[i];
+        
+        // Traverse the linked list at this bucket
+        while (current != NULL) {
+            Card *card = current->value;
+
+            // Reset attached energies
+            if (card->attached_energies != NULL) {
+                memset(card->attached_energies, 0, sizeof(int) * card->energies_count);
+                card->energies_count = 0;
+            }
+
+            // Reset other relevant fields
+            card->hp = card->hp_total;                      // Reset HP to full
+            card->status = NONE_STATUS;                            // Reset status effects
+            card->prevent_damage_next_turn = false;         // Reset damage prevention flag
+            card->ability_used = false;                     // Reset ability usage flag
+
+            // Move to the next node in the linked list
+            current = current->next;
+        }
+    }
+    reset_player(&game->player1);
+    reset_player(&game->player2);
     // Init players
     initialize_player(&game->player1, PLAY);
     initialize_player(&game->player2, OPP);
 
+    printf("here2\n");
     // Initialize player 1's deck
-    initialize_deck(game->card_dictionary, &game->player1.deck, deck1, energy1);
+    initialize_deck(game->card_dictionary, game->player1.deck, deck1, energy1);
 
+    printf("here3\n");
     // Initialize player 2's deck
-    initialize_deck(game->card_dictionary, &game->player2.deck, deck2, energy2);
+    initialize_deck(game->card_dictionary, game->player2.deck, deck2, energy2);
 
     // Shuffle decks
-    shuffle_deck(&game->player1.deck);
-    shuffle_deck(&game->player2.deck);
+    shuffle_deck(game->player1.deck);
+    shuffle_deck(game->player2.deck);
 
     // Initialize other game state variables
     game->winner = NULL;
@@ -48,13 +80,12 @@ void initialize_game_state(GameState *game,
     game->current_player = PLAY;
 
     // Draw initial hands
-    draw_initial_hand(&game->player1, &game->player1.deck);
-    draw_initial_hand(&game->player2, &game->player2.deck);
+    draw_initial_hand(&game->player1, game->player1.deck);
+    draw_initial_hand(&game->player2, game->player2.deck);
 
-    // printf("Initial game state:\n");
-    // print_player_state(&game->player1, "Player 1");
-    // print_player_state(&game->player2, "Player 2");
-    
+    printf("Initial game state:\n");
+    print_player_state(&game->player1, "Player 1");
+    print_player_state(&game->player2, "Player 2");
 }
 
 
@@ -62,16 +93,16 @@ void start_turn(GameState *game, Player *player)
 {
     Player *opponent = get_opponent_(game);
 
-    // printf("\nStarting turn for %s:\n", (player == &game->player1) ? "Player 1" : "Player 2");
-    // print_player_state(player, (player == &game->player1) ? "Player 1" : "Player 2");
-    // print_player_state(opponent, (opponent == &game->player2) ? "Player 2" : "Player 1");
+    printf("\nStarting turn for %s:\n", (player == &game->player1) ? "Player 1" : "Player 2");
+    print_player_state(player, (player == &game->player1) ? "Player 1" : "Player 2");
+    print_player_state(opponent, (opponent == &game->player2) ? "Player 2" : "Player 1");
     if (game->current_turn == 0) return;
     // if not turn 1
     if (game->current_turn != 1)
     {
         player->energy_available = true;
     }
-    draw_card(player, &player->deck);
+    draw_card(player, player->deck);
     game->turn_effects.blaine_boost = false;
     game->turn_effects.giovanni_boost = false;
     game->turn_effects.sabrina_switch = false;
@@ -144,9 +175,9 @@ bool act_turn(GameState *game, Player *player, char **action)
         default:
             if (GAME_STATE_DEBUG) printf("Invalid action type: %c\n", action_type[0]);
     }
-    // printf("\nAfter action:\n");
-    // print_player_state(player, (player == &game->player1) ? "Player 1" : "Player 2");
-    // print_player_state(opponent, (opponent == &game->player2) ? "Player 2" : "Player 1");
+    printf("\nAfter action:\n");
+    print_player_state(player, (player == &game->player1) ? "Player 1" : "Player 2");
+    print_player_state(opponent, (opponent == &game->player2) ? "Player 2" : "Player 1");
 
     return success;
 }
@@ -166,11 +197,11 @@ bool play_item(GameState *game, Player *player, char *card_name, int target) {
         strcmp(card_name, "Old Amber") == 0) {
         // Play this card as if it were a 40-HP Basic Pokémon.
         if (player->bench_count < MAX_BENCH_POKEMON) {
-            Card fossil = *card;
-            fossil.hp = 40;
-            fossil.hp_total = 40;
-            fossil.stage = BASIC;
-            fossil.type = COLORLESS;
+            Card *fossil = card;
+            fossil->hp = 40;
+            fossil->hp_total = 40;
+            fossil->stage = BASIC;
+            fossil->type = COLORLESS;
             card->retreat_cost = 0;
             player->bench[player->bench_count++] = fossil;
         } else {
@@ -180,8 +211,8 @@ bool play_item(GameState *game, Player *player, char *card_name, int target) {
         // Put a Basic Pokémon from your opponent's discard pile onto their Bench.
         Card *basic_pokemon = NULL;
         if (target < opponent->discard_count) {
-            if (opponent->discard_pile[target].stage == BASIC) {
-                basic_pokemon = &opponent->discard_pile[target];
+            if (opponent->discard_pile[target]->stage == BASIC) {
+                basic_pokemon = opponent->discard_pile[target];
             } else {
                 return false;
             }
@@ -189,7 +220,7 @@ bool play_item(GameState *game, Player *player, char *card_name, int target) {
             return false;
         }
         if (basic_pokemon && opponent->bench_count < MAX_BENCH_POKEMON) {
-            opponent->bench[opponent->bench_count++] = *basic_pokemon;
+            opponent->bench[opponent->bench_count++] = basic_pokemon;
             // Remove from discard pile
             for (int i = 0; i < opponent->discard_count - 1; i++) {
                 opponent->discard_pile[i] = opponent->discard_pile[i + 1];
@@ -199,18 +230,18 @@ bool play_item(GameState *game, Player *player, char *card_name, int target) {
             return false;
         }
     } else if (strcmp(card_name, "Mythical Slab") == 0) {
-        // Look at the top card of your deck. If that card is a Pokémon, put it into your hand. If it is not a Pokémon, put it on the bottom of your deck.
-        if (player->deck.card_count > 0) {
-            Card top_card = player->deck.cards[player->deck.card_count - 1];
-            if (top_card.cardtype == POKEMON) {
+        // Look at the top card of your deck-> If that card is a Pokémon, put it into your hand. If it is not a Pokémon, put it on the bottom of your deck->
+        if (player->deck->card_count > 0) {
+            Card *top_card = player->deck->cards[player->deck->card_count - 1];
+            if (top_card->cardtype == POKEMON) {
                 player->hand[player->hand_count++] = top_card;
             } else {
-                player->deck.cards[0] = top_card;
-                for (int i = player->deck.card_count - 1; i > 0; i--) {
-                    player->deck.cards[i] = player->deck.cards[i - 1];
+                player->deck->cards[0] = top_card;
+                for (int i = player->deck->card_count - 1; i > 0; i--) {
+                    player->deck->cards[i] = player->deck->cards[i - 1];
                 }
             }
-            player->deck.card_count--;
+            player->deck->card_count--;
         } else {
             return false;
         }
@@ -226,24 +257,24 @@ bool play_item(GameState *game, Player *player, char *card_name, int target) {
         // During this turn, the Retreat Cost of your Active Pokémon is 1 less.
         game->turn_effects.retreat_reduction++;
     } else if (strcmp(card_name, "Pokedex") == 0) {
-        // Look at the top 3 cards of your deck.
+        // Look at the top 3 cards of your deck->
         // This effect is mostly for the player's information, so we'll just print the cards
         // @todo: change from print to get obs information
-        for (int i = 0; i < 3 && i < player->deck.card_count; i++) {
-            if (GAME_STATE_DEBUG) printf("Card %d: %s\n", i + 1, player->deck.cards[player->deck.card_count - 1 - i].name);
+        for (int i = 0; i < 3 && i < player->deck->card_count; i++) {
+            if (GAME_STATE_DEBUG) printf("Card %d: %s\n", i + 1, player->deck->cards[player->deck->card_count - 1 - i]->name);
         }
     } else if (strcmp(card_name, "Poke Ball") == 0) {
         // Put 1 random Basic Pokémon from your deck into your hand.
         Card *basic_pokemon = NULL;
-        for (int i = player->deck.card_count - 1; i >= 0; i--) {
-            if (player->deck.cards[i].stage == BASIC) {
-                basic_pokemon = &player->deck.cards[i];
+        for (int i = player->deck->card_count - 1; i >= 0; i--) {
+            if (player->deck->cards[i]->stage == BASIC) {
+                basic_pokemon = player->deck->cards[i];
                 break;
             }
         }
         if (basic_pokemon) {
-            player->hand[player->hand_count++] = *basic_pokemon;
-            player->deck.card_count--;
+            player->hand[player->hand_count++] = basic_pokemon;
+            player->deck->card_count--;
         } else {
             return false;
         }
@@ -253,17 +284,17 @@ bool play_item(GameState *game, Player *player, char *card_name, int target) {
         // @todo: change from print to get obs information
         if (GAME_STATE_DEBUG) printf("Opponent's hand:\n");
         for (int i = 0; i < opponent->hand_count; i++) {
-            if (GAME_STATE_DEBUG) printf("%s\n", opponent->hand[i].name);
+            if (GAME_STATE_DEBUG) printf("%s\n", opponent->hand[i]->name);
         }
     } else if (strcmp(card_name, "Red Card") == 0) {
         // Your opponent shuffles their hand into their deck and draws 3 cards.
         for (int i = 0; i < opponent->hand_count; i++) {
-            opponent->deck.cards[opponent->deck.card_count++] = opponent->hand[i];
+            opponent->deck->cards[opponent->deck->card_count++] = opponent->hand[i];
         }
         opponent->hand_count = 0;
-        shuffle_deck(&opponent->deck);
-        for (int i = 0; i < 3 && opponent->deck.card_count > 0; i++) {
-            opponent->hand[opponent->hand_count++] = opponent->deck.cards[--opponent->deck.card_count];
+        shuffle_deck(opponent->deck);
+        for (int i = 0; i < 3 && opponent->deck->card_count > 0; i++) {
+            opponent->hand[opponent->hand_count++] = opponent->deck->cards[--opponent->deck->card_count];
         }
     } else {
         return false;
@@ -279,14 +310,14 @@ bool play_pokemon(GameState *game, Player *player, char *card_name) {
     if (card != NULL && card->cardtype == POKEMON && card->stage == BASIC) {
         if (player->active_pokemon == NULL) {
             // Play to active spot if it's empty
-            player->active_pokemon = malloc(sizeof(Card));
+            player->active_pokemon = (Card *) malloc(sizeof(Card));
             if (player->active_pokemon == NULL) {
                 return false; // Memory allocation failed
             }
             *player->active_pokemon = *card;
         } else if (player->bench_count < MAX_BENCH_POKEMON) {
             // Play to bench if there's space
-            player->bench[player->bench_count] = *card;
+            player->bench[player->bench_count] = card;
             player->bench_count++;
         } else {
             return false; // No space to play the Pokémon
@@ -294,7 +325,7 @@ bool play_pokemon(GameState *game, Player *player, char *card_name) {
 
         // Remove card from hand
         for (int i = 0; i < player->hand_count; i++) {
-            if (&player->hand[i] == card) {
+            if (player->hand[i] == card) {
                 for (int j = i; j < player->hand_count - 1; j++) {
                     player->hand[j] = player->hand[j + 1];
                 }
@@ -335,7 +366,7 @@ bool evolve_pokemon(GameState *game, Player *player, char *card_name, int target
 
         // Remove evolution card from hand
         for (int i = 0; i < player->hand_count; i++) {
-            if (&player->hand[i] == evolution) {
+            if (player->hand[i] == evolution) {
                 for (int j = i; j < player->hand_count - 1; j++) {
                     player->hand[j] = player->hand[j + 1];
                 }
@@ -411,14 +442,14 @@ bool use_ability(GameState *game, Player *player, char *card_name, int target) {
 
     Player *opponent = get_opponent_(game);
 
-    if (strcmp(card->ability.name, "Powder Heal") == 0 && !card->ability_used) {
+    if (strcmp(card->ability->name, "Powder Heal") == 0 && !card->ability_used) {
         Card *target_card = get_target(player, opponent, target);
         heal_card(target_card, 20);
         card->ability_used = true;
         return true;
     }
 
-    else if (strcmp(card->ability.name, "Fragrance Trap") == 0 && !card->ability_used) {
+    else if (strcmp(card->ability->name, "Fragrance Trap") == 0 && !card->ability_used) {
         if (card != player->active_pokemon) {
             return false;
         }
@@ -433,7 +464,7 @@ bool use_ability(GameState *game, Player *player, char *card_name, int target) {
         return false;
     }
 
-    if (strcmp(card->ability.name, "Water Shuriken") == 0 && !card->ability_used) {
+    if (strcmp(card->ability->name, "Water Shuriken") == 0 && !card->ability_used) {
         Card *target_card = get_target(player, opponent, target);
         if (target_card) {
             target_card->hp -= 20;
@@ -444,13 +475,13 @@ bool use_ability(GameState *game, Player *player, char *card_name, int target) {
         return false;
     }
 
-    if (strcmp(card->ability.name, "Volt Charge") == 0 && !card->ability_used) {
+    if (strcmp(card->ability->name, "Volt Charge") == 0 && !card->ability_used) {
         attach_energy_to_card(card, LIGHTNING);
         card->ability_used = true;
         return true;
     }
 
-    if (strcmp(card->ability.name, "Sleep Pendulum") == 0 && !card->ability_used) {
+    if (strcmp(card->ability->name, "Sleep Pendulum") == 0 && !card->ability_used) {
         if (flip_coin() == HEADS) {
             opponent->active_pokemon->status = ASLEEP;
             card->ability_used = true;
@@ -459,8 +490,8 @@ bool use_ability(GameState *game, Player *player, char *card_name, int target) {
         return false;
     }
 
-    if (strcmp(card->ability.name, "Psy Shadow") == 0 && !card->ability_used) {
-        if (player->deck.energy[PSYCHIC] && player->active_pokemon && player->active_pokemon->type == PSYCHIC) {
+    if (strcmp(card->ability->name, "Psy Shadow") == 0 && !card->ability_used) {
+        if (player->deck->energy[PSYCHIC] && player->active_pokemon && player->active_pokemon->type == PSYCHIC) {
             attach_energy_to_card(player->active_pokemon, PSYCHIC);
             card->ability_used = true;
             return true;
@@ -468,7 +499,7 @@ bool use_ability(GameState *game, Player *player, char *card_name, int target) {
         return false;
     }
 
-    if (strcmp(card->ability.name, "Gas Leak") == 0 && !card->ability_used) {
+    if (strcmp(card->ability->name, "Gas Leak") == 0 && !card->ability_used) {
         if (card == player->active_pokemon) {
             opponent->active_pokemon->status = POISONED;
             card->ability_used = true;
@@ -477,7 +508,7 @@ bool use_ability(GameState *game, Player *player, char *card_name, int target) {
         return false;
     }
 
-    if (strcmp(card->ability.name, "Drive Off") == 0 && !card->ability_used) {
+    if (strcmp(card->ability->name, "Drive Off") == 0 && !card->ability_used) {
         if (opponent->bench_count > 0) {
             game->turn_effects.sabrina_switch = true;
             card->ability_used = true;
@@ -486,8 +517,8 @@ bool use_ability(GameState *game, Player *player, char *card_name, int target) {
         return false;
     }
 
-    if (strcmp(card->ability.name, "Data Scan") == 0 && !card->ability_used) {
-        if (player->deck.card_count > 0) {
+    if (strcmp(card->ability->name, "Data Scan") == 0 && !card->ability_used) {
+        if (player->deck->card_count > 0) {
             // In a real game, we would show this card to the player
             // Here we'll just return true to indicate the ability was used
             card->ability_used = true;
@@ -496,7 +527,7 @@ bool use_ability(GameState *game, Player *player, char *card_name, int target) {
         return false;
     }
 
-    if (strcmp(card->ability.name, "Wash Out") == 0) {
+    if (strcmp(card->ability->name, "Wash Out") == 0) {
         Card *source = get_target(player, NULL, target);
         if (source && source->type == WATER && source != player->active_pokemon) {
             if (source->attached_energies[WATER] > 0) {
@@ -554,11 +585,11 @@ bool use_move(GameState *game, Player *player, char *card_name, int move_index, 
         damage -= 10;
         if (damage < 0) damage = 0;
     }
-    if (strcmp(opponent_card->ability.name, "Shell Armor") == 0) {
+    if (strcmp(opponent_card->ability->name, "Shell Armor") == 0) {
         damage -= 10;
         if (damage < 0) damage = 0;
     }
-        if (strcmp(opponent_card->ability.name, "Hard Coat") == 0) {
+        if (strcmp(opponent_card->ability->name, "Hard Coat") == 0) {
         damage -= 20;
         if (damage < 0) damage = 0;
     }
@@ -678,7 +709,7 @@ bool use_move(GameState *game, Player *player, char *card_name, int move_index, 
                 if (heads_count > 0 && target > 0) {
                     if (player->bench_count > target-1) {
                         for (int i = 0; i < heads_count; i++) {
-                            attach_energy_to_card(&player->bench[target-1], FIRE);
+                            attach_energy_to_card(player->bench[target-1], FIRE);
                         }
                     } else return false;
                 } else {
@@ -741,8 +772,8 @@ bool use_move(GameState *game, Player *player, char *card_name, int move_index, 
                 if (!target->prevent_damage_next_turn) 
                 {
                     if (opponent_card == opponent->active_pokemon &&
-                        (strcmp(opponent_card->ability.name, "Counterattack") == 0 || 
-                        strcmp(opponent_card->ability.name, "Rough Skin") == 0)) 
+                        (strcmp(opponent_card->ability->name, "Counterattack") == 0 || 
+                        strcmp(opponent_card->ability->name, "Rough Skin") == 0)) 
                     {
                         active->hp -= 20;
                         check_for_KO(game, opponent, player, active);
@@ -775,8 +806,8 @@ bool use_move(GameState *game, Player *player, char *card_name, int move_index, 
 
             for (int i = 0; i < opponent->bench_count && i < 3; i++) {
                 if (damages[i + 1] > 0) {
-                    opponent->bench[i].hp -= damages[i + 1];
-                    check_for_KO(game, player, opponent, &opponent->bench[i]);
+                    opponent->bench[i]->hp -= damages[i + 1];
+                    check_for_KO(game, player, opponent, opponent->bench[i]);
                 }
             }
 
@@ -805,7 +836,7 @@ bool use_move(GameState *game, Player *player, char *card_name, int move_index, 
             int draw_count = 0;
             sscanf(move->description, "Draw %d card", &draw_count);
             for (int i = 0; i < draw_count; i++) {
-                draw_card(player, &player->deck);
+                draw_card(player, player->deck);
             }
         }
 
@@ -821,8 +852,8 @@ bool use_move(GameState *game, Player *player, char *card_name, int move_index, 
     // Apply damage
     if (!opponent_card->prevent_damage_next_turn) 
     {
-        if (strcmp(opponent_card->ability.name, "Counterattack") == 0 || 
-            strcmp(opponent_card->ability.name, "Rough Skin") == 0) 
+        if (strcmp(opponent_card->ability->name, "Counterattack") == 0 || 
+            strcmp(opponent_card->ability->name, "Rough Skin") == 0) 
         {
             active->hp -= 20;
             check_for_KO(game, opponent, player, active);
@@ -851,7 +882,7 @@ void check_for_KO(GameState *game, Player *player, Player * opponent, Card *oppo
         }
         // Move knocked out Pokémon to discard pile
         if (opponent_card == opponent->active_pokemon) {
-            opponent->discard_pile[opponent->discard_count++] = *opponent_card;
+            opponent->discard_pile[opponent->discard_count++] = opponent_card;
             // printf("%s knocked out.\n", opponent->active_pokemon->name);
             opponent->active_pokemon = NULL;
             if (opponent->bench_count == 0) {
@@ -860,7 +891,7 @@ void check_for_KO(GameState *game, Player *player, Player * opponent, Card *oppo
             }
         } else {
             for (int i = 0; i < opponent->bench_count; i++) {
-                if (&opponent->bench[i] == opponent_card) {
+                if (opponent->bench[i] == opponent_card) {
                     opponent->discard_pile[opponent->discard_count++] = opponent->bench[i];
                     for (int j = i; j < opponent->bench_count - 1; j++) {
                         opponent->bench[j] = opponent->bench[j + 1];
@@ -900,7 +931,7 @@ bool end_turn(GameState *game, Player *player) {
         check_for_KO(game, opponent, player, opponent->active_pokemon);
     }
     
-    // printf("End of turn %d\n\n", game->current_turn);
+    printf("End of turn %d\n\n", game->current_turn);
     // if (opponent->role == OPP) printf("Opponent's turn.\n");
     // else if (opponent->role == PLAY) printf("Player's turn.\n");
     // max game turns
@@ -947,42 +978,24 @@ Player * get_opponent_(GameState *game)
     return opponent;
 }
 
-const char* energy_type_to_string(EnergyType type) {
-    switch (type) {
-        case GRASS: return "Grass";
-        case FIRE: return "Fire";
-        case WATER: return "Water";
-        case LIGHTNING: return "Lightning";
-        case PSYCHIC: return "Psychic";
-        case FIGHTING: return "Fighting";
-        case DARKNESS: return "Darkness";
-        case METAL: return "Metal";
-        case FAIRY: return "Fairy";
-        case DRAGON: return "Dragon";
-        case COLORLESS: return "Colorless";
-        default: return "Unknown";
-    }
-}
-
-
 void print_player_state(Player *player, const char *player_name) {
     printf("%s:\n", player_name);
     
     printf("Hand: ");
     for (int i = 0; i < player->hand_count; i++) {
-        printf("%s", player->hand[i].name);
+        printf("%s", player->hand[i]->name);
         if (i < player->hand_count - 1) printf(", ");
     }
     printf("\n");
     
     printf("Discard pile: ");
     for (int i = 0; i < player->discard_count; i++) {
-        printf("%s", player->discard_pile[i].name);
+        printf("%s", player->discard_pile[i]->name);
         if (i < player->discard_count - 1) printf(", ");
     }
     printf("\n");
     
-    printf("Cards in deck: %d\n", player->deck.card_count);
+    printf("Cards in deck: %d\n", player->deck->card_count);
     
     printf("Active Pokemon: ");
     if (player->active_pokemon) {
@@ -1007,12 +1020,12 @@ void print_player_state(Player *player, const char *player_name) {
     
     printf("Bench: ");
     for (int i = 0; i < player->bench_count; i++) {
-        printf("%s (HP: %d/%d) - Energies: ", player->bench[i].name, player->bench[i].hp, player->bench[i].hp_total);
+        printf("%s (HP: %d/%d) - Energies: ", player->bench[i]->name, player->bench[i]->hp, player->bench[i]->hp_total);
         
         int energy_count = 0;
         for (int j = 0; j < MAX_CARD_ENERGIES; j++) {
-            if (player->bench[i].attached_energies[j] > 0) {
-                printf("%s %d ", energy_type_to_string((EnergyType)j), player->bench[i].attached_energies[j]);
+            if (player->bench[i]->attached_energies[j] > 0) {
+                printf("%s %d ", energy_type_to_string((EnergyType)j), player->bench[i]->attached_energies[j]);
                 energy_count++;
             }
         }

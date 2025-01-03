@@ -6,7 +6,7 @@ void test_load_card_data() {
     game.card_dictionary = (HashMap*)malloc(sizeof(HashMap));
     initializeHashMap(game.card_dictionary);
 
-    load_card_data_from_json(&game, "pokemon_tcg_pocket_cards.json");
+    load_card_data_from_json(&game, "../pokemon_tcg_pocket_cards.json");
 
     printf("Loaded cards:\n");
     for (int i = 0; i < game.card_dictionary->capacity; i++) {
@@ -48,8 +48,8 @@ void test_load_card_data() {
             printf("Has Ability: %s\n", card->has_ability ? "Yes" : "No");
             printf("Card Type: %d\n", card->cardtype);
             if (card->has_ability) {
-                printf("Ability Name: %s\n", card->ability.name);
-                printf("Ability Description: %s\n", card->ability.description);
+                printf("Ability Name: %s\n", card->ability->name);
+                printf("Ability Description: %s\n", card->ability->description);
             }
             printf("Status: %d\n", card->status);
             printf("Prevent Damage Next Turn: %s\n", card->prevent_damage_next_turn ? "Yes" : "No");

@@ -8,13 +8,15 @@ cdef extern from "simulator/ptcg.h":
     ctypedef struct GameState:
         pass
     
-    void reset_game(GameState *game, const char player1_deck[20][50], const int player1_energy[11], const char player2_deck[20][50], const int player2_energy[11])
+    void init(GameState * game)
+    void reset(GameState *game, const char player1_deck[20][50], const int player1_energy[11], const char player2_deck[20][50], const int player2_energy[11])
     int* get_legal_actions(GameState *game)
     int execute_action(GameState *game, int action, int target, int opponent_target)
     int* get_valid_targets(GameState *game, int action)
     int* get_valid_opponent_target(GameState *game, int action)
     float* get_observation(GameState *game)
     int is_game_over(GameState *game)
+    int get_current_player(GameState *game)
 
 cdef class CyPTCG:
     cdef GameState* game
@@ -28,10 +30,14 @@ cdef class CyPTCG:
         self.game = <GameState*>malloc(sizeof(GameState))
         if self.game is NULL:
             raise MemoryError()
+        init(self.game)
 
     def __dealloc__(self):
         if self.game is not NULL:
             free(self.game)
+
+    def get_player(self):
+        return get_current_player(self.game)
 
     def reset(self, player1_deck, player1_energy, player2_deck, player2_energy):
         for i in range(20):
@@ -42,7 +48,7 @@ cdef class CyPTCG:
             self.player1_energy[i] = player1_energy[i]
             self.player2_energy[i] = player2_energy[i]
 
-        reset_game(self.game, self.player1_deck, self.player1_energy, self.player2_deck, self.player2_energy)
+        reset(self.game, self.player1_deck, self.player1_energy, self.player2_deck, self.player2_energy)
 
     def get_actions_available(self):
         cdef int* legal_actions = get_legal_actions(self.game)

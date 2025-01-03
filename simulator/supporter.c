@@ -159,8 +159,8 @@ bool leaf_effect(GameState *game) {
 }
 
 bool professors_research_effect(Player *player) {
-    draw_card(player, &player->deck);
-    draw_card(player, &player->deck);
+    draw_card(player, player->deck);
+    draw_card(player, player->deck);
     return true;
 }
 

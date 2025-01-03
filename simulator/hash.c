@@ -19,7 +19,7 @@ void initializeHashMap(HashMap* mp)
     }
 
     if (HASH_DEBUG) printf("Setting capacity\n");
-    mp->capacity = 1024;
+    mp->capacity = 2048;
 
     if (HASH_DEBUG) printf("Setting numOfElements\n");
     mp->numOfElements = 0;

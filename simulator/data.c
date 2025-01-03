@@ -17,20 +17,23 @@ static void parse_move(cJSON *move_json, Move *move) {
     cJSON *damage = cJSON_GetObjectItemCaseSensitive(move_json, "damage");
     cJSON *description = cJSON_GetObjectItemCaseSensitive(move_json, "description");
 
-    for (int i = 0; i < MAX_CARD_ENERGIES; i++) move->energy[i] = 0;
+    move->energy = NULL;
+    move->description = NULL;
+    move->name = NULL;
+    move->energy_count = 0;
 
     if (cJSON_IsString(name) && name->valuestring != NULL) {
-        strncpy(move->name, name->valuestring, sizeof(move->name) - 1);
-        move->name[sizeof(move->name) - 1] = '\0';
+        move->name = strdup(name->valuestring);
     }
 
     if (cJSON_IsArray(energy)) {
         int energy_count = cJSON_GetArraySize(energy);
+        move->energy = (int *)calloc(MAX_CARD_ENERGIES, sizeof(int));
         move->energy_count = (energy_count < MAX_CARD_ENERGIES) ? energy_count : MAX_CARD_ENERGIES;
         for (int i = 0; i < move->energy_count; i++) {
             cJSON *energy_item = cJSON_GetArrayItem(energy, i);
             if (cJSON_IsString(energy_item) && energy_item->valuestring != NULL) {
-                move->energy[(int) parse_energy_type(energy_item->valuestring)] += 1;
+                move->energy[(int)parse_energy_type(energy_item->valuestring)] += 1;
             }
         }
     }
@@ -42,11 +45,10 @@ static void parse_move(cJSON *move_json, Move *move) {
     }
 
     if (cJSON_IsString(description) && description->valuestring != NULL) {
-        strncpy(move->description, description->valuestring, sizeof(move->description) - 1);
-        move->description[sizeof(move->description) - 1] = '\0';
+        move->description = strdup(description->valuestring);
     }
-
 }
+
 
 // Function to check if a string contains another string (case-insensitive)
 bool str_contains_insensitive(const char *str, const char *substr) {
@@ -107,17 +109,24 @@ void load_card_data_from_json(GameState *game, const char* filename) {
 
     cJSON* card_item = NULL;
     int card_count = 0;
-    cJSON_ArrayForEach(card_item, json) {
+    cJSON_ArrayForEach(card_item, json) {  
         if (DATA_DEBUG) printf("Processing card %d\n", card_count);
-
         Card* card = (Card*)malloc(sizeof(Card));
         if (card == NULL) {
             fprintf(stderr, "Memory allocation failed for card\n");
             continue;
         }
+        memset(card, 0, sizeof(Card));
+        card->id = card_count++;
+
+        // Dynamically allocate memory for card fields
+        card->number = NULL;
+        card->name = NULL;
+        card->evolves_from = NULL;
+        card->moves = NULL;
+        card->attached_energies = (int *)calloc(MAX_CARD_ENERGIES, sizeof(int));
         init_card(card);
         card->id = card_count++;
-        for (int i = 0; i < MAX_CARD_ENERGIES; i++) card->attached_energies[i] = 0;
         
         cJSON* card_number = cJSON_GetObjectItemCaseSensitive(card_item, "#");
         cJSON* card_name = cJSON_GetObjectItemCaseSensitive(card_item, "card_name");
@@ -128,17 +137,20 @@ void load_card_data_from_json(GameState *game, const char* filename) {
         cJSON* retreat_cost = cJSON_GetObjectItemCaseSensitive(card_item, "retreat_cost");
         cJSON* ability = cJSON_GetObjectItemCaseSensitive(card_item, "ability");
         cJSON* moves = cJSON_GetObjectItemCaseSensitive(card_item, "moves");
+        cJSON *evolves_from = cJSON_GetObjectItemCaseSensitive(card_item, "evolves_from");
+
+        if (cJSON_IsString(evolves_from)) {
+            card->evolves_from = strdup(evolves_from->valuestring);
+        }
 
         if (DATA_DEBUG) printf("Card fields extracted\n");
 
         if (cJSON_IsString(card_number) && card_number->valuestring != NULL) {
-            strncpy(card->number, card_number->valuestring, MAX_CARD_NAME_LENGTH - 1);
-            card->number[MAX_CARD_NAME_LENGTH - 1] = '\0';
+            card->number = strdup(card_number->valuestring);
             if (DATA_DEBUG) printf("Card number: %s\n", card->number);
         }
         if (cJSON_IsString(card_name) && card_name->valuestring != NULL) {
-            strncpy(card->name, card_name->valuestring, MAX_CARD_NAME_LENGTH - 1);
-            card->name[MAX_CARD_NAME_LENGTH - 1] = '\0';
+            card->name = strdup(card_name->valuestring);
             if (DATA_DEBUG) printf("Card name: %s\n", card->name);
         }
 
@@ -211,30 +223,36 @@ void load_card_data_from_json(GameState *game, const char* filename) {
         card->has_ability = (cJSON_IsArray(ability) && cJSON_GetArraySize(ability) > 0);
         if (DATA_DEBUG) printf("Card has ability: %s\n", card->has_ability ? "Yes" : "No");
 
-        if (cJSON_IsArray(ability)) {
-            cJSON *ability_item = cJSON_GetArrayItem(ability, 0);
-            cJSON *name = cJSON_GetObjectItemCaseSensitive(ability_item, "name");
-            cJSON *description = cJSON_GetObjectItemCaseSensitive(ability_item, "description");
-            if (cJSON_IsString(name) && name->valuestring != NULL) {
-                strncpy(card->ability.name, name->valuestring, sizeof(card->ability.name) - 1);
-                card->ability.name[sizeof(card->ability.name) - 1] = '\0';
-                if (DATA_DEBUG) printf("Ability name: %s\n", card->ability.name);
-            }
-            if (cJSON_IsString(description) && description->valuestring != NULL) {
-                strncpy(card->ability.description, description->valuestring, sizeof(card->ability.description) - 1);
-                card->ability.description[sizeof(card->ability.description) - 1] = '\0';
-                if (DATA_DEBUG) printf("Ability description: %s\n", card->ability.description);
+        card->ability = (Ability*)malloc(sizeof(Ability));
+        if (card->ability == NULL) {
+            fprintf(stderr, "Memory allocation failed for ability\n");
+        } else {
+            card->ability->name = NULL;
+            card->ability->description = NULL;
+
+            if (cJSON_IsArray(ability)) {
+                cJSON *ability_item = cJSON_GetArrayItem(ability, 0);
+                cJSON *name = cJSON_GetObjectItemCaseSensitive(ability_item, "name");
+                cJSON *description = cJSON_GetObjectItemCaseSensitive(ability_item, "description");
+
+                if (cJSON_IsString(name) && name->valuestring != NULL) {
+                    card->ability->name = strdup(name->valuestring);
+                } else card->ability->name = strdup("");
+                if (cJSON_IsString(description) && description->valuestring != NULL) {
+                    card->ability->description = strdup(description->valuestring);
+                } else card->ability->description = strdup("");
             }
         }
 
-        if (cJSON_IsArray(moves)) {
+
+
+         if (cJSON_IsArray(moves)) {
             int move_count = cJSON_GetArraySize(moves);
             card->move_count = (move_count < MAX_MOVES) ? move_count : MAX_MOVES;
-            if (DATA_DEBUG) printf("Number of moves: %d\n", card->move_count);
+            card->moves = (Move *)malloc(card->move_count * sizeof(Move));
             for (int i = 0; i < card->move_count; i++) {
                 cJSON *move_item = cJSON_GetArrayItem(moves, i);
                 parse_move(move_item, &card->moves[i]);
-                if (DATA_DEBUG) printf("Move %d parsed\n", i+1);
             }
         }
 
@@ -249,3 +267,4 @@ void load_card_data_from_json(GameState *game, const char* filename) {
     free(json_string);
     if (DATA_DEBUG) printf("Memory cleaned up\n");
 }
+

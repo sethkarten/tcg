@@ -28,12 +28,12 @@ typedef struct {
     Role current_player;
 } GameState;
 
-void initialize_game_state(GameState *game, 
-                           const char deck1[MAX_CARDS_IN_DECK][MAX_CARD_NAME_LENGTH],
-                           bool energy1[MAX_CARD_ENERGIES],
-                           const char deck2[MAX_CARDS_IN_DECK][MAX_CARD_NAME_LENGTH],
-                           bool energy2[MAX_CARD_ENERGIES]
-);
+void initialize_game_state(GameState *game);
+void reset_game(GameState * game, 
+                const char deck1[MAX_CARDS_IN_DECK][MAX_CARD_NAME_LENGTH],
+                bool energy1[MAX_CARD_ENERGIES],
+                const char deck2[MAX_CARDS_IN_DECK][MAX_CARD_NAME_LENGTH],
+                bool energy2[MAX_CARD_ENERGIES]);
 
 void start_turn(GameState *game, Player *player);
 bool act_turn(GameState *game, Player *player, char ** action);
@@ -50,6 +50,6 @@ Player * get_winner(GameState *game);
 Player * get_current_player_(GameState *game);
 Player * get_opponent_(GameState *game);
 void print_player_state(Player *player, const char *player_name);
-const char* energy_type_to_string(EnergyType type);
+
 
 #endif // GAME_STATE_H

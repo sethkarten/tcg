@@ -13,22 +13,39 @@ typedef enum {
 } Role;
 
 typedef struct {
+    // pokemon
     Card *active_pokemon;
-    Card bench[MAX_BENCH_POKEMON];
+    Card **bench;
     int bench_count;
-    Deck deck;
-    Card hand[MAX_HAND_SIZE];
+    int bench_capacity;
+
+    // deck
+    Deck *deck;
+
+    // hand
+    Card **hand;
     int hand_count;
-    Card prize_cards[MAX_PRIZE_CARDS];
+    int hand_capacity;
+
+    // win con
     int prize_cards_left;
-    Card discard_pile[MAX_CARDS_IN_DECK];
+
+    // discard pile
+    Card **discard_pile;
     int discard_count;
+    int discard_capacity;
+
+    // misc
     Role role;
     bool energy_available;
     bool cant_retreat;
 } Player;
 
+
 void initialize_player(Player *player, Role role);
+void reset_player(Player *player);
+void cleanup_player(Player *player);
+
 EnergyType get_energy(Player *player, int current_turn);
 bool attach_energy(Player *player, EnergyType energy, int target);
 void discard_card_from_hand(Player *player, Card *card);

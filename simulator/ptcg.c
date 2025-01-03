@@ -3,9 +3,14 @@
 #include <string.h>
 #include "ptcg.h"
 
-#define INFO false
+#define INFO_PTCG true
 
-void reset_game(GameState *game, 
+void init(GameState * game)
+{
+    initialize_game_state(game);
+}
+
+void reset(GameState *game, 
                 const char player1_deck[MAX_CARDS_IN_DECK][MAX_CARD_NAME_LENGTH], 
                 int _player1_energy[MAX_CARD_ENERGIES], 
                 const char player2_deck[MAX_CARDS_IN_DECK][MAX_CARD_NAME_LENGTH],
@@ -17,7 +22,7 @@ void reset_game(GameState *game,
         player1_energy[i] = _player1_energy[i] == 1;
         player2_energy[i] = _player2_energy[i] == 1;
     }
-    initialize_game_state(game, player1_deck, player1_energy, player2_deck, player2_energy);
+    reset_game(game, player1_deck, player1_energy, player2_deck, player2_energy);
 }
 
 int * get_legal_actions(GameState *game) {
@@ -42,7 +47,7 @@ int * get_legal_actions(GameState *game) {
         if (game->current_turn == 0) 
         {
             for (int i = 0; i < current_player->hand_count; i++) {
-                Card *card = &current_player->hand[i];
+                Card *card = current_player->hand[i];
                 if (card->cardtype == POKEMON && card->stage == BASIC)  legal_actions[i + 4] = true;
             }
         } else {
@@ -73,8 +78,8 @@ int * get_legal_actions(GameState *game) {
     // Play a supporter card (44-63)
     // Play an item card (64-83)
     for (int i = 0; i < current_player->hand_count; i++) {
-        Card *card = &current_player->hand[i];
-        if (INFO) printf("Hand %d: %s\n", i, card->name);
+        Card *card = current_player->hand[i];
+        if (INFO_PTCG) printf("Hand %d: %s\n", i, card->name);
         if (card->cardtype == POKEMON && card->stage == BASIC && current_player->bench_count < 3) {
             legal_actions[i + 4] = true;
         } else if (strcmp(card->evolves_from, current_player->active_pokemon->name) == 0) {
@@ -102,7 +107,7 @@ int * get_legal_actions(GameState *game) {
         legal_actions[87] = true;
     }
     for (int i = 0; i < current_player->bench_count && i < 3; i++) {
-        if (current_player->bench[i].has_ability && !current_player->bench[i].ability_used) {
+        if (current_player->bench[i]->has_ability && !current_player->bench[i]->ability_used) {
             legal_actions[i + 88] = true;
         }
     }
@@ -119,7 +124,7 @@ int * get_legal_actions(GameState *game) {
         }
     }
 
-    // End turn (95)
+    // End turn (96)
     legal_actions[96] = true;
 
     return legal_actions;
@@ -132,68 +137,79 @@ int execute_action(GameState *game, int action, int target, int opponent_target)
     int reward = 0;
     char *action_str[4] = {NULL, NULL, NULL, NULL};
 
+    // Allocate memory for each part of action_str
+    for (int i = 0; i < 4; i++) {
+        action_str[i] = malloc(20 * sizeof(char));
+        if (action_str[i] == NULL) {
+            // Handle memory allocation failure
+            for (int j = 0; j < i; j++) {
+                free(action_str[j]);
+            }
+            return -1;
+        }
+    }
+
     // Format action into string based on get_legal_actions and act_turn
     if (action >= 0 && action <= 3) {
-        action_str[0] = "n";
-        action_str[1] = "";
-        action_str[2] = malloc(10);
-        snprintf(action_str[2], 10, "%d", target);
-        if (INFO) printf("Attaching energy to target %d\n", target);
+        strcpy(action_str[0], "n");
+        strcpy(action_str[1], "");
+        snprintf(action_str[2], 20, "%d", target);
+        if (INFO_PTCG) printf("Attaching energy to target %d\n", target);
     } else if (action >= 4 && action <= 23) {
-        action_str[0] = "p";
-        action_str[1] = current_player->hand[action - 4].name;
-        if (INFO) printf("Playing Pokemon: %s\n", action_str[1]);
+        strcpy(action_str[0], "p");
+        strncpy(action_str[1], current_player->hand[action - 4]->name, 19);
+        action_str[1][19] = '\0';
+        if (INFO_PTCG) printf("Playing Pokemon: %s\n", action_str[1]);
     } else if (action >= 24 && action <= 43) {
-        action_str[0] = "v";
-        action_str[1] = current_player->hand[action - 24].name;
-        action_str[2] = malloc(10);
-        snprintf(action_str[2], 10, "%d", target);
-        if (INFO) printf("Evolving Pokemon: %s to target %d\n", action_str[1], target);
+        strcpy(action_str[0], "v");
+        strncpy(action_str[1], current_player->hand[action - 24]->name, 19);
+        action_str[1][19] = '\0';
+        snprintf(action_str[2], 20, "%d", target);
+        if (INFO_PTCG) printf("Evolving Pokemon: %s to target %d\n", action_str[1], target);
     } else if (action >= 44 && action <= 63) {
-        action_str[0] = "s";
-        action_str[1] = current_player->hand[action - 44].name;
-        action_str[2] = malloc(10);
-        snprintf(action_str[2], 10, "%d", target);
-        if (INFO) printf("Playing Supporter card: %s on target %d\n", action_str[1], target);
+        strcpy(action_str[0], "s");
+        strncpy(action_str[1], current_player->hand[action - 44]->name, 19);
+        action_str[1][19] = '\0';
+        snprintf(action_str[2], 20, "%d", target);
+        if (INFO_PTCG) printf("Playing Supporter card: %s on target %d\n", action_str[1], target);
     } else if (action >= 64 && action <= 83) {
-        action_str[0] = "i";
-        action_str[1] = current_player->hand[action - 64].name;
-        action_str[2] = malloc(10);
-        snprintf(action_str[2], 10, "%d", target);
-        if (INFO) printf("Playing Item card: %s on target %d\n", action_str[1], target);
+        strcpy(action_str[0], "i");
+        strncpy(action_str[1], current_player->hand[action - 64]->name, 19);
+        action_str[1][19] = '\0';
+        snprintf(action_str[2], 20, "%d", target);
+        if (INFO_PTCG) printf("Playing Item card: %s on target %d\n", action_str[1], target);
     } else if (action >= 84 && action <= 86) {
-        action_str[0] = "r";
-        action_str[1] = current_player->active_pokemon->name;
-        action_str[2] = malloc(10);
-        snprintf(action_str[2], 10, "%d", 1+action-84);
-        if (INFO) printf("Retreating Pokemon: %s to bench position %d\n", action_str[1], 1+action-84);
+        strcpy(action_str[0], "r");
+        strncpy(action_str[1], current_player->active_pokemon->name, 19);
+        action_str[1][19] = '\0';
+        snprintf(action_str[2], 20, "%d", 1+action-84);
+        if (INFO_PTCG) printf("Retreating Pokemon: %s to bench position %d\n", action_str[1], 1+action-84);
     } else if (action >= 87 && action <= 90) {
-        action_str[0] = "a";
+        strcpy(action_str[0], "a");
         if (action == 87) {
-            action_str[1] = current_player->active_pokemon->name;
+            strncpy(action_str[1], current_player->active_pokemon->name, 19);
         } else {
-            action_str[1] = current_player->bench[action - 88].name;
+            strncpy(action_str[1], current_player->bench[action - 88]->name, 19);
         }
-        action_str[2] = malloc(10);
-        snprintf(action_str[2], 10, "%d", target);
-        if (INFO) printf("Using ability of Pokemon: %s on target %d\n", action_str[1], target);
+        action_str[1][19] = '\0';
+        snprintf(action_str[2], 20, "%d", target);
+        if (INFO_PTCG) printf("Using ability of Pokemon: %s on target %d\n", action_str[1], target);
     } else if (action == 91 || action == 92) {
-        action_str[0] = "m";
-        action_str[1] = current_player->active_pokemon->name;
-        action_str[2] = malloc(10);
-        snprintf(action_str[2], 10, "%d", action - 91); // 0 for first move, 1 for second move
-        action_str[3] = malloc(10);
-        snprintf(action_str[3], 10, "%d", opponent_target);
-        if (INFO) printf("Using move %d of Pokemon: %s on opponent target %d\n", action - 91, action_str[1], opponent_target);
+        strcpy(action_str[0], "m");
+        strncpy(action_str[1], current_player->active_pokemon->name, 19);
+        action_str[1][19] = '\0';
+        snprintf(action_str[2], 20, "%d", action - 91); // 0 for first move, 1 for second move
+        snprintf(action_str[3], 20, "%d", opponent_target);
+        if (INFO_PTCG) printf("Using move %d of Pokemon: %s on opponent target %d\n", action - 91, action_str[1], opponent_target);
     } else if (action >= 93 && action <= 95) {
-        action_str[0] = "s";
-        action_str[1] = current_player->active_pokemon->name;
-        action_str[2] = malloc(10);
-        snprintf(action_str[2], 10, "%d", target);
-        if (INFO) printf("Using special action of Pokemon: %s on target %d\n", action_str[1], target);
+        strcpy(action_str[0], "s");
+        strncpy(action_str[1], current_player->active_pokemon->name, 19);
+        action_str[1][19] = '\0';
+        snprintf(action_str[2], 20, "%d", target);
+        if (INFO_PTCG) printf("Using special action of Pokemon: %s on target %d\n", action_str[1], target);
     } else if (action == 96) {
-        action_str[0] = "e";
-        if (INFO) printf("Ending turn\n");
+        strcpy(action_str[0], "e");
+        if (INFO_PTCG) printf("Ending turn\n");
     }
 
     // Execute action in game by calling act_turn
@@ -202,21 +218,21 @@ int execute_action(GameState *game, int action, int target, int opponent_target)
     // Check if action was properly executed
     if (!action_executed) {
         reward -= 10; // Punish for executing unavailable actions
-        if (INFO) printf("Action failed to execute\n");
+        if (INFO_PTCG) printf("Action failed to execute\n");
     } else {
         reward += 1; // Small reward for successful action
-        if (INFO) printf("Action executed successfully\n");
+        if (INFO_PTCG) printf("Action executed successfully\n");
 
         // Additional rewards based on game state
         if (current_player->active_pokemon && opponent->active_pokemon) {
             int damage_dealt = opponent->active_pokemon->hp_total - opponent->active_pokemon->hp;
             reward += damage_dealt / 10; // Reward for dealing damage
-            if (INFO) printf("Damage dealt: %d\n", damage_dealt);
+            if (INFO_PTCG) printf("Damage dealt: %d\n", damage_dealt);
         }
 
         if (current_player->prize_cards_left < opponent->prize_cards_left) {
             reward += 25; // Reward for taking prize cards
-            if (INFO) printf("Prize card taken\n");
+            if (INFO_PTCG) printf("Prize card taken\n");
         }
     }
 
@@ -224,21 +240,19 @@ int execute_action(GameState *game, int action, int target, int opponent_target)
     if (is_game_over(game)) {
         if (game->winner == current_player) {
             reward += 100; // Large reward for winning
-            if (INFO) printf("Game over: Current player wins\n");
+            if (INFO_PTCG) printf("Game over: Current player wins\n");
         } else {
             reward -= 100; // Large punishment for losing
-            if (INFO) printf("Game over: Current player loses\n");
+            if (INFO_PTCG) printf("Game over: Current player loses\n");
         }
     }
 
-    // Free allocated memory
+     // Free allocated memory
     for (int i = 0; i < 4; i++) {
-        if (action_str[i] && (i == 2 || i == 3)) {
-            free(action_str[i]);
-        }
+        free(action_str[i]);
     }
 
-    if (INFO) printf("Total reward: %d\n", reward);
+    if (INFO_PTCG) printf("Total reward: %d\n", reward);
     return reward;
 }
 
@@ -260,14 +274,14 @@ int* get_valid_targets(GameState *game, int action) {
         }
     } else if (action >= 24 && action <= 43) {
         // Evolution
-        Card *evolution_card = &current_player->hand[action - 24];
+        Card *evolution_card = current_player->hand[action - 24];
         valid_targets[0] = (current_player->active_pokemon && strcmp(current_player->active_pokemon->name, evolution_card->evolves_from) == 0);
         for (int i = 0; i < current_player->bench_count && i < 3; i++) {
-            valid_targets[i + 1] = (strcmp(current_player->bench[i].name, evolution_card->evolves_from) == 0);
+            valid_targets[i + 1] = (strcmp(current_player->bench[i]->name, evolution_card->evolves_from) == 0);
         }
     } else if (action >= 44 && action <= 63) {
         // Supporter cards
-        Card *supporter_card = &current_player->hand[action - 44];
+        Card *supporter_card = current_player->hand[action - 44];
         // Set valid targets based on the specific supporter card
         // This is a simplified example and should be expanded based on actual supporter card effects
         for (int i = 0; i < 8; i++) {
@@ -275,7 +289,7 @@ int* get_valid_targets(GameState *game, int action) {
         }
     } else if (action >= 64 && action <= 83) {
         // Item cards
-        Card *item_card = &current_player->hand[action - 64];
+        Card *item_card = current_player->hand[action - 64];
         // Set valid targets based on the specific item card
         // This is a simplified example and should be expanded based on actual item card effects
         for (int i = 0; i < 8; i++) {
@@ -320,7 +334,7 @@ int* get_valid_opponent_target(GameState *game, int action) {
 
 float* get_observation(GameState *game) {
     float *observation = (float*)calloc(OBSERVATION_SIZE, sizeof(float));
-    if (INFO) printf("Getting observation\n");
+    if (INFO_PTCG) printf("Getting observation\n");
     Player *player = get_current_player_(game);
     Player *opponent = get_opponent_(game);
     int index = 0;
@@ -337,9 +351,9 @@ float* get_observation(GameState *game) {
     // Player bench (up to 3 Pokémon)
     for (int i = 0; i < MAX_BENCH_POKEMON; i++) {
         if (i < player->bench_count) {
-            observation[index++] = tokenize_card(&player->bench[i]) / (float)MAX_CARDS;
-            observation[index++] = player->bench[i].hp / 100.0f;
-            observation[index++] = player->bench[i].energies_count / 5.0f;
+            observation[index++] = tokenize_card(player->bench[i]) / (float)MAX_CARDS;
+            observation[index++] = player->bench[i]->hp / 100.0f;
+            observation[index++] = player->bench[i]->energies_count / 5.0f;
         } else {
             index += 3;
         }
@@ -357,9 +371,9 @@ float* get_observation(GameState *game) {
     // Opponent bench (up to 3 Pokémon)
     for (int i = 0; i < MAX_BENCH_POKEMON; i++) {
         if (i < opponent->bench_count) {
-            observation[index++] = tokenize_card(&opponent->bench[i]) / (float)MAX_CARDS;
-            observation[index++] = opponent->bench[i].hp / 100.0f;
-            observation[index++] = opponent->bench[i].energies_count / 5.0f;
+            observation[index++] = tokenize_card(opponent->bench[i]) / (float)MAX_CARDS;
+            observation[index++] = opponent->bench[i]->hp / 100.0f;
+            observation[index++] = opponent->bench[i]->energies_count / 5.0f;
         } else {
             index += 3;
         }
@@ -368,7 +382,7 @@ float* get_observation(GameState *game) {
     // Player discard pile (up to 20 cards)
     for (int i = 0; i < MAX_DISCARD_SIZE; i++) {
         if (i < player->discard_count) {
-            observation[index++] = tokenize_card(&player->discard_pile[i]) / (float)MAX_CARDS;
+            observation[index++] = tokenize_card(player->discard_pile[i]) / (float)MAX_CARDS;
         } else {
             index++;
         }
@@ -377,7 +391,7 @@ float* get_observation(GameState *game) {
     // Opponent discard pile (up to 20 cards)
     for (int i = 0; i < MAX_DISCARD_SIZE; i++) {
         if (i < opponent->discard_count) {
-            observation[index++] = tokenize_card(&opponent->discard_pile[i]) / (float)MAX_CARDS;
+            observation[index++] = tokenize_card(opponent->discard_pile[i]) / (float)MAX_CARDS;
         } else {
             index++;
         }
@@ -386,7 +400,7 @@ float* get_observation(GameState *game) {
     // Player hand (up to 20 cards)
     for (int i = 0; i < MAX_HAND_SIZE; i++) {
         if (i < player->hand_count) {
-            observation[index++] = tokenize_card(&player->hand[i]) / (float)MAX_CARDS;
+            observation[index++] = tokenize_card(player->hand[i]) / (float)MAX_CARDS;
         } else {
             index++;
         }
@@ -397,8 +411,8 @@ float* get_observation(GameState *game) {
     observation[index++] = opponent->prize_cards_left / 3.0f;
 
     // Deck sizes
-    observation[index++] = player->deck.card_count / (float)MAX_DECK_SIZE;
-    observation[index++] = opponent->deck.card_count / (float)MAX_DECK_SIZE;
+    observation[index++] = player->deck->card_count / (float)MAX_DECK_SIZE;
+    observation[index++] = opponent->deck->card_count / (float)MAX_DECK_SIZE;
 
     // Hand sizes
     observation[index++] = player->hand_count / (float)MAX_HAND_SIZE;
@@ -406,7 +420,7 @@ float* get_observation(GameState *game) {
 
     // Current turn
     observation[index++] = (game->current_turn) / 50.0f;
-    if (INFO) printf("last observation %d\n", index);
+    if (INFO_PTCG) printf("last observation %d\n", index);
 
     // Available actions
     // bool* legal_actions = get_legal_actions(game, NULL);

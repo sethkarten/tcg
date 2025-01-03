@@ -6,6 +6,7 @@ import numpy as np
 from cy_ptcg import CyPTCG
 import csv
 import random
+from copy import copy
 
 def load_decks_from_csv(file_path):
     decks = []
@@ -61,6 +62,7 @@ class PTCGEnv(gym.Env):
 
     def reset(self, seed=None, options=None):
         super().reset(seed=seed)
+        print('reseting')
         
         # Randomly select two decks and their corresponding energies
         deck1_index = random.randint(0, len(self.decks) - 1)
@@ -70,16 +72,19 @@ class PTCGEnv(gym.Env):
         player2_deck = self.decks[deck2_index]
         player1_energy = self.energies[deck1_index]
         player2_energy = self.energies[deck2_index]
+        print(player1_deck, player2_deck)
 
-        self.cy_ptcg.reset(player1_deck, player1_energy, player2_deck, player2_energy)
-        
+        self.cy_ptcg.reset(copy(player1_deck), copy(player1_energy), copy(player2_deck), copy(player2_energy))
         observation = self.cy_ptcg.get_observation()
         info = {}  # You can add any additional info here
+        observation = np.array(observation, dtype=np.float32)
 
-        return np.array(observation, dtype=np.float32), info
+        return observation, info
 
     def step(self, action):
+        print('entering step', flush=True)
         action_idx, target, opponent_target = action
+        print(action_idx, target, opponent_target)
         reward = self.cy_ptcg.step(action_idx, target, opponent_target)
         # print('c step reward', reward)
         # input('end of step')
@@ -89,10 +94,7 @@ class PTCGEnv(gym.Env):
         terminated = (self.cy_ptcg.is_game_over() == 1) or (reward == -10)
         truncated = False  # You can implement turn limit if needed
         info = {}  # You can add any additional info here
-        if not terminated:
-            observation = self.cy_ptcg.get_observation()
-        else:
-            observation = None
+        observation = self.cy_ptcg.get_observation()
         return np.array(observation, dtype=np.float32), reward, terminated, truncated, info
 
     def render(self):
@@ -105,6 +107,22 @@ class PTCGEnv(gym.Env):
 
     def seed(self, seed=None):
         pass
+
+    def get_action_mask(self):
+        legal_actions = self.cy_ptcg.get_actions_available()
+        action_mask = np.zeros((97), dtype=np.float32)
+        for i in range(len(legal_actions)):
+            action_mask[i] = legal_actions[i]        
+        return action_mask
+    
+    def get_action_mask_target(self, action_type):
+        legal_targets, legal_targets_opp = self.cy_ptcg.get_targets(action_type)
+        target_mask = np.zeros((8), dtype=np.float32)
+        opponent_mask = np.zeros((8), dtype=np.float32)
+        for i in range(8):
+            target_mask[i] = legal_targets[i]
+            opponent_mask[i] = legal_targets_opp[i]
+        return target_mask, opponent_mask
 
 # Register the environment
 gym.register(

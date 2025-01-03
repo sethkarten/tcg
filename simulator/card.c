@@ -17,6 +17,7 @@ EnergyType parse_energy_type(const char* type_string) {
     return NONE_TYPE;  // No type
 }
 
+// this function is now deprecated
 void initialize_card(Card* card, const char* name, EnergyType type, int hp, Stage stage, int retreat_cost, bool is_ex, bool has_ability) {
     strncpy(card->name, name, MAX_CARD_NAME_LENGTH - 1);
     card->name[MAX_CARD_NAME_LENGTH - 1] = '\0';
@@ -89,4 +90,21 @@ int tokenize_card(Card* card) {
     //     hash = 31 * hash + card_name[i];
     // }
     // return (hash % MAX_CARDS) + 1; // Ensure non-zero token
+}
+
+const char* energy_type_to_string(EnergyType type) {
+    switch (type) {
+        case GRASS: return "Grass";
+        case FIRE: return "Fire";
+        case WATER: return "Water";
+        case LIGHTNING: return "Lightning";
+        case PSYCHIC: return "Psychic";
+        case FIGHTING: return "Fighting";
+        case DARKNESS: return "Darkness";
+        case METAL: return "Metal";
+        case FAIRY: return "Fairy";
+        case DRAGON: return "Dragon";
+        case COLORLESS: return "Colorless";
+        default: return "Unknown";
+    }
 }

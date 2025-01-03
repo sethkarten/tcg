@@ -14,7 +14,8 @@
 #define MAX_BENCH_POKEMON 3
 
 // Function prototypes
-void reset_game(GameState *game, 
+void init(GameState * game);
+void reset(GameState *game, 
                 const char player1_deck[MAX_CARDS_IN_DECK][MAX_CARD_NAME_LENGTH], 
                 int _player1_energy[MAX_CARD_ENERGIES], 
                 const char player2_deck[MAX_CARDS_IN_DECK][MAX_CARD_NAME_LENGTH],

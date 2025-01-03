@@ -9,8 +9,9 @@
 #define MAX_TURN 60
 
 typedef struct {
-    Card cards[MAX_CARDS_IN_DECK];
+    Card **cards;
     int card_count;
+    int capacity;
     bool energy[MAX_CARD_ENERGIES];     // true if energy spawns
     EnergyType energy_seq[MAX_TURN];     // true if energy spawns
     int energy_seq_count;
@@ -18,6 +19,7 @@ typedef struct {
 
 void initialize_deck(HashMap *game, Deck *deck, const char (*card_numbers)[MAX_CARD_NAME_LENGTH], bool energy[MAX_CARD_ENERGIES]);;
 void shuffle_deck(Deck *deck);
+void reset_deck(Deck *deck);
 
 
 #endif // DECK_H
