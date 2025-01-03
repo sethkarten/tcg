@@ -51,9 +51,9 @@ void initialize_game_state(GameState *game,
     draw_initial_hand(&game->player1, &game->player1.deck);
     draw_initial_hand(&game->player2, &game->player2.deck);
 
-    printf("Initial game state:\n");
-    print_player_state(&game->player1, "Player 1");
-    print_player_state(&game->player2, "Player 2");
+    // printf("Initial game state:\n");
+    // print_player_state(&game->player1, "Player 1");
+    // print_player_state(&game->player2, "Player 2");
     
 }
 
@@ -62,9 +62,9 @@ void start_turn(GameState *game, Player *player)
 {
     Player *opponent = get_opponent_(game);
 
-    printf("\nStarting turn for %s:\n", (player == &game->player1) ? "Player 1" : "Player 2");
-    print_player_state(player, (player == &game->player1) ? "Player 1" : "Player 2");
-    print_player_state(opponent, (opponent == &game->player2) ? "Player 2" : "Player 1");
+    // printf("\nStarting turn for %s:\n", (player == &game->player1) ? "Player 1" : "Player 2");
+    // print_player_state(player, (player == &game->player1) ? "Player 1" : "Player 2");
+    // print_player_state(opponent, (opponent == &game->player2) ? "Player 2" : "Player 1");
     if (game->current_turn == 0) return;
     // if not turn 1
     if (game->current_turn != 1)
@@ -144,9 +144,9 @@ bool act_turn(GameState *game, Player *player, char **action)
         default:
             if (GAME_STATE_DEBUG) printf("Invalid action type: %c\n", action_type[0]);
     }
-    printf("\nAfter action:\n");
-    print_player_state(player, (player == &game->player1) ? "Player 1" : "Player 2");
-    print_player_state(opponent, (opponent == &game->player2) ? "Player 2" : "Player 1");
+    // printf("\nAfter action:\n");
+    // print_player_state(player, (player == &game->player1) ? "Player 1" : "Player 2");
+    // print_player_state(opponent, (opponent == &game->player2) ? "Player 2" : "Player 1");
 
     return success;
 }
@@ -353,18 +353,18 @@ bool evolve_pokemon(GameState *game, Player *player, char *card_name, int target
 bool retreat_pokemon(GameState *game, Player *player, char *card_name, int target) {
     Card *active = player->active_pokemon;
     if (active == NULL || target < 0 || target >= player->bench_count || player->cant_retreat) {
-        if (active == NULL) {
-            printf("Cannot retreat: No active Pokemon.\n");
-        }
-        if (target < 0) {
-            printf("Cannot retreat: Invalid target (less than 0).\n");
-        }
-        if (target >= player->bench_count) {
-            printf("Cannot retreat: Target (%d) exceeds bench count (%d).\n", target, player->bench_count);
-        }
-        if (player->cant_retreat) {
-            printf("Cannot retreat: Player is prevented from retreating.\n");
-        }
+        // if (active == NULL) {
+        //     printf("Cannot retreat: No active Pokemon.\n");
+        // }
+        // if (target < 0) {
+        //     printf("Cannot retreat: Invalid target (less than 0).\n");
+        // }
+        // if (target >= player->bench_count) {
+        //     printf("Cannot retreat: Target (%d) exceeds bench count (%d).\n", target, player->bench_count);
+        // }
+        // if (player->cant_retreat) {
+        //     printf("Cannot retreat: Player is prevented from retreating.\n");
+        // }
         return false;
     }
 
@@ -378,7 +378,7 @@ bool retreat_pokemon(GameState *game, Player *player, char *card_name, int targe
     int total_energy = active->energies_count;
 
     if (total_energy < retreat_cost) {
-        printf("Condition not met to retreat: retreat cost.\n");
+        // printf("Condition not met to retreat: retreat cost.\n");
         return false;
     }
 
@@ -533,7 +533,7 @@ bool use_move(GameState *game, Player *player, char *card_name, int move_index, 
     // Check if enough energy for move
     if (!has_enough_energy(player, active, move)) 
     {
-        printf("Not enough energies");
+        // printf("Not enough energies");
         return false;
     }
 
@@ -567,12 +567,12 @@ bool use_move(GameState *game, Player *player, char *card_name, int move_index, 
     if (game->turn_effects.must_flip_before_attack == true) {
         game->turn_effects.must_flip_before_attack = false;
         if (flip_coin() == TAILS) {
-            printf("Attack does nothing");
+            // printf("Attack does nothing");
             return true; // Attack does nothing, but turn is used
         }
     }
 
-    printf("checking description\n");
+    // printf("checking description\n");
     if (move->description != NULL) {
         // Copy opponent's attack
         if (strstr(move->description, "Choose 1 of your opponent's Pokemon's attacks and use it as this attack") != NULL) {
@@ -830,7 +830,7 @@ bool use_move(GameState *game, Player *player, char *card_name, int move_index, 
         opponent_card->hp -= damage;
     }
     opponent_card->prevent_damage_next_turn = false;
-    printf("damage applied\n");
+    // printf("damage applied\n");
 
     // Check for KO
     check_for_KO(game, player, opponent, opponent_card);
@@ -852,7 +852,7 @@ void check_for_KO(GameState *game, Player *player, Player * opponent, Card *oppo
         // Move knocked out Pokémon to discard pile
         if (opponent_card == opponent->active_pokemon) {
             opponent->discard_pile[opponent->discard_count++] = *opponent_card;
-            printf("%s knocked out.\n", opponent->active_pokemon->name);
+            // printf("%s knocked out.\n", opponent->active_pokemon->name);
             opponent->active_pokemon = NULL;
             if (opponent->bench_count == 0) {
                 game->game_over = true;
@@ -900,9 +900,9 @@ bool end_turn(GameState *game, Player *player) {
         check_for_KO(game, opponent, player, opponent->active_pokemon);
     }
     
-    printf("End of turn %d\n\n", game->current_turn);
-    if (opponent->role == OPP) printf("Opponent's turn.\n");
-    else if (opponent->role == PLAY) printf("Player's turn.\n");
+    // printf("End of turn %d\n\n", game->current_turn);
+    // if (opponent->role == OPP) printf("Opponent's turn.\n");
+    // else if (opponent->role == PLAY) printf("Player's turn.\n");
     // max game turns
     if (game->current_turn >= 50) 
     {

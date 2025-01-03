@@ -33,8 +33,8 @@ class PTCGEnv(gym.Env):
     def sample_valid_action(self):
         # get legal actions
         legal_actions = self.cy_ptcg.get_actions_available()
-        print('legal actions')
-        print(legal_actions)
+        # print('legal actions')
+        # print(legal_actions)
         # Sample action type
         valid_action_types = [i for i, x in enumerate(legal_actions[:97]) if x]
         action_type = np.random.choice(valid_action_types)
@@ -81,11 +81,11 @@ class PTCGEnv(gym.Env):
     def step(self, action):
         action_idx, target, opponent_target = action
         reward = self.cy_ptcg.step(action_idx, target, opponent_target)
-        print('c step reward', reward)
+        # print('c step reward', reward)
         # input('end of step')
         
         # print('obs', observation)
-        print('game is over', self.cy_ptcg.is_game_over())
+        # print('game is over', self.cy_ptcg.is_game_over())
         terminated = (self.cy_ptcg.is_game_over() == 1) or (reward == -10)
         truncated = False  # You can implement turn limit if needed
         info = {}  # You can add any additional info here

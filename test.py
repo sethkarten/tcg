@@ -14,15 +14,15 @@ def load_decks_from_csv(file_path):
                 energies.append([bool(int(e)) for e in row[20:]])
     return decks, energies
 
-def measure_fps(env, num_steps=10000):
+def measure_fps(env, num_steps=100000):
     start_time = time.time()
     
     observation, info = env.reset()
     for _ in range(num_steps):
         action = env.sample_valid_action()  # Random action
         observation, reward, terminated, truncated, info = env.step(action)
-        print('terminated', terminated)
-        print('truncated', truncated)
+        # print('terminated', terminated)
+        # print('truncated', truncated)
         if terminated or truncated:
             observation, info = env.reset()
             # break

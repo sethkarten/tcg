@@ -67,7 +67,6 @@ cdef class CyPTCG:
     def get_observation(self):
         cdef float* obs = get_observation(self.game)
         observation = [obs[i] for i in range(91)]
-        print(observation)
         free(obs)
         return observation
 
