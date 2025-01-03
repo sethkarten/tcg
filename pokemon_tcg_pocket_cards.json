@@ -2,7 +2,7 @@
     {
         "#": "A1 001",
         "card_name": "Bulbasaur",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Grass",
         "hp": "70",
@@ -20,12 +20,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fire"
     },
     {
         "#": "A1 002",
         "card_name": "Ivysaur",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Grass",
         "hp": "90",
@@ -44,12 +45,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fire"
     },
     {
         "#": "A1 003",
         "card_name": "Venusaur",
-        "rarity": "◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Grass",
         "hp": "160",
@@ -69,12 +71,13 @@
                 "description": "Heal 30 damage from this Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fire"
     },
     {
         "#": "A1 004",
         "card_name": "Venusaur ex",
-        "rarity": "◇◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Grass",
         "hp": "190",
@@ -104,12 +107,13 @@
                 "description": "Heal 30 damage from this Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fire"
     },
     {
         "#": "A1 005",
         "card_name": "Caterpie",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Grass",
         "hp": "50",
@@ -126,12 +130,13 @@
                 "description": " Put 1 random Grass Pokemon from your deck into your hand. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fire"
     },
     {
         "#": "A1 006",
         "card_name": "Metapod",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Grass",
         "hp": "80",
@@ -149,12 +154,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fire"
     },
     {
         "#": "A1 007",
         "card_name": "Butterfree",
-        "rarity": "◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Grass",
         "hp": "120",
@@ -178,12 +184,13 @@
                 "name": "Powder Heal",
                 "description": "Once during your turn, you may heal 20 damage from each of your Pokemon. "
             }
-        ]
+        ],
+        "weakness": "Fire"
     },
     {
         "#": "A1 008",
         "card_name": "Weedle",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Grass",
         "hp": "50",
@@ -200,12 +207,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fire"
     },
     {
         "#": "A1 009",
         "card_name": "Kakuna",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Grass",
         "hp": "80",
@@ -222,12 +230,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fire"
     },
     {
         "#": "A1 010",
         "card_name": "Beedrill",
-        "rarity": "◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Grass",
         "hp": "120",
@@ -244,12 +253,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fire"
     },
     {
         "#": "A1 011",
         "card_name": "Oddish",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Grass",
         "hp": "60",
@@ -266,12 +276,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fire"
     },
     {
         "#": "A1 012",
         "card_name": "Gloom",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Grass",
         "hp": "80",
@@ -289,12 +300,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fire"
     },
     {
         "#": "A1 013",
         "card_name": "Vileplume",
-        "rarity": "◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Grass",
         "hp": "140",
@@ -313,12 +325,13 @@
                 "description": "Your opponent's Active Pokemon is now Asleep. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fire"
     },
     {
         "#": "A1 014",
         "card_name": "Paras",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Grass",
         "hp": "70",
@@ -336,12 +349,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fire"
     },
     {
         "#": "A1 015",
         "card_name": "Parasect",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Grass",
         "hp": "120",
@@ -360,12 +374,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fire"
     },
     {
         "#": "A1 016",
         "card_name": "Venonat",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Grass",
         "hp": "60",
@@ -382,12 +397,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fire"
     },
     {
         "#": "A1 017",
         "card_name": "Venomoth",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Grass",
         "hp": "80",
@@ -404,12 +420,13 @@
                 "description": "Your opponent's Active Pokemon is now Poisoned. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fire"
     },
     {
         "#": "A1 018",
         "card_name": "Bellsprout",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Grass",
         "hp": "60",
@@ -426,12 +443,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fire"
     },
     {
         "#": "A1 019",
         "card_name": "Weepinbell",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Grass",
         "hp": "90",
@@ -449,12 +467,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fire"
     },
     {
         "#": "A1 020",
         "card_name": "Victreebel",
-        "rarity": "◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Grass",
         "hp": "140",
@@ -477,12 +496,13 @@
                 "name": "Fragrance Trap",
                 "description": "If this Pokemon is in the Active Spot, once during your turn, you may switch in 1 of your opponent's Benched Basic Pokemon to the Active Spot. "
             }
-        ]
+        ],
+        "weakness": "Fire"
     },
     {
         "#": "A1 021",
         "card_name": "Exeggcute",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Grass",
         "hp": "50",
@@ -499,12 +519,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fire"
     },
     {
         "#": "A1 022",
         "card_name": "Exeggutor",
-        "rarity": "◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Grass",
         "hp": "130",
@@ -521,12 +542,13 @@
                 "description": "Flip a coin. If heads, this attack does 30 more damage. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fire"
     },
     {
         "#": "A1 023",
         "card_name": "Exeggutor ex",
-        "rarity": "◇◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Grass",
         "hp": "160",
@@ -543,12 +565,13 @@
                 "description": "Flip a coin. If heads, this attack does 40 more damage. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fire"
     },
     {
         "#": "A1 024",
         "card_name": "Tangela",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Grass",
         "hp": "80",
@@ -566,12 +589,13 @@
                 "description": "Heal 30 damage from this Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fire"
     },
     {
         "#": "A1 025",
         "card_name": "Scyther",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Grass",
         "hp": "70",
@@ -588,12 +612,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fire"
     },
     {
         "#": "A1 026",
         "card_name": "Pinsir",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nAny",
         "type": "Grass",
         "hp": "90",
@@ -611,12 +636,13 @@
                 "description": "Flip 2 coins. This attack does 50 damage for each heads. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fire"
     },
     {
         "#": "A1 027",
         "card_name": "Cottonee",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nAny",
         "type": "Grass",
         "hp": "50",
@@ -633,12 +659,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fire"
     },
     {
         "#": "A1 028",
         "card_name": "Whimsicott",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nAny",
         "type": "Grass",
         "hp": "80",
@@ -655,12 +682,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fire"
     },
     {
         "#": "A1 029",
         "card_name": "Petilil",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nAny",
         "type": "Grass",
         "hp": "60",
@@ -677,12 +705,13 @@
                 "description": "Heal 10 damage from this Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fire"
     },
     {
         "#": "A1 030",
         "card_name": "Lilligant",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nAny",
         "type": "Grass",
         "hp": "100",
@@ -700,12 +729,13 @@
                 "description": "Take a Grass Energy from your Energy Zone and attach it to 1 of your Benched Grass Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fire"
     },
     {
         "#": "A1 031",
         "card_name": "Skiddo",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Grass",
         "hp": "70",
@@ -722,12 +752,13 @@
                 "description": "Flip a coin. If tails, this attack does nothing. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fire"
     },
     {
         "#": "A1 032",
         "card_name": "Gogoat",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Grass",
         "hp": "120",
@@ -744,12 +775,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fire"
     },
     {
         "#": "A1 033",
         "card_name": "Charmander",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Fire",
         "hp": "60",
@@ -766,12 +798,13 @@
                 "description": "Discard a Fire Energy from this Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Water"
     },
     {
         "#": "A1 034",
         "card_name": "Charmeleon",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Fire",
         "hp": "90",
@@ -790,12 +823,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Water"
     },
     {
         "#": "A1 035",
         "card_name": "Charizard",
-        "rarity": "◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Fire",
         "hp": "150",
@@ -815,12 +849,13 @@
                 "description": "Discard 2 Fire Energy from this Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Water"
     },
     {
         "#": "A1 036",
         "card_name": "Charizard ex",
-        "rarity": "◇◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Fire",
         "hp": "180",
@@ -850,12 +885,13 @@
                 "description": "Discard 2 Fire Energy from this Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Water"
     },
     {
         "#": "A1 037",
         "card_name": "Vulpix",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Fire",
         "hp": "50",
@@ -872,12 +908,13 @@
                 "description": " Flip a coin. If heads, the Defending Pokemon can't attack during your opponent's next turn. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Water"
     },
     {
         "#": "A1 038",
         "card_name": "Ninetales",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Fire",
         "hp": "90",
@@ -895,12 +932,13 @@
                 "description": "Discard a Fire Energy from this Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Water"
     },
     {
         "#": "A1 039",
         "card_name": "Growlithe",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Fire",
         "hp": "70",
@@ -918,12 +956,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Water"
     },
     {
         "#": "A1 040",
         "card_name": "Arcanine",
-        "rarity": "◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Fire",
         "hp": "130",
@@ -942,12 +981,13 @@
                 "description": "This Pokemon also does 20 damage to itself. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Water"
     },
     {
         "#": "A1 041",
         "card_name": "Arcanine ex",
-        "rarity": "◇◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Fire",
         "hp": "150",
@@ -966,12 +1006,13 @@
                 "description": "This Pokemon also does 20 damage to itself. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Water"
     },
     {
         "#": "A1 042",
         "card_name": "Ponyta",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nAny",
         "type": "Fire",
         "hp": "60",
@@ -988,12 +1029,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Water"
     },
     {
         "#": "A1 043",
         "card_name": "Rapidash",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nAny",
         "type": "Fire",
         "hp": "100",
@@ -1010,12 +1052,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Water"
     },
     {
         "#": "A1 044",
         "card_name": "Magmar",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Fire",
         "hp": "80",
@@ -1033,12 +1076,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Water"
     },
     {
         "#": "A1 045",
         "card_name": "Flareon",
-        "rarity": "◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Fire",
         "hp": "120",
@@ -1057,12 +1101,13 @@
                 "description": "Discard 1 Fire Energy from this Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Water"
     },
     {
         "#": "A1 046",
         "card_name": "Moltres",
-        "rarity": "◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Fire",
         "hp": "100",
@@ -1081,12 +1126,13 @@
                 "description": "Flip a coin. If tails, this attack does nothing. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Water"
     },
     {
         "#": "A1 047",
         "card_name": "Moltres ex",
-        "rarity": "◇◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Fire",
         "hp": "140",
@@ -1113,12 +1159,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Water"
     },
     {
         "#": "A1 048",
         "card_name": "Heatmor",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nAny",
         "type": "Fire",
         "hp": "80",
@@ -1135,12 +1182,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Water"
     },
     {
         "#": "A1 049",
         "card_name": "Salandit",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Fire",
         "hp": "60",
@@ -1157,12 +1205,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Water"
     },
     {
         "#": "A1 050",
         "card_name": "Salazzle",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Fire",
         "hp": "90",
@@ -1180,12 +1229,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Water"
     },
     {
         "#": "A1 051",
         "card_name": "Sizzlipede",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nAny",
         "type": "Fire",
         "hp": "60",
@@ -1202,12 +1252,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Water"
     },
     {
         "#": "A1 052",
         "card_name": "Centiskorch",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nAny",
         "type": "Fire",
         "hp": "130",
@@ -1227,12 +1278,13 @@
                 "description": "Discard a Fire Energy from this Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Water"
     },
     {
         "#": "A1 053",
         "card_name": "Squirtle",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Water",
         "hp": "60",
@@ -1249,12 +1301,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1 054",
         "card_name": "Wartortle",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Water",
         "hp": "80",
@@ -1272,12 +1325,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1 055",
         "card_name": "Blastoise",
-        "rarity": "◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Water",
         "hp": "150",
@@ -1296,12 +1350,13 @@
                 "description": "If this Pokemon has at least 2 extra Water Energy attached, this attack does 60 more damage. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1 056",
         "card_name": "Blastoise ex",
-        "rarity": "◇◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Water",
         "hp": "180",
@@ -1329,12 +1384,13 @@
                 "description": "If this Pokemon has at least 2 extra Water Energy attached, this attack does 60 more damage. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1 057",
         "card_name": "Psyduck",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nAny",
         "type": "Water",
         "hp": "60",
@@ -1348,15 +1404,16 @@
                     "Colorless"
                 ],
                 "damage": "10",
-                "description": "Your opponent can’t play Supporter cards from their hand during their next turn. "
+                "description": "Your opponent can\u2019t play Supporter cards from their hand during their next turn. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1 058",
         "card_name": "Golduck",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nAny",
         "type": "Water",
         "hp": "90",
@@ -1374,12 +1431,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1 059",
         "card_name": "Poliwag",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Water",
         "hp": "60",
@@ -1396,12 +1454,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1 060",
         "card_name": "Poliwhirl",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Water",
         "hp": "90",
@@ -1419,12 +1478,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1 061",
         "card_name": "Poliwrath",
-        "rarity": "◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Water",
         "hp": "150",
@@ -1448,12 +1508,13 @@
                 "name": "Counterattack",
                 "description": "If this Pokemon is in the Active Spot and is damaged by an attack from your opponent's Pokemon, do 20 damage to the Attacking Pokemon. "
             }
-        ]
+        ],
+        "weakness": "Lightning"
     },
     {
         "#": "A1 062",
         "card_name": "Tentacool",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Water",
         "hp": "60",
@@ -1470,12 +1531,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1 063",
         "card_name": "Tentacruel",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Water",
         "hp": "110",
@@ -1493,12 +1555,13 @@
                 "description": "Your opponent's Active Pokemon is now Poisoned. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1 064",
         "card_name": "Seel",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Water",
         "hp": "80",
@@ -1516,12 +1579,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1 065",
         "card_name": "Dewgong",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Water",
         "hp": "120",
@@ -1540,12 +1604,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1 066",
         "card_name": "Shellder",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Water",
         "hp": "60",
@@ -1562,12 +1627,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1 067",
         "card_name": "Cloyster",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Water",
         "hp": "120",
@@ -1591,12 +1657,13 @@
                 "name": "Shell Armor",
                 "description": "This Pokemon takes -10 damage from attacks. "
             }
-        ]
+        ],
+        "weakness": "Lightning"
     },
     {
         "#": "A1 068",
         "card_name": "Krabby",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Water",
         "hp": "70",
@@ -1614,12 +1681,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1 069",
         "card_name": "Kingler",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Water",
         "hp": "120",
@@ -1638,12 +1706,13 @@
                 "description": "Flip 2 coins. If both of them are heads, this attack does 80 more damage. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1 070",
         "card_name": "Horsea",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Water",
         "hp": "60",
@@ -1660,12 +1729,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1 071",
         "card_name": "Seadra",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Water",
         "hp": "70",
@@ -1684,12 +1754,13 @@
                 "description": " This attack does 50 damage to 1 of your opponent's Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1 072",
         "card_name": "Goldeen",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Water",
         "hp": "60",
@@ -1706,12 +1777,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1 073",
         "card_name": "Seaking",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Water",
         "hp": "100",
@@ -1728,12 +1800,13 @@
                 "description": "Flip a coin. If tails, this attack does nothing. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1 074",
         "card_name": "Staryu",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Water",
         "hp": "50",
@@ -1750,12 +1823,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1 075",
         "card_name": "Starmie",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Water",
         "hp": "90",
@@ -1772,12 +1846,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1 076",
         "card_name": "Starmie ex",
-        "rarity": "◇◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Water",
         "hp": "130",
@@ -1795,12 +1870,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1 077",
         "card_name": "Magikarp",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Water",
         "hp": "30",
@@ -1817,12 +1893,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1 078",
         "card_name": "Gyarados",
-        "rarity": "◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Water",
         "hp": "150",
@@ -1842,12 +1919,13 @@
                 "description": "Discard a random Energy from your opponent's Active Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1 079",
         "card_name": "Lapras",
-        "rarity": "◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Water",
         "hp": "100",
@@ -1864,12 +1942,13 @@
                 "description": "If this Pokemon has at least 3 extra Water Energy attached, this attack does 60 more damage. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1 080",
         "card_name": "Vaporeon",
-        "rarity": "◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Water",
         "hp": "130",
@@ -1888,12 +1967,13 @@
                 "description": "Heal 30 damage from this Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1 081",
         "card_name": "Omanyte",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Water",
         "hp": "90",
@@ -1910,12 +1990,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1 082",
         "card_name": "Omastar",
-        "rarity": "◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Water",
         "hp": "140",
@@ -1934,12 +2015,13 @@
                 "description": "During your opponent's next turn, the Defending Pokemon can't attack. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1 083",
         "card_name": "Articuno",
-        "rarity": "◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Water",
         "hp": "100",
@@ -1958,12 +2040,13 @@
                 "description": "Flip a coin. If heads, your opponent's Active Pokemon is now Paralyzed. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1 084",
         "card_name": "Articuno ex",
-        "rarity": "◇◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Water",
         "hp": "140",
@@ -1988,15 +2071,16 @@
                     "Water"
                 ],
                 "damage": "80",
-                "description": "This attack also does 10 damage to each of your opponent’s Benched Pokemon. "
+                "description": "This attack also does 10 damage to each of your opponent\u2019s Benched Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1 085",
         "card_name": "Ducklett",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Water",
         "hp": "50",
@@ -2014,12 +2098,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1 086",
         "card_name": "Swanna",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Water",
         "hp": "90",
@@ -2038,12 +2123,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1 087",
         "card_name": "Froakie",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Water",
         "hp": "60",
@@ -2060,12 +2146,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1 088",
         "card_name": "Frogadier",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Water",
         "hp": "80",
@@ -2082,12 +2169,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1 089",
         "card_name": "Greninja",
-        "rarity": "◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Water",
         "hp": "120",
@@ -2108,14 +2196,15 @@
         "ability": [
             {
                 "name": "Water Shuriken",
-                "description": "Once during your turn, you may do 20 damage to 1 of your opponent’s Pokemon. "
+                "description": "Once during your turn, you may do 20 damage to 1 of your opponent\u2019s Pokemon. "
             }
-        ]
+        ],
+        "weakness": "Lightning"
     },
     {
         "#": "A1 090",
         "card_name": "Pyukumuku",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Water",
         "hp": "70",
@@ -2132,12 +2221,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1 091",
         "card_name": "Bruxish",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nAny",
         "type": "Water",
         "hp": "90",
@@ -2155,12 +2245,13 @@
                 "description": "If your opponent's Active Pokemon has damage on it, this attack does 60 more damage "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1 092",
         "card_name": "Snom",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nAny",
         "type": "Water",
         "hp": "50",
@@ -2177,12 +2268,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1 093",
         "card_name": "Frosmoth",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nAny",
         "type": "Water",
         "hp": "90",
@@ -2200,12 +2292,13 @@
                 "description": "Your opponent's Active Pokemon is now Asleep. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1 094",
         "card_name": "Pikachu",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Lightning",
         "hp": "60",
@@ -2222,12 +2315,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 095",
         "card_name": "Raichu",
-        "rarity": "◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Lightning",
         "hp": "100",
@@ -2246,12 +2340,13 @@
                 "description": "Discard all Energy from this Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 096",
         "card_name": "Pikachu ex",
-        "rarity": "◇◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Lightning",
         "hp": "120",
@@ -2269,12 +2364,13 @@
                 "description": "This attack does 30 damage for each of your Benched Lightning Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 097",
         "card_name": "Magnemite",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Lightning",
         "hp": "60",
@@ -2291,12 +2387,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 098",
         "card_name": "Magneton",
-        "rarity": "◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Lightning",
         "hp": "80",
@@ -2321,12 +2418,13 @@
                 "name": "Volt Charge",
                 "description": "Once during your turn, you may take an Electric Energy from your Energy Zone and attach it to this Pokemon. "
             }
-        ]
+        ],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 099",
         "card_name": "Voltorb",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Lightning",
         "hp": "60",
@@ -2343,12 +2441,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 100",
         "card_name": "Electrode",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Lightning",
         "hp": "80",
@@ -2366,12 +2465,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 101",
         "card_name": "Electabuzz",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Lightning",
         "hp": "70",
@@ -2389,12 +2489,13 @@
                 "description": "Flip a coin. If heads, this attack does 40 more damage. If tails, this Pokemon also does 20 damage to itself. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 102",
         "card_name": "Jolteon",
-        "rarity": "◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Lightning",
         "hp": "90",
@@ -2412,12 +2513,13 @@
                 "description": "Flip 4 coins. This attack does 40 damage for each heads. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 103",
         "card_name": "Zapdos",
-        "rarity": "◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Lightning",
         "hp": "100",
@@ -2436,12 +2538,13 @@
                 "description": "This attack also does 30 damage to 1 of your Benched Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 104",
         "card_name": "Zapdos ex",
-        "rarity": "◇◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Lightning",
         "hp": "130",
@@ -2468,12 +2571,13 @@
                 "description": "Flip 4 coins. This attack does 50 damage for each heads. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 105",
         "card_name": "Blitzle",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nAny",
         "type": "Lightning",
         "hp": "60",
@@ -2490,12 +2594,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 106",
         "card_name": "Zebstrika",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nAny",
         "type": "Lightning",
         "hp": "90",
@@ -2512,12 +2617,13 @@
                 "description": " This attack does 30 damage to 1 of your opponent's Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 107",
         "card_name": "Tynamo",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Lightning",
         "hp": "30",
@@ -2534,12 +2640,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 108",
         "card_name": "Eelektrik",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Lightning",
         "hp": "80",
@@ -2556,12 +2663,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 109",
         "card_name": "Eelektross",
-        "rarity": "◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Lightning",
         "hp": "140",
@@ -2580,12 +2688,13 @@
                 "description": "Flip a coin. If heads, your opponent's Active Pokemon is now Paralyzed. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 110",
         "card_name": "Helioptile",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nAny",
         "type": "Lightning",
         "hp": "60",
@@ -2602,12 +2711,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 111",
         "card_name": "Heliolisk",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nAny",
         "type": "Lightning",
         "hp": "90",
@@ -2625,12 +2735,13 @@
                 "description": "Flip a coin. If heads, this attack does 40 more damage. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 112",
         "card_name": "Pincurchin",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nAny",
         "type": "Lightning",
         "hp": "70",
@@ -2645,15 +2756,16 @@
                     "Lightning"
                 ],
                 "damage": "30",
-                "description": "Flip a coin. If heads, your opponent’s Active Pokemon is now Paralyzed. "
+                "description": "Flip a coin. If heads, your opponent\u2019s Active Pokemon is now Paralyzed. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 113",
         "card_name": "Clefairy",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Psychic",
         "hp": "60",
@@ -2670,12 +2782,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Darkness"
     },
     {
         "#": "A1 114",
         "card_name": "Clefable",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Psychic",
         "hp": "100",
@@ -2692,12 +2805,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Darkness"
     },
     {
         "#": "A1 115",
         "card_name": "Abra",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Psychic",
         "hp": "60",
@@ -2714,12 +2828,13 @@
                 "description": " Switch this Pokemon with 1 of your Benched Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Darkness"
     },
     {
         "#": "A1 116",
         "card_name": "Kadabra",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Psychic",
         "hp": "80",
@@ -2738,12 +2853,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Darkness"
     },
     {
         "#": "A1 117",
         "card_name": "Alakazam",
-        "rarity": "◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Psychic",
         "hp": "130",
@@ -2762,12 +2878,13 @@
                 "description": "This attack does 30 more damage for each Energy attached to your opponent's Active Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Darkness"
     },
     {
         "#": "A1 118",
         "card_name": "Slowpoke",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nAny",
         "type": "Psychic",
         "hp": "70",
@@ -2785,12 +2902,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Darkness"
     },
     {
         "#": "A1 119",
         "card_name": "Slowbro",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nAny",
         "type": "Psychic",
         "hp": "130",
@@ -2809,12 +2927,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Darkness"
     },
     {
         "#": "A1 120",
         "card_name": "Gastly",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Psychic",
         "hp": "60",
@@ -2831,12 +2950,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Darkness"
     },
     {
         "#": "A1 121",
         "card_name": "Haunter",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Psychic",
         "hp": "80",
@@ -2844,12 +2964,13 @@
         "pack_points": "70 Pts",
         "retreat_cost": "1",
         "moves": [],
-        "ability": []
+        "ability": [],
+        "weakness": "Darkness"
     },
     {
         "#": "A1 122",
         "card_name": "Gengar",
-        "rarity": "◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Psychic",
         "hp": "130",
@@ -2866,12 +2987,13 @@
                 "description": "Your opponent can't use any Supporter cards from their hand during their next turn. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Darkness"
     },
     {
         "#": "A1 123",
         "card_name": "Gengar ex",
-        "rarity": "◇◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Psychic",
         "hp": "170",
@@ -2895,12 +3017,13 @@
                 "name": "Shadowy Spellbind",
                 "description": "As long as this Pokemon is in the Active Spot, your opponent can't use any Supporter cards from their hand. "
             }
-        ]
+        ],
+        "weakness": "Darkness"
     },
     {
         "#": "A1 124",
         "card_name": "Drowzee",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Psychic",
         "hp": "70",
@@ -2918,12 +3041,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Darkness"
     },
     {
         "#": "A1 125",
         "card_name": "Hypno",
-        "rarity": "◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Psychic",
         "hp": "100",
@@ -2947,12 +3071,13 @@
                 "name": "Sleep Pendulum",
                 "description": "Once during your turn, you may flip a coin. If heads, your opponent's Active Pokemon is now Asleep. "
             }
-        ]
+        ],
+        "weakness": "Darkness"
     },
     {
         "#": "A1 126",
         "card_name": "Mr. Mime",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Psychic",
         "hp": "80",
@@ -2970,12 +3095,13 @@
                 "description": "During your opponent's next turn, this Pokemon takes -20 damage from attacks. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Darkness"
     },
     {
         "#": "A1 127",
         "card_name": "Jynx",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Psychic",
         "hp": "80",
@@ -2993,12 +3119,13 @@
                 "description": "This attack does 20 more damage for each Energy attached to your opponent's Active Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Darkness"
     },
     {
         "#": "A1 128",
         "card_name": "Mewtwo",
-        "rarity": "◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Psychic",
         "hp": "120",
@@ -3018,12 +3145,13 @@
                 "description": "Discard 2 Psychic Energy from this Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Darkness"
     },
     {
         "#": "A1 129",
         "card_name": "Mewtwo ex",
-        "rarity": "◇◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Psychic",
         "hp": "150",
@@ -3052,12 +3180,13 @@
                 "description": "Discard 2 Psychic Energy from this Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Darkness"
     },
     {
         "#": "A1 130",
         "card_name": "Ralts",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Psychic",
         "hp": "60",
@@ -3074,12 +3203,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Darkness"
     },
     {
         "#": "A1 131",
         "card_name": "Kirlia",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Psychic",
         "hp": "80",
@@ -3097,12 +3227,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Darkness"
     },
     {
         "#": "A1 132",
         "card_name": "Gardevoir",
-        "rarity": "◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Psychic",
         "hp": "110",
@@ -3126,12 +3257,13 @@
                 "name": "Psy Shadow",
                 "description": "Once during your turn, you may take 1 Psychic Energy from your Energy Zone and attach it to the Psychic Pokemon in the Active Spot. "
             }
-        ]
+        ],
+        "weakness": "Darkness"
     },
     {
         "#": "A1 133",
         "card_name": "Woobat",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nAny",
         "type": "Psychic",
         "hp": "60",
@@ -3148,12 +3280,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Darkness"
     },
     {
         "#": "A1 134",
         "card_name": "Swoobat",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nAny",
         "type": "Psychic",
         "hp": "60",
@@ -3171,12 +3304,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Darkness"
     },
     {
         "#": "A1 135",
         "card_name": "Golett",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nAny",
         "type": "Psychic",
         "hp": "90",
@@ -3195,12 +3329,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Darkness"
     },
     {
         "#": "A1 136",
         "card_name": "Golurk",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nAny",
         "type": "Psychic",
         "hp": "140",
@@ -3220,12 +3355,13 @@
                 "description": "Flip 2 coins. This attack does 100 damage for each heads. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Darkness"
     },
     {
         "#": "A1 137",
         "card_name": "Sandshrew",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nAny",
         "type": "Fighting",
         "hp": "70",
@@ -3242,12 +3378,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Psychic"
     },
     {
         "#": "A1 138",
         "card_name": "Sandslash",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nAny",
         "type": "Fighting",
         "hp": "100",
@@ -3265,12 +3402,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Psychic"
     },
     {
         "#": "A1 139",
         "card_name": "Diglett",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Fighting",
         "hp": "50",
@@ -3278,12 +3416,13 @@
         "pack_points": "35 Pts",
         "retreat_cost": "1",
         "moves": [],
-        "ability": []
+        "ability": [],
+        "weakness": "Psychic"
     },
     {
         "#": "A1 140",
         "card_name": "Dugtrio",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Fighting",
         "hp": "70",
@@ -3297,15 +3436,16 @@
                     "Fighting"
                 ],
                 "damage": "40",
-                "description": "Flip a coin. If heads, during your opponent's next turn, prevent all damage from—and effects of—attacks done to this Pokemon. "
+                "description": "Flip a coin. If heads, during your opponent's next turn, prevent all damage from\u2014and effects of\u2014attacks done to this Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Psychic"
     },
     {
         "#": "A1 141",
         "card_name": "Mankey",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Fighting",
         "hp": "60",
@@ -3322,12 +3462,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Psychic"
     },
     {
         "#": "A1 142",
         "card_name": "Primeape",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Fighting",
         "hp": "90",
@@ -3345,12 +3486,13 @@
                 "description": "If this Pokemon has damage on it, this attack does 60 more damage. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Psychic"
     },
     {
         "#": "A1 143",
         "card_name": "Machop",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Fighting",
         "hp": "70",
@@ -3367,12 +3509,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Psychic"
     },
     {
         "#": "A1 144",
         "card_name": "Machoke",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Fighting",
         "hp": "100",
@@ -3390,12 +3533,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Psychic"
     },
     {
         "#": "A1 145",
         "card_name": "Machamp",
-        "rarity": "◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Fighting",
         "hp": "150",
@@ -3414,12 +3558,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Psychic"
     },
     {
         "#": "A1 146",
         "card_name": "Machamp ex",
-        "rarity": "◇◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Fighting",
         "hp": "180",
@@ -3438,12 +3583,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Psychic"
     },
     {
         "#": "A1 147",
         "card_name": "Geodude",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Fighting",
         "hp": "70",
@@ -3460,12 +3606,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Psychic"
     },
     {
         "#": "A1 148",
         "card_name": "Graveler",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Fighting",
         "hp": "100",
@@ -3484,12 +3631,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Psychic"
     },
     {
         "#": "A1 149",
         "card_name": "Golem",
-        "rarity": "◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Fighting",
         "hp": "160",
@@ -3497,12 +3645,13 @@
         "pack_points": "150 Pts",
         "retreat_cost": "4",
         "moves": [],
-        "ability": []
+        "ability": [],
+        "weakness": "Psychic"
     },
     {
         "#": "A1 150",
         "card_name": "Onix",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Fighting",
         "hp": "110",
@@ -3521,12 +3670,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Psychic"
     },
     {
         "#": "A1 151",
         "card_name": "Cubone",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Fighting",
         "hp": "60",
@@ -3540,15 +3690,16 @@
                     "Colorless"
                 ],
                 "damage": "",
-                "description": " During your opponent’s next turn, attacks used by the Defending Pokemon do 20 less damage (before applying Weakness). "
+                "description": " During your opponent\u2019s next turn, attacks used by the Defending Pokemon do 20 less damage (before applying Weakness). "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Psychic"
     },
     {
         "#": "A1 152",
         "card_name": "Marowak",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Fighting",
         "hp": "100",
@@ -3565,12 +3716,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Psychic"
     },
     {
         "#": "A1 153",
         "card_name": "Marowak ex",
-        "rarity": "◇◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Fighting",
         "hp": "140",
@@ -3588,12 +3740,13 @@
                 "description": "Flip 2 coins. This attack does 80 damage for each heads. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Psychic"
     },
     {
         "#": "A1 154",
         "card_name": "Hitmonlee",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Fighting",
         "hp": "80",
@@ -3607,15 +3760,16 @@
                     "Fighting"
                 ],
                 "damage": "80",
-                "description": "This attack does 30 damage to 1 of your opponent’s Benched Pokemon. "
+                "description": "This attack does 30 damage to 1 of your opponent\u2019s Benched Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Psychic"
     },
     {
         "#": "A1 155",
         "card_name": "Hitmonchan",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Fighting",
         "hp": "80",
@@ -3632,12 +3786,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Psychic"
     },
     {
         "#": "A1 156",
         "card_name": "Rhyhorn",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Fighting",
         "hp": "80",
@@ -3656,12 +3811,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Psychic"
     },
     {
         "#": "A1 157",
         "card_name": "Rhydon",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Fighting",
         "hp": "120",
@@ -3681,12 +3837,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Psychic"
     },
     {
         "#": "A1 158",
         "card_name": "Kabuto",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Fighting",
         "hp": "90",
@@ -3703,12 +3860,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Psychic"
     },
     {
         "#": "A1 159",
         "card_name": "Kabutops",
-        "rarity": "◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Fighting",
         "hp": "140",
@@ -3725,12 +3883,13 @@
                 "description": "Heal from this Pokemon the same amount of damage you did to your opponent's Active Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Psychic"
     },
     {
         "#": "A1 160",
         "card_name": "Mienfoo",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Fighting",
         "hp": "60",
@@ -3747,12 +3906,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Psychic"
     },
     {
         "#": "A1 161",
         "card_name": "Mienshao",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Fighting",
         "hp": "80",
@@ -3769,12 +3929,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Psychic"
     },
     {
         "#": "A1 162",
         "card_name": "Clobbopus",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nAny",
         "type": "Fighting",
         "hp": "80",
@@ -3792,12 +3953,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Psychic"
     },
     {
         "#": "A1 163",
         "card_name": "Grapploct",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nAny",
         "type": "Fighting",
         "hp": "130",
@@ -3816,12 +3978,13 @@
                 "description": "Switch out your opponent's Active Pokemon to the Bench. (Your opponent chooses the new Active Pokemon.) "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Psychic"
     },
     {
         "#": "A1 164",
         "card_name": "Ekans",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nAny",
         "type": "Darkness",
         "hp": "60",
@@ -3838,12 +4001,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 165",
         "card_name": "Arbok",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nAny",
         "type": "Darkness",
         "hp": "100",
@@ -3861,12 +4025,13 @@
                 "description": "During your opponent's next turn, the Defending Pokemon can't retreat. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 166",
         "card_name": "Nidoran F",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Darkness",
         "hp": "60",
@@ -3883,12 +4048,13 @@
                 "description": " Put 1 random Nidoran M from your deck onto your Bench. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 167",
         "card_name": "Nidorina",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Darkness",
         "hp": "80",
@@ -3905,12 +4071,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 168",
         "card_name": "Nidoqueen",
-        "rarity": "◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Darkness",
         "hp": "140",
@@ -3929,12 +4096,13 @@
                 "description": "This attack does 50 more damage for each of your Benched Nidoking. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 169",
         "card_name": "Nidoran M",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Darkness",
         "hp": "60",
@@ -3951,12 +4119,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 170",
         "card_name": "Nidorino",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Darkness",
         "hp": "90",
@@ -3974,12 +4143,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 171",
         "card_name": "Nidoking",
-        "rarity": "◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Darkness",
         "hp": "150",
@@ -3998,12 +4168,13 @@
                 "description": "Your opponent's Active Pokemon is now Poisoned. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 172",
         "card_name": "Zubat",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Darkness",
         "hp": "50",
@@ -4020,12 +4191,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 173",
         "card_name": "Golbat",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Darkness",
         "hp": "40",
@@ -4042,12 +4214,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 174",
         "card_name": "Grimer",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Darkness",
         "hp": "70",
@@ -4061,15 +4234,16 @@
                     "Darkness"
                 ],
                 "damage": "10",
-                "description": "Your opponent’s Active Pokemon is now Poisoned. "
+                "description": "Your opponent\u2019s Active Pokemon is now Poisoned. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 175",
         "card_name": "Muk",
-        "rarity": "◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Darkness",
         "hp": "130",
@@ -4088,12 +4262,13 @@
                 "description": "If your opponent's Active Pokemon is Poisoned, this attack does 50 damage. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 176",
         "card_name": "Koffing",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Darkness",
         "hp": "70",
@@ -4110,12 +4285,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 177",
         "card_name": "Weezing",
-        "rarity": "◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Darkness",
         "hp": "110",
@@ -4137,12 +4313,13 @@
                 "name": "Gas Leak",
                 "description": "Once during your turn, if this Pokemon is in the Active Spot, you may make your opponent's Active Pokemon Poisoned. "
             }
-        ]
+        ],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 178",
         "card_name": "Mawile",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Metal",
         "hp": "70",
@@ -4159,12 +4336,13 @@
                 "description": "Flip a coin. If heads, discard a random Energy from your opponent's Active Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fire"
     },
     {
         "#": "A1 179",
         "card_name": "Pawniard",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nAny",
         "type": "Metal",
         "hp": "50",
@@ -4181,12 +4359,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fire"
     },
     {
         "#": "A1 180",
         "card_name": "Bisharp",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nAny",
         "type": "Metal",
         "hp": "70",
@@ -4204,12 +4383,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fire"
     },
     {
         "#": "A1 181",
         "card_name": "Meltan",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Metal",
         "hp": "70",
@@ -4226,12 +4406,13 @@
                 "description": " Take 1 Metal Energy from your Energy Zone and attach it to this Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fire"
     },
     {
         "#": "A1 182",
         "card_name": "Melmetal",
-        "rarity": "◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Metal",
         "hp": "130",
@@ -4256,12 +4437,13 @@
                 "name": "Hard Coat",
                 "description": "This Pokemon takes -20 damage from attacks. "
             }
-        ]
+        ],
+        "weakness": "Fire"
     },
     {
         "#": "A1 183",
         "card_name": "Dratini",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Dragon",
         "hp": "70",
@@ -4279,12 +4461,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": ""
     },
     {
         "#": "A1 184",
         "card_name": "Dragonair",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Dragon",
         "hp": "100",
@@ -4303,12 +4486,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": ""
     },
     {
         "#": "A1 185",
         "card_name": "Dragonite",
-        "rarity": "◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Dragon",
         "hp": "160",
@@ -4328,12 +4512,13 @@
                 "description": " 1 of your opponent's Pokemon is chosen at random 4 times. For each time a Pokemon was chosen, do 50 damage to it. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": ""
     },
     {
         "#": "A1 186",
         "card_name": "Pidgey",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Colorless",
         "hp": "60",
@@ -4350,12 +4535,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 187",
         "card_name": "Pidgeotto",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Colorless",
         "hp": "80",
@@ -4372,12 +4558,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 188",
         "card_name": "Pidgeot",
-        "rarity": "◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Colorless",
         "hp": "130",
@@ -4398,14 +4585,15 @@
         "ability": [
             {
                 "name": "Drive Off",
-                "description": "Once during your turn, you may switch out your opponent’s Active Pokemon to the Bench. (Your opponent chooses the new Active Pokemon.) "
+                "description": "Once during your turn, you may switch out your opponent\u2019s Active Pokemon to the Bench. (Your opponent chooses the new Active Pokemon.) "
             }
-        ]
+        ],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 189",
         "card_name": "Rattata",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nAny",
         "type": "Colorless",
         "hp": "40",
@@ -4422,12 +4610,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 190",
         "card_name": "Raticate",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nAny",
         "type": "Colorless",
         "hp": "80",
@@ -4444,12 +4633,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 191",
         "card_name": "Spearow",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Colorless",
         "hp": "60",
@@ -4466,12 +4656,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 192",
         "card_name": "Fearow",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Colorless",
         "hp": "100",
@@ -4489,12 +4680,13 @@
                 "description": "Flip a coin. If heads, discard a random Energy from your opponent's Active Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 193",
         "card_name": "Jigglypuff",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Colorless",
         "hp": "60",
@@ -4512,12 +4704,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 194",
         "card_name": "Wigglytuff",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Colorless",
         "hp": "100",
@@ -4535,12 +4728,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 195",
         "card_name": "Wigglytuff ex",
-        "rarity": "◇◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Colorless",
         "hp": "140",
@@ -4559,12 +4753,13 @@
                 "description": "Your opponent's Active Pokemon is now Asleep. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 196",
         "card_name": "Meowth",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Colorless",
         "hp": "60",
@@ -4581,12 +4776,13 @@
                 "description": "Draw 1 card. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 197",
         "card_name": "Persian",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Colorless",
         "hp": "90",
@@ -4604,12 +4800,13 @@
                 "description": "Flip a coin. If heads, discard a random card from your opponent's hand. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 198",
         "card_name": "Farfetch'd",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nAny",
         "type": "Colorless",
         "hp": "60",
@@ -4626,12 +4823,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 199",
         "card_name": "Doduo",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nAny",
         "type": "Colorless",
         "hp": "60",
@@ -4648,12 +4846,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 200",
         "card_name": "Dodrio",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nAny",
         "type": "Colorless",
         "hp": "80",
@@ -4670,12 +4869,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 201",
         "card_name": "Lickitung",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Colorless",
         "hp": "90",
@@ -4694,12 +4894,13 @@
                 "description": "Flip a coin until you get tails. This attack does 60 damage for each heads. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 202",
         "card_name": "Chansey",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Colorless",
         "hp": "120",
@@ -4718,12 +4919,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 203",
         "card_name": "Kangaskhan",
-        "rarity": "◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Colorless",
         "hp": "100",
@@ -4740,12 +4942,13 @@
                 "description": "Flip 2 coins. This attack does 30 more damage for each heads. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 204",
         "card_name": "Tauros",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Colorless",
         "hp": "100",
@@ -4763,12 +4966,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 205",
         "card_name": "Ditto",
-        "rarity": "◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Colorless",
         "hp": "70",
@@ -4785,12 +4989,13 @@
                 "description": " Choose 1 of your opponent's Pokemon's attacks and use it as this attack. If this Pokemon doesn't have the necessary Energy to use that attack, this attack does nothing. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 206",
         "card_name": "Eevee",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Colorless",
         "hp": "60",
@@ -4807,12 +5012,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 207",
         "card_name": "Eevee",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Colorless",
         "hp": "60",
@@ -4829,12 +5035,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 208",
         "card_name": "Eevee",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Colorless",
         "hp": "60",
@@ -4851,12 +5058,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 209",
         "card_name": "Porygon",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Colorless",
         "hp": "50",
@@ -4878,12 +5086,13 @@
                 "name": "Data Scan",
                 "description": "Once during your turn, you may look at the top card of your deck. "
             }
-        ]
+        ],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 210",
         "card_name": "Aerodactyl",
-        "rarity": "◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Colorless",
         "hp": "100",
@@ -4901,12 +5110,13 @@
                 "description": " Flip a coin. If heads, your opponent shuffles their Active Pokemon back into their deck. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 211",
         "card_name": "Snorlax",
-        "rarity": "◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Colorless",
         "hp": "150",
@@ -4926,12 +5136,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 212",
         "card_name": "Minccino",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nAny",
         "type": "Colorless",
         "hp": "60",
@@ -4948,12 +5159,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 213",
         "card_name": "Cinccino",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nAny",
         "type": "Colorless",
         "hp": "90",
@@ -4972,12 +5184,13 @@
                 "description": "This attack does 30 damage for each of your Benched Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 214",
         "card_name": "Wooloo",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nAny",
         "type": "Colorless",
         "hp": "70",
@@ -4995,12 +5208,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 215",
         "card_name": "Dubwool",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nAny",
         "type": "Colorless",
         "hp": "120",
@@ -5019,12 +5233,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 216",
         "card_name": "Helix Fossil",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Item",
         "hp": "",
@@ -5032,12 +5247,13 @@
         "pack_points": "35 Pts",
         "retreat_cost": "",
         "moves": [],
-        "ability": []
+        "ability": [],
+        "weakness": ""
     },
     {
         "#": "A1 217",
         "card_name": "Dome Fossil",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Item",
         "hp": "",
@@ -5045,12 +5261,13 @@
         "pack_points": "35 Pts",
         "retreat_cost": "",
         "moves": [],
-        "ability": []
+        "ability": [],
+        "weakness": ""
     },
     {
         "#": "A1 218",
         "card_name": "Old Amber",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Item",
         "hp": "",
@@ -5058,12 +5275,13 @@
         "pack_points": "35 Pts",
         "retreat_cost": "",
         "moves": [],
-        "ability": []
+        "ability": [],
+        "weakness": ""
     },
     {
         "#": "A1 219",
         "card_name": "Erika",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Supporter",
         "hp": "",
@@ -5071,12 +5289,13 @@
         "pack_points": "70 Pts",
         "retreat_cost": "",
         "moves": [],
-        "ability": []
+        "ability": [],
+        "weakness": ""
     },
     {
         "#": "A1 220",
         "card_name": "Misty",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Supporter",
         "hp": "",
@@ -5084,12 +5303,13 @@
         "pack_points": "70 Pts",
         "retreat_cost": "",
         "moves": [],
-        "ability": []
+        "ability": [],
+        "weakness": ""
     },
     {
         "#": "A1 221",
         "card_name": "Blaine",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Supporter",
         "hp": "",
@@ -5097,12 +5317,13 @@
         "pack_points": "70 Pts",
         "retreat_cost": "",
         "moves": [],
-        "ability": []
+        "ability": [],
+        "weakness": ""
     },
     {
         "#": "A1 222",
         "card_name": "Koga",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Supporter",
         "hp": "",
@@ -5110,12 +5331,13 @@
         "pack_points": "70 Pts",
         "retreat_cost": "",
         "moves": [],
-        "ability": []
+        "ability": [],
+        "weakness": ""
     },
     {
         "#": "A1 223",
         "card_name": "Giovanni",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Supporter",
         "hp": "",
@@ -5123,12 +5345,13 @@
         "pack_points": "70 Pts",
         "retreat_cost": "",
         "moves": [],
-        "ability": []
+        "ability": [],
+        "weakness": ""
     },
     {
         "#": "A1 224",
         "card_name": "Brock",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Supporter",
         "hp": "",
@@ -5136,12 +5359,13 @@
         "pack_points": "70 Pts",
         "retreat_cost": "",
         "moves": [],
-        "ability": []
+        "ability": [],
+        "weakness": ""
     },
     {
         "#": "A1 225",
         "card_name": "Sabrina",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Supporter",
         "hp": "",
@@ -5149,12 +5373,13 @@
         "pack_points": "70 Pts",
         "retreat_cost": "",
         "moves": [],
-        "ability": []
+        "ability": [],
+        "weakness": ""
     },
     {
         "#": "A1 226",
         "card_name": "Lt. Surge",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Supporter",
         "hp": "",
@@ -5162,12 +5387,13 @@
         "pack_points": "70 Pts",
         "retreat_cost": "",
         "moves": [],
-        "ability": []
+        "ability": [],
+        "weakness": ""
     },
     {
         "#": "A1 227",
         "card_name": "Bulbasaur",
-        "rarity": "☆ rarity",
+        "rarity": "\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Grass",
         "hp": "70",
@@ -5185,12 +5411,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fire"
     },
     {
         "#": "A1 228",
         "card_name": "Gloom",
-        "rarity": "☆ rarity",
+        "rarity": "\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Grass",
         "hp": "80",
@@ -5208,12 +5435,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fire"
     },
     {
         "#": "A1 229",
         "card_name": "Pinsir",
-        "rarity": "☆ rarity",
+        "rarity": "\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Grass",
         "hp": "90",
@@ -5231,12 +5459,13 @@
                 "description": "Flip 2 coins. This attack does 50 damage for each heads. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fire"
     },
     {
         "#": "A1 230",
         "card_name": "Charmander",
-        "rarity": "☆ rarity",
+        "rarity": "\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Fire",
         "hp": "60",
@@ -5253,12 +5482,13 @@
                 "description": "Discard a Fire Energy from this Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Water"
     },
     {
         "#": "A1 231",
         "card_name": "Rapidash",
-        "rarity": "☆ rarity",
+        "rarity": "\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Fire",
         "hp": "100",
@@ -5275,12 +5505,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Water"
     },
     {
         "#": "A1 232",
         "card_name": "Squirtle",
-        "rarity": "☆ rarity",
+        "rarity": "\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Water",
         "hp": "60",
@@ -5297,12 +5528,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1 233",
         "card_name": "Gyarados",
-        "rarity": "☆ rarity",
+        "rarity": "\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Water",
         "hp": "150",
@@ -5322,12 +5554,13 @@
                 "description": "Discard a random Energy from your opponent's Active Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1 234",
         "card_name": "Lapras",
-        "rarity": "☆ rarity",
+        "rarity": "\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Water",
         "hp": "100",
@@ -5344,12 +5577,13 @@
                 "description": "If this Pokemon has at least 3 extra Water Energy attached, this attack does 70 more damage. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1 235",
         "card_name": "Electrode",
-        "rarity": "☆ rarity",
+        "rarity": "\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Lightning",
         "hp": "80",
@@ -5367,12 +5601,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 236",
         "card_name": "Alakazam",
-        "rarity": "☆ rarity",
+        "rarity": "\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Psychic",
         "hp": "130",
@@ -5391,12 +5626,13 @@
                 "description": "This attack does 30 more damage for each Energy attached to your opponent's Active Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Darkness"
     },
     {
         "#": "A1 237",
         "card_name": "Slowpoke",
-        "rarity": "☆ rarity",
+        "rarity": "\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Psychic",
         "hp": "70",
@@ -5414,12 +5650,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Darkness"
     },
     {
         "#": "A1 238",
         "card_name": "Diglett",
-        "rarity": "☆ rarity",
+        "rarity": "\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Fighting",
         "hp": "50",
@@ -5427,12 +5664,13 @@
         "pack_points": "400 Pts",
         "retreat_cost": "1",
         "moves": [],
-        "ability": []
+        "ability": [],
+        "weakness": "Psychic"
     },
     {
         "#": "A1 239",
         "card_name": "Cubone",
-        "rarity": "☆ rarity",
+        "rarity": "\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Fighting",
         "hp": "60",
@@ -5446,15 +5684,16 @@
                     "Colorless"
                 ],
                 "damage": "",
-                "description": " During your opponent’s next turn, attacks used by the Defending Pokemon do 20 less damage (before applying Weakness). "
+                "description": " During your opponent\u2019s next turn, attacks used by the Defending Pokemon do 20 less damage (before applying Weakness). "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Psychic"
     },
     {
         "#": "A1 240",
         "card_name": "Nidoqueen",
-        "rarity": "☆ rarity",
+        "rarity": "\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Darkness",
         "hp": "140",
@@ -5473,12 +5712,13 @@
                 "description": "This attack does 50 more damage for each of your Benched Nidoking. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 241",
         "card_name": "Nidoking",
-        "rarity": "☆ rarity",
+        "rarity": "\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Darkness",
         "hp": "150",
@@ -5497,12 +5737,13 @@
                 "description": "Your opponent's Active Pokemon is now Poisoned. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 242",
         "card_name": "Golbat",
-        "rarity": "☆ rarity",
+        "rarity": "\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Darkness",
         "hp": "40",
@@ -5519,12 +5760,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 243",
         "card_name": "Weezing",
-        "rarity": "☆ rarity",
+        "rarity": "\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Darkness",
         "hp": "110",
@@ -5546,12 +5788,13 @@
                 "name": "Gas Leak",
                 "description": "Once during your turn, if this Pokemon is in the Active Spot, you may make your opponent's Active Pokemon Poisoned. "
             }
-        ]
+        ],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 244",
         "card_name": "Dragonite",
-        "rarity": "☆ rarity",
+        "rarity": "\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Dragon",
         "hp": "160",
@@ -5571,12 +5814,13 @@
                 "description": " 1 of your opponent's Pokemon is chosen at random 4 times. For each time a Pokemon was chosen, do 50 damage to it. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": ""
     },
     {
         "#": "A1 245",
         "card_name": "Pidgeot",
-        "rarity": "☆ rarity",
+        "rarity": "\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Colorless",
         "hp": "130",
@@ -5597,14 +5841,15 @@
         "ability": [
             {
                 "name": "Drive Off",
-                "description": "Once during your turn, you may switch out your opponent’s Active Pokemon to the Bench. (Your opponent chooses the new Active Pokemon.) "
+                "description": "Once during your turn, you may switch out your opponent\u2019s Active Pokemon to the Bench. (Your opponent chooses the new Active Pokemon.) "
             }
-        ]
+        ],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 246",
         "card_name": "Meowth",
-        "rarity": "☆ rarity",
+        "rarity": "\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Colorless",
         "hp": "60",
@@ -5621,12 +5866,13 @@
                 "description": "Draw 1 card. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 247",
         "card_name": "Ditto",
-        "rarity": "☆ rarity",
+        "rarity": "\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Colorless",
         "hp": "70",
@@ -5643,12 +5889,13 @@
                 "description": " Choose 1 of your opponent's Pokemon's attacks and use it as this attack. If this Pokemon doesn't have the necessary Energy to use that attack, this attack does nothing. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 248",
         "card_name": "Eevee",
-        "rarity": "☆ rarity",
+        "rarity": "\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Colorless",
         "hp": "60",
@@ -5665,12 +5912,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 249",
         "card_name": "Porygon",
-        "rarity": "☆ rarity",
+        "rarity": "\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Colorless",
         "hp": "50",
@@ -5692,12 +5940,13 @@
                 "name": "Data Scan",
                 "description": "Once during your turn, you may look at the top card of your deck. "
             }
-        ]
+        ],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 250",
         "card_name": "Snorlax",
-        "rarity": "☆ rarity",
+        "rarity": "\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Colorless",
         "hp": "150",
@@ -5717,12 +5966,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 251",
         "card_name": "Venusaur ex",
-        "rarity": "☆☆ rarity",
+        "rarity": "\u2606\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Grass",
         "hp": "190",
@@ -5752,12 +6002,13 @@
                 "description": "Heal 30 damage from this Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fire"
     },
     {
         "#": "A1 252",
         "card_name": "Exeggutor ex",
-        "rarity": "☆☆ rarity",
+        "rarity": "\u2606\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Grass",
         "hp": "160",
@@ -5774,12 +6025,13 @@
                 "description": "Flip a coin. If heads, this attack does 40 more damage. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fire"
     },
     {
         "#": "A1 253",
         "card_name": "Charizard ex",
-        "rarity": "☆☆ rarity",
+        "rarity": "\u2606\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Fire",
         "hp": "180",
@@ -5809,12 +6061,13 @@
                 "description": "Discard 2 Fire Energy from this Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Water"
     },
     {
         "#": "A1 254",
         "card_name": "Arcanine ex",
-        "rarity": "☆☆ rarity",
+        "rarity": "\u2606\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Fire",
         "hp": "150",
@@ -5833,12 +6086,13 @@
                 "description": "This Pokemon also does 20 damage to itself. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Water"
     },
     {
         "#": "A1 255",
         "card_name": "Moltres ex",
-        "rarity": "☆☆ rarity",
+        "rarity": "\u2606\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Fire",
         "hp": "140",
@@ -5865,12 +6119,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Water"
     },
     {
         "#": "A1 256",
         "card_name": "Blastoise ex",
-        "rarity": "☆☆ rarity",
+        "rarity": "\u2606\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Water",
         "hp": "180",
@@ -5898,12 +6153,13 @@
                 "description": "If this Pokemon has at least 2 extra Water Energy attached, this attack does 60 more damage. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1 257",
         "card_name": "Starmie ex",
-        "rarity": "☆☆ rarity",
+        "rarity": "\u2606\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Water",
         "hp": "130",
@@ -5921,12 +6177,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1 258",
         "card_name": "Articuno ex",
-        "rarity": "☆☆ rarity",
+        "rarity": "\u2606\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Water",
         "hp": "140",
@@ -5951,15 +6208,16 @@
                     "Water"
                 ],
                 "damage": "80",
-                "description": "This attack also does 10 damage to each of your opponent’s Benched Pokemon. "
+                "description": "This attack also does 10 damage to each of your opponent\u2019s Benched Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1 259",
         "card_name": "Pikachu ex",
-        "rarity": "☆☆ rarity",
+        "rarity": "\u2606\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Lightning",
         "hp": "120",
@@ -5977,12 +6235,13 @@
                 "description": "This attack does 30 damage for each of your Benched Lightning Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 260",
         "card_name": "Zapdos ex",
-        "rarity": "☆☆ rarity",
+        "rarity": "\u2606\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Lightning",
         "hp": "130",
@@ -6009,12 +6268,13 @@
                 "description": "Flip 4 coins. This attack does 50 damage for each heads. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 261",
         "card_name": "Gengar ex",
-        "rarity": "☆☆ rarity",
+        "rarity": "\u2606\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Psychic",
         "hp": "170",
@@ -6038,12 +6298,13 @@
                 "name": "Shadowy Spellbind",
                 "description": "As long as this Pokemon is in the Active Spot, your opponent can't use any Supporter cards from their hand. "
             }
-        ]
+        ],
+        "weakness": "Darkness"
     },
     {
         "#": "A1 262",
         "card_name": "Mewtwo ex",
-        "rarity": "☆☆ rarity",
+        "rarity": "\u2606\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Psychic",
         "hp": "150",
@@ -6072,12 +6333,13 @@
                 "description": "Discard 2 Psychic Energy from this Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Darkness"
     },
     {
         "#": "A1 263",
         "card_name": "Machamp ex",
-        "rarity": "☆☆ rarity",
+        "rarity": "\u2606\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Fighting",
         "hp": "180",
@@ -6096,12 +6358,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Psychic"
     },
     {
         "#": "A1 264",
         "card_name": "Marowak ex",
-        "rarity": "☆☆ rarity",
+        "rarity": "\u2606\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Fighting",
         "hp": "140",
@@ -6119,12 +6382,13 @@
                 "description": "Flip 2 coins. This attack does 80 damage for each heads. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Psychic"
     },
     {
         "#": "A1 265",
         "card_name": "Wigglytuff ex",
-        "rarity": "☆☆ rarity",
+        "rarity": "\u2606\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Colorless",
         "hp": "140",
@@ -6143,12 +6407,13 @@
                 "description": "Your opponent's Active Pokemon is now Asleep. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 266",
         "card_name": "Erika",
-        "rarity": "☆☆ rarity",
+        "rarity": "\u2606\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Supporter",
         "hp": "",
@@ -6156,12 +6421,13 @@
         "pack_points": "1,250 Pts",
         "retreat_cost": "",
         "moves": [],
-        "ability": []
+        "ability": [],
+        "weakness": ""
     },
     {
         "#": "A1 267",
         "card_name": "Misty",
-        "rarity": "☆☆ rarity",
+        "rarity": "\u2606\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Supporter",
         "hp": "",
@@ -6169,12 +6435,13 @@
         "pack_points": "1,250 Pts",
         "retreat_cost": "",
         "moves": [],
-        "ability": []
+        "ability": [],
+        "weakness": ""
     },
     {
         "#": "A1 268",
         "card_name": "Blaine",
-        "rarity": "☆☆ rarity",
+        "rarity": "\u2606\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Supporter",
         "hp": "",
@@ -6182,12 +6449,13 @@
         "pack_points": "1,250 Pts",
         "retreat_cost": "",
         "moves": [],
-        "ability": []
+        "ability": [],
+        "weakness": ""
     },
     {
         "#": "A1 269",
         "card_name": "Koga",
-        "rarity": "☆☆ rarity",
+        "rarity": "\u2606\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Supporter",
         "hp": "",
@@ -6195,12 +6463,13 @@
         "pack_points": "1,250 Pts",
         "retreat_cost": "",
         "moves": [],
-        "ability": []
+        "ability": [],
+        "weakness": ""
     },
     {
         "#": "A1 270",
         "card_name": "Giovanni",
-        "rarity": "☆☆ rarity",
+        "rarity": "\u2606\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Supporter",
         "hp": "",
@@ -6208,12 +6477,13 @@
         "pack_points": "1,250 Pts",
         "retreat_cost": "",
         "moves": [],
-        "ability": []
+        "ability": [],
+        "weakness": ""
     },
     {
         "#": "A1 271",
         "card_name": "Brock",
-        "rarity": "☆☆ rarity",
+        "rarity": "\u2606\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Supporter",
         "hp": "",
@@ -6221,12 +6491,13 @@
         "pack_points": "1,250 Pts",
         "retreat_cost": "",
         "moves": [],
-        "ability": []
+        "ability": [],
+        "weakness": ""
     },
     {
         "#": "A1 272",
         "card_name": "Sabrina",
-        "rarity": "☆☆ rarity",
+        "rarity": "\u2606\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Supporter",
         "hp": "",
@@ -6234,12 +6505,13 @@
         "pack_points": "1,250 Pts",
         "retreat_cost": "",
         "moves": [],
-        "ability": []
+        "ability": [],
+        "weakness": ""
     },
     {
         "#": "A1 273",
         "card_name": "Lt. Surge",
-        "rarity": "☆☆ rarity",
+        "rarity": "\u2606\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Supporter",
         "hp": "",
@@ -6247,12 +6519,13 @@
         "pack_points": "1,250 Pts",
         "retreat_cost": "",
         "moves": [],
-        "ability": []
+        "ability": [],
+        "weakness": ""
     },
     {
         "#": "A1 274",
         "card_name": "Moltres ex",
-        "rarity": "☆☆ rarity",
+        "rarity": "\u2606\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Fire",
         "hp": "140",
@@ -6279,12 +6552,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Water"
     },
     {
         "#": "A1 275",
         "card_name": "Articuno ex",
-        "rarity": "☆☆ rarity",
+        "rarity": "\u2606\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Water",
         "hp": "140",
@@ -6309,15 +6583,16 @@
                     "Water"
                 ],
                 "damage": "80",
-                "description": "This attack also does 10 damage to each of your opponent’s Benched Pokemon. "
+                "description": "This attack also does 10 damage to each of your opponent\u2019s Benched Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1 276",
         "card_name": "Zapdos ex",
-        "rarity": "☆☆ rarity",
+        "rarity": "\u2606\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Lightning",
         "hp": "130",
@@ -6344,12 +6619,13 @@
                 "description": "Flip 4 coins. This attack does 50 damage for each heads. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 277",
         "card_name": "Gengar ex",
-        "rarity": "☆☆ rarity",
+        "rarity": "\u2606\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Psychic",
         "hp": "170",
@@ -6373,12 +6649,13 @@
                 "name": "Shadowy Spellbind",
                 "description": "As long as this Pokemon is in the Active Spot, your opponent can't use any Supporter cards from their hand. "
             }
-        ]
+        ],
+        "weakness": "Darkness"
     },
     {
         "#": "A1 278",
         "card_name": "Machamp ex",
-        "rarity": "☆☆ rarity",
+        "rarity": "\u2606\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Fighting",
         "hp": "180",
@@ -6397,12 +6674,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Psychic"
     },
     {
         "#": "A1 279",
         "card_name": "Wigglytuff ex",
-        "rarity": "☆☆ rarity",
+        "rarity": "\u2606\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Colorless",
         "hp": "140",
@@ -6421,12 +6699,13 @@
                 "description": "Your opponent's Active Pokemon is now Asleep. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 280",
         "card_name": "Charizard ex",
-        "rarity": "☆☆☆ rarity",
+        "rarity": "\u2606\u2606\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nCharizard",
         "type": "Fire",
         "hp": "180",
@@ -6456,12 +6735,13 @@
                 "description": "Discard 2 Fire Energy from this Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Water"
     },
     {
         "#": "A1 281",
         "card_name": "Pikachu ex",
-        "rarity": "☆☆☆ rarity",
+        "rarity": "\u2606\u2606\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nPikachu",
         "type": "Lightning",
         "hp": "120",
@@ -6479,12 +6759,13 @@
                 "description": "This attack does 30 damage for each of your Benched Lightning Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 282",
         "card_name": "Mewtwo ex",
-        "rarity": "☆☆☆ rarity",
+        "rarity": "\u2606\u2606\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nMewtwo",
         "type": "Psychic",
         "hp": "150",
@@ -6513,12 +6794,13 @@
                 "description": "Discard 2 Psychic Energy from this Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Darkness"
     },
     {
         "#": "A1 283",
         "card_name": "Mew",
-        "rarity": "☆☆☆ rarity",
+        "rarity": "\u2606\u2606\u2606 rarity",
         "exclusive_pack": "Genetic Apex (A1)\nSpecial",
         "type": "Psychic",
         "hp": "60",
@@ -6535,12 +6817,13 @@
                 "description": "Your opponent reveals their hand. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Darkness"
     },
     {
         "#": "A1 284",
         "card_name": "Charizard ex",
-        "rarity": "♛ rarity",
+        "rarity": "\u265b rarity",
         "exclusive_pack": "Genetic Apex (A1)\nAny",
         "type": "Fire",
         "hp": "180",
@@ -6570,12 +6853,13 @@
                 "description": "Discard 2 Fire Energy from this Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Water"
     },
     {
         "#": "A1 285",
         "card_name": "Pikachu ex",
-        "rarity": "♛ rarity",
+        "rarity": "\u265b rarity",
         "exclusive_pack": "Genetic Apex (A1)\nAny",
         "type": "Lightning",
         "hp": "120",
@@ -6593,12 +6877,13 @@
                 "description": "This attack does 30 damage for each of your Benched Lightning Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1 286",
         "card_name": "Mewtwo ex",
-        "rarity": "♛ rarity",
+        "rarity": "\u265b rarity",
         "exclusive_pack": "Genetic Apex (A1)\nAny",
         "type": "Psychic",
         "hp": "150",
@@ -6627,12 +6912,13 @@
                 "description": "Discard 2 Psychic Energy from this Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Darkness"
     },
     {
         "#": "A1a 001",
         "card_name": "Exeggcute",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Grass",
         "hp": "50",
@@ -6649,12 +6935,13 @@
                 "description": " Take a Grass Energy from your Energy Zone and attach it to this Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fire"
     },
     {
         "#": "A1a 002",
         "card_name": "Exeggutor",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Grass",
         "hp": "130",
@@ -6674,12 +6961,13 @@
                 "description": "This attack does 20 more damage for each Energy attached to your opponent's Active Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fire"
     },
     {
         "#": "A1a 003",
         "card_name": "Celebi ex",
-        "rarity": "◇◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Grass",
         "hp": "130",
@@ -6697,12 +6985,13 @@
                 "description": "Flip a coin for each Energy attached to this Pokemon. This attack does 50 damage for each heads. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fire"
     },
     {
         "#": "A1a 004",
         "card_name": "Snivy",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Grass",
         "hp": "70",
@@ -6720,12 +7009,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fire"
     },
     {
         "#": "A1a 005",
         "card_name": "Servine",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Grass",
         "hp": "80",
@@ -6743,12 +7033,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fire"
     },
     {
         "#": "A1a 006",
         "card_name": "Serperior",
-        "rarity": "◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Grass",
         "hp": "110",
@@ -6773,12 +7064,13 @@
                 "name": "Jungle Totem",
                 "description": "Each Grass Energy attached to your Grass Pokemon provides 2 Grass Energy. This effect doesn't stack. "
             }
-        ]
+        ],
+        "weakness": "Fire"
     },
     {
         "#": "A1a 007",
         "card_name": "Morelull",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Grass",
         "hp": "60",
@@ -6795,12 +7087,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fire"
     },
     {
         "#": "A1a 008",
         "card_name": "Shiinotic",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Grass",
         "hp": "90",
@@ -6818,12 +7111,13 @@
                 "description": "Your opponent's Active Pokemon is now Asleep. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fire"
     },
     {
         "#": "A1a 009",
         "card_name": "Dhelmise",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Grass",
         "hp": "100",
@@ -6840,12 +7134,13 @@
                 "description": "If this Pokemon has at least 3 extra Grass Energy attached, this attack does 70 more damage. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fire"
     },
     {
         "#": "A1a 010",
         "card_name": "Ponyta",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Fire",
         "hp": "60",
@@ -6862,12 +7157,13 @@
                 "description": "Flip a coin. If heads, this attack does 30 more damage. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Water"
     },
     {
         "#": "A1a 011",
         "card_name": "Rapidash",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Fire",
         "hp": "100",
@@ -6885,12 +7181,13 @@
                 "description": "Flip a coin. If heads, this attack does 60 more damage. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Water"
     },
     {
         "#": "A1a 012",
         "card_name": "Magmar",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Fire",
         "hp": "80",
@@ -6908,12 +7205,13 @@
                 "description": "Discard 2 Fire Energy from this Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Water"
     },
     {
         "#": "A1a 013",
         "card_name": "Larvesta",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Fire",
         "hp": "80",
@@ -6931,12 +7229,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Water"
     },
     {
         "#": "A1a 014",
         "card_name": "Volcarona",
-        "rarity": "◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Fire",
         "hp": "120",
@@ -6955,12 +7254,13 @@
                 "description": " Discard 2 Fire Energy from this Pokemon. This attack does 80 damage to 1 of your opponent's Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Water"
     },
     {
         "#": "A1a 015",
         "card_name": "Salandit",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Fire",
         "hp": "60",
@@ -6977,12 +7277,13 @@
                 "description": "If your opponent's Active Pokemon is Poisoned, this attack does 40 more damage. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Water"
     },
     {
         "#": "A1a 016",
         "card_name": "Salazzle",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Fire",
         "hp": "80",
@@ -6999,12 +7300,13 @@
                 "description": "Your opponent's Active Pokemon is now Poisoned. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Water"
     },
     {
         "#": "A1a 017",
         "card_name": "Magikarp",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Water",
         "hp": "30",
@@ -7021,12 +7323,13 @@
                 "description": " Switch thhis Pokemon with 1 of your Benched Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1a 018",
         "card_name": "Gyarados ex",
-        "rarity": "◇◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Water",
         "hp": "180",
@@ -7046,12 +7349,13 @@
                 "description": "Discard a random Energy from among the Energy attached to all Pokemon (both yours and your opponent's). "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1a 019",
         "card_name": "Vaporeon",
-        "rarity": "◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Water",
         "hp": "120",
@@ -7075,12 +7379,13 @@
                 "name": "Wash Out",
                 "description": "As often as you like during your turn, you may move a Water Energy from 1 of your Benched Water Pokemon to your Active Water Pokemon. "
             }
-        ]
+        ],
+        "weakness": "Lightning"
     },
     {
         "#": "A1a 020",
         "card_name": "Finneon",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Water",
         "hp": "60",
@@ -7097,12 +7402,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1a 021",
         "card_name": "Lumineon",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Water",
         "hp": "80",
@@ -7120,12 +7426,13 @@
                 "description": " This attack does 50 damage to 1 of your opponent's Benched Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1a 022",
         "card_name": "Chewtle",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Water",
         "hp": "80",
@@ -7143,12 +7450,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1a 023",
         "card_name": "Drednaw",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Water",
         "hp": "130",
@@ -7167,12 +7475,13 @@
                 "description": "Flip a coin. If heads, discard a random Energy from your opponent's Active Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1a 024",
         "card_name": "Cramorant",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Water",
         "hp": "80",
@@ -7191,12 +7500,13 @@
                 "description": "Flip a coin. If heads, during your opponent's next turn, prevent all damage from - and effects of - attacks done to this Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1a 025",
         "card_name": "Pikachu",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Lightning",
         "hp": "60",
@@ -7213,12 +7523,13 @@
                 "description": "This attack does 10 damage for each of your Benched Lightning Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1a 026",
         "card_name": "Raichu",
-        "rarity": "◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Lightning",
         "hp": "120",
@@ -7237,12 +7548,13 @@
                 "description": "This attack also does 20 damage to each of your opponent's Benched Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1a 027",
         "card_name": "Electabuzz",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Lightning",
         "hp": "70",
@@ -7260,12 +7572,13 @@
                 "description": " This attack does 40 damage to 1 of your opponent's Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1a 028",
         "card_name": "Joltik",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Lightning",
         "hp": "40",
@@ -7282,12 +7595,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1a 029",
         "card_name": "Galvantula",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Lightning",
         "hp": "80",
@@ -7305,12 +7619,13 @@
                 "description": "During your opponent's next turn, the Defending Pokemon can't retreat. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1a 030",
         "card_name": "Dedenne",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Lightning",
         "hp": "60",
@@ -7327,12 +7642,13 @@
                 "description": "Flip a coin. If heads, your opponent's Active Pokemon is now Paralyzed. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1a 031",
         "card_name": "Mew",
-        "rarity": "◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Psychic",
         "hp": "60",
@@ -7349,12 +7665,13 @@
                 "description": "Your opponent reveals their hand. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Darkness"
     },
     {
         "#": "A1a 032",
         "card_name": "Mew ex",
-        "rarity": "◇◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Psychic",
         "hp": "130",
@@ -7381,12 +7698,13 @@
                 "description": " Choose 1 of your opponent's Active Pokemon's attacks and use it as this attack. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Darkness"
     },
     {
         "#": "A1a 033",
         "card_name": "Sigilyph",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Psychic",
         "hp": "80",
@@ -7403,12 +7721,13 @@
                 "description": "Draw a card. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Darkness"
     },
     {
         "#": "A1a 034",
         "card_name": "Elgyem",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Psychic",
         "hp": "60",
@@ -7425,12 +7744,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Darkness"
     },
     {
         "#": "A1a 035",
         "card_name": "Beheeyem",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Psychic",
         "hp": "90",
@@ -7447,12 +7767,13 @@
                 "description": "This attack does 20 more damage for each of your opponent's Benched Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Darkness"
     },
     {
         "#": "A1a 036",
         "card_name": "Flabebe",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Psychic",
         "hp": "40",
@@ -7469,12 +7790,13 @@
                 "description": " Your opponent's Active Pokemon is now Asleep. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Darkness"
     },
     {
         "#": "A1a 037",
         "card_name": "Floette",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Psychic",
         "hp": "70",
@@ -7491,12 +7813,13 @@
                 "description": "Heal 10 damage from this Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Darkness"
     },
     {
         "#": "A1a 038",
         "card_name": "Florges",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Psychic",
         "hp": "120",
@@ -7514,12 +7837,13 @@
                 "description": "Heal 20 damage from each of your Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Darkness"
     },
     {
         "#": "A1a 039",
         "card_name": "Swirlix",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Psychic",
         "hp": "60",
@@ -7536,12 +7860,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Darkness"
     },
     {
         "#": "A1a 040",
         "card_name": "Slurpuff",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Psychic",
         "hp": "100",
@@ -7559,12 +7884,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Darkness"
     },
     {
         "#": "A1a 041",
         "card_name": "Mankey",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Fighting",
         "hp": "50",
@@ -7581,12 +7907,13 @@
                 "description": "Flip a coin. If tails, this attack does nothing. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Psychic"
     },
     {
         "#": "A1a 042",
         "card_name": "Primeape",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Fighting",
         "hp": "80",
@@ -7603,12 +7930,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Psychic"
     },
     {
         "#": "A1a 043",
         "card_name": "Geodude",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Fighting",
         "hp": "70",
@@ -7626,12 +7954,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Psychic"
     },
     {
         "#": "A1a 044",
         "card_name": "Graveler",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Fighting",
         "hp": "100",
@@ -7649,12 +7978,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Psychic"
     },
     {
         "#": "A1a 045",
         "card_name": "Golem",
-        "rarity": "◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Fighting",
         "hp": "160",
@@ -7674,12 +8004,13 @@
                 "description": "During your opponent's next turn, this Pokemon takes -30 damage from attacks. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Psychic"
     },
     {
         "#": "A1a 046",
         "card_name": "Aerodactyl ex",
-        "rarity": "◇◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Fighting",
         "hp": "140",
@@ -7702,12 +8033,13 @@
                 "name": "Primeval Law",
                 "description": "Your opponent can't play any Pokemon from their hand to evolve their Active Pokemon. "
             }
-        ]
+        ],
+        "weakness": "Psychic"
     },
     {
         "#": "A1a 047",
         "card_name": "Marshadow",
-        "rarity": "◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Fighting",
         "hp": "80",
@@ -7722,15 +8054,16 @@
                     "Colorless"
                 ],
                 "damage": "40+",
-                "description": "If any of your Pokemon were Knocked Out by damage from an attack during your opponent’s last turn, this attack does 60 more damage. "
+                "description": "If any of your Pokemon were Knocked Out by damage from an attack during your opponent\u2019s last turn, this attack does 60 more damage. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Psychic"
     },
     {
         "#": "A1a 048",
         "card_name": "Stonjourner",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Fighting",
         "hp": "120",
@@ -7749,12 +8082,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Psychic"
     },
     {
         "#": "A1a 049",
         "card_name": "Koffing",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Darkness",
         "hp": "70",
@@ -7771,12 +8105,13 @@
                 "description": " Put 1 random Koffing from your deck onto your Bench. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1a 050",
         "card_name": "Weezing",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Darkness",
         "hp": "110",
@@ -7794,12 +8129,13 @@
                 "description": "During your opponent's next turn, if the Defending Pokemon tries to use an attack, your opponent flips a coin. If tails, that attack doesn't happen. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1a 051",
         "card_name": "Purrloin",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Darkness",
         "hp": "60",
@@ -7816,12 +8152,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1a 052",
         "card_name": "Liepard",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Darkness",
         "hp": "90",
@@ -7838,12 +8175,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1a 053",
         "card_name": "Venipede",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Darkness",
         "hp": "60",
@@ -7860,12 +8198,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1a 054",
         "card_name": "Whirlipede",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Darkness",
         "hp": "90",
@@ -7882,12 +8221,13 @@
                 "description": "Your opponent's Active Pokemon is now Poisoned. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1a 055",
         "card_name": "Scolipede",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Darkness",
         "hp": "140",
@@ -7905,12 +8245,13 @@
                 "description": "If your opponent's Active Pokemon is Poisoned, this attack does 50 more damage. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1a 056",
         "card_name": "Druddigon",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Dragon",
         "hp": "100",
@@ -7934,12 +8275,13 @@
                 "name": "Rough Skin",
                 "description": "If this Pokemon is in the Active Spot and is damaged by an attack from your opponent's POkemon, do 20 damage to the Attacking Pokemon. "
             }
-        ]
+        ],
+        "weakness": ""
     },
     {
         "#": "A1a 057",
         "card_name": "Pidgey",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Colorless",
         "hp": "50",
@@ -7954,12 +8296,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1a 058",
         "card_name": "Pidgeotto",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Colorless",
         "hp": "90",
@@ -7978,12 +8321,13 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1a 059",
         "card_name": "Pidgeot ex",
-        "rarity": "◇◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Colorless",
         "hp": "170",
@@ -8002,12 +8346,13 @@
                 "description": "This attack does 20 more damage for each of your opponent's Benched Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1a 060",
         "card_name": "Tauros",
-        "rarity": "◇◇◇ rarity",
+        "rarity": "\u25c7\u25c7\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Colorless",
         "hp": "100",
@@ -8026,12 +8371,13 @@
                 "description": "If your opponent's Active Pokemon is a Pokemon ex, this attack does 80 more damage. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1a 061",
         "card_name": "Eevee",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Colorless",
         "hp": "60",
@@ -8048,12 +8394,13 @@
                 "description": "Flip a coin until you get tails. This attack does 20 damage for each heads. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1a 062",
         "card_name": "Chatot",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Colorless",
         "hp": "60",
@@ -8070,12 +8417,13 @@
                 "description": " Shuffle your hand into your deck. Draw a card for each card in your opponent's hand. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1a 063",
         "card_name": "Old Amber",
-        "rarity": "◇ rarity",
+        "rarity": "\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Item",
         "hp": "",
@@ -8083,12 +8431,13 @@
         "pack_points": "35 Pts",
         "retreat_cost": "",
         "moves": [],
-        "ability": []
+        "ability": [],
+        "weakness": ""
     },
     {
         "#": "A1a 064",
         "card_name": "Pokemon Flute",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Item",
         "hp": "",
@@ -8096,12 +8445,13 @@
         "pack_points": "70 Pts",
         "retreat_cost": "",
         "moves": [],
-        "ability": []
+        "ability": [],
+        "weakness": ""
     },
     {
         "#": "A1a 065",
         "card_name": "Mythical Slab",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Item",
         "hp": "",
@@ -8109,12 +8459,13 @@
         "pack_points": "70 Pts",
         "retreat_cost": "",
         "moves": [],
-        "ability": []
+        "ability": [],
+        "weakness": ""
     },
     {
         "#": "A1a 066",
         "card_name": "Budding Expeditioner",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Supporter",
         "hp": "",
@@ -8122,12 +8473,13 @@
         "pack_points": "70 Pts",
         "retreat_cost": "",
         "moves": [],
-        "ability": []
+        "ability": [],
+        "weakness": ""
     },
     {
         "#": "A1a 067",
         "card_name": "Blue",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Supporter",
         "hp": "",
@@ -8135,12 +8487,13 @@
         "pack_points": "70 Pts",
         "retreat_cost": "",
         "moves": [],
-        "ability": []
+        "ability": [],
+        "weakness": ""
     },
     {
         "#": "A1a 068",
         "card_name": "Leaf",
-        "rarity": "◇◇ rarity",
+        "rarity": "\u25c7\u25c7 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Supporter",
         "hp": "",
@@ -8148,12 +8501,13 @@
         "pack_points": "70 Pts",
         "retreat_cost": "",
         "moves": [],
-        "ability": []
+        "ability": [],
+        "weakness": ""
     },
     {
         "#": "A1a 069",
         "card_name": "Exeggutor",
-        "rarity": "☆ rarity",
+        "rarity": "\u2606 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Grass",
         "hp": "130",
@@ -8173,12 +8527,13 @@
                 "description": "This attack does 20 more damage for each Energy attached to your opponent's Active Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fire"
     },
     {
         "#": "A1a 070",
         "card_name": "Serperior",
-        "rarity": "☆ rarity",
+        "rarity": "\u2606 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Grass",
         "hp": "110",
@@ -8203,12 +8558,13 @@
                 "name": "Jungle Totem",
                 "description": "Each Grass Energy attached to your Grass Pokemon provides 2 Grass Energy. This effect doesn't stack. "
             }
-        ]
+        ],
+        "weakness": "Fire"
     },
     {
         "#": "A1a 071",
         "card_name": "Salandit",
-        "rarity": "☆ rarity",
+        "rarity": "\u2606 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Fire",
         "hp": "60",
@@ -8225,12 +8581,13 @@
                 "description": "If your opponent's Active Pokemon is Poisoned, this attack does 40 more damage. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Water"
     },
     {
         "#": "A1a 072",
         "card_name": "Vaporeon",
-        "rarity": "☆ rarity",
+        "rarity": "\u2606 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Water",
         "hp": "120",
@@ -8254,12 +8611,13 @@
                 "name": "Wash Out",
                 "description": "As often as you like during your turn, you may move a Water Energy from 1 of your Benched Water Pokemon to your Active Water Pokemon. "
             }
-        ]
+        ],
+        "weakness": "Lightning"
     },
     {
         "#": "A1a 073",
         "card_name": "Dedenne",
-        "rarity": "☆ rarity",
+        "rarity": "\u2606 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Lightning",
         "hp": "60",
@@ -8276,12 +8634,13 @@
                 "description": "Flip a coin. If heads, your opponent's Active Pokemon is now Paralyzed. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1a 074",
         "card_name": "Marshadow",
-        "rarity": "☆ rarity",
+        "rarity": "\u2606 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Fighting",
         "hp": "80",
@@ -8299,12 +8658,13 @@
                 "description": "If any of your Pokemon were Knocked Out by damage from an attack during your opponent's last turn, this attack does 60 more damage. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Psychic"
     },
     {
         "#": "A1a 075",
         "card_name": "Celebi ex",
-        "rarity": "☆☆ rarity",
+        "rarity": "\u2606\u2606 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Grass",
         "hp": "130",
@@ -8322,12 +8682,13 @@
                 "description": "Flip a coin for each Energy attached to this Pokemon. This attack does 50 damage for each heads. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fire"
     },
     {
         "#": "A1a 076",
         "card_name": "Gyarados ex",
-        "rarity": "☆☆ rarity",
+        "rarity": "\u2606\u2606 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Water",
         "hp": "180",
@@ -8347,12 +8708,13 @@
                 "description": "Discard a random Energy from among the Energy attached to all Pokemon (both yours and your opponent's). "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "A1a 077",
         "card_name": "Mew ex",
-        "rarity": "☆☆ rarity",
+        "rarity": "\u2606\u2606 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Psychic",
         "hp": "130",
@@ -8379,12 +8741,13 @@
                 "description": " Choose 1 of your opponent's Active Pokemon's attacks and use it as this attack. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Darkness"
     },
     {
         "#": "A1a 078",
         "card_name": "Aerodactyl ex",
-        "rarity": "☆☆ rarity",
+        "rarity": "\u2606\u2606 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Fighting",
         "hp": "130",
@@ -8407,12 +8770,13 @@
                 "name": "Primeval Law",
                 "description": "Your opponent can't play any POkemon from their hand to evolve their Active Pokemon. "
             }
-        ]
+        ],
+        "weakness": "Psychic"
     },
     {
         "#": "A1a 079",
         "card_name": "Pidgeot ex",
-        "rarity": "☆☆ rarity",
+        "rarity": "\u2606\u2606 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Colorless",
         "hp": "170",
@@ -8431,12 +8795,13 @@
                 "description": "This attack does 20 more damage for each of your opponent's Benched Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "A1a 080",
         "card_name": "Budding Expeditioner",
-        "rarity": "☆☆ rarity",
+        "rarity": "\u2606\u2606 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Supporter",
         "hp": "",
@@ -8444,12 +8809,13 @@
         "pack_points": "1250 Pts",
         "retreat_cost": "",
         "moves": [],
-        "ability": []
+        "ability": [],
+        "weakness": ""
     },
     {
         "#": "A1a 081",
         "card_name": "Blue",
-        "rarity": "☆☆ rarity",
+        "rarity": "\u2606\u2606 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Supporter",
         "hp": "",
@@ -8457,12 +8823,13 @@
         "pack_points": "1250 Pts",
         "retreat_cost": "",
         "moves": [],
-        "ability": []
+        "ability": [],
+        "weakness": ""
     },
     {
         "#": "A1a 082",
         "card_name": "Leaf",
-        "rarity": "☆☆ rarity",
+        "rarity": "\u2606\u2606 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Supporter",
         "hp": "",
@@ -8470,12 +8837,13 @@
         "pack_points": "1250 Pts",
         "retreat_cost": "",
         "moves": [],
-        "ability": []
+        "ability": [],
+        "weakness": ""
     },
     {
         "#": "A1a 083",
         "card_name": "Mew ex",
-        "rarity": "☆☆ rarity",
+        "rarity": "\u2606\u2606 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Psychic",
         "hp": "130",
@@ -8502,12 +8870,13 @@
                 "description": " Choose 1 of your opponent's Active Pokemon's attacks and use it as this attack. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Darkness"
     },
     {
         "#": "A1a 084",
         "card_name": "Aerodactyl ex",
-        "rarity": "☆☆ rarity",
+        "rarity": "\u2606\u2606 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Fighting",
         "hp": "130",
@@ -8530,12 +8899,13 @@
                 "name": "Primeval Law",
                 "description": "Your opponent can't play any POkemon from their hand to evolve their Active Pokemon. "
             }
-        ]
+        ],
+        "weakness": "Psychic"
     },
     {
         "#": "A1a 085",
         "card_name": "Celebi ex",
-        "rarity": "☆☆☆ rarity",
+        "rarity": "\u2606\u2606\u2606 rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Grass",
         "hp": "130",
@@ -8553,12 +8923,13 @@
                 "description": "Flip a coin for each Energy attached to this Pokemon. This attack does 50 damage for each heads. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fire"
     },
     {
         "#": "A1a 086",
         "card_name": "Mew ex",
-        "rarity": "♛ rarity",
+        "rarity": "\u265b rarity",
         "exclusive_pack": "Mythical Island (A1a)\nMew",
         "type": "Psychic",
         "hp": "130",
@@ -8585,7 +8956,8 @@
                 "description": " Choose 1 of your opponent's Active Pokemon's attacks and use it as this attack. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Darkness"
     },
     {
         "#": "P-A 001",
@@ -8598,7 +8970,8 @@
         "pack_points": "-",
         "retreat_cost": "",
         "moves": [],
-        "ability": []
+        "ability": [],
+        "weakness": ""
     },
     {
         "#": "P-A 002",
@@ -8611,7 +8984,8 @@
         "pack_points": "-",
         "retreat_cost": "",
         "moves": [],
-        "ability": []
+        "ability": [],
+        "weakness": ""
     },
     {
         "#": "P-A 003",
@@ -8624,7 +8998,8 @@
         "pack_points": "-",
         "retreat_cost": "",
         "moves": [],
-        "ability": []
+        "ability": [],
+        "weakness": ""
     },
     {
         "#": "P-A 004",
@@ -8637,7 +9012,8 @@
         "pack_points": "-",
         "retreat_cost": "",
         "moves": [],
-        "ability": []
+        "ability": [],
+        "weakness": ""
     },
     {
         "#": "P-A 005",
@@ -8650,7 +9026,8 @@
         "pack_points": "-",
         "retreat_cost": "",
         "moves": [],
-        "ability": []
+        "ability": [],
+        "weakness": ""
     },
     {
         "#": "P-A 006",
@@ -8663,7 +9040,8 @@
         "pack_points": "-",
         "retreat_cost": "",
         "moves": [],
-        "ability": []
+        "ability": [],
+        "weakness": ""
     },
     {
         "#": "P-A 007",
@@ -8676,7 +9054,8 @@
         "pack_points": "-",
         "retreat_cost": "",
         "moves": [],
-        "ability": []
+        "ability": [],
+        "weakness": ""
     },
     {
         "#": "P-A 009",
@@ -8698,7 +9077,8 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "P-A 010",
@@ -8723,7 +9103,8 @@
                 "description": "Discard 2 Psychic Energy from this Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Darkness"
     },
     {
         "#": "P-A 011",
@@ -8747,7 +9128,8 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "P-A 012",
@@ -8769,7 +9151,8 @@
                 "description": "Draw 1 card. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "P-A 013",
@@ -8798,7 +9181,8 @@
                 "name": "Powder Heal",
                 "description": "Once during your turn, you may heal 20 damage from each of your Pokemon. "
             }
-        ]
+        ],
+        "weakness": "Fire"
     },
     {
         "#": "P-A 014",
@@ -8822,7 +9206,8 @@
                 "description": "Heal 20 damage from this Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Lightning"
     },
     {
         "#": "P-A 015",
@@ -8844,7 +9229,8 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "P-A 016",
@@ -8866,7 +9252,8 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Darkness"
     },
     {
         "#": "P-A 017",
@@ -8888,7 +9275,8 @@
                 "description": "This Pokemon also does 10 damage to itself. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Psychic"
     },
     {
         "#": "P-A 018",
@@ -8913,7 +9301,8 @@
                 "description": "Heal 30 damage from this Pokemon. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fire"
     },
     {
         "#": "P-A 019",
@@ -8939,9 +9328,10 @@
         "ability": [
             {
                 "name": "Water Shuriken",
-                "description": "Once during your turn, you may do 20 damage to 1 of your opponent’s Pokemon. "
+                "description": "Once during your turn, you may do 20 damage to 1 of your opponent\u2019s Pokemon. "
             }
-        ]
+        ],
+        "weakness": "Lightning"
     },
     {
         "#": "P-A 020",
@@ -8963,7 +9353,8 @@
                 "description": "Flip a coin. If tails, this attack does nothing. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Darkness"
     },
     {
         "#": "P-A 021",
@@ -8987,7 +9378,8 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Psychic"
     },
     {
         "#": "P-A 022",
@@ -9009,7 +9401,8 @@
                 "description": " Your opponent's Active Pokemon is now Asleep. "
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     },
     {
         "#": "P-A 023",
@@ -9032,7 +9425,8 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fire"
     },
     {
         "#": "P-A 024",
@@ -9054,6 +9448,7 @@
                 "description": ""
             }
         ],
-        "ability": []
+        "ability": [],
+        "weakness": "Fighting"
     }
 ]
