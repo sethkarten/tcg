@@ -85,6 +85,7 @@ class PTCGEnv(gym.Env):
         # input('end of step')
         
         # print('obs', observation)
+        print('game is over', self.cy_ptcg.is_game_over())
         terminated = (self.cy_ptcg.is_game_over() == 1) or (reward == -10)
         truncated = False  # You can implement turn limit if needed
         info = {}  # You can add any additional info here

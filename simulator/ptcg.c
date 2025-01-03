@@ -37,12 +37,22 @@ int * get_legal_actions(GameState *game) {
     // no active? must play a basic
     if (current_player->active_pokemon == NULL)
     {
-        for (int i = 0; i < current_player->hand_count; i++) {
-            Card *card = &current_player->hand[i];
-            if (card->cardtype == POKEMON && card->stage == BASIC) {
-                legal_actions[i + 4] = true;
+        if (game->current_turn == 0) 
+        {
+            for (int i = 0; i < current_player->hand_count; i++) {
+                Card *card = &current_player->hand[i];
+                if (card->cardtype == POKEMON && card->stage == BASIC)  legal_actions[i + 4] = true;
+            }
+        } else {
+            // move from bench
+            printf("bench?\n");
+            for (int i = 0; i < current_player->bench_count; i++) 
+            {
+                printf("yes\n");
+                legal_actions[i + 84] = true;
             }
         }
+        
         return legal_actions;
     }
 
@@ -155,8 +165,8 @@ int execute_action(GameState *game, int action, int target, int opponent_target)
         action_str[0] = "r";
         action_str[1] = current_player->active_pokemon->name;
         action_str[2] = malloc(10);
-        snprintf(action_str[2], 10, "%d", action-84);
-        printf("Retreating Pokemon: %s to bench position %d\n", action_str[1], action-84);
+        snprintf(action_str[2], 10, "%d", 1+action-84);
+        printf("Retreating Pokemon: %s to bench position %d\n", action_str[1], 1+action-84);
     } else if (action >= 87 && action <= 90) {
         action_str[0] = "a";
         if (action == 87) {

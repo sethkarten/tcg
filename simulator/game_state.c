@@ -80,14 +80,18 @@ void start_turn(GameState *game, Player *player)
 
     // checkup on status effects
     // ASLEEP
-    if (player->active_pokemon && player->active_pokemon->status == ASLEEP) {
-        if (flip_coin() == HEADS) {
-            player->active_pokemon->status = NONE_STATUS;
+    if (player->active_pokemon) {
+        if (player->active_pokemon->status == ASLEEP) {
+            if (flip_coin() == HEADS) {
+                player->active_pokemon->status = NONE_STATUS;
+            }
         }
     }
-    if (opponent->active_pokemon && opponent->active_pokemon->status == ASLEEP) {
-        if (flip_coin() == HEADS) {
-            opponent->active_pokemon->status = NONE_STATUS;
+    if (opponent->active_pokemon) {
+        if (opponent->active_pokemon->status == ASLEEP) {
+            if (flip_coin() == HEADS) {
+                opponent->active_pokemon->status = NONE_STATUS;
+            }
         }
     }
 }
@@ -568,6 +572,7 @@ bool use_move(GameState *game, Player *player, char *card_name, int move_index, 
         }
     }
 
+    printf("checking description\n");
     if (move->description != NULL) {
         // Copy opponent's attack
         if (strstr(move->description, "Choose 1 of your opponent's Pokemon's attacks and use it as this attack") != NULL) {
@@ -825,6 +830,7 @@ bool use_move(GameState *game, Player *player, char *card_name, int move_index, 
         opponent_card->hp -= damage;
     }
     opponent_card->prevent_damage_next_turn = false;
+    printf("damage applied\n");
 
     // Check for KO
     check_for_KO(game, player, opponent, opponent_card);
@@ -848,6 +854,10 @@ void check_for_KO(GameState *game, Player *player, Player * opponent, Card *oppo
             opponent->discard_pile[opponent->discard_count++] = *opponent_card;
             printf("%s knocked out.\n", opponent->active_pokemon->name);
             opponent->active_pokemon = NULL;
+            if (opponent->bench_count == 0) {
+                game->game_over = true;
+                game->winner = player;
+            }
         } else {
             for (int i = 0; i < opponent->bench_count; i++) {
                 if (&opponent->bench[i] == opponent_card) {

@@ -14,7 +14,7 @@ def load_decks_from_csv(file_path):
                 energies.append([bool(int(e)) for e in row[20:]])
     return decks, energies
 
-def measure_fps(env, num_steps=1000):
+def measure_fps(env, num_steps=10000):
     start_time = time.time()
     
     observation, info = env.reset()
