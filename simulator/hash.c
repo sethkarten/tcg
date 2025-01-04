@@ -101,6 +101,7 @@ void delete(HashMap* mp, char* key)
             } else {
                 prevNode->next = currNode->next;
             }
+            // printf("freeing hash.c:L105\n");
             free(currNode);
             mp->numOfElements--;
             break;

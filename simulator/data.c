@@ -52,6 +52,7 @@ static void parse_move(cJSON *move_json, Move *move) {
 
 // Function to check if a string contains another string (case-insensitive)
 bool str_contains_insensitive(const char *str, const char *substr) {
+    if (DATA_DEBUG) printf("Comparing %s vs. %s\n", str, substr);
     char *str_lower = strdup(str);
     char *substr_lower = strdup(substr);
     for (char *p = str_lower; *p; ++p) *p = tolower(*p);
@@ -59,8 +60,9 @@ bool str_contains_insensitive(const char *str, const char *substr) {
     
     bool result = strstr(str_lower, substr_lower) != NULL;
     
-    free(str_lower);
-    free(substr_lower);
+    if (DATA_DEBUG) printf("freeing data.c:L63\n");
+    if (str_lower) free(str_lower);
+    if (substr_lower) free(substr_lower);
     return result;
 }
 
@@ -99,6 +101,7 @@ void load_card_data_from_json(GameState *game, const char* filename) {
         if (error_ptr != NULL) {
             fprintf(stderr, "JSON parsing error: %s\n", error_ptr);
         }
+        if (DATA_DEBUG) printf("freeing data.c:L104\n");
         free(json_string);
         return;
     }
@@ -116,8 +119,7 @@ void load_card_data_from_json(GameState *game, const char* filename) {
             fprintf(stderr, "Memory allocation failed for card\n");
             continue;
         }
-        memset(card, 0, sizeof(Card));
-        card->id = card_count++;
+        // memset(card, 0, sizeof(Card));
 
         // Dynamically allocate memory for card fields
         card->number = NULL;
@@ -152,7 +154,7 @@ void load_card_data_from_json(GameState *game, const char* filename) {
         if (cJSON_IsString(card_name) && card_name->valuestring != NULL) {
             card->name = strdup(card_name->valuestring);
             if (DATA_DEBUG) printf("Card name: %s\n", card->name);
-        }
+        } else printf("ERROR card name\n");
 
         if (cJSON_IsString(type) && type->valuestring != NULL) {
             const char* type_str = type->valuestring;
@@ -177,6 +179,7 @@ void load_card_data_from_json(GameState *game, const char* filename) {
 
         if (cJSON_IsString(weakness) && weakness->valuestring != NULL) {
             const char* weakness_str = weakness->valuestring;
+            if (DATA_DEBUG) printf("Card weakness: %s\n", weakness_str);
             if (strcmp(weakness_str, "Grass") == 0) card->weakness = GRASS;
             else if (strcmp(weakness_str, "Fire") == 0) card->weakness = FIRE;
             else if (strcmp(weakness_str, "Water") == 0) card->weakness = WATER;
@@ -189,7 +192,6 @@ void load_card_data_from_json(GameState *game, const char* filename) {
             else if (strcmp(weakness_str, "Dragon") == 0) card->weakness = DRAGON;
             else if (strcmp(weakness_str, "Colorless") == 0) card->weakness = COLORLESS;
             else card->weakness = NONE_TYPE;
-            if (DATA_DEBUG) printf("Card weakness: %s\n", weakness_str);
         }
 
         if (cJSON_IsNumber(hp)) {
@@ -217,7 +219,8 @@ void load_card_data_from_json(GameState *game, const char* filename) {
         }
         if (DATA_DEBUG) printf("Card retreat cost: %d\n", card->retreat_cost);
 
-        card->is_ex = str_contains_insensitive(card->name, "ex");
+        // card->is_ex = str_contains_insensitive(card->name, "ex");
+        card->is_ex = strstr(card->name, "ex");
         if (DATA_DEBUG) printf("Card is EX: %s\n", card->is_ex ? "Yes" : "No");
 
         card->has_ability = (cJSON_IsArray(ability) && cJSON_GetArraySize(ability) > 0);
@@ -264,6 +267,7 @@ void load_card_data_from_json(GameState *game, const char* filename) {
     if (DATA_DEBUG) printf("All cards processed. Total cards: %d\n", card_count);
 
     cJSON_Delete(json);
+    if (DATA_DEBUG) printf("freeing data.c:L268\n");
     free(json_string);
     if (DATA_DEBUG) printf("Memory cleaned up\n");
 }

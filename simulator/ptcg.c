@@ -3,7 +3,7 @@
 #include <string.h>
 #include "ptcg.h"
 
-#define INFO_PTCG true
+#define INFO_PTCG false
 
 void init(GameState * game)
 {
@@ -132,6 +132,7 @@ int * get_legal_actions(GameState *game) {
 
 
 int execute_action(GameState *game, int action, int target, int opponent_target) {
+    if (INFO_PTCG) printf("executing action: %d %d %d\n", action, target, opponent_target);
     Player *current_player = get_current_player_(game);
     Player *opponent = get_opponent_(game);
     int reward = 0;
@@ -148,6 +149,7 @@ int execute_action(GameState *game, int action, int target, int opponent_target)
             return -1;
         }
     }
+    if (INFO_PTCG) printf("executing action: allocation ok\n");
 
     // Format action into string based on get_legal_actions and act_turn
     if (action >= 0 && action <= 3) {
@@ -180,7 +182,8 @@ int execute_action(GameState *game, int action, int target, int opponent_target)
         if (INFO_PTCG) printf("Playing Item card: %s on target %d\n", action_str[1], target);
     } else if (action >= 84 && action <= 86) {
         strcpy(action_str[0], "r");
-        strncpy(action_str[1], current_player->active_pokemon->name, 19);
+        if (current_player->active_pokemon) strncpy(action_str[1], current_player->active_pokemon->name, 19);
+        else strncpy(action_str[1], "None", 19);
         action_str[1][19] = '\0';
         snprintf(action_str[2], 20, "%d", 1+action-84);
         if (INFO_PTCG) printf("Retreating Pokemon: %s to bench position %d\n", action_str[1], 1+action-84);
@@ -420,7 +423,7 @@ float* get_observation(GameState *game) {
 
     // Current turn
     observation[index++] = (game->current_turn) / 50.0f;
-    if (INFO_PTCG) printf("last observation %d\n", index);
+    if (INFO_PTCG) printf("last observation\n");
 
     // Available actions
     // bool* legal_actions = get_legal_actions(game, NULL);

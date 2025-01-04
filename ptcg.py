@@ -26,7 +26,7 @@ class PTCGEnv(gym.Env):
         self.cy_ptcg = CyPTCG()
         
         self.action_space = spaces.MultiDiscrete([97, 8, 8])  # action, target, opponent_target
-        self.observation_space = spaces.Box(low=-1, high=1, shape=(91,), dtype=np.float32)
+        self.observation_space = spaces.Box(low=-5, high=5, shape=(91,), dtype=np.float32)
 
         self.render_mode = render_mode
         self.decks, self.energies = load_decks_from_csv(decks_file)
@@ -62,7 +62,7 @@ class PTCGEnv(gym.Env):
 
     def reset(self, seed=None, options=None):
         super().reset(seed=seed)
-        print('reseting')
+        # print('reseting')
         
         # Randomly select two decks and their corresponding energies
         deck1_index = random.randint(0, len(self.decks) - 1)
@@ -72,7 +72,7 @@ class PTCGEnv(gym.Env):
         player2_deck = self.decks[deck2_index]
         player1_energy = self.energies[deck1_index]
         player2_energy = self.energies[deck2_index]
-        print(player1_deck, player2_deck)
+        # print(player1_deck, player2_deck)
 
         self.cy_ptcg.reset(copy(player1_deck), copy(player1_energy), copy(player2_deck), copy(player2_energy))
         observation = self.cy_ptcg.get_observation()
@@ -82,9 +82,9 @@ class PTCGEnv(gym.Env):
         return observation, info
 
     def step(self, action):
-        print('entering step', flush=True)
+        # print('entering step', flush=True)
         action_idx, target, opponent_target = action
-        print(action_idx, target, opponent_target)
+        # print(action_idx, target, opponent_target)
         reward = self.cy_ptcg.step(action_idx, target, opponent_target)
         # print('c step reward', reward)
         # input('end of step')
@@ -95,6 +95,7 @@ class PTCGEnv(gym.Env):
         truncated = False  # You can implement turn limit if needed
         info = {}  # You can add any additional info here
         observation = self.cy_ptcg.get_observation()
+        # print('leaving step')
         return np.array(observation, dtype=np.float32), reward, terminated, truncated, info
 
     def render(self):

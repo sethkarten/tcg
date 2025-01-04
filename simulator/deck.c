@@ -3,6 +3,8 @@
 #include "deck.h"
 #include "hash.h"
 
+#define DECK_DEBUG false
+
 void initialize_deck(HashMap *card_dictionary, Deck *deck, const char (*card_numbers)[MAX_CARD_NAME_LENGTH], bool energy[MAX_CARD_ENERGIES])
 {
     deck->card_count = 0;
@@ -62,8 +64,10 @@ void shuffle_deck(Deck *deck) {
 
 void reset_deck(Deck *deck) {
     for (int i = 0; i < deck->card_count; i++) {
+        if (DECK_DEBUG) printf("freeing deck.c:L65\n");
         free(deck->cards[i]);
     }
+        if (DECK_DEBUG) printf("freeing deck.c:L68\n");
     free(deck->cards);
     deck->cards = NULL;
     deck->card_count = 0;

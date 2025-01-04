@@ -1,6 +1,8 @@
 #include "player.h"
 #include <stdlib.h>
 
+#define PLAYER_DEBUG false
+
 void initialize_player(Player *player, Role role) {
     player->active_pokemon = NULL;
     player->bench = (Card **)malloc(MAX_BENCH_POKEMON * sizeof(Card *));
@@ -25,6 +27,7 @@ void initialize_player(Player *player, Role role) {
 
 void reset_player(Player *player) {
     player->active_pokemon = NULL;
+    if (PLAYER_DEBUG) printf("freeing player.c:L28\n");
     free(player->deck);
     player->deck = (Deck *)malloc(sizeof(Deck));
     player->bench_count = 0;
@@ -40,6 +43,7 @@ void reset_player(Player *player) {
 
 
 void cleanup_player(Player *player) {
+    if (PLAYER_DEBUG) printf("freeing player.c:L44\n");
     free(player->bench);
     free(player->hand);
     free(player->deck);
@@ -65,9 +69,10 @@ bool attach_energy(Player *player, EnergyType energy, int target)
         player->bench[target-1]->attached_energies[(int)energy] += 1;
         player->bench[target-1]->energies_count += 1;
     } else {
-        printf("Error: invalid target %d\n", target);
+        if (PLAYER_DEBUG) printf("Error: invalid target %d\n", target);
         return false;
     }
+    player->energy_available = false;
     return true;
 
 }
@@ -128,7 +133,7 @@ Card * get_target(Player *player, Player * opponent, int target)
     } else if (target <= 7 && target-1 <= opponent->bench_count) {
         return opponent->bench[target-1];
     } else {
-        printf("Error: invalid target %d\n", target);
+        if (PLAYER_DEBUG) printf("Error: invalid target %d\n", target);
         return NULL;
     }
 }
@@ -139,7 +144,7 @@ bool move_active_to_hand(Player *player) {
     }
 
     if (player->hand_count >= MAX_HAND_SIZE) {
-        printf("Hand is full. Cannot move active Pokémon to hand.\n");
+        if (PLAYER_DEBUG) printf("Hand is full. Cannot move active Pokémon to hand.\n");
         return false;
     }
 
@@ -151,7 +156,7 @@ bool move_active_to_hand(Player *player) {
     // free(player->active_pokemon);
     player->active_pokemon = NULL;
 
-    printf("Active Pokémon moved to hand.\n");
+    if (PLAYER_DEBUG) printf("Active Pokémon moved to hand.\n");
     return true;
 }
 
@@ -300,7 +305,7 @@ bool has_enough_energy(Player *player, Card *pokemon, Move *move) {
 void draw_initial_hand(Player *player, Deck *deck) {
     // printf("Deck:\n");
     // for (int i = 0; i < deck->card_count; i++) {
-    //     printf("%d. %s\n", i + 1, deck->cards[i].name);
+    //     if (PLAYER_DEBUG) printf("%d. %s\n", i + 1, deck->cards[i].name);
     // }
     int basic_pokemon_index = -1;
     int cards_drawn = 0;
@@ -347,7 +352,7 @@ void draw_initial_hand(Player *player, Deck *deck) {
 
     // printf("Player's hand:\n");
     // for (int i = 0; i < player->hand_count; i++) {
-    //     printf("%d. %s\n", i + 1, player->hand[i].name);
+    //     if (PLAYER_DEBUG) printf("%d. %s\n", i + 1, player->hand[i].name);
     // }
 }
 

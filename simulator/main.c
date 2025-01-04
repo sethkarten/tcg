@@ -59,6 +59,7 @@ void test_load_card_data() {
         }
     }
 
+    printf("Number of cards %d\n", game.card_dictionary->numOfElements);
     // Clean up
     for (int i = 0; i < game.card_dictionary->capacity; i++) {
         struct node* current = game.card_dictionary->arr[i];
