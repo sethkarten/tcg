@@ -6,7 +6,7 @@
 
 #include <time.h>
 
-#define GAME_STATE_DEBUG false
+#define GAME_STATE_DEBUG true
 
 void initialize_game_state(GameState *game)
 {
@@ -390,25 +390,40 @@ bool retreat_pokemon(GameState *game, Player *player, char *card_name, int targe
     Card *active = player->active_pokemon;
     if (active == NULL)
     {
-        // sending out pokemon from bench
-        player->active_pokemon = get_target(player, NULL, target);
-        if (GAME_STATE_DEBUG) printf("Putting out new pokemon\n");
-        return true;
+        if (target < 0 || target >= player->bench_count)
+        {
+            if (GAME_STATE_DEBUG) printf("Invalid target for sending out Pokemon\n");
+            return false;
+        }
 
+        // Sending out pokemon from bench
+        player->active_pokemon = player->bench[target];
+        
+        // Shift the remaining bench Pokemon
+        for (int i = target; i < player->bench_count - 1; i++)
+        {
+            player->bench[i] = player->bench[i + 1];
+        }
+        
+        player->bench_count--;
+        
+        // Clear the last bench slot
+        player->bench[player->bench_count] = NULL;
+
+        if (GAME_STATE_DEBUG) printf("Putting out new pokemon: %s\n", player->active_pokemon->name);
+        return true;
     }
+
     if (target < 0 || target >= player->bench_count || player->cant_retreat) {
-        // if (active == NULL) {
-        //     if (GAME_STATE_DEBUG) printf("Cannot retreat: No active Pokemon.\n");
-        // }
-        // if (target < 0) {
-        //     if (GAME_STATE_DEBUG) printf("Cannot retreat: Invalid target (less than 0).\n");
-        // }
-        // if (target >= player->bench_count) {
-        //     if (GAME_STATE_DEBUG) printf("Cannot retreat: Target (%d) exceeds bench count (%d).\n", target, player->bench_count);
-        // }
-        // if (player->cant_retreat) {
-        //     if (GAME_STATE_DEBUG) printf("Cannot retreat: Player is prevented from retreating.\n");
-        // }
+        if (target < 0) {
+            if (GAME_STATE_DEBUG) printf("Cannot retreat: Invalid target (less than 0).\n");
+        }
+        if (target >= player->bench_count) {
+            if (GAME_STATE_DEBUG) printf("Cannot retreat: Target (%d) exceeds bench count (%d).\n", target, player->bench_count);
+        }
+        if (player->cant_retreat) {
+            if (GAME_STATE_DEBUG) printf("Cannot retreat: Player is prevented from retreating.\n");
+        }
         return false;
     }
 
