@@ -9,7 +9,7 @@
 #define MAX_PRIZE_CARDS 3
 
 typedef enum {
-    PLAY, OPP
+    PLAY, OPP, TIE, NONE_ROLE,
 } Role;
 
 typedef struct {

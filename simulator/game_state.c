@@ -11,7 +11,8 @@
 void initialize_game_state(GameState *game)
 {
     // Initialize random seed
-    srand(time(NULL));    
+    // srand(time(NULL));    
+    srand(0);    
 
     // Load card data from JSON
     game->card_dictionary = (HashMap*)malloc(sizeof(HashMap));
@@ -31,6 +32,7 @@ void reset_game(GameState * game,
                 const char deck2[MAX_CARDS_IN_DECK][MAX_CARD_NAME_LENGTH],
                 bool energy2[MAX_CARD_ENERGIES])
 {
+    if (GAME_STATE_DEBUG) printf("\n\n\nResetting game.\n");
     // Iterate through each bucket in the hash table
     for (int i = 0; i < game->card_dictionary->capacity; i++) {
         struct node *current = game->card_dictionary->arr[i];
@@ -71,7 +73,7 @@ void reset_game(GameState * game,
     shuffle_deck(game->player2.deck);
 
     // Initialize other game state variables
-    game->winner = NULL;
+    game->winner = NONE_ROLE;
     game->current_turn = 0;
     game->supporter_played = false;
     game->game_over = false;
@@ -89,16 +91,20 @@ void reset_game(GameState * game,
     if (GAME_STATE_DEBUG) printf("Initial game state:\n");
     print_player_state(&game->player1, "Player 1");
     print_player_state(&game->player2, "Player 2");
+    if (GAME_STATE_DEBUG) printf("Finished reset.\n");
+    fflush(stdout);
 }
 
 
 void start_turn(GameState *game, Player *player)
 {
+    if (GAME_STATE_DEBUG) printf("Starting turn.\n");
     Player *opponent = get_opponent_(game);
 
     if (GAME_STATE_DEBUG) printf("\nStarting turn for %s:\n", (player == &game->player1) ? "Player 1" : "Player 2");
     print_player_state(player, (player == &game->player1) ? "Player 1" : "Player 2");
     print_player_state(opponent, (opponent == &game->player2) ? "Player 2" : "Player 1");
+    fflush(stdout);
     if (game->current_turn == 0) return;
     // if not turn 1
     if (game->current_turn != 1)
@@ -128,12 +134,14 @@ void start_turn(GameState *game, Player *player)
             }
         }
     }
+    if (GAME_STATE_DEBUG) printf("Finished starting turn.\n");
+    fflush(stdout);
 }
 
 bool act_turn(GameState *game, Player *player, char **action) 
 {
     char *action_type = action[0];
-    char *card_name = action[1];
+    char *card_name = (action[1] != NULL) ? action[1] : "";
     int target = (action[2] != NULL) ? atoi(action[2]) : -1;
     int opponent_target = (action[3] != NULL) ? atoi(action[3]) : -1;
     int turn_number = (int) game->current_turn / 2;
@@ -179,6 +187,8 @@ bool act_turn(GameState *game, Player *player, char **action)
         default:
             if (GAME_STATE_DEBUG) printf("Invalid action type: %c\n", action_type[0]);
     }
+    if (success && GAME_STATE_DEBUG) printf("Action successful\n");
+    else if (GAME_STATE_DEBUG) printf("Action NOT successful\n");
     if (GAME_STATE_DEBUG) printf("\nAfter action:\n");
     print_player_state(player, (player == &game->player1) ? "Player 1" : "Player 2");
     print_player_state(opponent, (opponent == &game->player2) ? "Player 2" : "Player 1");
@@ -386,21 +396,22 @@ bool evolve_pokemon(GameState *game, Player *player, char *card_name, int target
 }
 
 bool retreat_pokemon(GameState *game, Player *player, char *card_name, int target) {
-    if (GAME_STATE_DEBUG) printf("retreat_pokemon\n");
+    if (GAME_STATE_DEBUG) printf("retreat_pokemon %d\n", target);
+    fflush(stdout);
     Card *active = player->active_pokemon;
     if (active == NULL)
     {
-        if (target < 0 || target >= player->bench_count)
+        if (target < 0 || target > player->bench_count)
         {
             if (GAME_STATE_DEBUG) printf("Invalid target for sending out Pokemon\n");
+            fflush(stdout);
             return false;
         }
-
         // Sending out pokemon from bench
-        player->active_pokemon = player->bench[target];
+        player->active_pokemon = get_target(player, NULL, target);
         
         // Shift the remaining bench Pokemon
-        for (int i = target; i < player->bench_count - 1; i++)
+        for (int i = target-1; i < player->bench_count - 1; i++)
         {
             player->bench[i] = player->bench[i + 1];
         }
@@ -411,10 +422,11 @@ bool retreat_pokemon(GameState *game, Player *player, char *card_name, int targe
         player->bench[player->bench_count] = NULL;
 
         if (GAME_STATE_DEBUG) printf("Putting out new pokemon: %s\n", player->active_pokemon->name);
+        fflush(stdout);
         return true;
     }
 
-    if (target < 0 || target >= player->bench_count || player->cant_retreat) {
+    if (target < 0 || target > player->bench_count || player->cant_retreat) {
         if (target < 0) {
             if (GAME_STATE_DEBUG) printf("Cannot retreat: Invalid target (less than 0).\n");
         }
@@ -424,6 +436,7 @@ bool retreat_pokemon(GameState *game, Player *player, char *card_name, int targe
         if (player->cant_retreat) {
             if (GAME_STATE_DEBUG) printf("Cannot retreat: Player is prevented from retreating.\n");
         }
+        fflush(stdout);
         return false;
     }
 
@@ -889,7 +902,7 @@ bool use_move(GameState *game, Player *player, char *card_name, int move_index, 
         }
         opponent_card->hp -= damage;
     }
-    opponent_card->prevent_damage_next_turn = false;
+    if (opponent_card) opponent_card->prevent_damage_next_turn = false;
     // printf("damage applied\n");
 
     // Check for KO
@@ -907,7 +920,7 @@ void check_for_KO(GameState *game, Player *player, Player * opponent, Card *oppo
         opponent->prize_cards_left -= prize_cards_taken;
         if (opponent->prize_cards_left <= 0) {
             game->game_over = true;
-            game->winner = player;
+            game->winner = player->role;
         }
         // Move knocked out Pokémon to discard pile
         if (opponent_card == opponent->active_pokemon) {
@@ -916,7 +929,7 @@ void check_for_KO(GameState *game, Player *player, Player * opponent, Card *oppo
             opponent->active_pokemon = NULL;
             if (opponent->bench_count == 0) {
                 game->game_over = true;
-                game->winner = player;
+                game->winner = player->role;
             }
         } else {
             for (int i = 0; i < opponent->bench_count; i++) {
@@ -940,6 +953,7 @@ bool end_turn(GameState *game, Player *player) {
     {
         game->current_player = OPP;
     } else {
+        if (GAME_STATE_DEBUG) printf("Inc turn %d -> %d\n\n", game->current_turn, game->current_turn+1);
         game->current_turn++;
         game->current_player = (game->current_turn % 2 == 0) ? PLAY : OPP;
         start_turn(game, get_current_player_(game));
@@ -961,26 +975,30 @@ bool end_turn(GameState *game, Player *player) {
     }
     
     if (GAME_STATE_DEBUG) printf("End of turn %d\n\n", game->current_turn);
+    fflush(stdout);
     // if (opponent->role == OPP) printf("Opponent's turn.\n");
     // else if (opponent->role == PLAY) printf("Player's turn.\n");
     // max game turns
     if (game->current_turn >= 50) 
     {
         game->game_over = true;
-        game->winner = NULL;
+        game->winner = TIE;
     }
     if (player->active_pokemon == NULL)
     {
         game->game_over = true;
-        game->winner = opponent;
+        game->winner = opponent->role;
+    } else if (opponent->active_pokemon == NULL && opponent->bench_count == 0 && game->current_turn != 0)
+    {
+        game->game_over = true;
+        game->winner = player->role;
     }
     if (game->game_over) return true;
     return false;
 }
 
-Player * get_winner(GameState *game)
+Role get_winner(GameState *game)
 {
-    if (!game->game_over) return NULL; 
     return game->winner;
 }
 
@@ -1068,4 +1086,5 @@ void print_player_state(Player *player, const char *player_name) {
     if (GAME_STATE_DEBUG) printf("\n");
 
     if (GAME_STATE_DEBUG) printf("\n\n");
+    fflush(stdout);
 }

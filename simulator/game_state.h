@@ -23,7 +23,7 @@ typedef struct {
     bool supporter_played;
     HashMap* card_dictionary;
     bool game_over;
-    Player * winner;
+    Role winner;
     TurnEffects turn_effects;
     Role current_player;
 } GameState;
@@ -46,7 +46,7 @@ bool use_ability(GameState *game, Player *player, char *card_name, int target);
 bool use_move(GameState *game, Player *player, char *card_name, int move_index, int opponent_target);
 void check_for_KO(GameState *game, Player *player, Player * opponent, Card *opponent_card);
 bool end_turn(GameState *game, Player *player);
-Player * get_winner(GameState *game);
+Role get_winner(GameState *game);
 Player * get_current_player_(GameState *game);
 Player * get_opponent_(GameState *game);
 void print_player_state(Player *player, const char *player_name);

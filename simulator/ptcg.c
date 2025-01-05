@@ -3,7 +3,7 @@
 #include <string.h>
 #include "ptcg.h"
 
-#define INFO_PTCG false
+#define INFO_PTCG true
 
 void init(GameState * game)
 {
@@ -212,6 +212,8 @@ int execute_action(GameState *game, int action, int target, int opponent_target)
         if (INFO_PTCG) printf("Using special action of Pokemon: %s on target %d\n", action_str[1], target);
     } else if (action == 96) {
         strcpy(action_str[0], "e");
+        strncpy(action_str[1], "None", 19);
+        action_str[1][19] = '\0';
         if (INFO_PTCG) printf("Ending turn\n");
     }
 
@@ -241,7 +243,7 @@ int execute_action(GameState *game, int action, int target, int opponent_target)
 
     // Collect reward by checking for end state
     if (is_game_over(game)) {
-        if (game->winner == current_player) {
+        if (game->winner == current_player->role) {
             reward += 100; // Large reward for winning
             if (INFO_PTCG) printf("Game over: Current player wins\n");
         } else {
@@ -336,8 +338,9 @@ int* get_valid_opponent_target(GameState *game, int action) {
 
 
 float* get_observation(GameState *game) {
-    float *observation = (float*)calloc(OBSERVATION_SIZE, sizeof(float));
     if (INFO_PTCG) printf("Getting observation\n");
+    if (INFO_PTCG) fflush(stdout);
+    float *observation = (float*)calloc(OBSERVATION_SIZE, sizeof(float));
     Player *player = get_current_player_(game);
     Player *opponent = get_opponent_(game);
     int index = 0;
@@ -424,6 +427,7 @@ float* get_observation(GameState *game) {
     // Current turn
     observation[index++] = (game->current_turn) / 50.0f;
     if (INFO_PTCG) printf("last observation\n");
+    if (INFO_PTCG) fflush(stdout);
 
     // Available actions
     // bool* legal_actions = get_legal_actions(game, NULL);

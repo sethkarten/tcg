@@ -126,7 +126,6 @@ void load_card_data_from_json(GameState *game, const char* filename) {
         card->name = NULL;
         card->evolves_from = NULL;
         card->moves = NULL;
-        card->attached_energies = (int *)calloc(MAX_CARD_ENERGIES, sizeof(int));
         init_card(card);
         card->id = card_count++;
         

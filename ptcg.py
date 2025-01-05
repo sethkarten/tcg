@@ -76,6 +76,7 @@ class PTCGEnv(gym.Env):
 
         self.cy_ptcg.reset(copy(player1_deck), copy(player1_energy), copy(player2_deck), copy(player2_energy))
         observation = self.cy_ptcg.get_observation()
+        print("", flush=True)
         info = {}  # You can add any additional info here
         observation = np.array(observation, dtype=np.float32)
 

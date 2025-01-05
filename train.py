@@ -17,6 +17,10 @@ import wandb
 device = th.device("cuda" if th.cuda.is_available() else "cpu")
 print(f"Using device: {device}")
 
+random.seed(0)
+np.random.seed(0)
+th.random.manual_seed(0)
+
 class TransformerPolicy(BaseFeaturesExtractor):
     def __init__(self, observation_space: gym.spaces.Box, action_space: gym.spaces.MultiDiscrete):
         super().__init__(observation_space, features_dim=sum(action_space.nvec))  # features_dim is not used in this implementation
@@ -98,7 +102,7 @@ def self_play_episode(env, policy1, policy2):
     total_reward = 0
     
     while not done:
-        if env.cy_ptcg.game.current_player == 0:
+        if env.unwrapped.cy_ptcg.game.current_player == 0:
             action, _ = policy1.predict(obs, deterministic=False)
         else:
             action, _ = policy2.predict(obs, deterministic=False)
@@ -127,13 +131,18 @@ def train_with_self_play(env, policy_pool, total_timesteps=1000000, num_self_pla
             print('reset', flush=True)
             done = False
             while not done:
-                if env.cy_ptcg.get_player() == 0:
-                    action_mask = env.get_action_mask()
-                    action = select_masked_action(policy1, observation, action_mask, env.get_action_mask_target)
+                if env.unwrapped.cy_ptcg.get_player() == 0:
+                    print('Getting mask player 0')
+                    action_mask = env.unwrapped.get_action_mask()
+                    print('selecting action player 0')
+                    action = select_masked_action(policy1, observation, action_mask, env.unwrapped.get_action_mask_target)
                 else:
-                    action_mask = env.get_action_mask()
-                    action = select_masked_action(policy2, observation, action_mask, env.get_action_mask_target)
+                    print('Getting mask player 1')
+                    action_mask = env.unwrapped.get_action_mask()
+                    print('selecting action player 0')
+                    action = select_masked_action(policy2, observation, action_mask, env.unwrapped.get_action_mask_target)
                 
+                print('train.py step')
                 observation, reward, terminated, truncated, _ = env.step(action)
                 done = terminated or truncated
                 print(done)
@@ -145,6 +154,7 @@ def train_with_self_play(env, policy_pool, total_timesteps=1000000, num_self_pla
                 wins[policy1_index] += 1
             else:
                 wins[policy2_index] += 1
+        print('finished games')
 
         policy1.learn(total_timesteps=num_self_play_games)
         policy2.learn(total_timesteps=num_self_play_games)
@@ -155,14 +165,14 @@ def train_with_self_play(env, policy_pool, total_timesteps=1000000, num_self_pla
         if i % 10 == 0:
             mean_reward = np.mean(episode_rewards)
             winrates = [wins[j] / games_played[j] if games_played[j] > 0 else 0 for j in range(len(policy_pool.policies))]
-            wandb.log({
-                "step": i * num_self_play_games,
-                "mean_reward": mean_reward,
-                "avg_episode_reward": np.mean(episode_rewards),
-                "max_episode_reward": np.max(episode_rewards),
-                "min_episode_reward": np.min(episode_rewards),
-                "policy_winrates": wandb.Histogram(winrates)
-            })
+            # wandb.log({
+            #     "step": i * num_self_play_games,
+            #     "mean_reward": mean_reward,
+            #     "avg_episode_reward": np.mean(episode_rewards),
+            #     "max_episode_reward": np.max(episode_rewards),
+            #     "min_episode_reward": np.min(episode_rewards),
+            #     "policy_winrates": wandb.Histogram(winrates)
+            # })
             print(f"Step: {i * num_self_play_games}, Mean reward: {mean_reward}")
             for j, winrate in enumerate(winrates):
                 print(f"Policy {j} winrate: {winrate:.2f}")
@@ -198,25 +208,28 @@ def select_masked_action(policy, observation, action_mask, get_action_mask_targe
 
 
 if __name__ == "__main__":
-    wandb.init(project="ptcg-self-play", config={
-        "num_policies": 5,
-        "total_timesteps": 1000000,
-        "num_self_play_games": 100
-    })
+    num_policies = 5
+    total_timesteps = 1000000
+    num_self_play_games = 100
+    # wandb.init(project="ptcg-self-play", config={
+    #     "num_policies": num_policies,
+    #     "total_timesteps": total_timesteps,
+    #     "num_self_play_games": num_self_play_games
+    # })
 
     env = gym.make('PTCG-v0')
     
-    policy_pool = PolicyPool(env, num_policies=wandb.config.num_policies)
+    policy_pool = PolicyPool(env, num_policies=num_policies)
     
     best_policy = train_with_self_play(env, policy_pool, 
-                                       total_timesteps=wandb.config.total_timesteps, 
-                                       num_self_play_games=wandb.config.num_self_play_games)
+                                       total_timesteps=total_timesteps, 
+                                       num_self_play_games=num_self_play_games)
     
     best_policy.save("ppo_ptcg_self_play_model")
     
     mean_reward, std_reward = evaluate_policy(best_policy, env, n_eval_episodes=100)
-    wandb.log({"final_mean_reward": mean_reward, "final_std_reward": std_reward})
+    # wandb.log({"final_mean_reward": mean_reward, "final_std_reward": std_reward})
     print(f"Mean reward: {mean_reward:.2f} +/- {std_reward:.2f}")
 
-    wandb.finish()
+    # wandb.finish()
 

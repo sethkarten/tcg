@@ -21,7 +21,6 @@ EnergyType parse_energy_type(const char* type_string) {
 void initialize_card(Card* card, const char* name, EnergyType type, int hp, Stage stage, int retreat_cost, bool is_ex, bool has_ability) {
     strncpy(card->name, name, MAX_CARD_NAME_LENGTH - 1);
     card->name[MAX_CARD_NAME_LENGTH - 1] = '\0';
-    // @todo: finish evolves from field
     card->evolves_from[MAX_CARD_NAME_LENGTH - 1] = '\0';
     card->type = type;
     card->hp = hp;
@@ -38,6 +37,7 @@ void init_card(Card * card)
     card->energies_count = 0;
     card->prevent_damage_next_turn = false;
     card->ability_used = false;
+    card->attached_energies = (int *)calloc(MAX_CARD_ENERGIES, sizeof(int));
     for (int i = 0; i < MAX_CARD_ENERGIES; i++) card->attached_energies[i] = 0;
 }
 

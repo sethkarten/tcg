@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "deck.h"
+#include "card.h"
 #include "hash.h"
 
 #define DECK_DEBUG false
@@ -24,6 +25,7 @@ void initialize_deck(HashMap *card_dictionary, Deck *deck, const char (*card_num
                 continue;
             }
             memcpy(deck->cards[deck->card_count], card, sizeof(Card));
+            init_card(deck->cards[deck->card_count]);
             deck->card_count++;
         }
     }
@@ -65,6 +67,8 @@ void shuffle_deck(Deck *deck) {
 void reset_deck(Deck *deck) {
     for (int i = 0; i < deck->card_count; i++) {
         if (DECK_DEBUG) printf("freeing deck.c:L65\n");
+        // @todo: need to free card pointers
+        free(deck->cards[i]->attached_energies);
         free(deck->cards[i]);
     }
         if (DECK_DEBUG) printf("freeing deck.c:L68\n");
