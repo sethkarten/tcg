@@ -307,48 +307,53 @@ void draw_initial_hand(Player *player, Deck *deck) {
     // for (int i = 0; i < deck->card_count; i++) {
     //     if (PLAYER_DEBUG) printf("%d. %s\n", i + 1, deck->cards[i].name);
     // }
-    int basic_pokemon_index = -1;
-    int cards_drawn = 0;
-
-    // Draw the first 4 cards
+    if (!draw_pokemon_card(player, deck)) fprintf(stderr, "Error drawing basic card.\n");
+    shuffle_deck(deck);
     for (int i = 0; i < 4; i++) {
-        if (deck->card_count > 0) {
-            player->hand[player->hand_count++] = deck->cards[--deck->card_count];
-            cards_drawn++;
+        draw_card(player, deck);
+    }
+    // int basic_pokemon_index = -1;
+    // int cards_drawn = 0;
+
+    // // Draw the first 4 cards
+    // for (int i = 0; i < 4; i++) {
+    //     if (deck->card_count > 0) {
+    //         player->hand[player->hand_count++] = deck->cards[--deck->card_count];
+    //         cards_drawn++;
             
-            // Check if a BASIC Pokémon was drawn
-            if (player->hand[player->hand_count - 1]->stage == BASIC) {
-                basic_pokemon_index = i;
-            }
-        }
-    }
+    //         // Check if a BASIC Pokémon was drawn
+    //         if (player->hand[player->hand_count - 1]->stage == BASIC) {
+    //             basic_pokemon_index = i;
+    //         }
+    //     }
+    // }
 
-    // If no BASIC Pokémon was drawn, find the first one in the deck
-    if (basic_pokemon_index == -1) {
-        for (int i = deck->card_count - 1; i >= 0; i--) {
-            if (deck->cards[i]->stage == BASIC) {
-                basic_pokemon_index = i;
-                break;
-            }
-        }
+    // // If no BASIC Pokémon was drawn, find the first one in the deck
+    // if (basic_pokemon_index == -1) {
+    //     for (int i = deck->card_count - 1; i >= 0; i--) {
+    //         if (deck->cards[i]->stage == BASIC) {
+    //             basic_pokemon_index = i;
+    //             break;
+    //         }
+    //     }
 
-        // If a BASIC Pokémon was found in the deck, add it to the hand
-        if (basic_pokemon_index != -1) {
-            player->hand[player->hand_count++] = deck->cards[basic_pokemon_index];
-            cards_drawn++;
+    //     // If a BASIC Pokémon was found in the deck, add it to the hand
+    //     if (basic_pokemon_index != -1) {
+    //         player->hand[player->hand_count++] = deck->cards[basic_pokemon_index];
+    //         cards_drawn++;
 
-            // Remove the BASIC Pokémon from the deck
-            for (int i = basic_pokemon_index; i < deck->card_count - 1; i++) {
-                deck->cards[i] = deck->cards[i + 1];
-            }
-            deck->card_count--;
-        }
-    }
+    //         // Remove the BASIC Pokémon from the deck
+    //         for (int i = basic_pokemon_index; i < deck->card_count - 1; i++) {
+    //             deck->cards[i] = deck->cards[i + 1];
+    //         }
+    //         deck->card_count--;
+    //     }
+    // }
 
-    // Draw the final card if needed
-    if (cards_drawn < 5 && deck->card_count > 0) {
-        player->hand[player->hand_count++] = deck->cards[--deck->card_count];
-    }
+    // // Draw the final card if needed
+    // if (cards_drawn < 5 && deck->card_count > 0) {
+    //     player->hand[player->hand_count++] = deck->cards[--deck->card_count];
+    // }
 
     // printf("Player's hand:\n");
     // for (int i = 0; i < player->hand_count; i++) {
@@ -356,28 +361,29 @@ void draw_initial_hand(Player *player, Deck *deck) {
     // }
 }
 
-Card* draw_pokemon_card(Player *player, Deck *deck) {
+bool draw_pokemon_card(Player *player, Deck *deck) {
     if (deck->card_count == 0) {
         return NULL; // Deck is empty
     }
-
+    int basic_pokemon_index = -1;
     for (int i = deck->card_count - 1; i >= 0; i--) {
-        Card *drawn_card = deck->cards[i];
-        
-        // Remove the card from the deck
-        for (int j = i; j < deck->card_count - 1; j++) {
-            deck->cards[j] = deck->cards[j + 1];
+        if (deck->cards[i]->stage == BASIC) {
+            basic_pokemon_index = i;
+            break;
         }
-        deck->card_count--;
-
-        // Add the card to the player's hand
-        player->hand[player->hand_count] = drawn_card;
-        player->hand_count++;
-
-        return player->hand[player->hand_count - 1];
     }
 
-    return NULL; // No Pokémon card found in the deck
+    // If a BASIC Pokémon was found in the deck, add it to the hand
+    if (basic_pokemon_index != -1) {
+        player->hand[player->hand_count++] = deck->cards[basic_pokemon_index];
+
+        // Remove the BASIC Pokémon from the deck
+        for (int i = basic_pokemon_index; i < deck->card_count - 1; i++) {
+            deck->cards[i] = deck->cards[i + 1];
+        }
+        deck->card_count--;
+    }
+    return true;
 }
 
 Card* draw_card(Player *player, Deck *deck) {
@@ -415,3 +421,16 @@ void shuffle_hand_and_draw(Player *player, Deck *deck) {
     }
 }
 
+void reset_just_played(Player *player) {
+    // Reset active Pokémon
+    if (player->active_pokemon != NULL) {
+        player->active_pokemon->just_played = false;
+    }
+
+    // Reset bench Pokémon
+    for (int i = 0; i < player->bench_count; i++) {
+        if (player->bench[i] != NULL) {
+            player->bench[i]->just_played = false;
+        }
+    }
+}

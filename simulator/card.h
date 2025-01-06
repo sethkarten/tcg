@@ -13,7 +13,7 @@ typedef enum {
 } EnergyType;
 
 typedef enum {
-    BASIC, STAGE1, STAGE2
+    BASIC, STAGE1, STAGE2, NONE_STAGE,
 } Stage;
 
 typedef enum {
@@ -61,6 +61,7 @@ typedef struct {
     bool prevent_damage_next_turn;
     bool ability_used;
     int id;
+    bool just_played;
 } Card;
 
 

@@ -20,6 +20,7 @@ typedef struct {
 void initialize_deck(HashMap *game, Deck *deck, const char (*card_numbers)[MAX_CARD_NAME_LENGTH], bool energy[MAX_CARD_ENERGIES]);;
 void shuffle_deck(Deck *deck);
 void reset_deck(Deck *deck);
+void print_deck(Deck *deck);
 
 
 #endif // DECK_H

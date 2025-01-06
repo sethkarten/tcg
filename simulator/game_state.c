@@ -63,10 +63,12 @@ void reset_game(GameState * game,
     if (GAME_STATE_DEBUG) printf("here2\n");
     // Initialize player 1's deck
     initialize_deck(game->card_dictionary, game->player1.deck, deck1, energy1);
+    if (GAME_STATE_DEBUG) print_deck(game->player1.deck);
 
     if (GAME_STATE_DEBUG) printf("here3\n");
     // Initialize player 2's deck
     initialize_deck(game->card_dictionary, game->player2.deck, deck2, energy2);
+    if (GAME_STATE_DEBUG) print_deck(game->player2.deck);
 
     // Shuffle decks
     shuffle_deck(game->player1.deck);
@@ -92,7 +94,7 @@ void reset_game(GameState * game,
     print_player_state(&game->player1, "Player 1");
     print_player_state(&game->player2, "Player 2");
     if (GAME_STATE_DEBUG) printf("Finished reset.\n");
-    fflush(stdout);
+    if (GAME_STATE_DEBUG) fflush(stdout);
 }
 
 
@@ -104,7 +106,7 @@ void start_turn(GameState *game, Player *player)
     if (GAME_STATE_DEBUG) printf("\nStarting turn for %s:\n", (player == &game->player1) ? "Player 1" : "Player 2");
     print_player_state(player, (player == &game->player1) ? "Player 1" : "Player 2");
     print_player_state(opponent, (opponent == &game->player2) ? "Player 2" : "Player 1");
-    fflush(stdout);
+    if (GAME_STATE_DEBUG) fflush(stdout);
     if (game->current_turn == 0) return;
     // if not turn 1
     if (game->current_turn != 1)
@@ -114,7 +116,6 @@ void start_turn(GameState *game, Player *player)
     draw_card(player, player->deck);
     game->turn_effects.blaine_boost = false;
     game->turn_effects.giovanni_boost = false;
-    game->turn_effects.sabrina_switch = false;
     game->turn_effects.retreat_reduction = 0;
     reset_ability_used(player);
 
@@ -135,7 +136,7 @@ void start_turn(GameState *game, Player *player)
         }
     }
     if (GAME_STATE_DEBUG) printf("Finished starting turn.\n");
-    fflush(stdout);
+    if (GAME_STATE_DEBUG) fflush(stdout);
 }
 
 bool act_turn(GameState *game, Player *player, char **action) 
@@ -159,7 +160,7 @@ bool act_turn(GameState *game, Player *player, char **action)
             return false;
             break;
         case 's':
-            success = play_supporter(game, player, card_name, target, &game->supporter_played);
+            success = play_supporter(game, player, card_name, target);
             break;
         case 'i':
             success = play_item(game, player, card_name, target);
@@ -279,19 +280,8 @@ bool play_item(GameState *game, Player *player, char *card_name, int target) {
         }
     } else if (strcmp(card_name, "Poke Ball") == 0) {
         // Put 1 random Basic Pokémon from your deck into your hand.
-        Card *basic_pokemon = NULL;
-        for (int i = player->deck->card_count - 1; i >= 0; i--) {
-            if (player->deck->cards[i]->stage == BASIC) {
-                basic_pokemon = player->deck->cards[i];
-                break;
-            }
-        }
-        if (basic_pokemon) {
-            player->hand[player->hand_count++] = basic_pokemon;
-            player->deck->card_count--;
-        } else {
-            return false;
-        }
+        bool basic_pokemon = draw_pokemon_card(player, player->deck);
+        if (!basic_pokemon) return false;
     } else if (strcmp(card_name, "Hand Scope") == 0) {
         // Your opponent reveals their hand.
         // This effect is mostly for the player's information, so we'll just print the opponent's hand
@@ -347,7 +337,7 @@ bool play_pokemon(GameState *game, Player *player, char *card_name) {
                 break;
             }
         }
-
+        card->just_played = true;
         return true;
     }
     return false;
@@ -357,10 +347,10 @@ bool play_pokemon(GameState *game, Player *player, char *card_name) {
 bool evolve_pokemon(GameState *game, Player *player, char *card_name, int target) {
     Player *opponent = get_opponent_(game);
     Card *evolution = find_card_in_hand(player, card_name);
-    Card *target_pokemon = get_target(player, opponent, target);
-    
+    Card *target_pokemon = get_target(player, NULL, target);
+    if (GAME_STATE_DEBUG) printf("Evolve pokemon: %s\n", card_name);
+    if (GAME_STATE_DEBUG) fflush(stdout);
     if (evolution != NULL && target_pokemon != NULL && 
-        evolution->stage == target_pokemon->stage + 1 &&
         strcmp(evolution->evolves_from, target_pokemon->name) == 0 &&
         !opponent_has_primeval_law(opponent)) {
         
@@ -397,14 +387,14 @@ bool evolve_pokemon(GameState *game, Player *player, char *card_name, int target
 
 bool retreat_pokemon(GameState *game, Player *player, char *card_name, int target) {
     if (GAME_STATE_DEBUG) printf("retreat_pokemon %d\n", target);
-    fflush(stdout);
+    if (GAME_STATE_DEBUG) fflush(stdout);
     Card *active = player->active_pokemon;
     if (active == NULL)
     {
         if (target < 0 || target > player->bench_count)
         {
             if (GAME_STATE_DEBUG) printf("Invalid target for sending out Pokemon\n");
-            fflush(stdout);
+            if (GAME_STATE_DEBUG) fflush(stdout);
             return false;
         }
         // Sending out pokemon from bench
@@ -422,7 +412,7 @@ bool retreat_pokemon(GameState *game, Player *player, char *card_name, int targe
         player->bench[player->bench_count] = NULL;
 
         if (GAME_STATE_DEBUG) printf("Putting out new pokemon: %s\n", player->active_pokemon->name);
-        fflush(stdout);
+        if (GAME_STATE_DEBUG) fflush(stdout);
         return true;
     }
 
@@ -436,7 +426,7 @@ bool retreat_pokemon(GameState *game, Player *player, char *card_name, int targe
         if (player->cant_retreat) {
             if (GAME_STATE_DEBUG) printf("Cannot retreat: Player is prevented from retreating.\n");
         }
-        fflush(stdout);
+        if (GAME_STATE_DEBUG) fflush(stdout);
         return false;
     }
 
@@ -448,6 +438,11 @@ bool retreat_pokemon(GameState *game, Player *player, char *card_name, int targe
 
     // Check if enough energy for retreat
     int total_energy = active->energies_count;
+
+    if (game->turn_effects.sabrina_switch) {
+        retreat_cost = -1;
+        game->turn_effects.sabrina_switch = false;
+    }
 
     if (total_energy < retreat_cost) {
         // printf("Condition not met to retreat: retreat cost.\n");
@@ -975,7 +970,7 @@ bool end_turn(GameState *game, Player *player) {
     }
     
     if (GAME_STATE_DEBUG) printf("End of turn %d\n\n", game->current_turn);
-    fflush(stdout);
+    if (GAME_STATE_DEBUG) fflush(stdout);
     // if (opponent->role == OPP) printf("Opponent's turn.\n");
     // else if (opponent->role == PLAY) printf("Player's turn.\n");
     // max game turns
@@ -993,6 +988,8 @@ bool end_turn(GameState *game, Player *player) {
         game->game_over = true;
         game->winner = player->role;
     }
+    // reset card stuff 
+    reset_just_played(player);
     if (game->game_over) return true;
     return false;
 }
@@ -1010,6 +1007,11 @@ Player * get_current_player_(GameState *game)
         if (game->current_player == PLAY) current_player = &game->player1;
         else  current_player = &game->player2;
     }
+    if (game->turn_effects.sabrina_switch)
+    {
+        // other player is required to switch
+        current_player = (game->current_turn % 2 == 0) ? &game->player2 : &game->player1;;
+    }
     
     return current_player;
 }
@@ -1021,6 +1023,11 @@ Player * get_opponent_(GameState *game)
     {
         if (game->current_player == PLAY) opponent = &game->player2;
         else  opponent = &game->player1;
+    }
+    if (game->turn_effects.sabrina_switch)
+    {
+        // other player is required to switch
+        opponent = (game->current_turn % 2 == 0) ? &game->player1 : &game->player2 ;
     }
     return opponent;
 }
@@ -1086,5 +1093,5 @@ void print_player_state(Player *player, const char *player_name) {
     if (GAME_STATE_DEBUG) printf("\n");
 
     if (GAME_STATE_DEBUG) printf("\n\n");
-    fflush(stdout);
+    if (GAME_STATE_DEBUG) fflush(stdout);
 }

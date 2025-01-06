@@ -116,7 +116,9 @@ Card* search(HashMap* mp, char* key)
     int bucketIndex = hashFunction(mp, key);
     struct node* bucketHead = mp->arr[bucketIndex];
     while (bucketHead != NULL) {
+        if (HASH_DEBUG) printf("search: %s -> %s\n", key, bucketHead->key);
         if (strcmp(bucketHead->key, key) == 0) {
+            if (HASH_DEBUG) printf("Found.\n");
             return bucketHead->value;
         }
         bucketHead = bucketHead->next;

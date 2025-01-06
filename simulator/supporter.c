@@ -5,25 +5,26 @@
 #include "utils.h"
 #include "player.h"
 
-bool play_supporter(GameState *game, Player *player, char *card_name, int target, bool *supporter_played) {
-    if (*supporter_played) {
-        printf("You can only play one Supporter card per turn.\n");
+bool play_supporter(GameState *game, Player *player, char *card_name, int target) {
+    if (game->supporter_played) {
+        fprintf(stdout, "You can only play one Supporter card per turn. %s\n", card_name);
+        fflush(stdout);
         return false;
     }
 
     Card *card = find_card_in_hand(player, card_name);
-    if (card == NULL || card->type != SUPPORTER) {
-        printf("Invalid Supporter card.\n");
+    if (card == NULL || card->cardtype != SUPPORTER) {
+        fprintf(stderr, "Invalid Supporter card: %s %d\n", card_name, target);
         return false;
     }
 
-    *supporter_played = true;
     Player *opponent = &game->player1;
     if (player->role == PLAY) opponent = &game->player2;
     if (opponent_has_shadowy_spellbind(opponent))
     {
         return false;
     }
+    game->supporter_played = true;
     Card * target_card = get_target(player, opponent, target);
 
     bool valid_effect = true;
@@ -90,7 +91,7 @@ bool koga_effect(Player *player) {
         printf("Moved %s to hand\n", active->name);
         return true;
     } else {
-        printf("No Muk or Weezing in Active Spot\n");
+        fprintf(stderr, "No Muk or Weezing in Active Spot\n");
         return false;
     }
 }
@@ -138,7 +139,7 @@ bool lt_surge_effect(Player *player) {
 }
 
 bool budding_expeditioner_effect(Player *player) {
-    if (strcmp(player->active_pokemon->name, "Mew ex") == 0) {
+    if (strcmp(player->active_pokemon->name, "Mew ex") == 0 && player->bench_count > 0) {
          move_active_to_hand(player);
         printf("Moved Mew ex to hand\n");
         return true;

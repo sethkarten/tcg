@@ -27,6 +27,8 @@ void initialize_deck(HashMap *card_dictionary, Deck *deck, const char (*card_num
             memcpy(deck->cards[deck->card_count], card, sizeof(Card));
             init_card(deck->cards[deck->card_count]);
             deck->card_count++;
+        } else {
+            fprintf(stderr, "Could not find card %s.\n", (char*)card_numbers[i]);
         }
     }
 
@@ -76,4 +78,11 @@ void reset_deck(Deck *deck) {
     deck->cards = NULL;
     deck->card_count = 0;
     deck->capacity = 0;
+}
+
+void print_deck(Deck *deck) {
+    printf("Cards in deck (%d):\n", deck->card_count);
+    for (int i = 0; i < deck->card_count; i++) {
+        printf("%d. %s\n", i + 1, deck->cards[i]->name);
+    }
 }

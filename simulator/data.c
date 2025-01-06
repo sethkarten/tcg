@@ -203,6 +203,7 @@ void load_card_data_from_json(GameState *game, const char* filename) {
         }
         if (DATA_DEBUG) printf("Card HP: %d\n", card->hp);
 
+        card->stage = NONE_STAGE;
         if (cJSON_IsString(stage) && stage->valuestring != NULL) {
             if (strcmp(stage->valuestring, "Basic") == 0) card->stage = BASIC;
             else if (strcmp(stage->valuestring, "Stage 1") == 0) card->stage = STAGE1;
