@@ -1,0 +1,7 @@
+gymnasium
+numpy
+stable-baselines3
+torch
+transformers
+wandb
+cython
