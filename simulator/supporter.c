@@ -49,6 +49,95 @@ bool play_supporter(GameState *game, Player *player, char *card_name, int target
     return valid_effect;
 }
 
+bool supporter_is_activatable(GameState * game, Card *card)
+{
+    char * card_name = card->name;
+    Player * player = get_current_player_(game);
+    Player * opponent = get_opponent_(game);
+
+    if (strcmp(card_name, "Erika") == 0) 
+    {
+        // Check for grass type with missing health
+        if (player->active_pokemon && player->active_pokemon->type == GRASS && player->active_pokemon->hp < player->active_pokemon->hp_total)
+            return true;
+        for (int i = 0; i < player->bench_count; i++)
+            if (player->bench[i]->type == GRASS && player->bench[i]->hp < player->bench[i]->hp_total)
+                return true;
+        return false;
+    }
+    else if (strcmp(card_name, "Misty") == 0) 
+    {
+        // Check for water type
+        if (player->active_pokemon && player->active_pokemon->type == WATER)
+            return true;
+        for (int i = 0; i < player->bench_count; i++)
+            if (player->bench[i]->type == WATER)
+                return true;
+        return false;
+    }
+    else if (strcmp(card_name, "Blaine") == 0) 
+    {
+        // Check for Ninetales, Rapidash, or Magmar
+        if (player->active_pokemon && (strcmp(player->active_pokemon->name, "Ninetales") == 0 || 
+            strcmp(player->active_pokemon->name, "Rapidash") == 0 || 
+            strcmp(player->active_pokemon->name, "Magmar") == 0))
+            return true;
+        for (int i = 0; i < player->bench_count; i++)
+            if (strcmp(player->bench[i]->name, "Ninetales") == 0 || 
+                strcmp(player->bench[i]->name, "Rapidash") == 0 || 
+                strcmp(player->bench[i]->name, "Magmar") == 0)
+                return true;
+        return false;
+    }
+    else if (strcmp(card_name, "Koga") == 0) 
+    {
+        // Check for Muk or Weezing
+        if (player->active_pokemon && (strcmp(player->active_pokemon->name, "Muk") == 0 || 
+            strcmp(player->active_pokemon->name, "Weezing") == 0))
+            return true;
+        return false;
+    }
+    else if (strcmp(card_name, "Giovanni") == 0) return true;
+    else if (strcmp(card_name, "Brock") == 0) 
+    {
+        // Check for Golem or Onix
+        if (player->active_pokemon && (strcmp(player->active_pokemon->name, "Golem") == 0 || 
+            strcmp(player->active_pokemon->name, "Onix") == 0))
+            return true;
+        for (int i = 0; i < player->bench_count; i++)
+            if (strcmp(player->bench[i]->name, "Golem") == 0 || 
+                strcmp(player->bench[i]->name, "Onix") == 0)
+                return true;
+        return false;
+    }
+    else if (strcmp(card_name, "Sabrina") == 0) 
+    {
+        // Opponent must have benched pokemon
+        return opponent->bench_count > 0;
+    }
+    else if (strcmp(card_name, "Lt. Surge") == 0) 
+    {
+        if (player->active_pokemon && (strcmp(player->active_pokemon->name, "Raichu") == 0 ||
+            strcmp(player->active_pokemon->name, "Electrode") == 0 ||
+            strcmp(player->active_pokemon->name, "Electabuzz") == 0))
+        {
+            return true;
+        }
+        return false;
+    }
+    else if (strcmp(card_name, "Budding Expeditioner") == 0) 
+    {
+        return player->active_pokemon && strcmp(player->active_pokemon->name, "Mew ex") == 0 && player->bench_count > 0;
+    }
+    else if (strcmp(card_name, "Blue") == 0) return true;
+    else if (strcmp(card_name, "Leaf") == 0) return true;
+    else if (strcmp(card_name, "Professor's Research") == 0) return true;
+    
+    // Default case: if the supporter card is not recognized, assume it's not activatable
+    return false;
+}
+
+
 bool erika_effect(Card *target) {
     if (target) {
         if (target->type == GRASS) {

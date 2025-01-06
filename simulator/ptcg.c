@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "ptcg.h"
+#include "supporter.h"
 
 #define INFO_PTCG true
 
@@ -86,7 +87,7 @@ int * get_legal_actions(GameState *game) {
         if (card->cardtype == POKEMON && card->stage == BASIC && current_player->bench_count < 3) {
             legal_actions[i + 4] = true;
         } else if (card->cardtype == SUPPORTER && !game->supporter_played && game->current_turn != 0) {
-            legal_actions[i + 44] = true;
+            if (supporter_is_activatable(game, card)) legal_actions[i + 44] = true;
         } else if (card->cardtype == ITEM && game->current_turn != 0) {
             legal_actions[i + 64] = true;
         } else if (card->stage == STAGE1 || card->stage == STAGE2 && game->current_turn != 0)
@@ -134,12 +135,18 @@ int * get_legal_actions(GameState *game) {
     }
 
     // Use ability (87-90)
-    if (current_player->active_pokemon && current_player->active_pokemon->has_ability && !current_player->active_pokemon->ability_used) {
+    if (current_player->active_pokemon && 
+        current_player->active_pokemon->has_ability && 
+        !current_player->active_pokemon->ability_used &&
+        ability_is_activatable(current_player->active_pokemon)) {
         legal_actions[87] = true;
+
     }
-    for (int i = 0; i < current_player->bench_count && i < 3; i++) {
-        if (current_player->bench[i]->has_ability && !current_player->bench[i]->ability_used) {
-            legal_actions[i + 88] = true;
+    for (int j = 0; j < current_player->bench_count && j < 3; j++) {
+        if (current_player->bench[j]->has_ability && 
+            !current_player->bench[j]->ability_used &&
+            ability_is_activatable(current_player->bench[j])) {
+            legal_actions[j + 88] = true;
         }
     }
 
@@ -148,9 +155,9 @@ int * get_legal_actions(GameState *game) {
         current_player->active_pokemon->move_count > 0 && 
         current_player->active_pokemon->status != PARALYZED &&
         current_player->active_pokemon->status != ASLEEP) {
-        for (int i = 0; i < current_player->active_pokemon->move_count; i++) {
-            if (has_enough_energy(current_player, current_player->active_pokemon, &current_player->active_pokemon->moves[i])) {
-                legal_actions[91+i] = true;
+        for (int j = 0; j < current_player->active_pokemon->move_count; j++) {
+            if (has_enough_energy(current_player, current_player->active_pokemon, &current_player->active_pokemon->moves[j])) {
+                legal_actions[91+j] = true;
             }
         }
     }
@@ -242,8 +249,8 @@ int execute_action(GameState *game, int action, int target, int opponent_target)
         strcpy(action_str[0], "r");
         strncpy(action_str[1], current_player->bench[action - 93]->name, 63);
         action_str[1][63] = '\0';
-        snprintf(action_str[2], 20, "%d", target);
-        if (INFO_PTCG) printf("Forced retreat to Pokemon: %s on target %d\n", action_str[1], 1+action-93);
+        snprintf(action_str[2], 20, "%d", action-93+1);
+        if (INFO_PTCG) printf("Forced retreat to Pokemon: %s on target %d\n", action_str[1], action-93+1);
         if (INFO_PTCG) fflush(stdout);
     } else if (action == 96) {
         strcpy(action_str[0], "e");

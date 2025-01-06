@@ -18,5 +18,6 @@ bool leaf_effect(GameState *game);
 bool professors_research_effect(Player *player);
 
 bool play_supporter(GameState *game, Player *player, char *card_name, int target);
+bool supporter_is_activatable(GameState * game, Card *card);
 
 #endif // SUPPORTER_H

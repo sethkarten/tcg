@@ -50,6 +50,6 @@ Role get_winner(GameState *game);
 Player * get_current_player_(GameState *game);
 Player * get_opponent_(GameState *game);
 void print_player_state(Player *player, const char *player_name);
-
+bool ability_is_activatable(Card *card);
 
 #endif // GAME_STATE_H

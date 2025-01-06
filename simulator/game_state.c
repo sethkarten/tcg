@@ -308,6 +308,56 @@ bool play_item(GameState *game, Player *player, char *card_name, int target) {
     return true;
 }
 
+bool item_is_activatable(Card *card, Player *player, Player *opponent) {
+    if (card == NULL || card->cardtype != ITEM) {
+        return false;
+    }
+
+    const char *card_name = card->name;
+
+    if (strcmp(card_name, "Helix Fossil") == 0 ||
+        strcmp(card_name, "Dome Fossil") == 0 ||
+        strcmp(card_name, "Old Amber") == 0) {
+        return player->bench_count < MAX_BENCH_POKEMON;
+    }
+    else if (strcmp(card_name, "Pokemon Flute") == 0) {
+        return opponent->discard_count > 0 && opponent->bench_count < MAX_BENCH_POKEMON;
+    }
+    else if (strcmp(card_name, "Mythical Slab") == 0) {
+        return player->deck->card_count > 0;
+    }
+    else if (strcmp(card_name, "Potion") == 0) {
+        // Check if any Pokémon (active or on bench) is missing HP
+        if (player->active_pokemon && player->active_pokemon->hp < player->active_pokemon->hp_total) {
+            return true;
+        }
+        for (int i = 0; i < player->bench_count; i++) {
+            if (player->bench[i]->hp < player->bench[i]->hp_total) {
+                return true;
+            }
+        }
+        return false;
+    }
+    else if (strcmp(card_name, "X Speed") == 0) {
+        return player->active_pokemon != NULL;
+    }
+    else if (strcmp(card_name, "Pokedex") == 0) {
+        return player->deck->card_count > 0;
+    }
+    else if (strcmp(card_name, "Poke Ball") == 0) {
+        return player->deck->card_count > 0;
+    }
+    else if (strcmp(card_name, "Hand Scope") == 0) {
+        return opponent->hand_count > 0;
+    }
+    else if (strcmp(card_name, "Red Card") == 0) {
+        return opponent->hand_count > 0 || opponent->deck->card_count > 0;
+    }
+
+    return false;
+}
+
+
 
 bool play_pokemon(GameState *game, Player *player, char *card_name) {
     Card *card = find_card_in_hand(player, card_name);
@@ -490,7 +540,7 @@ bool use_ability(GameState *game, Player *player, char *card_name, int target) {
             return false;
         }
         Card *target_card = get_target(player, opponent, target);
-        if (target_card->stage == BASIC) {
+        if (target_card) {
             Card temp = *opponent->active_pokemon;
             *opponent->active_pokemon = *target_card;
             *target_card = temp;
@@ -576,6 +626,27 @@ bool use_ability(GameState *game, Player *player, char *card_name, int target) {
         }
         return false;
     }
+
+    return false;
+}
+
+bool ability_is_activatable(Card *card) {
+    if (card == NULL || !card->has_ability || !card->ability_used) {
+        return false;
+    }
+
+    if (strcmp(card->ability->name, "Powder Heal") == 0 ||
+        strcmp(card->ability->name, "Fragrance Trap") == 0 ||
+        strcmp(card->ability->name, "Water Shuriken") == 0 ||
+        strcmp(card->ability->name, "Volt Charge") == 0 ||
+        strcmp(card->ability->name, "Sleep Pendulum") == 0 || 
+        strcmp(card->ability->name, "Psy Shadow") == 0 ||
+        strcmp(card->ability->name, "Gas Leak") == 0 || 
+        strcmp(card->ability->name, "Drive Off") == 0 ||
+        strcmp(card->ability->name, "Data Scan") == 0 ||
+        strcmp(card->ability->name, "Wash Out") == 0) {
+        return true;
+        }
 
     return false;
 }
