@@ -2,6 +2,7 @@ import gymnasium as gym
 import ptcg
 import time
 import csv
+import numpy as np
 
 def load_decks_from_csv(file_path):
     decks = []
@@ -14,14 +15,13 @@ def load_decks_from_csv(file_path):
                 energies.append([bool(int(e)) for e in row[20:]])
     return decks, energies
 
-def measure_fps(env, num_steps=1000000):
+def measure_fps(env, num_steps=100000):
     start_time = time.time()
     
     observation, info = env.reset()
     for _ in range(num_steps):
         action = env.unwrapped.sample_valid_action()  # Random action
         observation, reward, terminated, truncated, info = env.step(action)
-        # print("obs",observation)
         # print('terminated', terminated)
         # print('truncated', truncated)
         if terminated or truncated:
@@ -33,18 +33,19 @@ def measure_fps(env, num_steps=1000000):
     return fps
 
 # Load decks from CSV
-decks, energies = load_decks_from_csv('decks.csv')
+# decks, energies = load_decks_from_csv('decks.csv')
+# print(decks, energies)
 
 # Create the environment
 env = gym.make('PTCG-v0')
 
 # Set decks for both players
-env.reset(options={
-    'player1_deck': decks[0],
-    'player1_energy': energies[0],
-    'player2_deck': decks[1],
-    'player2_energy': energies[1]
-})
+# env.reset(options={
+#     'player1_deck': decks[np.random.randint(0, len(decks))],
+#     'player1_energy': decks[np.random.randint(0, len(energies))],
+#     'player2_deck': energies[np.random.randint(0, len(energies))],
+#     'player2_energy': decks[np.random.randint(0, len(decks))]
+# })
 
 # Measure FPS
 fps = measure_fps(env)

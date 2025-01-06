@@ -38,11 +38,17 @@ class PTCGEnv(gym.Env):
         # print(legal_actions)
         # Sample action type
         valid_action_types = [i for i, x in enumerate(legal_actions[:97]) if x]
-        action_type = np.random.choice(valid_action_types)
+        if len(valid_action_types) > 0:
+            action_type = np.random.choice(valid_action_types)
+            # print("valid actions",valid_action_types, action_type)
+        else:
+            # print("no valid actions", legal_actions, flush=True)
+            action_type = 96
         
         legal_targets, legal_targets_opp = self.cy_ptcg.get_targets(action_type)
         # Sample target
         legal_targets_types = [i for i, x in enumerate(legal_targets[:8]) if x]
+        # print('targets',legal_targets_types)
         if len(legal_targets_types) > 0:
             target = np.random.choice(legal_targets_types)
         else:
@@ -72,14 +78,14 @@ class PTCGEnv(gym.Env):
         player2_deck = self.decks[deck2_index]
         player1_energy = self.energies[deck1_index]
         player2_energy = self.energies[deck2_index]
-        # print(player1_deck, player2_deck)
+        # print("Loaded player decks",player1_deck, player2_deck)
 
         self.cy_ptcg.reset(copy(player1_deck), copy(player1_energy), copy(player2_deck), copy(player2_energy))
         observation = self.cy_ptcg.get_observation()
-        print("", flush=True)
+        # print("", flush=True)
         info = {}  # You can add any additional info here
         observation = np.array(observation, dtype=np.float32)
-
+        # print("successfully received observation", flush=True)
         return observation, info
 
     def step(self, action):

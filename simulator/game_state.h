@@ -51,5 +51,5 @@ Player * get_current_player_(GameState *game);
 Player * get_opponent_(GameState *game);
 void print_player_state(Player *player, const char *player_name);
 bool ability_is_activatable(Card *card);
-
+bool item_is_activatable(Card *card, Player *player, Player *opponent);
 #endif // GAME_STATE_H

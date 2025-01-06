@@ -5,10 +5,11 @@
 #include "utils.h"
 #include "player.h"
 
+#define INFO_SUPPORTER false
+
 bool play_supporter(GameState *game, Player *player, char *card_name, int target) {
     if (game->supporter_played) {
         fprintf(stdout, "You can only play one Supporter card per turn. %s\n", card_name);
-        fflush(stdout);
         return false;
     }
 
@@ -22,6 +23,7 @@ bool play_supporter(GameState *game, Player *player, char *card_name, int target
     if (player->role == PLAY) opponent = &game->player2;
     if (opponent_has_shadowy_spellbind(opponent))
     {
+        fprintf(stdout, "Opponent has shadowy spellbind\n");
         return false;
     }
     game->supporter_played = true;
@@ -42,7 +44,7 @@ bool play_supporter(GameState *game, Player *player, char *card_name, int target
     else if (strcmp(card_name, "Leaf") == 0) valid_effect = leaf_effect(game);
     else if (strcmp(card_name, "Professor's Research") == 0) valid_effect = professors_research_effect(player);
     else {
-        printf("Unknown Supporter card.\n");
+        fprintf(stderr, "Unknown Supporter card.\n");
         return false;
     }
     if (valid_effect) discard_card_from_hand(player, card);
@@ -142,11 +144,11 @@ bool erika_effect(Card *target) {
     if (target) {
         if (target->type == GRASS) {
             heal_card(target, 50);
-            printf("Healed 50 damage from %s\n", target->name);
+            if (INFO_SUPPORTER) printf("Healed 50 damage from %s\n", target->name);
             return true;
         }
     } 
-    printf("No Grass Type Pokémon available\n");
+    if (INFO_SUPPORTER) printf("No Grass Type Pokémon available\n");
     return false;
 }
 
@@ -159,17 +161,17 @@ bool misty_effect(Card *target) {
                 attach_energy_to_card(target, WATER);
                 heads++;
             }
-            printf("Attached %d Water Energy to %s\n", heads, target->name);
+            if (INFO_SUPPORTER) printf("Attached %d Water Energy to %s\n", heads, target->name);
             return true;
         }
     } 
-    printf("No Water Type Pokémon available\n");
+    if (INFO_SUPPORTER) printf("No Water Type Pokémon available\n");
     return false;
 }
 
 bool blaine_effect(GameState *game) {
     game->turn_effects.blaine_boost = true;
-    printf("Ninetales, Rapidash, and Magmar attacks do +30 damage this turn\n");
+    if (INFO_SUPPORTER) printf("Ninetales, Rapidash, and Magmar attacks do +30 damage this turn\n");
     return true;
 }
 
@@ -177,7 +179,7 @@ bool koga_effect(Player *player) {
     Card *active = player->active_pokemon;
     if (strcmp(active->name, "Muk") == 0 || strcmp(active->name, "Weezing") == 0) {
         move_active_to_hand(player);
-        printf("Moved %s to hand\n", active->name);
+        if (INFO_SUPPORTER) printf("Moved %s to hand\n", active->name);
         return true;
     } else {
         fprintf(stderr, "No Muk or Weezing in Active Spot\n");
@@ -187,7 +189,7 @@ bool koga_effect(Player *player) {
 
 bool giovanni_effect(GameState *game) {
     game->turn_effects.giovanni_boost = true;
-    printf("All Pokémon attacks do +10 damage this turn\n");
+    if (INFO_SUPPORTER) printf("All Pokémon attacks do +10 damage this turn\n");
     return true;
 }
 
@@ -195,11 +197,11 @@ bool brock_effect(Card * target) {
     if (target) {
         if (strcmp(target->name, "Golem") == 0 || strcmp(target->name, "Onix") == 0) {
             attach_energy_to_card(target, FIGHTING);
-            printf("Attached Fighting Energy to %s\n", target->name);
+            if (INFO_SUPPORTER) printf("Attached Fighting Energy to %s\n", target->name);
             return true;
         } 
     } 
-    printf("No Golem or Onix available\n");
+    if (INFO_SUPPORTER) printf("No Golem or Onix available\n");
     return false;
 }
 
@@ -207,10 +209,10 @@ bool sabrina_effect(GameState *game, Player *opponent) {
     if (opponent->bench_count > 0)
     {
         game->turn_effects.sabrina_switch = true;
-        printf("Opponent's Active Pokémon switched to bench\n");
+        if (INFO_SUPPORTER) printf("Opponent's Active Pokémon switched to bench\n");
         return true;
     }
-    printf("Invalid use of sabrina\n");
+    if (INFO_SUPPORTER) printf("Invalid use of sabrina\n");
     return false;
 }
 
@@ -219,10 +221,10 @@ bool lt_surge_effect(Player *player) {
         strcmp(player->active_pokemon->name, "Electrode") == 0 ||
         strcmp(player->active_pokemon->name, "Electabuzz") == 0) {
         move_lightning_energy_to_active(player);
-        printf("Moved benched Lightning Energy to %s\n", player->active_pokemon->name);
+        if (INFO_SUPPORTER) printf("Moved benched Lightning Energy to %s\n", player->active_pokemon->name);
         return true;
     } else {
-        printf("No eligible Active Pokémon\n");
+        if (INFO_SUPPORTER) printf("No eligible Active Pokémon\n");
         return false;
     }
 }
@@ -230,27 +232,29 @@ bool lt_surge_effect(Player *player) {
 bool budding_expeditioner_effect(Player *player) {
     if (strcmp(player->active_pokemon->name, "Mew ex") == 0 && player->bench_count > 0) {
          move_active_to_hand(player);
-        printf("Moved Mew ex to hand\n");
+        if (INFO_SUPPORTER) printf("Moved Mew ex to hand\n");
         return true;
     } else {
-        printf("No Mew ex in Active Spot\n");
+        if (INFO_SUPPORTER) printf("No Mew ex in Active Spot\n");
         return false;
     }
 }
 
 bool blue_effect(GameState *game) {
     game->turn_effects.blue_protection = true;
-    printf("All Pokémon take -10 damage next turn\n");
+    if (INFO_SUPPORTER) printf("All Pokémon take -10 damage next turn\n");
+    return true;
 }
 
 bool leaf_effect(GameState *game) {
     game->turn_effects.retreat_reduction += 2;
-    printf("Active Pokémon Retreat Cost reduced by 2 this turn\n");
+    if (INFO_SUPPORTER) printf("Active Pokémon Retreat Cost reduced by 2 this turn\n");
+    return true;
 }
 
 bool professors_research_effect(Player *player) {
-    draw_card(player, player->deck);
-    draw_card(player, player->deck);
+    if (player->deck->card_count > 0) draw_card(player, player->deck);
+    if (player->deck->card_count > 0) draw_card(player, player->deck);
     return true;
 }
 

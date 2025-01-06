@@ -6,7 +6,7 @@
 
 #include <time.h>
 
-#define GAME_STATE_DEBUG true
+#define GAME_STATE_DEBUG false
 
 void initialize_game_state(GameState *game)
 {
@@ -318,6 +318,7 @@ bool item_is_activatable(Card *card, Player *player, Player *opponent) {
     if (strcmp(card_name, "Helix Fossil") == 0 ||
         strcmp(card_name, "Dome Fossil") == 0 ||
         strcmp(card_name, "Old Amber") == 0) {
+        if (GAME_STATE_DEBUG) printf("bench count %d\n", player->bench_count);
         return player->bench_count < MAX_BENCH_POKEMON;
     }
     else if (strcmp(card_name, "Pokemon Flute") == 0) {
