@@ -1,4 +1,4 @@
-# Pokémon Trading Card Game Simulator
+# Pokémon Trading Card Game Pocket Simulator
 
 This repository contains a Pokémon Trading Card Game (PTCG) simulator implemented in C with Python bindings. The project aims to provide a comprehensive simulation environment for the Pokémon Trading Card Game, allowing for AI training and gameplay analysis.
 

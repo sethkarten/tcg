@@ -1,5 +1,7 @@
 .vscode
 wandb
+logs
+trained_models
 
 # cython compiled file
 cy_ptcg.c

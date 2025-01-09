@@ -27,5 +27,6 @@ int* get_valid_opponent_target(GameState *game, int action);
 float * get_observation(GameState *game);
 int get_current_player(GameState *game);
 int is_game_over(GameState *game);
+void set_seed_(int seed);
 
 #endif // PTCG_H

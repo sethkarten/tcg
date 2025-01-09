@@ -633,3 +633,8 @@ int is_game_over(GameState *game)
 {
     return game->game_over;
 }
+
+void set_seed_(int seed)
+{
+    srand(seed);    
+}
