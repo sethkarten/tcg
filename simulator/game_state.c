@@ -11,9 +11,6 @@
 void initialize_game_state(GameState *game)
 {
     // Initialize random seed
-    // srand(time(NULL));    
-    srand(0);    
-
     // Load card data from JSON
     game->card_dictionary = (HashMap*)malloc(sizeof(HashMap));
     load_card_data_from_json(game, "pokemon_tcg_pocket_cards.json");
@@ -530,9 +527,14 @@ bool use_ability(GameState *game, Player *player, char *card_name, int target) {
     Player *opponent = get_opponent_(game);
 
     if (strcmp(card->ability->name, "Powder Heal") == 0 && !card->ability_used) {
-        Card *target_card = get_target(player, opponent, target);
-        heal_card(target_card, 20);
-        card->ability_used = true;
+        for (int i = 0; i < player->bench_count+1; i++) {
+            Card *target_card = get_target(player, opponent, i);
+            if (target_card)
+            {
+                heal_card(target_card, 20);
+                card->ability_used = true;
+            }
+        }
         return true;
     }
 

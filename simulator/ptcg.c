@@ -28,18 +28,17 @@ void reset(GameState *game,
 
 int * get_legal_actions(GameState *game) {
     if (INFO_PTCG) printf("Entering get legal actions.\n");
-    int num_actions = 97;
+    int num_actions = 687;
     int *legal_actions = calloc(num_actions, sizeof(int));
-    for (int i = 0; i < num_actions; i++) legal_actions[i] = false;
     Player *current_player = get_current_player_(game);
     Player *opponent = get_opponent_(game);
 
-    // forced switched (93-95)
+    // forced switched (683-685)
     if (game->turn_effects.sabrina_switch)
     {
         if (INFO_PTCG) printf("Sabrina switch active.\n");
-        for (int i = 0; i < current_player->bench_count && i < 3; i++) {
-            legal_actions[i + 93] = true;
+        for (int i = 0; i < current_player->bench_count; i++) {
+            legal_actions[i + 683] = true;
         }
         return legal_actions;
     }
@@ -48,6 +47,8 @@ int * get_legal_actions(GameState *game) {
     // no active? must play a basic
     if (current_player->active_pokemon == NULL)
     {
+        if (INFO_PTCG) printf("NULL active\n");
+        if (INFO_PTCG) fflush(stdout);
         if (game->current_turn == 0) 
         {
             for (int i = 0; i < current_player->hand_count; i++) {
@@ -58,12 +59,15 @@ int * get_legal_actions(GameState *game) {
             // move from bench
             for (int i = 0; i < current_player->bench_count; i++) 
             {
-                legal_actions[i + 84] = true;
+                legal_actions[i + 584] = true;
             }
         }
+        if (INFO_PTCG) printf("NULL active returning legal actions\n");
         
         return legal_actions;
     }
+    if (INFO_PTCG) printf("0\n");
+    if (INFO_PTCG) fflush(stdout);
 
     // Use energy on active (0)
     if (current_player->energy_available && current_player->active_pokemon && game->current_turn != 0) {
@@ -76,20 +80,94 @@ int * get_legal_actions(GameState *game) {
             legal_actions[i + 1] = true;
         }
     }
+    if (INFO_PTCG) printf("4\n");
+    if (INFO_PTCG) fflush(stdout);
 
     // Play a basic pokemon (4-23)
-    // Evolve a pokemon (24-43)
-    // Play a supporter card (44-63)
-    // Play an item card (64-83)
+    // Evolve a pokemon (24-43), requires target 1-4 -> (24-103), each card has 4 spaces
+    // Play a supporter card (44-63), requires target, requires target 1-4 -> (104-183), each card has 4 spaces
+    // Play an item card (64-83), requires target, requires target 1-20 -> (184-583), each card has 20 spaces
     for (int i = 0; i < current_player->hand_count; i++) {
         Card *card = current_player->hand[i];
         if (INFO_PTCG) printf("Hand %d: %s\n", i, card->name);
+        if (INFO_PTCG) fflush(stdout);
         if (card->cardtype == POKEMON && card->stage == BASIC && current_player->bench_count < 3) {
             legal_actions[i + 4] = true;
         } else if (card->cardtype == SUPPORTER && !game->supporter_played && game->current_turn != 0 && !opponent_has_shadowy_spellbind(opponent)) {
-            if (supporter_is_activatable(game, card)) legal_actions[i + 44] = true;
+            if (strcmp(card->name, "Erika") == 0) {
+                // Erika targets Grass Pokémon
+                if (current_player->active_pokemon && current_player->active_pokemon->type == GRASS) {
+                    legal_actions[i*4 + 104] = true;
+                }
+                for (int j = 0; j < current_player->bench_count; j++) {
+                    if (current_player->bench[j]->type == GRASS) {
+                        legal_actions[j + i*4 + 104] = true;
+                    }
+                }
+            }
+            else if (strcmp(card->name, "Misty") == 0) {
+                // Misty targets Water Pokémon
+                if (current_player->active_pokemon && current_player->active_pokemon->type == WATER) {
+                    legal_actions[i*4 + 104] = true;
+                }
+                for (int j = 0; j < current_player->bench_count; j++) {
+                    if (current_player->bench[j]->type == WATER) {
+                         legal_actions[j + i*4 + 104] = true;
+                    }
+                }
+            }
+            else if (strcmp(card->name, "Brock") == 0) {
+                // Brock targets Pokémon with "Geodude", "Graveler", or "Golem" in their name
+                if (current_player->active_pokemon && 
+                    (strstr(current_player->active_pokemon->name, "Geodude") ||
+                    strstr(current_player->active_pokemon->name, "Graveler") ||
+                    strstr(current_player->active_pokemon->name, "Golem"))) {
+                    legal_actions[i*4 + 104] = true;
+                }
+                for (int j = 0; j < current_player->bench_count; j++) {
+                    if (strstr(current_player->bench[j]->name, "Geodude") ||
+                        strstr(current_player->bench[j]->name, "Graveler") ||
+                        strstr(current_player->bench[j]->name, "Golem")) {
+                        legal_actions[j + i*4 + 104] = true;
+                    }
+                }
+            } 
+            else if (supporter_is_activatable(game, card)) {
+                legal_actions[i*4 + 104] = true;
+            }
         } else if (card->cardtype == ITEM && game->current_turn != 0 && item_is_activatable(card, current_player, opponent)) {
-            legal_actions[i + 64] = true;
+            if (strcmp(card->name, "Helix Fossil") == 0 || 
+                    strcmp(card->name, "Dome Fossil") == 0 || 
+                    strcmp(card->name, "Old Amber") == 0) {
+                    if (current_player->bench_count < MAX_BENCH_POKEMON) {
+                        legal_actions[i*20 + 184] = true;
+                    }
+                }
+                else if (strcmp(card->name, "Pokemon Flute") == 0) {
+                    for (int j = 0; j < opponent->discard_count; j++) {
+                        if (opponent->discard_pile[i]->stage == BASIC) {
+                            legal_actions[j + i*20 + 184] = true;
+                        }
+                    }
+                }
+                else if (strcmp(card->name, "Potion") == 0) {
+                    if (current_player->active_pokemon && current_player->active_pokemon->hp < current_player->active_pokemon->hp_total) {
+                        legal_actions[i*20 + 184] = true;
+                    }
+                    for (int j = 0; j < current_player->bench_count; j++) {
+                        if (current_player->bench[j]->hp < current_player->bench[j]->hp_total) {
+                            legal_actions[j + i*20 + 184] = true;
+                        }
+                    }
+                }
+                else if (strcmp(card->name, "X Speed") == 0 ||
+                        strcmp(card->name, "Pokedex") == 0 ||
+                        strcmp(card->name, "Poke Ball") == 0 ||
+                        strcmp(card->name, "Hand Scope") == 0 ||
+                        strcmp(card->name, "Red Card") == 0 ||
+                        strcmp(card->name, "Mythical Slab") == 0) {
+                    legal_actions[i*20 + 184] = true;
+                }
         } else if (card->stage == STAGE1 || card->stage == STAGE2 && game->current_turn != 0)
         {
             // Check active Pokémon for evolution
@@ -101,7 +179,7 @@ int * get_legal_actions(GameState *game) {
                 {
                     // printf("%d can evolve because %s %s %s\n", i, card->name, card->evolves_from, current_player->active_pokemon->name);
                     // fflush(stdout);
-                    legal_actions[i + 24] = legal_actions[i + 24] || true;
+                    legal_actions[i*4 + 24] = true;
                 }
             }
 
@@ -115,67 +193,171 @@ int * get_legal_actions(GameState *game) {
                     {
                         // printf("%d can evolve because %s %s %s\n", i, card->name, card->evolves_from, current_player->bench[i]->name);
                         // fflush(stdout);
-                        legal_actions[i + 24] = legal_actions[i + 24] || true;
+                       legal_actions[j + i*4 + 24] = true;
                     }
                 }
             }
         }
         
     }
+    if (INFO_PTCG) printf("584\n");
+    if (INFO_PTCG) fflush(stdout);
 
-    // Retreat (84-86)
+    // Retreat (584-586)
     if (current_player->active_pokemon && !current_player->cant_retreat) {
         int retreat_cost = current_player->active_pokemon->retreat_cost - game->turn_effects.retreat_reduction;
         if (retreat_cost < 0) retreat_cost = 0;
         if (current_player->active_pokemon->energies_count >= retreat_cost) {
-            for (int i = 0; i < current_player->bench_count && i < 3; i++) {
-                legal_actions[i + 84] = true;
+            for (int j = 0; j < current_player->bench_count && j < 3; j++) {
+                legal_actions[j + 584] = true;
             }
         }
     }
 
-    // Use ability (87-90)
-    if (current_player->active_pokemon && 
-        current_player->active_pokemon->has_ability && 
-        !current_player->active_pokemon->ability_used &&
-        ability_is_activatable(current_player->active_pokemon)) {
-        legal_actions[87] = true;
+    if (INFO_PTCG) printf("587\n");
+    if (INFO_PTCG) fflush(stdout);
+    // Use ability (587-618), 4 cards -> 8 targets per card
+    for (int i = 0; i < current_player->bench_count+1; i++) 
+    {
+        Card *card = get_target(current_player, opponent, i);
+        if (card->has_ability && 
+            ability_is_activatable(card)) 
+        {
+            // check each ability
+            if (strcmp(card->ability->name, "Powder Heal") == 0 && !card->ability_used) {
+                legal_actions[i*8 + 587] = true;
+            }
 
-    }
-    for (int j = 0; j < current_player->bench_count && j < 3; j++) {
-        if (current_player->bench[j]->has_ability && 
-            !current_player->bench[j]->ability_used &&
-            ability_is_activatable(current_player->bench[j])) {
-            legal_actions[j + 88] = true;
+            else if (strcmp(card->ability->name, "Fragrance Trap") == 0 && !card->ability_used && card != current_player->active_pokemon) {
+                for (int j = 0; j < opponent->bench_count; j++) {
+                    legal_actions[j + 5 + i*8 + 587] = true;
+                }
+            }
+
+            if (strcmp(card->ability->name, "Water Shuriken") == 0 && !card->ability_used) {
+                for (int j = 0; j < opponent->bench_count+1; j++) {
+                    legal_actions[j + 4 + i*8 + 587] = true;
+                }
+            }
+
+            if (strcmp(card->ability->name, "Volt Charge") == 0 && !card->ability_used) {
+                legal_actions[i*8 + 587] = true;
+            }
+
+            if (strcmp(card->ability->name, "Sleep Pendulum") == 0 && !card->ability_used) {
+                legal_actions[i*8 + 587] = true;
+            }
+
+            if (strcmp(card->ability->name, "Psy Shadow") == 0 && !card->ability_used) {
+                if (current_player->active_pokemon && current_player->active_pokemon->type == PSYCHIC) {
+                    legal_actions[i*8 + 587] = true;
+                }
+            }
+
+            if (strcmp(card->ability->name, "Gas Leak") == 0 && !card->ability_used) {
+                if (card == current_player->active_pokemon) {
+                    legal_actions[i*8 + 587] = true;
+                }
+            }
+
+            if (strcmp(card->ability->name, "Drive Off") == 0 && !card->ability_used) {
+                if (opponent->bench_count > 0) {
+                    legal_actions[i*8 + 587] = true;
+                }
+            }
+
+            if (strcmp(card->ability->name, "Data Scan") == 0 && !card->ability_used) {
+                if (current_player->deck->card_count > 0) {
+                    legal_actions[i*8 + 587] = true;
+                }
+            }
+
+            if (strcmp(card->ability->name, "Wash Out") == 0) {
+                for (int j = 0; j < current_player->bench_count; j++) {
+                    Card *source = current_player->bench[j];
+                    if (source && source->type == WATER) {
+                        legal_actions[j + 1 + i*8 + 587] = true;
+                    }
+                }
+            }
+
         }
     }
-
-    // Attack (91-92)
+    if (INFO_PTCG) printf("619\n");
+    if (INFO_PTCG) fflush(stdout);
+    // Attack (619-682), up to 2 moves -> 4 targets per move, 8 "opponent targets" per move --> 32 per move
     if (current_player->active_pokemon && 
         current_player->active_pokemon->move_count > 0 && 
         current_player->active_pokemon->status != PARALYZED &&
         current_player->active_pokemon->status != ASLEEP) {
-        for (int j = 0; j < current_player->active_pokemon->move_count; j++) {
-            if (has_enough_energy(current_player, current_player->active_pokemon, &current_player->active_pokemon->moves[j])) {
-                legal_actions[91+j] = true;
+        for (int i = 0; i < current_player->active_pokemon->move_count; i++) {
+            if (has_enough_energy(current_player, current_player->active_pokemon, &current_player->active_pokemon->moves[i])) {
+                // get target / opponent target if necessary
+                for (int j = 0; j < opponent->bench_count+1; j++) {
+                    for (int k = 0; k < current_player->bench_count+1; k++) {
+                        legal_actions[k + j*4 + i*32 + 619] = true;
+                    }
+                    for (int k = 0; k < opponent->bench_count+1; k++) {
+                        legal_actions[4 + k + j*4 + i*32 + 619] = true;
+                    }
+
+                }
             }
         }
     }
 
     // End turn (96)
-    legal_actions[96] = true;
+    legal_actions[686] = true;
+    if (INFO_PTCG) printf("legal actions completed successfully\n");
+    if (INFO_PTCG) fflush(stdout);
 
     return legal_actions;
 }
 
 
-int execute_action(GameState *game, int action, int target, int opponent_target) {
-    if (INFO_PTCG) printf("executing action: %d %d %d\n", action, target, opponent_target);
+int execute_action(GameState *game, int action) {
+    if (INFO_PTCG) printf("executing action: %d\n", action);
     if (INFO_PTCG) fflush(stdout);
     Player *current_player = get_current_player_(game);
     Player *opponent = get_opponent_(game);
     int reward = 0;
     char *action_str[4] = {NULL, NULL, NULL, NULL};
+
+    // get old style from action
+    int target = -1;
+    int opponent_target = -1;
+    int base_action;
+    if (action < 24) {
+        base_action = action;
+    } else if (action < 104) {
+        base_action = (action - 24) / 4 + 24;
+        target = (action - 24) % 4;
+    } else if (action < 184) {
+        base_action = (action - 104) / 4 + 44;
+        target = (action - 104) % 4;
+    } else if (action < 584) {
+        base_action = (action - 184) / 20 + 64;
+        target = (action - 184) % 20;
+    } else if (action < 587) {
+        base_action = (action - 584) + 84;
+    } else if (action < 619) {
+        base_action = (action - 587) / 8 + 87;
+        target = (action - 587) % 8;
+    } else if (action < 683) {
+        base_action = (action - 619) / 32 + 91;
+        int temp = (action - 619) % 32;
+        target = temp / 8;
+        opponent_target = temp % 8;
+    } else if (action < 686) {
+        base_action = (action - 683) + 93;
+    } else {
+        base_action = (action - 686) + 96;
+    }
+
+    action = base_action;
+    if (INFO_PTCG) printf("executing action (new): %d %d %d\n", action, target, opponent_target);
+    if (INFO_PTCG) fflush(stdout);
+
 
     // Allocate memory for each part of action_str
     for (int i = 0; i < 4; i++) {
@@ -303,223 +485,6 @@ int execute_action(GameState *game, int action, int target, int opponent_target)
     return reward;
 }
 
-int* get_valid_targets(GameState *game, int action) {
-    int* valid_targets = calloc(8, sizeof(int));
-    Player *current_player = get_current_player_(game);
-    Player *opponent = get_opponent_(game);
-
-    // Check if the action is valid
-    if (action < 0 || action >= 97) {
-        return valid_targets;
-    }
-
-    // Energy attachment (0-3)
-    if (action >= 0 && action <= 3) {
-        if (current_player->energy_available && game->current_turn != 0) {
-            if (action == 0 && current_player->active_pokemon) {
-                valid_targets[0] = 1;
-            } else if (action > 0 && action <= 3 && current_player->bench_count >= action) {
-                valid_targets[action] = 1;
-            }
-        }
-    }
-    // Play a basic Pokemon (4-23)
-    else if (action >= 4 && action <= 23) {
-        int card_index = action - 4;
-        if (card_index < current_player->hand_count) {
-            Card *card = current_player->hand[card_index];
-            if (card->cardtype == POKEMON && card->stage == BASIC) {
-                if (current_player->active_pokemon == NULL) {
-                    valid_targets[0] = 1;
-                } else if (current_player->bench_count < MAX_BENCH_POKEMON) {
-                    for (int i = 1; i <= MAX_BENCH_POKEMON; i++) {
-                        valid_targets[i] = 1;
-                    }
-                }
-            }
-        }
-    }
-    // Evolve a Pokemon (24-43)
-    else if (action >= 24 && action <= 43) {
-        int card_index = action - 24;
-        if (card_index < current_player->hand_count) {
-            Card *card = current_player->hand[card_index];
-            if (card->cardtype == POKEMON && card->stage > BASIC) {
-                if (current_player->active_pokemon && strcmp(card->evolves_from, current_player->active_pokemon->name) == 0) {
-                    valid_targets[0] = 1;
-                }
-                for (int i = 0; i < current_player->bench_count; i++) {
-                    if (strcmp(card->evolves_from, current_player->bench[i]->name) == 0) {
-                        valid_targets[i + 1] = 1;
-                    }
-                }
-            }
-        }
-    }
-    // Play a supporter card (44-63)
-    else if (action >= 44 && action <= 63) {
-        int card_index = action - 44;
-        if (card_index < current_player->hand_count) {
-            Card *card = current_player->hand[card_index];
-            if (card->cardtype == SUPPORTER && !game->supporter_played && !opponent_has_shadowy_spellbind(opponent)) {
-                if (strcmp(card->name, "Erika") == 0) {
-                    // Erika targets Grass Pokémon
-                    if (current_player->active_pokemon && current_player->active_pokemon->type == GRASS) {
-                        valid_targets[0] = true;
-                    }
-                    for (int i = 0; i < current_player->bench_count; i++) {
-                        if (current_player->bench[i]->type == GRASS) {
-                            valid_targets[i+1] = true;
-                            break;
-                        }
-                    }
-                }
-                else if (strcmp(card->name, "Misty") == 0) {
-                    // Misty targets Water Pokémon
-                    if (current_player->active_pokemon && current_player->active_pokemon->type == WATER) {
-                        valid_targets[0] = true;
-                    }
-                    for (int i = 0; i < current_player->bench_count; i++) {
-                        if (current_player->bench[i]->type == WATER) {
-                            valid_targets[i+1] = true;
-                            break;
-                        }
-                    }
-                }
-                else if (strcmp(card->name, "Brock") == 0) {
-                    // Brock targets Pokémon with "Geodude", "Graveler", or "Golem" in their name
-                    if (current_player->active_pokemon && 
-                        (strstr(current_player->active_pokemon->name, "Geodude") ||
-                        strstr(current_player->active_pokemon->name, "Graveler") ||
-                        strstr(current_player->active_pokemon->name, "Golem"))) {
-                        valid_targets[0] = true;
-                    }
-                    for (int i = 0; i < current_player->bench_count; i++) {
-                        if (strstr(current_player->bench[i]->name, "Geodude") ||
-                            strstr(current_player->bench[i]->name, "Graveler") ||
-                            strstr(current_player->bench[i]->name, "Golem")) {
-                            valid_targets[i+1] = true;
-                            break;
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    // Play an item card (64-83)
-    else if (action >= 64 && action <= 83) {
-        int card_index = action - 64;
-        if (card_index < current_player->hand_count) {
-            Card *card = current_player->hand[card_index];
-            if (card->cardtype == ITEM) {
-                if (strcmp(card->name, "Helix Fossil") == 0 || 
-                    strcmp(card->name, "Dome Fossil") == 0 || 
-                    strcmp(card->name, "Old Amber") == 0) {
-                    if (current_player->bench_count < MAX_BENCH_POKEMON) {
-                        valid_targets[0] = 1;
-                    }
-                }
-                else if (strcmp(card->name, "Pokemon Flute") == 0) {
-                    for (int i = 0; i < opponent->discard_count; i++) {
-                        if (opponent->discard_pile[i]->stage == BASIC) {
-                            valid_targets[i + 5] = 1;
-                        }
-                    }
-                }
-                else if (strcmp(card->name, "Potion") == 0) {
-                    if (current_player->active_pokemon && current_player->active_pokemon->hp < current_player->active_pokemon->hp_total) {
-                        valid_targets[0] = 1;
-                    }
-                    for (int i = 0; i < current_player->bench_count; i++) {
-                        if (current_player->bench[i]->hp < current_player->bench[i]->hp_total) {
-                            valid_targets[i + 1] = 1;
-                        }
-                    }
-                }
-                else if (strcmp(card->name, "X Speed") == 0 ||
-                        strcmp(card->name, "Pokedex") == 0 ||
-                        strcmp(card->name, "Poke Ball") == 0 ||
-                        strcmp(card->name, "Hand Scope") == 0 ||
-                        strcmp(card->name, "Red Card") == 0 ||
-                        strcmp(card->name, "Mythical Slab") == 0) {
-                    valid_targets[0] = 1;
-                }
-            }
-        }
-    }
-
-    // Retreat (84-86)
-    else if (action >= 84 && action <= 86) {
-        if (current_player->active_pokemon && !current_player->cant_retreat) {
-            int retreat_cost = current_player->active_pokemon->retreat_cost - game->turn_effects.retreat_reduction;
-            if (retreat_cost < 0) retreat_cost = 0;
-            if (current_player->active_pokemon->energies_count >= retreat_cost) {
-                for (int i = 0; i < current_player->bench_count && i < 3; i++) {
-                    valid_targets[i + 1] = 1;
-                }
-            }
-        }
-    }
-    // Use ability (87-90)
-    else if (action >= 87 && action <= 90) {
-        if (action == 87 && current_player->active_pokemon && current_player->active_pokemon->has_ability && !current_player->active_pokemon->ability_used) {
-            valid_targets[0] = 1;
-        } else if (action > 87 && action <= 90) {
-            int bench_index = action - 88;
-            if (bench_index < current_player->bench_count && current_player->bench[bench_index]->has_ability && !current_player->bench[bench_index]->ability_used) {
-                valid_targets[bench_index + 1] = 1;
-            }
-        }
-    }
-    // Attack (91-92)
-    else if (action >= 91 && action <= 92) {
-        if (current_player->active_pokemon && current_player->active_pokemon->move_count > action - 91 &&
-            current_player->active_pokemon->status != PARALYZED && current_player->active_pokemon->status != ASLEEP) {
-            Move *move = &current_player->active_pokemon->moves[action - 91];
-            if (has_enough_energy(current_player, current_player->active_pokemon, move)) {
-                valid_targets[4] = 1;  // Opponent's active Pokemon
-                for (int i = 0; i < opponent->bench_count; i++) {
-                    valid_targets[i + 5] = 1;  // Opponent's bench Pokemon
-                }
-            }
-        }
-    }
-    // End turn (96)
-    else if (action == 96) {
-        valid_targets[0] = 1;
-    }
-    
-    return valid_targets;
-}
-
-
-int* get_valid_opponent_target(GameState *game, int action) {
-    int num_targets = 8;
-    int *valid_targets = calloc(num_targets, sizeof(int));
-    for (int i = 0; i < num_targets; i++) {
-        valid_targets[i] = false;
-    }
-
-    Player *current_player = get_current_player_(game);
-    Player *opponent = get_opponent_(game);
-
-    if (action == 91 || action == 92) {
-        // Attack moves
-        valid_targets[0] = (opponent->active_pokemon != NULL);
-        for (int i = 0; i < opponent->bench_count && i < 3; i++) {
-            valid_targets[4 + i + 1] = true;
-        }
-        valid_targets[0] = (current_player->active_pokemon != NULL);
-        for (int i = 0; i < current_player->bench_count && i < 3; i++) {
-            valid_targets[i + 1] = true;
-        }
-    }
-
-    return valid_targets;
-}
-
-
 float* get_observation(GameState *game) {
     if (INFO_PTCG) printf("Getting observation\n");
     if (INFO_PTCG) fflush(stdout);
@@ -611,6 +576,9 @@ float* get_observation(GameState *game) {
 
     // Current turn
     observation[index++] = (game->current_turn) / 50.0f;
+
+    // current player
+    observation[index++] = (game->current_player);
     if (INFO_PTCG) printf("last observation\n");
     if (INFO_PTCG) fflush(stdout);
 
