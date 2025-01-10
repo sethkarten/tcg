@@ -11,12 +11,11 @@ cdef extern from "simulator/ptcg.h":
     void init(GameState * game)
     void reset(GameState *game, const char player1_deck[20][50], const int player1_energy[11], const char player2_deck[20][50], const int player2_energy[11])
     int* get_legal_actions(GameState *game)
-    int execute_action(GameState *game, int action, int target, int opponent_target)
-    int* get_valid_targets(GameState *game, int action)
-    int* get_valid_opponent_target(GameState *game, int action)
+    int execute_action(GameState *game, int action)
     float* get_observation(GameState *game)
     int is_game_over(GameState *game)
     int get_current_player(GameState *game)
+    void set_seed_(int seed)
 
 cdef class CyPTCG:
     cdef GameState* game
@@ -25,12 +24,14 @@ cdef class CyPTCG:
     cdef int player1_energy[11]
     cdef int player2_energy[11]
     cdef int action_
+    cdef int seed_
 
-    def __cinit__(self):
+    def __init__(self):
         self.game = <GameState*>malloc(sizeof(GameState))
         if self.game is NULL:
             raise MemoryError()
         init(self.game)
+        
 
     def __dealloc__(self):
         if self.game is not NULL:
@@ -52,29 +53,40 @@ cdef class CyPTCG:
 
     def get_actions_available(self):
         cdef int* legal_actions = get_legal_actions(self.game)
-        actions = [bool(legal_actions[i]) for i in range(97)]
+        actions = [bool(legal_actions[i]) for i in range(687)]
         free(legal_actions)
         return actions
 
-    def get_targets(self, action):
-        action_ = int(action)
-        cdef int* legal_targets_ = get_valid_targets(self.game, action_)
-        cdef int* legal_targets_opp_ = get_valid_opponent_target(self.game, action_)
-        legal_targets = [bool(legal_targets_[i]) for i in range(8)]
-        legal_targets_opp = [bool(legal_targets_opp_[i]) for i in range(8)]
-        free(legal_targets_)
-        free(legal_targets_opp_)
-        return legal_targets, legal_targets_opp
-
-    def step(self, action, target, opponent_target):
-        reward = execute_action(self.game, action, target, opponent_target)
-        return reward
+    def step(self, action):
+        player_idx = self.get_player()
+        cdef int _reward = execute_action(self.game, action)
+        reward = int(_reward)
+        reward_other = 0
+        if (abs(reward) == 100): reward_other = -reward
+        if (player_idx == 0):
+            rewards = [reward, reward_other]
+        else:
+            rewards = [reward_other, reward]
+        return rewards
 
     def get_observation(self):
         cdef float* obs = get_observation(self.game)
-        observation = [obs[i] for i in range(91)]
+        observation = [obs[i] for i in range(92)]
         free(obs)
         return observation
 
     def is_game_over(self):
         return is_game_over(self.game)
+
+    def set_seed(self, seed):
+        seed_ = int(seed)
+        set_seed_(seed)
+
+    def __reduce__(self):
+        # Return a tuple of (callable, args) that can recreate the object
+        return (CyPTCG, ())
+
+    def __setstate__(self, state):
+        # Reinitialize the object after unpickling
+        self.__init__()
+
