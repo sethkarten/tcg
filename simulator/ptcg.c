@@ -284,8 +284,9 @@ int * get_legal_actions(GameState *game) {
         }
     }
     if (INFO_PTCG) printf("619\n");
-    if (INFO_PTCG) fflush(stdout);
     // Attack (619-682), up to 2 moves -> 4 targets per move, 8 "opponent targets" per move --> 32 per move
+    if (INFO_PTCG && current_player->active_pokemon) printf("active pokemon? %s %d %d\n", current_player->active_pokemon->name, current_player->active_pokemon->move_count, current_player->active_pokemon->status);
+    if (INFO_PTCG) fflush(stdout);
     if (current_player->active_pokemon && 
         current_player->active_pokemon->move_count > 0 && 
         current_player->active_pokemon->status != PARALYZED &&

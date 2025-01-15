@@ -54,6 +54,8 @@ def evaluate_model(model: PTCGPolicy, env: PTCGEnv, num_episodes=1):
                 observation = torch.tensor([observation])
                 action, _ = model.policy.predict(observation, action_masks, deterministic=False)
                 action = [action.item(), -1]
+                # action = env.sample_valid_action()
+                # action = [action, -1]
             else:
                 action_p2 = env.sample_valid_action()
                 action = [-1, action_p2]

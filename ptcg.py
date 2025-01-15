@@ -32,7 +32,7 @@ class PTCGEnv(gym.Env):
 
         self.render_mode = render_mode
         self.decks, self.energies = load_decks_from_csv(decks_file)
-        print(self.energies)
+        # print(self.energies)
 
     def sample_valid_action(self):
         # get legal actions
@@ -77,8 +77,8 @@ class PTCGEnv(gym.Env):
         # Randomly select two decks and their corresponding energies
         deck1_index = random.randint(0, len(self.decks) - 1)
         deck2_index = random.randint(0, len(self.decks) - 1)
-        print('Choosing decks', deck1_index, deck2_index)
-        print('Energies', self.energies[deck1_index], self.energies[deck2_index])
+        # print('Choosing decks', deck1_index, deck2_index)
+        # print('Energies', self.energies[deck1_index], self.energies[deck2_index])
         
         player1_deck = self.decks[deck1_index]
         player2_deck = self.decks[deck2_index]

@@ -33,7 +33,7 @@ void initialize_card(Card* card, const char* name, EnergyType type, int hp, Stag
 
 void init_card(Card * card)
 {   
-    card->move_count = 0;
+    // card->move_count = 0;
     card->energies_count = 0;
     card->prevent_damage_next_turn = false;
     card->ability_used = false;

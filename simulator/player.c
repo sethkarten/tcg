@@ -271,6 +271,7 @@ bool has_enough_energy(Player *player, Card *pokemon, Move *move) {
         available_energy[i] = pokemon->attached_energies[i];
         total_available += pokemon->attached_energies[i];
     }
+    if (PLAYER_DEBUG) ("total available %d\n", total_available);
 
     // Check if Jungle Totem is active
     bool is_jungle_totem_active = jungle_totem_active(player);
@@ -295,8 +296,11 @@ bool has_enough_energy(Player *player, Card *pokemon, Move *move) {
     }
 
     // Check for colorless energy requirement
-    if (total_available < colorless_required) {
-        return false;
+    if (colorless_required != 0)
+    {
+        if (total_available < colorless_required) {
+            return false;
+        }
     }
 
     return true;
