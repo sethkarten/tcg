@@ -32,6 +32,8 @@ void initialize_deck(HashMap *card_dictionary, Deck *deck, const char (*card_num
         }
     }
 
+
+    deck->energy = (bool *) malloc(MAX_CARD_ENERGIES * sizeof(bool));
     for (int i = 0; i < MAX_CARD_ENERGIES; i++) {
         deck->energy[i] = energy[i];
     }
@@ -41,19 +43,24 @@ void initialize_deck(HashMap *card_dictionary, Deck *deck, const char (*card_num
 
     for (int i = 0; i < MAX_CARD_ENERGIES; i++) {
         if (energy[i]) {
+            printf("%d\n", i);
             valid_energies[valid_energy_count] = (EnergyType)i;
             valid_energy_count++;
         }
     }
 
+    deck->energy_seq = (EnergyType *) malloc(MAX_TURN * sizeof(EnergyType));
+
     for (int i = 0; i < MAX_TURN; i++) {
         if (valid_energy_count > 0) {
             int random_index = rand() % valid_energy_count;
+            printf("random index %d %d\n", random_index, valid_energies[random_index]);
             deck->energy_seq[i] = valid_energies[random_index];
         } else {
-            deck->energy_seq[i] = GRASS;
+            fprintf(stderr, "Energies assignment invalid.\n");
         }
     }
+
 }
 
 

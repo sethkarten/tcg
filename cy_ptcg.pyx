@@ -16,6 +16,11 @@ cdef extern from "simulator/ptcg.h":
     int is_game_over(GameState *game)
     int get_current_player(GameState *game)
     void set_seed_(int seed)
+    char** get_player_hand(GameState* game, int player, int* size)
+    int get_player_deck_count(GameState* game, int player)
+    char* get_player_active(GameState* game, int player)
+    char** get_player_bench(GameState* game, int player, int* size)
+    int get_player_prizes(GameState* game, int player)
 
 cdef class CyPTCG:
     cdef GameState* game
@@ -81,6 +86,32 @@ cdef class CyPTCG:
     def set_seed(self, seed):
         seed_ = int(seed)
         set_seed_(seed)
+
+    def get_player_hand(self, player):
+        cdef int size = 0
+        cdef const char** hand_ptr = get_player_hand(self.game, player, &size)
+        return [hand_ptr[i].decode('utf-8') for i in range(size) if hand_ptr[i] != b'']
+
+    def get_player_deck_count(self, player):
+        return get_player_deck_count(self.game, player)
+
+    def get_player_active(self, player):
+        cdef const char* active_ptr = get_player_active(self.game, player)
+        active = active_ptr.decode('utf-8') if active_ptr != NULL else None
+        free(active_ptr)
+        return active
+
+    def get_player_bench(self, player):
+        cdef int size = 0
+        cdef char** bench_ptr = get_player_bench(self.game, player, &size)
+        bench = [bench_ptr[i].decode('utf-8') for i in range(size)]
+        for i in range(size):
+            free(bench_ptr[i])
+        free(bench_ptr)
+        return bench
+
+    def get_player_prizes(self, player):
+        return get_player_prizes(self.game, player)
 
     def __reduce__(self):
         # Return a tuple of (callable, args) that can recreate the object

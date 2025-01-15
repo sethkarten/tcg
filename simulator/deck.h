@@ -12,8 +12,8 @@ typedef struct {
     Card **cards;
     int card_count;
     int capacity;
-    bool energy[MAX_CARD_ENERGIES];     // true if energy spawns
-    EnergyType energy_seq[MAX_TURN];     // true if energy spawns
+    bool *energy;     // true if energy spawns
+    EnergyType *energy_seq;     // true if energy spawns
     int energy_seq_count;
 } Deck;
 

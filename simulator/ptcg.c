@@ -606,3 +606,117 @@ void set_seed_(int seed)
 {
     srand(seed);    
 }
+
+char** get_player_hand(GameState* game, int player, int* size) {
+    Player* p = (player == 0) ? &game->player1 : &game->player2;
+    *size = p->hand_count;
+    char** hand = malloc(p->hand_count * sizeof(char*));
+    for (int i = 0; i < p->hand_count; i++) {
+        hand[i] = p->hand[i]->name;
+    }
+    return hand;
+}
+
+int get_player_deck_count(GameState* game, int player) {
+    Player* p = (player == 0) ? &game->player1 : &game->player2;
+    return p->deck->card_count;
+}
+
+char* get_player_active(GameState* game, int player) {
+    Player* p = (player == 0) ? &game->player1 : &game->player2;
+    if (p->active_pokemon == NULL) {
+        return strdup("No active Pokemon");
+    }
+    
+    char* result = malloc(256 * sizeof(char));  // Allocate memory for the result string
+    char energy_str[100] = "";
+    
+    for (int i = 0; i < 11; i++) {
+        char energy_type[20];
+        int printed_energies = 0;
+        for (int j = 0; j < p->active_pokemon->attached_energies[i]; j++)
+        {
+            switch(i) {
+                case GRASS: strncpy(energy_type, "Grass", 20); break;
+                case FIRE: strncpy(energy_type, "Fire", 20); break;
+                case WATER: strncpy(energy_type, "Water", 20); break;
+                case LIGHTNING: strncpy(energy_type, "Lightning", 20); break;
+                case PSYCHIC: strncpy(energy_type, "Psychic", 20); break;
+                case FIGHTING: strncpy(energy_type, "Fighting", 20); break;
+                case DARKNESS: strncpy(energy_type, "Darkness", 20); break;
+                case METAL: strncpy(energy_type, "Metal", 20); break;
+                case FAIRY: strncpy(energy_type, "Fairy", 20); break;
+                case DRAGON: strncpy(energy_type, "Dragon", 20); break;
+                case COLORLESS: strncpy(energy_type, "Colorless", 20); break;
+                default: strncpy(energy_type, "Unknown", 20);
+            }
+            strcat(energy_str, energy_type);
+            if (printed_energies < p->active_pokemon->energies_count - 1) {
+                strcat(energy_str, ", ");
+            }
+            printed_energies++;
+        }
+        
+    }
+    
+    snprintf(result, 256, "%s (HP: %d/%d, Energies: %s)", 
+             p->active_pokemon->name, 
+             p->active_pokemon->hp, 
+             p->active_pokemon->hp_total, 
+             energy_str);
+    
+    return result;
+}
+
+char** get_player_bench(GameState* game, int player, int* size) {
+    Player* p = (player == 0) ? &game->player1 : &game->player2;
+    *size = p->bench_count;
+    
+    char** bench = malloc(p->bench_count * sizeof(char*));
+    for (int k = 0; k < p->bench_count; k++) {
+        bench[k] = malloc(256 * sizeof(char));
+        char energy_str[100] = "";
+        
+        for (int i = 0; i < 11; i++) {
+            char energy_type[20];
+            int printed_energies = 0;
+            for (int j = 0; j < p->bench[k]->attached_energies[i]; j++)
+            {
+                switch(i) {
+                    case GRASS: strncpy(energy_type, "Grass", 20); break;
+                    case FIRE: strncpy(energy_type, "Fire", 20); break;
+                    case WATER: strncpy(energy_type, "Water", 20); break;
+                    case LIGHTNING: strncpy(energy_type, "Lightning", 20); break;
+                    case PSYCHIC: strncpy(energy_type, "Psychic", 20); break;
+                    case FIGHTING: strncpy(energy_type, "Fighting", 20); break;
+                    case DARKNESS: strncpy(energy_type, "Darkness", 20); break;
+                    case METAL: strncpy(energy_type, "Metal", 20); break;
+                    case FAIRY: strncpy(energy_type, "Fairy", 20); break;
+                    case DRAGON: strncpy(energy_type, "Dragon", 20); break;
+                    case COLORLESS: strncpy(energy_type, "Colorless", 20); break;
+                    default: strncpy(energy_type, "Unknown", 20);
+                }
+                strcat(energy_str, energy_type);
+                if (printed_energies < p->bench[k]->energies_count - 1) {
+                    strcat(energy_str, ", ");
+                }
+                printed_energies++;
+            }
+            
+        }
+        
+        snprintf(bench[k], 256, "%s (HP: %d/%d, Energies: %s)", 
+                 p->bench[k]->name, 
+                 p->bench[k]->hp, 
+                 p->bench[k]->hp_total, 
+                 energy_str);
+    }
+    
+    return bench;
+}
+
+
+int get_player_prizes(GameState* game, int player) {
+    Player* p = (player == 0) ? &game->player1 : &game->player2;
+    return p->prize_cards_left;
+}

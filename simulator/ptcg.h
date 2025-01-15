@@ -26,5 +26,11 @@ float * get_observation(GameState *game);
 int get_current_player(GameState *game);
 int is_game_over(GameState *game);
 void set_seed_(int seed);
+// visualization
+char** get_player_hand(GameState* game, int player, int* size);
+int get_player_deck_count(GameState* game, int player);
+char* get_player_active(GameState* game, int player);
+char** get_player_bench(GameState* game, int player, int* size);
+int get_player_prizes(GameState* game, int player);
 
 #endif // PTCG_H

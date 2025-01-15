@@ -17,14 +17,14 @@ def load_decks_from_csv(file_path):
         for row in reader:
             if len(row) == 31:  # 20 cards + 11 energy types
                 decks.append(row[:20])
-                energies.append([bool(int(e)) for e in row[20:]])
+                energies.append([int(e) for e in row[20:]])
     return decks, energies
 
 
 class PTCGEnv(gym.Env):
     metadata = {'render_modes': ['human']}
 
-    def __init__(self, render_mode=None, decks_file='decks.csv'):
+    def __init__(self, render_mode=None, visualizer=None, decks_file='decks.csv'):
         self.cy_ptcg = CyPTCG()
         
         self.action_space = spaces.Discrete(696)  # action, target, opponent_target
@@ -32,6 +32,7 @@ class PTCGEnv(gym.Env):
 
         self.render_mode = render_mode
         self.decks, self.energies = load_decks_from_csv(decks_file)
+        print(self.energies)
 
     def sample_valid_action(self):
         # get legal actions
@@ -76,6 +77,8 @@ class PTCGEnv(gym.Env):
         # Randomly select two decks and their corresponding energies
         deck1_index = random.randint(0, len(self.decks) - 1)
         deck2_index = random.randint(0, len(self.decks) - 1)
+        print('Choosing decks', deck1_index, deck2_index)
+        print('Energies', self.energies[deck1_index], self.energies[deck2_index])
         
         player1_deck = self.decks[deck1_index]
         player2_deck = self.decks[deck2_index]
@@ -116,8 +119,7 @@ class PTCGEnv(gym.Env):
 
     def render(self):
         if self.render_mode == "human":
-            # Implement rendering logic here
-            pass
+            self.visualizer.visualize_ptcg()
 
     def close(self):
         pass
@@ -139,6 +141,48 @@ class PTCGEnv(gym.Env):
     
     def get_spaces(self):
         return self.observation_space, self.action_space
+    
+    def get_player_hand(self, player):
+        return self.cy_ptcg.get_player_hand(player)
+
+    def get_player_deck_count(self, player):
+        return self.cy_ptcg.get_player_deck_count(player)
+
+    def get_player_active(self, player):
+        return self.cy_ptcg.get_player_active(player)
+
+    def get_player_bench(self, player):
+        return self.cy_ptcg.get_player_bench(player)
+
+    def get_player_prizes(self, player):
+        return self.cy_ptcg.get_player_prizes(player)
+
+    def visualize_game_state(self):
+        players = [0, 1]
+        
+        for player in players:
+            print(f"\n{player}'s Game State:")
+            print("=" * 40)
+            
+            active = self.get_player_active(player)
+            print(f"Active Pokémon: {active}")
+            
+            bench = self.get_player_bench(player)
+            print("Bench:")
+            for i, pokemon in enumerate(bench):
+                print(f"  {i+1}. {pokemon}")
+            
+            hand = self.get_player_hand(player)
+            print(f"Hand ({len(hand)} cards): {hand}")
+            
+            deck_count = self.get_player_deck_count(player)
+            print(f"Cards remaining in deck: {deck_count}")
+            
+            prizes = self.get_player_prizes(player)
+            print(f"Prize cards remaining: {prizes}")
+        
+        print("\nCurrent player:", self.get_player())
+        print("Game over:", self.cy_ptcg.is_game_over() == 1)
     
 
 # Register the environment

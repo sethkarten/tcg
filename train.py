@@ -19,7 +19,7 @@ import numpy as np
 import torch as th
 import torch.nn as nn
 
-from utils import Monitor2P, SubprocVecEnv2P, DummyVecEnv
+from utils import Monitor2P, SubprocVecEnv2P
 from algorithms import LeaguePPO
 from league import PayoffManager, League, Learner
 
@@ -214,44 +214,7 @@ def worker(idx, learner, total_steps, rollout_opponent_num):
     print(f"worker {learner.player.name} start")
     # with th.cuda.device(idx % th.cuda.device_count()):
     learner.player.construct_agent()
-    learner.run(total_timesteps=total_steps, rollout_opponent_num=rollout_opponent_num)
-
-
-def main_league():
-    parser = argparse.ArgumentParser(description='Reset game stats')
-    parser.add_argument('--save-dir', help='The directory to save the trained models', default="trained_models/ma")
-    parser.add_argument('--log-dir', help='The directory to save logs', default="logs/ma")
-    parser.add_argument('--num-env', type=int, help='How many envirorments to create', default=1)
-    parser.add_argument('--total-steps', type=int, help='How many total steps to train', default=int(1e5)) # 1e5
-    # parser.add_argument('--left-model-file', help='The left model to continue to learn from')
-    # parser.add_argument('--right-model-file', help='The right model to continue to learn from')
-    parser.add_argument('--rollout-opponent-num', type=int, help='Numbers of opponents to interact for each update', default=2) # 2
-    args = parser.parse_args()
-
-    print("command line args:" + str(args))
-
-    p1_model = constructor(args, "left", log_name=None)
-    p2_model = constructor(args, "right", log_name=None)
-
-    initial_agents = {
-        'left': p1_model,
-        'right': p2_model,
-    }
-
-    with PayoffManager() as manager:
-        shared_payoff = manager.Payoff(args.save_dir)
-        league = League(args=args, initial_agents=initial_agents, constructor=constructor, payoff=shared_payoff, main_agents=1, main_exploiters=1, league_exploiters=2)
-        processes = []
-        for idx in range(league.size()):
-            player = league.get_player(idx)
-            learner = Learner(player)
-            process = Process(target=worker, args=(idx, learner, args.total_steps, args.rollout_opponent_num))
-            # process.daemon=True  # all processes closed when the main stops
-            processes.append(process)
-        for p in processes:
-            p.start()
-        for p in processes:
-            p.join()
+    learner.run(total_timesteps=total_steps, rollout_opponent_num=rollout_opponent_num, log_interval=10)
 
 
 def main():
